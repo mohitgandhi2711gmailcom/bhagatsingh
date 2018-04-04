@@ -1,0 +1,98 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <dimen name="nav_user_image_width">100px</dimen>
+    <dimen name="nav_user_text_size">22px</dimen>
+    <dimen name="nav_user_image_martop">32px</dimen>
+    <dimen name="nav_user_text_marbottom">12px</dimen>
+
+    <dimen name="nav_text_size">20px</dimen>
+    <dimen name="header_text_size">17px</dimen>
+
+
+    <dimen name="login_emial_text_size">17px</dimen>
+    <dimen name="login_title_text_size">28px</dimen>
+    <dimen name="login_loginbutton_text_size">28px</dimen>
+
+
+
+    <dimen name="signup_buttton_martop">53px</dimen>
+    <dimen name="signup_tac_martop">67px</dimen>
+    <dimen name="signup_tac_marbottom">16px</dimen>
+
+    <dimen name="home_viewpager_row_height">274px</dimen>
+    <dimen name="home_categouries_row_height">105px</dimen>
+    <dimen name="home_categouries_row_mar">6px</dimen>
+    <dimen name="home_categouries_row_text_size">12px</dimen>
+
+    <dimen name="home_product_row_width">169px</dimen>
+    <dimen name="home_product_row_image_height">140px</dimen>
+    <dimen name="home_product_row_title_text_size">15px</dimen>
+    <dimen name="home_product_row_price_text_size">10px</dimen>
+    <dimen name="home_product_row_currency_text_size">7px</dimen>
+    <dimen name="home_product_row_atc_text_size">12px</dimen>
+
+    <dimen name="order_history_row_width">113px</dimen>
+    <dimen name="order_history_row_height">152px</dimen>
+
+
+    <dimen name="home_search_text_size">20px</dimen>
+    <dimen name="home_categouries_text_size">20px</dimen>
+    <dimen name="home_seeall_text_size">15px</dimen>
+
+    <dimen name="product_detail_thumb_width">69px</dimen>
+    <dimen name="product_detail_thumb_height">70px</dimen>
+
+    <dimen name="product_detail_image_width">314px</dimen>
+    <dimen name="product_detail_image_height">385px</dimen>
+
+
+    <dimen name="product_detail_titel_text_size">22px</dimen>
+    <dimen name="product_detail_currency_text_size">16px</dimen>
+    <dimen name="product_detail_buy_text_size">22px</dimen>
+    <dimen name="product_detail_description_text_size">15px</dimen>
+    <dimen name="product_detail_wr_text_size">13px</dimen>
+
+
+    <dimen name="home_allproduct_row_width">232px</dimen>
+    <dimen name="home_allproduct_row_image_height">200px</dimen>
+    <dimen name="home_allproduct_row_title_size">17px</dimen>
+    <dimen name="home_allproduct_row_like_height">34px</dimen>
+
+    <dimen name="home_allcategories_row_height">199px</dimen>
+    <dimen name="home_allcategories_row_text_width">141px</dimen>
+    <dimen name="home_allcategories_row_text_height">32px</dimen>
+
+
+    <dimen name="wishlist_row_image_width">144px</dimen>
+    <dimen name="wishlist_row_type_size">14px</dimen>
+
+    <dimen name="addtocart_row_currency_new_text_size">10px</dimen>
+
+    <dimen name="addtocart_row_image_width">95px</dimen>
+    <dimen name="addtocart_row_image_height">95px</dimen>
+    <dimen name="addtocart_type_size">10px</dimen>
+    <dimen name="addtocart_price_size">30px</dimen>
+    <dimen name="addtocart_totalprice_size">18px</dimen>
+    <dimen name="addtocart_timeetimation">12px</dimen>
+
+
+    <dimen name="writereview_image_width">127px</dimen>
+    <dimen name="writereview_image_height">88px</dimen>
+    <dimen name="writereview_box_height">131px</dimen>
+
+    <dimen name="border">.67px</dimen>
+
+    <dimen name="text_size_22">15px</dimen>
+    <dimen name="text_size_20">13px</dimen>
+
+    <dimen name="width_size_270">181px</dimen>
+
+    <dimen name="width_size_100">67px</dimen>
+    <dimen name="width_size_103">69px</dimen>
+    <dimen name="height_size_38">25px</dimen>
+    <dimen name="width_size_272">182px</dimen>
+
+
+</resources>

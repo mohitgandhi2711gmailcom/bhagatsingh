@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+android:padding="2dp"
+    android:background="@drawable/change_box"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@color/white_color"
+        android:layout_height="wrap_content">
+    <com.mohi.in.widgets.UbuntuMediumTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_the_pincode_of_delivery_address"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:textSize="@dimen/product_detail_description_text_size"
+        android:textColor="@color/back_color"
+        />
+
+
+
+    <com.mohi.in.widgets.UbuntuRegularEditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/writereview_box"
+        android:textColor="@color/back_color"
+        android:textColorHint="@color/hint_color"
+        android:maxLength="10"
+
+        android:inputType="number"
+        android:hint="pincode"
+        android:id="@+id/Pincode_Popup_Pin"
+
+        android:padding="5dp"
+
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+      android:layout_gravity="center"
+        android:gravity="center"
+
+
+        >
+<LinearLayout
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="20dp"
+
+
+
+    >
+
+    <com.mohi.in.widgets.UbuntuMediumTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:layout_weight="1"
+        android:textAllCaps="true"
+        android:textSize="@dimen/login_emial_text_size"
+        android:background="@drawable/button_orange"
+
+        android:textColor="@color/white_color"
+        android:gravity="center"
+        android:padding="10dp"
+        android:id="@+id/Pincode_Popup_Cancel"
+        android:layout_marginRight="8dp"
+
+
+
+
+        />
+
+
+    <com.mohi.in.widgets.UbuntuMediumTextView
+
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:layout_weight="1"
+        android:textAllCaps="true"
+        android:background="@drawable/button_orange"
+
+        android:textSize="@dimen/login_emial_text_size"
+        android:textColor="@color/white_color"
+        android:gravity="center"
+        android:padding="10dp"
+        android:id="@+id/Pincode_Popup_Done"
+
+
+
+
+        />
+</LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

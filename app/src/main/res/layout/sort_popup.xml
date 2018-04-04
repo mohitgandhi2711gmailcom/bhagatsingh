@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_color"
+
+    >
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:background="@color/white_color"
+        >
+
+        <com.mohi.in.widgets.UbuntuRegularTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort By"
+            android:textAllCaps="true"
+            android:textColor="@color/hint_color"
+            android:padding="10dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
+            />
+
+
+        <RadioGroup
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/Sort_Price"
+            >
+
+            <com.mohi.in.widgets.ArialUnicodeMSRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price -- Low to High"
+                android:textColor="@color/back_color"
+                android:id="@+id/Sort_LTH"
+                />
+
+            <com.mohi.in.widgets.ArialUnicodeMSRadioButton
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price -- High to Low"
+                android:textColor="@color/back_color"
+                android:id="@+id/Sort_HTL"
+                />
+
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+</LinearLayout>

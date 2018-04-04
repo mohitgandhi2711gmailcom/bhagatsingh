@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reyclerview_message_list"
+        android:layout_width="match_parent"
+        android:layout_above="@id/bottom_ll"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:background="@color/transparent"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/bt_back"
+            tools:ignore="NestedWeights" />
+
+        <EditText
+            android:id="@+id/send_chat_et"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="7.5"
+            android:background="@drawable/edittext_border_shape"
+            android:inputType="text"
+            tools:ignore="LabelFor" />
+
+        <ImageView
+            android:id="@+id/send_btn_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/bt_send" />
+
+    </LinearLayout>
+
+</RelativeLayout>

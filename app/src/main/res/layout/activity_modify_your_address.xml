@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/silver_bg_color"
+    tools:context=".activities.ModifyYourAddressActivity">
+
+
+    <include
+        layout="@layout/header"
+        />
+
+<LinearLayout
+    android:background="@color/white_color"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/border"
+        android:background="@color/writereview_box_color"
+        />
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:background="@color/white_color"
+        android:gravity="center"
+        app:mrl_rippleBackground="@android:color/transparent"
+        app:mrl_rippleColor="@color/colorTransButtonPressed"
+        app:mrl_rippleDuration="200"
+        app:mrl_rippleFadeDuration="75"
+        app:mrl_rippleHover="true"
+        app:mrl_rippleOverlay="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/ModifyYourAddress_AddNewAddressLayout"
+        >
+        <com.mohi.in.widgets.TextAwesome
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:textSize="12sp"
+            android:text="@string/fa_plus"
+            android:textColor="@color/back_color"
+            />
+
+        <com.mohi.in.widgets.UbuntuMediumTextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a new address"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textSize="@dimen/addtocart_totalprice_size"
+            android:textColor="@color/back_color"
+
+            />
+
+    </LinearLayout>
+    </com.balysv.materialripple.MaterialRippleLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/border"
+        android:background="@color/writereview_box_color"
+        />
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/ModifyYourAddress_Listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <com.mohi.in.widgets.UbuntuMediumTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/ModifyYourAddress_NoAddress"
+        android:text="@string/you_have_no_address"
+        />
+
+
+
+    <com.mohi.in.widgets.UbuntuRegularButton
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_orange"
+        android:text="@string/deliver_here"
+        android:textColor="@color/white_color"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/ModifyYourAddress_DeliverHere"
+
+        android:visibility="gone"
+        android:textSize="@dimen/home_search_text_size"
+
+        />
+
+
+</LinearLayout>
+</LinearLayout>

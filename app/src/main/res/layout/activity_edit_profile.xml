@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditProfileActivity">
+
+
+    <include
+
+        layout="@layout/header"
+
+        />
+
+
+    <ScrollView
+        android:background="@color/white_color"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/EditProfile_UserImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:layout_gravity="center"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:indeterminateDrawable="@drawable/com_progress_big" />
+                    <com.mikhaellopez.circularimageview.CircularImageView
+
+                        android:id="@+id/EditProfile_Image"
+                        android:layout_width="@dimen/width_size_272"
+                        android:layout_height="@dimen/width_size_272"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/user_edit_colorfull" />
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hint_color" />
+
+
+            <com.mohi.in.widgets.CenturyGothicRegularEditText
+
+                android:id="@+id/EditProfile_UserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha=".7"
+                android:background="@drawable/writereview_box"
+
+                android:hint="@string/user_name"
+                android:inputType="textNoSuggestions|textCapWords"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+
+
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/login_emial_text_size" />
+
+            <com.mohi.in.widgets.CenturyGothicRegularTextView
+
+                android:id="@+id/EditProfile_EmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha=".7"
+                android:background="@drawable/writereview_box"
+
+                android:hint="@string/email"
+                android:inputType="textNoSuggestions|text"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/login_emial_text_size" />
+
+            <com.mohi.in.widgets.CenturyGothicRegularEditText
+
+                android:id="@+id/EditProfile_PhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha=".7"
+                android:background="@drawable/writereview_box"
+
+                android:hint="Mobile Number"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:maxLength="13"
+
+
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/login_emial_text_size" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+
+                <com.mohi.in.widgets.UbuntuRegularButton
+                    android:id="@+id/EditProfile_Save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_pink"
+                    android:inputType="textCapWords"
+                    android:text="@string/save"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/login_loginbutton_text_size" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

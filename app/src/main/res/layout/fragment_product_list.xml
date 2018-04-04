@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mohi.in.fragments.ProductListFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_color"
+
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp"
+        />
+
+</FrameLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.SearchActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/Header_MenuLayOut"
+
+            android:clickable="false"
+            android:gravity="center"
+            app:mrl_rippleBackground="@android:color/transparent"
+            app:mrl_rippleColor="@color/colorTransButtonPressed"
+            app:mrl_rippleDuration="200"
+            app:mrl_rippleFadeDuration="75"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/back_arrow"
+                android:id="@+id/Search_Back"
+
+
+                />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        <com.mohi.in.widgets.UbuntuLightEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/writereview_box"
+            android:hint="Search for Products, Brand"
+            android:singleLine="true"
+            android:textSize="@dimen/nav_text_size"
+            android:imeOptions="actionSearch"
+            android:id="@+id/Search_Search"
+            android:imeActionId="@+id/search"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:layout_marginRight="10dp"
+
+
+            android:inputType="textNoSuggestions"
+            tools:ignore="InvalidImeActionId" />
+
+
+
+    </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_color"
+        />
+
+
+</LinearLayout>

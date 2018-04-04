@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1e74d3</color>
+    <color name="colorPrimaryDark">#1e74d3</color>
+    <color name="colorAccent">#1e74d3</color>
+
+    <color name="white_color">#FFFFFF</color>
+
+    <color name="colorTransButtonPressed">#20000000</color>
+
+    <color name="button_blue_bg">#1e74d3</color>
+    <color name="termsandcondition_color">#f07a32</color>
+
+    <color name="hint_color">#97908e</color>
+    <color name="back_color">#000000</color>
+    <color name="forgotpassword_color">#606060</color>
+
+    <color name="tab_inactive_color">#a0a0a0</color>
+
+    <color name="tab_inactive_color1">#B3000000</color>
+    <color name="color_blar">#CC000000</color>
+
+
+    <color name="colorApp">#1e74d3</color>
+    <color name="favorite_color">#FFD999</color>
+    <color name="price_color">#D52514</color>
+    <color name="price_aed_color">#535353</color>
+    <color name="forgotpassword_text">#625C5B</color>
+
+    <color name="divider_color">#606060</color>
+    <color name="writereview_color">#4A90E2</color>
+    <color name="rating_select_color">#fcc132</color>
+    <color name="price_orange_color">#E50019</color>
+
+
+    <color name="please_select_color">#676767</color>
+    <color name="payment_inputborder_color">#DBDBDB</color>
+    <color name="payment_inputbg_color">#F7F7F7</color>
+
+    <color name="detail_wr_color">#3292EB</color>
+    <color name="heart_background">#C1DBEA</color>
+    <color name="addtocard_divider_color">#EBEBEB</color>
+
+    <color name="writereview_name_color">#3D3D3D</color>
+
+    <color name="writereview_box_color">#E7E7E7</color>
+    <color name="silver_bg_color">#f1f3f6</color>
+
+    <color name="color_232323">#232323</color>
+    <color name="color_F47A23">#F47A23</color>
+    <color name="color_d7d7d7">#d7d7d7</color>
+    <color name="color_8ED560">#8ED560</color>
+    <color name="placeholder_grey_20">#33AAADC4</color>
+
+    <!-- Slider Inactive Dot Color-->
+    <color name="dot_inactive">#DCDCDC</color>
+
+    <!-- Slider Active Dot Color-->
+    <color name="dot_active">#A9A9A9</color>
+
+    <!-- Slider Skip Text Color-->
+    <color name="skip_text_slider">#42BEB1</color>
+
+    <color name="new_theme_color">#80C5B9</color>
+
+</resources>

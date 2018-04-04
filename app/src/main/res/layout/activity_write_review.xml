@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <include
+
+        layout="@layout/header" />
+
+
+    <ScrollView
+        android:background="@color/white_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/writereview_box"
+                android:orientation="horizontal"
+                android:padding="@dimen/signup_tac_marbottom">
+
+                <ImageView
+                    android:id="@+id/WriteReview_Image"
+                    android:layout_width="@dimen/writereview_image_width"
+                    android:layout_height="@dimen/writereview_image_height"
+                    android:scaleType="fitXY"
+                     />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.mohi.in.widgets.UbuntuRegularTextView
+                        android:id="@+id/WriteReview_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LT Nitya"
+
+                        android:textColor="@color/writereview_name_color"
+                        android:textSize="@dimen/addtocart_totalprice_size" />
+
+
+                    <RatingBar
+                        android:id="@+id/WriteReview_Rating"
+                        style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:isIndicator="false"
+                        android:numStars="5"
+                        android:progressTint="@color/rating_select_color"
+                        android:secondaryProgressTint="@color/colorApp"
+
+                        android:stepSize="1" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <com.mohi.in.widgets.UbuntuRegularEditText
+                android:id="@+id/WriteReview_Review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/writereview_box"
+                android:hint="Write your review here"
+                android:minHeight="@dimen/writereview_box_height"
+                android:paddingBottom="5dp"
+                android:gravity="top"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/forgotpassword_text"
+                android:textSize="@dimen/home_product_row_title_text_size" />
+
+
+            <com.mohi.in.widgets.UbuntuRegularButton
+                android:id="@+id/WriteReview_Submit"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_orange"
+                android:inputType="textCapSentences"
+                android:text="@string/submit"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/home_search_text_size" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

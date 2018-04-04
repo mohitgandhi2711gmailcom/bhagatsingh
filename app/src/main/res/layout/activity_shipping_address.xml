@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ShippingAddressActivity">
+
+    <include layout="@layout/header" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@color/white_color"
+        android:layout_height="wrap_content"
+       android:id="@+id/ShippingAddress_scrollView"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shipping_address"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/product_detail_titel_text_size" />
+
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+                android:id="@+id/ShippingAddress_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/shipping_address"
+                android:textColor="@color/writereview_name_color"
+                android:textSize="@dimen/addtocart_totalprice_size" />
+
+            <com.mohi.in.widgets.UbuntuRegularButton
+                android:id="@+id/ShippingAddress_ChangeOrAddAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_orange"
+                android:inputType="textCapWords"
+                android:text="Change or add address"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/addtocart_totalprice_size"
+
+                />
+
+
+            <com.mohi.in.widgets.ExpandableHeightdListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+
+                android:id="@+id/ShippingAddress_ListItem"
+
+                />
+
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/price_detail"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/addtocart_totalprice_size" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border"
+
+                android:layout_marginTop="5dp"
+                android:background="@color/writereview_box_color" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:id="@+id/ShippingAddress_PriceWithQty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Price (1 item)"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/ShippingAddress_Price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/delivery"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/ShippingAddress_DeliveryCharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border"
+                android:layout_marginTop="10dp"
+                android:background="@color/writereview_box_color"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_price"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/ShippingAddress_TotalPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+
+                    >
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        >
+
+                        <com.mohi.in.widgets.UbuntuMediumTextView
+                            android:id="@+id/ShippingAddress_FinalTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:textColor="@color/color_F47A23"
+                            android:textSize="@dimen/login_title_text_size" />
+
+                        <com.mohi.in.widgets.UbuntuMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+
+                            android:id="@+id/ShippingAddress_CurrencyType"
+                            android:textColor="@color/price_aed_color"
+                            android:textSize="@dimen/text_size_20" />
+
+                    </LinearLayout>
+
+                    <com.mohi.in.widgets.UbuntuRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_price"
+                        android:textColor="@color/writereview_name_color"
+                        android:textSize="@dimen/text_size_22" />
+                </LinearLayout>
+
+                <com.mohi.in.widgets.UbuntuRegularButton
+                    android:id="@+id/ShippingAddress_Continue"
+                    android:layout_width="@dimen/width_size_270"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_orange"
+                    android:text="@string/continue1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/home_search_text_size"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

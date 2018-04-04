@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".activities.PaymentMethodsActivity">
+
+    <include layout="@layout/header" />
+
+    <ScrollView
+        android:background="@color/white_color"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/payment_card" />
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Payment Method"
+                    android:textColor="@color/back_color"
+                    android:textSize="@dimen/header_text_size" />
+
+            </LinearLayout>
+
+            <com.mohi.in.widgets.UbuntuRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/please_select_the"
+                android:textColor="@color/please_select_color"
+                android:textSize="@dimen/product_detail_currency_text_size" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <com.mohi.in.widgets.UbntuRegularRadioButton
+                    android:id="@+id/PaymentMethod_CreditDebitCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/radio_button_credit_debit"
+
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:paddingLeft="5dp"
+                    android:text="@string/creadit_debit_card"
+                    android:textColor="@color/please_select_color"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+
+                <com.mohi.in.widgets.UbntuRegularRadioButton
+                    android:id="@+id/PaymentMethod_CashOnDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:button="@drawable/radio_button_credit_debit"
+                    android:checked="true"
+                    android:paddingLeft="5dp"
+                    android:text="@string/cash_on_delivery"
+                    android:textColor="@color/please_select_color"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+
+
+            </RadioGroup>
+
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:text="Apply Coupon Code"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/header_text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+
+                >
+
+                <com.mohi.in.widgets.UbuntuRegularEditText
+                    android:id="@+id/PaymentMethod_CouponCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/writereview_box"
+                    android:hint="@string/use_coupon_code"
+                    android:padding="10dp"
+                    android:clickable="false"
+                    android:enabled="false"
+
+                    android:textColor="@color/back_color"
+                    android:textColorHint="@color/please_select_color"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+
+                <com.mohi.in.widgets.UbuntuRegularEditText
+                    android:id="@+id/PaymentMethod_GiftCertificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/writereview_box"
+                    android:clickable="false"
+                    android:enabled="false"
+
+                    android:hint="Use Gift Certificate"
+                    android:padding="10dp"
+                    android:textColor="@color/back_color"
+                    android:textColorHint="@color/please_select_color"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+
+
+            </LinearLayout>
+
+
+            <com.mohi.in.widgets.UbuntuRegularButton
+                android:id="@+id/PaymentMethod_Apply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/cb_grey"
+                android:inputType="textCapWords"
+                android:text="Apply"
+                android:clickable="false"
+                android:enabled="false"
+
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/nav_text_size" />
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/price_detail"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/addtocart_totalprice_size" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border"
+
+                android:layout_marginTop="5dp"
+                android:background="@color/writereview_box_color" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:id="@+id/PaymentMethod_PriceWithQty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Price (1 item)"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/PaymentMethod_Price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="220.00"
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/delivery"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/PaymentMethod_DeliveryCharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="50 AED"
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border"
+                android:layout_marginTop="10dp"
+                android:background="@color/writereview_box_color"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.mohi.in.widgets.UbuntuRegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_price"
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/text_size_22" />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/PaymentMethod_TotalPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="270 AED"
+                    android:textColor="@color/color_232323"
+                    android:textSize="@dimen/product_detail_currency_text_size" />
+            </LinearLayout>
+
+
+            <com.mohi.in.widgets.UbuntuRegularButton
+                android:id="@+id/PaymentMethod_Continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_orange"
+                android:inputType="textCapWords"
+                android:text="@string/continue1"
+
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/nav_text_size" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

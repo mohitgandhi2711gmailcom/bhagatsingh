@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    android:orientation="vertical" >
+
+       
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+
+        android:orientation="horizontal" >
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:clickable="false"
+            android:gravity="center"
+            app:mrl_rippleBackground="@android:color/transparent"
+            app:mrl_rippleColor="@color/colorTransButtonPressed"
+            app:mrl_rippleDuration="200"
+            app:mrl_rippleFadeDuration="75"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/back_arrow"
+                android:id="@+id/Select_Row_Back"
+
+                />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.mohi.in.widgets.UbuntuBoldTextView
+            android:id="@+id/Select_Row_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="Select a Blood Group"
+            android:textColor="@color/back_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:clickable="false"
+            android:gravity="center"
+            app:mrl_rippleBackground="@android:color/transparent"
+            app:mrl_rippleColor="@color/colorTransButtonPressed"
+            app:mrl_rippleDuration="200"
+            app:mrl_rippleFadeDuration="75"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true">
+            <com.mohi.in.widgets.UbuntuRegularTextView
+
+                android:id="@+id/Select_Row_Done"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:gravity="center"
+                android:text="Done"
+                android:textColor="@color/color_F47A23"
+                android:singleLine="true"
+                android:textSize="@dimen/nav_text_size"
+
+
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/white_color"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/divider_color"
+        android:visibility="gone" />
+
+    
+     <com.mohi.in.widgets.UbuntuRegularEditText
+         android:visibility="gone"
+                android:id="@+id/Select_Row_Search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/writereview_box"
+                android:hint="Enter keyword to search"
+                android:imeOptions="actionSearch"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/back_color" />
+    
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Select_Row_List"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingBottom="30dp" />
+
+
+
+       </LinearLayout>
+    
+</ScrollView>
+</LinearLayout>

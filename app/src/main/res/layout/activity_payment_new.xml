@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/desc_tv"
+        android:layout_below="@id/title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Description" />
+
+    <RelativeLayout
+        android:id="@+id/amount_rl"
+        android:layout_below="@id/desc_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/amount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:text="Description"
+            android:textColor="@color/skip_text_slider"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/amount_tv"
+            android:background="@drawable/copy_button_shape"
+            android:text="copy"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_below="@id/amount_rl"
+        android:id="@+id/payment_tabs"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/cb_textColor"
+        app:tabSelectedTextColor="@color/new_theme_color"
+        app:tabIndicatorColor="@color/new_theme_color"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/payment_tabs"
+        android:layout_marginTop="10dp"
+        android:id="@+id/payment_pager"
+        android:layout_above="@id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp" />
+
+    <LinearLayout
+        android:id="@+id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@null"
+            android:src="@drawable/bt_back" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_corner_shape_gradient"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color" />
+
+    </LinearLayout>
+
+</RelativeLayout>

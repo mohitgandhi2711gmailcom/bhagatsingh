@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/back_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:singleLine="true"
+            android:text="@string/login_caps"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/username_or_email" />-->
+
+    <!--<android.support.v4.widget.Space-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="5dp" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/username_mail_id_et"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/edittext_border_shape"-->
+        <!--android:hint="@string/username_or_email" />-->
+
+    <!--<android.support.v4.widget.Space-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="15dp" />-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/or_tv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:text="@string/or" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toStartOf="@id/or_tv"-->
+            <!--android:background="#000000" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toEndOf="@id/or_tv"-->
+            <!--android:background="#000000" />-->
+    <!--</RelativeLayout>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Phone_or_email" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/country_code_spinner"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:background="@drawable/edittext_border_shape" />
+
+        <EditText
+            android:id="@+id/phone_number_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_border_shape"
+            android:hint="@string/Phone_or_email" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/pass_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border_shape"
+        android:drawableEnd="@drawable/ic_visibility_black_24dp"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_shape_gradient"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/white_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/or"/>
+
+        <Button
+            android:id="@+id/otp_btn"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_shape_gradient"
+            android:text="@string/login_by_otp"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/register_here_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/register_here"
+            android:textColor="@color/skip_text_slider" />
+
+        <TextView
+            android:id="@+id/forgot_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/forgot"
+            android:textColor="@color/cb_errorRed"
+            tools:ignore="RelativeOverlap" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/or_login_by" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tvText"
+            android:background="#000000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/tvText"
+            android:background="#000000" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/facebook_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/facebook_shape"
+            android:gravity="center"
+            android:text="@string/facebook"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/google_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/google_shape"
+            android:gravity="center"
+            android:text="@string/google_plus"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="@dimen/product_detail_thumb_width"
+    android:layout_height="@dimen/product_detail_thumb_height"
+    android:layout_marginBottom="5dp"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/com_progress_big" />
+
+    <ImageView
+
+        android:padding="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/product_iv"
+        android:scaleType="centerInside"
+
+        />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

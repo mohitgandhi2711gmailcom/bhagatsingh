@@ -1,0 +1,208 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivityNew">
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+
+        />
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/large_logo" />
+
+
+            <com.mohi.in.widgets.CenturyGothicRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/title_activity_login"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/login_title_text_size"
+
+                />
+
+
+            <com.mohi.in.widgets.CenturyGothicRegularEditText
+
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha=".7"
+                android:background="@drawable/input_white"
+                android:gravity="center"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+
+                android:maxLength="50"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/login_emial_text_size" />
+
+
+            <com.mohi.in.widgets.CenturyGothicRegularEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alpha=".7"
+                android:background="@drawable/input_white"
+                android:gravity="center"
+                android:hint="@string/prompt_password"
+
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:singleLine="true"
+                android:maxLength="20"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/back_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/login_emial_text_size"
+                tools:ignore="InvalidImeActionId" />
+
+
+            <com.mohi.in.widgets.CenturyGothicRegularTextView
+                android:id="@+id/Login_forgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="@string/forgot_your_password"
+                android:textColor="@color/forgotpassword_color"
+                android:textSize="@dimen/login_emial_text_size" />
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <com.mohi.in.widgets.UbuntuRegularButton
+                    android:id="@+id/email_sign_in_button"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/button_white"
+                    android:inputType="textCapWords"
+                    android:text="@string/action_sign_in"
+                    android:textColor="@color/back_color"
+                    android:textSize="@dimen/login_loginbutton_text_size" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <com.mohi.in.widgets.UbuntuRegularButton
+                    android:id="@+id/email_sign_up_button"
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/button_pink"
+                    android:inputType="textCapWords"
+                    android:text="@string/action_sign_up"
+
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/login_loginbutton_text_size" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <com.mohi.in.widgets.UbuntuRegularButton
+                    android:id="@+id/Login_Skip"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_pink"
+
+                    android:inputType="textCapWords"
+                    android:text="@string/skip"
+                    android:textColor="@color/white_color"
+
+                    android:textSize="@dimen/login_loginbutton_text_size"
+                    android:visibility="gone" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

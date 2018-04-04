@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Categories_Row"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/home_allcategories_row_height"
+    android:layout_marginTop="7dp"
+    android:background="@color/white_color"
+
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:indeterminateDrawable="@drawable/com_progress_big" />
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+
+                />
+        </RelativeLayout>
+
+        <com.mohi.in.widgets.UbuntuRegularTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/category_bg_orange"
+            android:gravity="center"
+            android:minHeight="@dimen/home_allcategories_row_text_height"
+            android:minWidth="@dimen/home_allcategories_row_text_width"
+            android:paddingLeft="5dp"
+
+
+            android:paddingRight="5dp"
+            android:text="saree"
+            android:textAllCaps="true"
+
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/home_search_text_size" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

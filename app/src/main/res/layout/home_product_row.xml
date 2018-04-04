@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_color"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:paddingLeft="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/HomeProduct_Row_Header"
+
+        >
+        <com.mohi.in.widgets.UbuntuRegularTextView
+
+            android:layout_weight="1"
+            android:id="@+id/HomeProduct_Row_HeaderTitelName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/home_categouries_text_size"
+            android:textColor="@color/back_color"
+            android:text="featured categories"
+            android:inputType="textNoSuggestions"
+
+            />
+
+        <com.mohi.in.widgets.UbuntuRegularTextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/home_seeall_text_size"
+            android:textColor="@color/hint_color"
+            android:text="@string/see_all"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:paddingBottom="5dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:id="@+id/HomeProduct_Row_HeaderSeeAll"
+            />
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HomeProduct_Row_ListView"
+        android:orientation="horizontal"
+        android:overScrollMode="ifContentScrolls" />
+
+
+
+</LinearLayout>

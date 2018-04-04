@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@null"
+        android:src="@drawable/google" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/address_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/area_683108"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/edit_btn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@drawable/copy_button_shape"
+                android:gravity="center"
+                android:text="@string/edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/address_desc_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/area_683108" />
+
+            <Button
+                android:id="@+id/delete_btn"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@drawable/copy_button_shape"
+                android:text="@string/delete" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

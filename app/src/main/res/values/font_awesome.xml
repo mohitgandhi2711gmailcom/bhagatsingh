@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="fa_plus">&#xf067;</string>
+    <string name="fa_filter">&#xf0b0;</string>
+    <string name="fa_long_arrow_down">&#xf175;</string>
+    <string name="fa_long_arrow_up">&#xf176;</string>
+    <string name="fa_angle_right">&#xf105;</string>
+    <string name="fa_circle">&#xf111;</string>
+    <string name="fa_check">&#xf00c;</string>
+    <string name="fa_map_marker">&#xf041;</string>
+    <string name="fa_angle_down">&#xf107;</string>
+
+
+</resources>

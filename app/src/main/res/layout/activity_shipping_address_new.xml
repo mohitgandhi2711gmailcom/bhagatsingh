@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detailed_address"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <EditText
+                android:id="@+id/detail_address_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border_shape"
+                android:hint="@string/_49_alvah_port" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country_new" />
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/state_new" />
+
+            </LinearLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/country_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_border_shape"
+                    android:hint="@string/bolivia" />
+
+                <EditText
+                    android:id="@+id/state_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_border_shape"
+                    android:hint="@string/virginia" />
+
+            </LinearLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city" />
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zip" />
+
+            </LinearLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/city_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_border_shape"
+                    android:hint="@string/west_leonestad" />
+
+                <EditText
+                    android:id="@+id/zip_et"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_border_shape"
+                    android:hint="@string/_89050" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@drawable/bt_back" />
+
+            <Button
+                android:id="@+id/update_address_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/rounded_corner_shape_gradient"
+                android:text="@string/update_address"
+                android:textAllCaps="false"
+                android:textColor="@color/white_color" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

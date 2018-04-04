@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+
+        android:id="@+id/iv_nav_photo"
+        android:layout_width="@dimen/nav_user_image_width"
+        android:layout_height="@dimen/nav_user_image_width"
+        android:layout_marginTop="@dimen/nav_user_image_martop"
+android:visibility="visible"
+        />
+
+
+    <com.mohi.in.widgets.CenturyGothicRegularTextView
+
+        android:layout_marginBottom="@dimen/nav_user_text_marbottom"
+        android:id="@+id/tv_nav_name"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:text="@string/login_register"
+        android:textColor="@color/termsandcondition_color"
+        android:textSize="@dimen/nav_user_text_size" />
+</LinearLayout>

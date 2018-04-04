@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activities.PaymentActivity">
+
+
+    <include
+        layout="@layout/header"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+    <com.mohi.in.widgets.UbuntuMediumTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="Payment Method"
+        android:textColor="@color/back_color"
+        android:textSize="16sp" />
+
+
+    <com.mohi.in.widgets.ArialUnicodeMSTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/credit_card_no"
+        android:textColor="@color/please_select_color"
+        android:textSize="12sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.mohi.in.widgets.ArialUnicodeMSEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/input_white_with_border"
+            android:hint="4242424242424242"
+            android:maxLength="16"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:textSize="12sp"
+
+
+            />
+
+
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/card_option_visa" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+
+            >
+
+            <com.mohi.in.widgets.ArialUnicodeMSTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/expires"
+                android:textColor="@color/please_select_color"
+                android:textSize="12sp" />
+
+            <com.mohi.in.widgets.ArialUnicodeMSTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="@string/cvv_code"
+                android:textColor="@color/please_select_color"
+                android:textSize="12sp" />
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="false"
+
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:visibility="invisible"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+
+                app:mrl_rippleOverlay="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_help_btn" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:orientation="horizontal"
+
+            >
+
+            <com.mohi.in.widgets.ArialUnicodeMSEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/input_white_with_border"
+                android:hint="02/18"
+                android:maxLength="5"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:textSize="12sp"
+
+
+                />
+
+            <com.mohi.in.widgets.ArialUnicodeMSEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/input_white_with_border"
+                android:hint="123"
+                android:maxLength="3"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:textSize="12sp"
+
+
+                />
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+
+                android:clickable="false"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+
+                app:mrl_rippleOverlay="true">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+
+                    android:src="@drawable/round_help_btn" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <com.mohi.in.widgets.ArialUnicodeMSCheckBox
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/agree_to_terms_conditions"
+        android:textColor="@color/back_color"
+        android:textSize="14sp"
+        android:buttonTint="@color/hint_color"
+        />
+
+
+    <com.mohi.in.widgets.ArialUnicodeMSTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/i_agree_that_i_have_read_and_accepted_our_terms_conditions_for_you_purchase"
+        android:textColor="@color/hint_color"
+        />
+
+
+    <com.mohi.in.widgets.UbuntuRegularButton
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_color"
+        android:text="@string/finish_your_order"
+        android:textSize="18sp"
+        android:inputType="textCapSentences"
+        android:background="@drawable/button_orange"
+        android:layout_marginBottom="10dp"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>

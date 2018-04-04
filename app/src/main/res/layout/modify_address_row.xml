@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/Modify_Address_Row"
+    android:layout_marginBottom="10dp"
+    android:elevation="3dp"
+    android:background="@color/white_color"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Modify_Address_Row_Inner"
+
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/Modify_Address_Row_Radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_button_credit_debit"
+                android:checked="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.mohi.in.widgets.UbuntuBoldTextView
+                    android:id="@+id/Modify_Address_Row_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/nav_text_size"
+
+                    />
+
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/Modify_Address_Row_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/product_detail_currency_text_size"
+
+                    />
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/Modify_Address_Row_PhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+
+                    android:textColor="@color/writereview_name_color"
+                    android:textSize="@dimen/product_detail_currency_text_size"
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/Modify_Address_Row_EditDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_more_vert_black_24dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:background="@color/silver_bg_color"
+        android:orientation="vertical"
+        android:id="@+id/Modify_Address_Row_EditDeleteLayout"
+        android:visibility="gone"
+
+
+        >
+
+        <com.mohi.in.widgets.UbuntuMediumTextView
+            android:id="@+id/Modify_Address_Row_Edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="70dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+
+            android:text="Edit"
+            android:textColor="@color/back_color"
+            android:textSize="@dimen/product_detail_currency_text_size"
+
+            />
+
+        <com.mohi.in.widgets.UbuntuMediumTextView
+            android:id="@+id/Modify_Address_Row_Delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="70dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+
+
+            android:text="Remove"
+            android:textColor="@color/back_color"
+            android:textSize="@dimen/product_detail_currency_text_size"
+
+            />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
+
+
+

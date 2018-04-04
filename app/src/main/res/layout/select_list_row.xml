@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SelectList_Row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_color"
+
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        >
+
+
+        <com.mohi.in.widgets.TextAwesome
+            android:id="@+id/SelectList_Row_ColorCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fa_circle"
+            android:textSize="20sp"
+            android:textColor="@color/color_F47A23"
+            android:visibility="gone" />
+
+            <com.mohi.in.widgets.UbuntuRegularTextView
+            android:id="@+id/SelectList_Row_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:textColor="@color/back_color"
+            android:textSize="20sp" />
+
+        <com.mohi.in.widgets.TextAwesome
+
+            android:id="@+id/SelectList_Row_Check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fa_check"
+            android:textColor="@color/color_F47A23"
+             />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
+</LinearLayout>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.YourOrdersActivity">
+
+    <include layout="@layout/header" />
+
+
+    <ScrollView
+        android:background="@color/white_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+
+
+            >
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_VYOH"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/order_history_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/view_your_order_history"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+                        />
+
+                </LinearLayout>
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_Downloads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/download_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/downloads"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+                        />
+                </LinearLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_YRP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/badge_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/your_reward_points"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+                        />
+
+                </LinearLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_VYRR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/event_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/view_your_retutn_requests"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+                        />
+
+                </LinearLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_YTS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/transaction_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/your_transactions"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+
+                        />
+
+                </LinearLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+
+                    android:id="@+id/YourOrders_RPS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/payments_gray"
+
+                        />
+
+                    <com.mohi.in.widgets.UbuntuLightTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/recurring_payments"
+                        android:textColor="@color/back_color"
+                        android:textSize="@dimen/product_detail_titel_text_size" />
+
+                    <com.mohi.in.widgets.TextAwesome
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_angle_right"
+                        android:textSize="30sp"
+                        android:textColor="@color/back_color"
+                        />
+                </LinearLayout>
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

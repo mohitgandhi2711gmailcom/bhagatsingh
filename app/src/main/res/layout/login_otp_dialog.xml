@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/enter_otp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/otp_et"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/edittext_border_shape"
+        android:gravity="center"
+        android:hint="@string/xxxx"
+        android:inputType="number"
+        android:maxLength="4" />
+
+    <Button
+        android:id="@+id/login_otp_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_shape_gradient"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textColor="@color/white_color" />
+
+</LinearLayout>

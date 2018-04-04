@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_layout"
+        layout="@layout/header_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/upper_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_layout"
+        android:background="@color/white_color"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/new_theme_color"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/new_theme_color" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@android:id/tabcontent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/lower_tabs"
+        android:layout_below="@id/upper_tabs" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/lower_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white_color"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/new_theme_color"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/new_theme_color" />
+
+</RelativeLayout>
+

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/WishList_Row"
+    android:background="@color/white_color"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp">
+
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="@dimen/wishlist_row_image_width"
+            android:layout_height="@dimen/wishlist_row_image_width"
+            android:layout_margin="7dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            <ProgressBar
+                android:layout_centerInParent="true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:indeterminateDrawable="@drawable/com_progress_big" />
+            <ImageView
+                android:id="@+id/WishList_Row_Image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:scaleType="fitXY" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+                android:id="@+id/WishList_Row_Type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dresses"
+                android:textAllCaps="true"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/wishlist_row_type_size" />
+
+            <com.mohi.in.widgets.UbuntuMediumTextView
+                android:id="@+id/WishList_Row_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:text="Mugdha-1112"
+                android:textColor="@color/back_color"
+                android:textSize="@dimen/home_search_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/WishList_Row_Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="129.00"
+                    android:textColor="@color/price_color"
+                    android:textSize="@dimen/home_search_text_size" />
+
+                <com.mohi.in.widgets.UbuntuMediumTextView
+                    android:id="@+id/WishList_Row_PriceCurrencyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:gravity="center"
+                    android:text=" AED"
+                    android:textColor="@color/price_aed_color"
+                    android:textSize="@dimen/home_product_row_title_text_size" />
+
+            </LinearLayout>
+
+            <RatingBar
+                android:id="@+id/WishList_Row_Rating"
+                style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:numStars="5"
+                android:progressTint="@color/rating_select_color"
+
+                android:secondaryProgressTint="@color/colorApp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <com.balysv.materialripple.MaterialRippleLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+
+                android:clickable="true"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <ImageView
+                    android:id="@+id/WishList_Row_cross"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/close_gray" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/signup_buttton_martop"
+
+                android:clickable="true"
+                android:gravity="center"
+                app:mrl_rippleBackground="@android:color/transparent"
+                app:mrl_rippleColor="@color/colorTransButtonPressed"
+                app:mrl_rippleDuration="200"
+                app:mrl_rippleFadeDuration="75"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <ImageView
+                    android:id="@+id/WishList_Row_CheckOut"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/cart_orange_plus" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/border"
+        android:background="@color/writereview_box_color" />
+
+
+</LinearLayout>
