@@ -73,6 +73,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     private boolean isPasswordCoded = true;
     private ArrayList<String> country_codes;
     private boolean isNumber = false;
+    int a=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
