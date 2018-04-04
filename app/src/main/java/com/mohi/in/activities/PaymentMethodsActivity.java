@@ -447,7 +447,7 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             jsonObj.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
             jsonObj.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
             jsonObj.put("productinfo", strProductName);
-            jsonObj.put("firstname", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_NAME));
+            jsonObj.put("firstname", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
             jsonObj.put("email", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_EMAIL));
             jsonObj.put("user_credentials", Common.KEY_PAYMENT_MERCHENT + ":" + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
             jsonObj.put("udf1", "udf1");
@@ -475,7 +475,7 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             mPaymentParams.setKey(Common.KEY_PAYMENT_MERCHENT);
             mPaymentParams.setAmount(amount);
             mPaymentParams.setProductInfo(prductInfo);
-            mPaymentParams.setFirstName(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_NAME));
+            mPaymentParams.setFirstName(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
             mPaymentParams.setEmail(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_EMAIL));
             mPaymentParams.setPhone(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO));
 

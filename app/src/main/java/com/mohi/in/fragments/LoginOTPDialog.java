@@ -119,7 +119,8 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
                 String token = data.getString("token");
                 String email = data.getString("email");
                 String mob_number = data.getString("mob_number");
-                String name = data.getString("firstname") + " " + data.getString("lastname");
+                String firstname = data.getString("firstname");
+                String lastname=data.getString("lastname");
                 String user_image = data.getString("user_image");
                 String currency = data.getString("currency");
                 String strAddresId = "";
@@ -128,7 +129,7 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
                 String cntry_code = data.getString("cntry_code");
                 //Not using Right Now
                 String address = data.getString("address");
-                SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, name, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
+                SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, firstname,lastname, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
                 dismiss();
                 listener.handleDialogClose();
             } else {

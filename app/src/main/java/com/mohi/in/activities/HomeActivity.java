@@ -423,7 +423,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                     //Country Code may recive in future
                     String countryCode="";
                     SessionStore.save(HomeActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
-                            data.getString("email"), data.getString("mobile_number"), data.getString("name"), data.getString("user_image"), strAddresId, strAddressName, strAddress
+                            data.getString("email"), data.getString("mobile_number"), data.getString("firstname"),data.getString("lastname"), data.getString("user_image"), strAddresId, strAddressName, strAddress
                             , data.getString("currency"),countryCode);
                 } else {
                     Methods.showToast(HomeActivity.this, result.getString("msg"));

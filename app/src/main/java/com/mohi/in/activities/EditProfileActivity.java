@@ -49,7 +49,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener, ServerCallBack {
+public class EditProfileActivity extends AppCompatActivity /*implements View.OnClickListener, ServerCallBack {
     private static final int REQUEST_READ_CONTACTS = 0;
 
 
@@ -148,8 +148,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                     .load(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.PROFILEPICTURE))
                     .into(iv_image);
 
-            et_userName.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_NAME));
-            et_userName.setSelection(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_NAME).length());
+            String username=SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME);
+            et_userName.setText(username);
+            et_userName.setSelection(username.length());
 
             et_phoneNo.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO));
             et_phoneNo.setSelection(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO).length());
@@ -265,7 +266,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 if (mUri != null) {
 
                     file = new File(mUri.getPath());
-                } /*else {
+                } *//*else {
 
                     file = new File(getCacheDir(), "editProfile.png");
                     file.createNewFile();
@@ -273,7 +274,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 //Convert bitmap to byte array
 //                Bitmap bitmap = your bitmap;
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    bitMap.compress(Bitmap.CompressFormat.PNG, 0 *//*ignored for PNG*//*, bos);
+                    bitMap.compress(Bitmap.CompressFormat.PNG, 0 *//**//*ignored for PNG*//**//*, bos);
                     byte[] bitmapdata = bos.toByteArray();
 
 //write the bytes in file
@@ -281,7 +282,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                     fos.write(bitmapdata);
                     fos.flush();
                     fos.close();
-                }*/
+                }*//*
 
 
                 ServerCalling.ServerCallingUserApiImagePost(EditProfileActivity.this, "updateProfile", this, SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_ID)
@@ -363,7 +364,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             return;
         }
 
-        /*getLoaderManager().initLoader(0, null, this);*/
+        *//*getLoaderManager().initLoader(0, null, this);*//*
     }
 
     private boolean mayRequestContacts() {
@@ -374,14 +375,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-           /* Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+           *//* Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
                             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
                         }
-                    });*/
+                    });*//*
 
             Methods.showToast(EditProfileActivity.this, getResources().getString(R.string.permission_rationale));
 
@@ -452,12 +453,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                             Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(false).dontAnimate().into(iv_image);
                         }
 
-                      /*  if (imagePickerRequest == 0) {
+                      *//*  if (imagePickerRequest == 0) {
                             profileImagePath = path;
                         } else {
                             siaBadgeImagePath = path;
                             sia_image_frame.setVisibility(View.VISIBLE);
-                        }*/
+                        }*//*
 
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Exception error = result.getError();
@@ -508,5 +509,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
+    }*/
+{
 }

@@ -72,7 +72,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         if (map.get(SessionStore.USER_ID) == null || map.get(SessionStore.USER_ID).isEmpty()) {
             Methods.showToast(mContext, "User is not logged in");
         } else {
-            String username = map.get(SessionStore.USER_NAME);
+            String username = map.get(SessionStore.USER_FIRST_NAME) + " " + map.get(SessionStore.USER_LAST_NAME);
             user_name.setText(username);
             Glide.with(mContext).load(map.get(SessionStore.PROFILEPICTURE)).into(editProfile_image);
         }

@@ -204,8 +204,8 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
                     JSONObject dataObj = result.getJSONObject("data");
                     //Country Code may recive in future
-                    String countryCode="";
-                    SessionStore.save(getActivity(), Common.userPrefName, SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_EMAIL), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_MOBILENO), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_NAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.PROFILEPICTURE), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSNAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS), result.getString("currency"),countryCode);
+                    String countryCode = "";
+                    SessionStore.save(getActivity(), Common.userPrefName, SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_EMAIL), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_MOBILENO), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_FIRST_NAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_LAST_NAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.PROFILEPICTURE), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSNAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS), result.getString("currency"), countryCode);
                     SessionStore.saveCurrency(getActivity(), Common.currencyPrefName, result.getString("currency"));
                     setProducts(dataObj);
                     dataObj = result.getJSONObject("banners");
@@ -229,16 +229,6 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             WaitDialog.hideDialog();
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
     private void setPager(JSONArray dataObj) {

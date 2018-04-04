@@ -205,7 +205,7 @@
     <string name="jackson_simmons">Jackson Simmons</string>
     <string name="birthday">Birthday</string>
     <string name="_01_01_1990">01-01-1990</string>
-    <string name="jacksonsimons_gmail_com">jacksonsimons@gmail.com</string>
+    <string name="xyz_gmail_com">xyz@gmail.com</string>
     <string name="_6201211221223">+6201211221223</string>
     <string name="update_profile">Update Profile</string>
     <string name="current_password">Current Password</string>
@@ -263,5 +263,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="getting_started">Getting Started</string>
     <string name="or_sign_up">or sign up</string>
+    <string name="enter_address">Enter Address</string>
 
 </resources>

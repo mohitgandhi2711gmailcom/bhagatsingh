@@ -185,7 +185,7 @@ public class ServerCalling {
     }
 
     public static void ServerCallingUserApiImagePost(final Context mContext, final String urlParameter, final ServerCallBack callBack,
-                                                     String userId, String userToken, String userName, String mobileNo, File file) {
+                                                     String firstname,String lastname,String emailid, String countrycode,String mobileNo,String userId, String userToken, File file) {
 
         // WaitDialog.showDialog(mContext);
         Log.e("Url", "Url: " + Urls.USERBASEURL + urlParameter);
@@ -196,11 +196,13 @@ public class ServerCalling {
                     .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                     .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
                     .setTimeout(60 * 60 * 1000)
+                    .setMultipartParameter("firstname", firstname)
+                    .setMultipartParameter("lastname", lastname)
+                    .setMultipartParameter("email", emailid)
+                    .setMultipartParameter("cntry_code", countrycode)
+                    .setMultipartParameter("mob_number", mobileNo)
                     .setMultipartParameter("user_id", userId)
                     .setMultipartParameter("token", userToken)
-                    .setMultipartParameter("name", userName)
-                    .setMultipartParameter("mobile_number", mobileNo)
-
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
                         @Override
@@ -282,10 +284,13 @@ public class ServerCalling {
                     .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                     .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
                     .setTimeout(60 * 60 * 1000)
+                    .setMultipartParameter("firstname", firstname)
+                    .setMultipartParameter("lastname", lastname)
+                    .setMultipartParameter("email", emailid)
+                    .setMultipartParameter("cntry_code", countrycode)
+                    .setMultipartParameter("mob_number", mobileNo)
                     .setMultipartParameter("user_id", userId)
                     .setMultipartParameter("token", userToken)
-                    .setMultipartParameter("name", userName)
-                    .setMultipartParameter("mobile_number", mobileNo)
                     .setMultipartFile("user_profile", file)
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {

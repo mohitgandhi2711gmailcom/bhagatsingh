@@ -201,7 +201,8 @@ public class WriteReviewActivity extends AppCompatActivity implements View.OnCli
             json.addProperty("token", SessionStore.getUserDetails(WriteReviewActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
             json.addProperty("review", review);
             json.addProperty("rating", rb_rating.getRating());
-            json.addProperty("name", SessionStore.getUserDetails(WriteReviewActivity.this, Common.userPrefName).get(SessionStore.USER_NAME));
+            json.addProperty("firstname", SessionStore.getUserDetails(WriteReviewActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME));
+            json.addProperty("lastname", SessionStore.getUserDetails(WriteReviewActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
             json.addProperty("product_id", strProductId);
 
 

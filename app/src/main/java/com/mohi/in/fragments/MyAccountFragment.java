@@ -138,7 +138,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         Glide.with(getActivity())
                 .load(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.PROFILEPICTURE))
                 .into(iv_usetImage);
-        tv_userName.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_NAME));
+        tv_userName.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_LAST_NAME));
 
 
         ll_MYA.setOnClickListener(this);

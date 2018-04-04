@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/local/MPLLC/mohit.gandhi/Music/bhagatsingh/sdkui/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/home/local/MPLLC/mohit.gandhi/Music/bhagatsingh/sdkui/src/debug/shaders"/></dataSet></merger>

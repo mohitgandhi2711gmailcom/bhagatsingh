@@ -364,7 +364,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             String countryCode="";
 
             SessionStore.save(SignupActivity.this, Common.userPrefName, data.getString("user_id"),  data.getString("token"),
-                    data.getString("email"), data.getString("mobile_number"), data.getString("name") , data.getString("user_image"), strAddresId, strAddressName, strAddress
+                    data.getString("email"), data.getString("mobile_number"), data.getString("firstname"),data.getString("lastname") , data.getString("user_image"), strAddresId, strAddressName, strAddress
                     , data.getString("currency"),countryCode);
 
 

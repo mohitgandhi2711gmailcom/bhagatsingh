@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SignupActivityNew extends AppCompatActivity implements View.OnClickListener, ServerCallBack,AdapterView.OnItemSelectedListener {
+public class SignupActivityNew extends AppCompatActivity implements View.OnClickListener, ServerCallBack, AdapterView.OnItemSelectedListener {
 
     private Context mContext;
     private Intent intent;
@@ -274,22 +274,23 @@ public class SignupActivityNew extends AppCompatActivity implements View.OnClick
                     strAddress = str;
                 }*/
 
-                String user_id=data.getString("user_id");
-                String token=data.getString("token");
-                String email=data.getString("email");
-                String mob_number=data.getString("mob_number");
-                String name=data.getString("firstname")+" "+data.getString("lastname");
-                String user_image=data.getString("user_image");
-                String currency=data.getString("currency");
-                String strAddresId="";
-                String strAddressName="";
-                String strAddress="";
-                String cntry_code=data.getString("cntry_code");
+                String user_id = data.getString("user_id");
+                String token = data.getString("token");
+                String email = data.getString("email");
+                String mob_number = data.getString("mob_number");
+                String firstname = data.getString("firstname");
+                String lastname = data.getString("lastname");
+                String user_image = data.getString("user_image");
+                String currency = data.getString("currency");
+                String strAddresId = "";
+                String strAddressName = "";
+                String strAddress = "";
+                String cntry_code = data.getString("cntry_code");
 
                 //Not using Right Now
-                String address=data.getString("address");
+                String address = data.getString("address");
 
-                SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, name, user_image, strAddresId, strAddressName, strAddress,currency,cntry_code);
+                SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, firstname, lastname, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
                 overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 finish();
             } else {
@@ -303,11 +304,11 @@ public class SignupActivityNew extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        country_code=country_codes.get(position);
+        country_code = country_codes.get(position);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Methods.showToast(mContext,"Please Select Country Code");
+        Methods.showToast(mContext, "Please Select Country Code");
     }
 }

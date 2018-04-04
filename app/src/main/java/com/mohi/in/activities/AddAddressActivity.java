@@ -357,7 +357,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                         hash = SessionStore.getUserDetails(AddAddressActivity.this, Common.userPrefName);
 
                         SessionStore.save(AddAddressActivity.this, Common.userPrefName, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL)
-                                , hash.get(SessionStore.USER_MOBILENO)   , hash.get(SessionStore.USER_NAME), hash.get(SessionStore.PROFILEPICTURE), jData.getString("address_id"),jData.getString("name"),str,
+                                , hash.get(SessionStore.USER_MOBILENO)   , hash.get(SessionStore.USER_FIRST_NAME),hash.get(SessionStore.USER_LAST_NAME), hash.get(SessionStore.PROFILEPICTURE), jData.getString("address_id"),jData.getString("name"),str,
                                 hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
 
                         startActivity(intent);

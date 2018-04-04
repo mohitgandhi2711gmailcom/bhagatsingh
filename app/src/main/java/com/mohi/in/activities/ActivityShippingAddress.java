@@ -9,9 +9,7 @@ import android.widget.Button;
 import com.mohi.in.R;
 import com.mohi.in.utils.Methods;
 
-
-public class ActivityShippingAddress extends AppCompatActivity implements View.OnClickListener
-{
+public class ActivityShippingAddress extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +20,9 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.update_address_btn:
-                Methods.showToast(this,"Address Added");
+                Methods.showToast(this, "Address Added");
                 onBackPressed();
                 break;
         }

@@ -317,7 +317,7 @@ public class ModifyAdressRowAdapter extends RecyclerView.Adapter<ModifyAdressRow
                         String countryCode="";
 
                         SessionStore.save(mContext, Common.userPrefName, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
-                        , hash.get(SessionStore.USER_NAME), hash.get(SessionStore.PROFILEPICTURE), "","","", hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
+                        , hash.get(SessionStore.USER_FIRST_NAME),hash.get(SessionStore.USER_LAST_NAME), hash.get(SessionStore.PROFILEPICTURE), "","","", hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
                     }else {
 
                         JSONObject data = result.getJSONObject("data");
@@ -348,7 +348,7 @@ public class ModifyAdressRowAdapter extends RecyclerView.Adapter<ModifyAdressRow
 
 
                         SessionStore.save(mContext, Common.userPrefName, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
-                                , hash.get(SessionStore.USER_NAME), hash.get(SessionStore.PROFILEPICTURE), strAddresId,strAddressName,strAddress, hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
+                                , hash.get(SessionStore.USER_FIRST_NAME),hash.get(SessionStore.USER_LAST_NAME), hash.get(SessionStore.PROFILEPICTURE), strAddresId,strAddressName,strAddress, hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
 
                     }
                    // {"status":1,"msg":"Shipping address deleted successfully","data":{"address_id":"209","name":"Pankaj Saad","postcode":"54545454",

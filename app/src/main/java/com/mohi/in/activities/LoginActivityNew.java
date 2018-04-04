@@ -435,7 +435,8 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             String token = data.getString("token");
             String email = data.getString("email");
             String mob_number = data.getString("mob_number");
-            String name = data.getString("firstname") + " " + data.getString("lastname");
+            String firstName = data.getString("firstname");
+            String lastName= data.getString("lastname");
             String user_image = data.getString("user_image");
             String currency = data.getString("currency");
             String strAddresId = "";
@@ -446,7 +447,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             //Not using Right Now
             String address = data.getString("address");
 
-            SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, name, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
+            SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName,lastName, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
             finish();
         } catch (JSONException e) {
             e.printStackTrace();
