@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\src\main\assets"><file name="helvetica_neue_bold.ttf" path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\src\main\assets\helvetica_neue_bold.ttf"/></source><source path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\src\debug\assets"/></dataSet></merger>
