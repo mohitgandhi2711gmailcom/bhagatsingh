@@ -1,7 +1,6 @@
 package com.mohi.in.activities;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.CursorLoader;
@@ -176,7 +175,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         country_codes.add("+965");
         country_codes.add("+44");
         country_codes.add("+1");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, country_codes);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_textview, country_codes);
         country_code_spinner.setAdapter(dataAdapter);
         country_code_spinner.setOnItemSelectedListener(this);
     }

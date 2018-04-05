@@ -37,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_border_shape"
-            android:hint="LINE 1" />
+            android:hint="LINE 1"
+            android:maxLines="1" />
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
@@ -48,7 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_border_shape"
-            android:hint="LINE 2" />
+            android:hint="LINE 2"
+            android:maxLines="1" />
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
@@ -93,7 +95,8 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_border_shape"
-                android:hint="CITY" />
+                android:hint="CITY"
+                android:maxLines="1" />
 
             <EditText
                 android:id="@+id/region_et"
@@ -102,7 +105,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_border_shape"
-                android:hint="REGION" />
+                android:hint="REGION"
+                android:maxLines="1" />
 
         </LinearLayout>
 
@@ -128,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="@string/state_new" />
+                android:text="Country" />
 
         </LinearLayout>
 
@@ -143,22 +147,21 @@
             android:weightSum="2">
 
             <EditText
-                android:id="@+id/country_et"
+                android:id="@+id/postcode_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_border_shape"
-                android:hint="@string/bolivia" />
+                android:hint="POSTCODE"
+                android:inputType="number"
+                android:maxLength="6" />
 
-            <EditText
-                android:id="@+id/state_et"
+            <Spinner
+                android:id="@+id/country_name_spinner"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/edittext_border_shape"
-                android:hint="@string/virginia" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -166,58 +169,79 @@
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:text="@string/city" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:text="@string/zip" />
-
-        </LinearLayout>
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="DEFAULT SHIPPING" />
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
-            android:layout_height="5dp" />
+            android:layout_height="10dp" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/default_shipping_radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <EditText
-                android:id="@+id/city_et"
+            <RadioButton
+                android:id="@+id/default_shipping_true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border_shape"
-                android:hint="@string/west_leonestad" />
+                android:checked="true"
+                android:text="YES" />
 
-            <EditText
-                android:id="@+id/zip_et"
+            <RadioButton
+                android:id="@+id/default_shipping_false"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border_shape"
-                android:hint="@string/_89050"
-                android:inputType="number" />
+                android:text="NO" />
 
-        </LinearLayout>
+        </RadioGroup>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="DEFAULT BILLING" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <RadioGroup
+            android:id="@+id/default_billing_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/default_billing_true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="YES" />
+
+            <RadioButton
+                android:id="@+id/default_billing_false"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="NO" />
+
+        </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -245,8 +269,6 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </ScrollView>

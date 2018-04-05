@@ -77,7 +77,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
         country_codes.add("+965");
         country_codes.add("+44");
         country_codes.add("+1");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, country_codes);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(mContext, R.layout.spinner_item, country_codes);
         country_code_spinner.setAdapter(dataAdapter);
         country_code_spinner.setOnItemSelectedListener(this);
         setUserInfo();
