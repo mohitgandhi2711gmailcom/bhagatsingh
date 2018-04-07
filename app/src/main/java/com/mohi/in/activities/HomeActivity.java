@@ -402,29 +402,18 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         try {
             if (strfFrom.trim().equalsIgnoreCase("getProfile")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    JSONObject data = result.getJSONObject("data");
-                    String strAddress = "", strAddressName = "", strAddresId = "";
-                    if (!data.isNull("address")) {
-                        JSONObject addressData = data.getJSONObject("address");
-                        String str = addressData.getString("flat_no") + ", " + addressData.getString("street");
-
-                        if (!addressData.getString("landmark").equalsIgnoreCase("")) {
-                            str = str + ", " + addressData.getString("landmark") + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " +
-                                    addressData.getString("postcode");
-                        } else {
-                            str = str + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " + addressData.getString("postcode");
-                        }
-                        strAddressName = addressData.getString("name");
-                        strAddresId = addressData.getString("address_id");
-                        strAddress = str;
-                    }
-
-                    //Country Code may recive in future
-                    String countryCode="";
-//                    SessionStore.saveUserDetails(HomeActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
-//                            data.getString("email"), data.getString("mobile_number"), data.getString("firstname"),data.getString("lastname"), data.getString("user_image"), strAddresId, strAddressName, strAddress
-//                            , data.getString("currency"),countryCode);
+                if (result.getString("status").trim().equalsIgnoreCase("success")) {
+                    JSONObject data = result.optJSONObject("data");
+                    String user_id = data.optString("user_id");
+                    String token = data.optString("token");
+                    String email = data.optString("email");
+                    String mob_number = data.optString("mob_number");
+                    String firstName = data.optString("firstname");
+                    String lastName = data.optString("lastname");
+                    String user_image = data.optString("user_image");
+                    String currency = data.optString("currency");
+                    String cntry_code = data.optString("cntry_code");
+                    SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
                 } else {
                     Methods.showToast(HomeActivity.this, result.getString("msg"));
                 }

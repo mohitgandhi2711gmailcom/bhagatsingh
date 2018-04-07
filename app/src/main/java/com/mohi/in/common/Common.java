@@ -14,6 +14,7 @@ import com.payu.india.Payu.PayuConstants;
 public class Common {
 
     public static String userPrefName = "userInfo";
+    public static String userPrefAddress = "userAddress";
     public static String currencyPrefName = "currency";
     public static String KEY_APP_VERSION = "version";
     public static String CART_COUNT = "00";

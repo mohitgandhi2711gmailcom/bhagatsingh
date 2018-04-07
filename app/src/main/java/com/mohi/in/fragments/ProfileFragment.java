@@ -164,26 +164,20 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
         try {
             if (strfFrom.trim().equalsIgnoreCase("updateProfile")) {
                 if (result.getString("status").trim().equalsIgnoreCase("success")) {
-                    Methods.showToast(mContext, result.getString("msg"));
-                    String address_id = "";
-                    String telephone = "";
-                    String street_1 = "";
-                    String street_2 = "";
-                    String city = "";
-                    String region = "";
-                    String postcode = "";
-                    String country_id = "";
-                    JSONObject data = result.getJSONObject("data");
+                    JSONObject data = result.optJSONObject("data");
                     if (data.has("address")) {
                         JSONObject addressData = data.optJSONObject("address");
-                        address_id = addressData.optString("address_id");
-                        telephone = addressData.optString("telephone");
-                        street_1 = addressData.optString("street_1");
-                        street_2 = addressData.optString("street_2");
-                        city = addressData.optString("city");
-                        region = addressData.optString("region");
-                        postcode = addressData.optString("postcode");
-                        country_id = addressData.optString("country_id");
+                        String address_id = addressData.optString("address_id");
+                        String telephone = addressData.optString("telephone");
+                        String street_1 = addressData.optString("street_1");
+                        String street_2 = addressData.optString("street_2");
+                        String city = addressData.optString("city");
+                        String region = addressData.optString("region");
+                        String postcode = addressData.optString("postcode");
+                        String country_id = addressData.optString("country_id");
+                        Boolean default_shipping=addressData.optBoolean("default_billing");
+                        Boolean default_billing=addressData.optBoolean("default_billing");
+                        SessionStore.saveUserAddress(mContext, Common.userPrefName,address_id, telephone, street_1, street_2, city, region, postcode, country_id,default_shipping,default_billing);
                     }
                     String user_id = data.optString("user_id");
                     String token = data.optString("token");
@@ -194,7 +188,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
                     String user_image = data.optString("user_image");
                     String currency = data.optString("currency");
                     String cntry_code = data.optString("cntry_code");
-                    SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code, address_id, telephone, street_1, street_2, city, region, postcode, country_id);
+
+                    SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
                     setUserInfo();
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));

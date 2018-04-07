@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -256,46 +255,22 @@ public class SignupActivityNew extends AppCompatActivity implements View.OnClick
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         WaitDialog.hideDialog();
-        try {
-            if (result.getString("status").trim().equalsIgnoreCase("success")) {
-                JSONObject data = result.getJSONObject("data");
-                String address_id = "";
-                String telephone = "";
-                String street_1 = "";
-                String street_2 = "";
-                String city = "";
-                String region = "";
-                String postcode = "";
-                String country_id = "";
-                if (data.has("address")) {
-                    JSONObject addressData = data.optJSONObject("address");
-                    address_id = addressData.optString("address_id");
-                    telephone = addressData.optString("telephone");
-                    street_1 = addressData.optString("street_1");
-                    street_2 = addressData.optString("street_2");
-                    city = addressData.optString("city");
-                    region = addressData.optString("region");
-                    postcode = addressData.optString("postcode");
-                    country_id = addressData.optString("country_id");
-                }
-                String user_id = data.optString("user_id");
-                String token = data.optString("token");
-                String email = data.optString("email");
-                String mob_number = data.optString("mob_number");
-                String firstName = data.optString("firstname");
-                String lastName = data.optString("lastname");
-                String user_image = data.optString("user_image");
-                String currency = data.optString("currency");
-                String cntry_code = data.optString("cntry_code");
-                SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code, address_id, telephone, street_1, street_2, city, region, postcode, country_id);
-                overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
-                finish();
-            } else {
-                Methods.showToast(mContext, result.getString("msg"));
-                Log.e("Signup", "Signup User log: " + result.getString("msg"));
-            }
-        } catch (Exception ee) {
-            Log.e("Signup", "Signup User Exception: " + ee.getMessage());
+        if (result.optString("status").trim().equalsIgnoreCase("success")) {
+            JSONObject data = result.optJSONObject("data");
+            String user_id = data.optString("user_id");
+            String token = data.optString("token");
+            String email = data.optString("email");
+            String mob_number = data.optString("mob_number");
+            String firstName = data.optString("firstname");
+            String lastName = data.optString("lastname");
+            String user_image = data.optString("user_image");
+            String currency = data.optString("currency");
+            String cntry_code = data.optString("cntry_code");
+            SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+            overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
+            finish();
+        } else {
+            Methods.showToast(mContext, result.optString("msg"));
         }
     }
 

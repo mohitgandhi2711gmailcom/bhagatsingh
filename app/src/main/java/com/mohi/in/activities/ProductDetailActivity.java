@@ -606,7 +606,7 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
 
                     if (SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID)==null ||
                             SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID).isEmpty() ){
-                        intent = new Intent(ProductDetailActivity.this, LoginActivity.class);
+                        intent = new Intent(ProductDetailActivity.this, LoginActivityNew.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
 

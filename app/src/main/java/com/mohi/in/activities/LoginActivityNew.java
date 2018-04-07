@@ -44,7 +44,6 @@ import com.mohi.in.utils.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -414,42 +413,33 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     }
 
     private void afterSuccessfullyLogin(JSONObject result) {
-        try {
-            JSONObject data = result.getJSONObject("data");
-            String address_id = "";
-            String telephone = "";
-            String street_1 = "";
-            String street_2 = "";
-            String city = "";
-            String region = "";
-            String postcode = "";
-            String country_id = "";
-            if (data.has("address")) {
-                JSONObject addressData = data.optJSONObject("address");
-                address_id = addressData.optString("address_id");
-                telephone = addressData.optString("telephone");
-                street_1 = addressData.optString("street_1");
-                street_2 = addressData.optString("street_2");
-                city = addressData.optString("city");
-                region = addressData.optString("region");
-                postcode = addressData.optString("postcode");
-                country_id = addressData.optString("country_id");
-            }
-            String user_id = data.optString("user_id");
-            String token = data.optString("token");
-            String email = data.optString("email");
-            String mob_number = data.optString("mob_number");
-            String firstName = data.optString("firstname");
-            String lastName = data.optString("lastname");
-            String user_image = data.optString("user_image");
-            String currency = data.optString("currency");
-            String cntry_code = data.optString("cntry_code");
+        JSONObject data = result.optJSONObject("data");
 
-            SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code, address_id, telephone, street_1, street_2, city, region, postcode, country_id);
-            finish();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (data.has("address")) {
+            JSONObject addressData = data.optJSONObject("address");
+            String address_id = addressData.optString("address_id");
+            String telephone = addressData.optString("telephone");
+            String street_1 = addressData.optString("street_1");
+            String street_2 = addressData.optString("street_2");
+            String city = addressData.optString("city");
+            String region = addressData.optString("region");
+            String postcode = addressData.optString("postcode");
+            String country_id = addressData.optString("country_id");
+            Boolean default_shipping = addressData.optBoolean("default_billing");
+            Boolean default_billing = addressData.optBoolean("default_billing");
+            SessionStore.saveUserAddress(mContext, Common.userPrefName, address_id, telephone, street_1, street_2, city, region, postcode, country_id, default_shipping, default_billing);
         }
+        String user_id = data.optString("user_id");
+        String token = data.optString("token");
+        String email = data.optString("email");
+        String mob_number = data.optString("mob_number");
+        String firstName = data.optString("firstname");
+        String lastName = data.optString("lastname");
+        String user_image = data.optString("user_image");
+        String currency = data.optString("currency");
+        String cntry_code = data.optString("cntry_code");
+        SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+        finish();
     }
 
     @Override

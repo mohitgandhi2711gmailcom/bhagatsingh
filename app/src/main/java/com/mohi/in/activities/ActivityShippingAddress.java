@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ActivityShippingAddress extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, ServerCallBack {
 
@@ -85,16 +86,16 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
         country_names.add("United States");
 
         //Corrosponding Country ID List
-        country_id.add("Bahrain");
-        country_id.add("Canada");
-        country_id.add("India");
-        country_id.add("Kuwait");
-        country_id.add("Oman");
-        country_id.add("Qatar");
-        country_id.add("Saudi Arabia");
-        country_id.add("United Arab Emirated");
-        country_id.add("United Kingdom");
-        country_id.add("United States");
+        country_id.add("BH");
+        country_id.add("CA");
+        country_id.add("IN");
+        country_id.add("KW");
+        country_id.add("OM");
+        country_id.add("QA");
+        country_id.add("SA");
+        country_id.add("AE");
+        country_id.add("GB");
+        country_id.add("US");
 
         ArrayAdapter<String> countryNameAdapter = new ArrayAdapter<>(this, R.layout.spinner_textview, country_names);
         country_name_spinner.setAdapter(countryNameAdapter);
@@ -211,7 +212,19 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
         try {
             if (jobj.getString("status").trim().equalsIgnoreCase("success")) {
                 if (strfFrom.equalsIgnoreCase("createaddress")) {
-                    Methods.showToast(mContext, "Address Added Successfully");
+                    JSONObject data = jobj.getJSONObject("data");
+                    String address_id = data.optString("address_id");
+                    String telephone = data.optString("telephone");
+                    String street_1 = data.optString("street_1");
+                    String street_2 = data.optString("street_2");
+                    String city = data.optString("city");
+                    String region = data.optString("region");
+                    String postcode = data.optString("postcode");
+                    String country_id = data.optString("country_id");
+                    boolean default_shipping=data.optBoolean("default_shipping");
+                    boolean default_billing=data.optBoolean("default_billing");
+                    SessionStore.saveUserAddress(mContext, Common.userPrefName, address_id, telephone, street_1, street_2, city, region, postcode, country_id,default_shipping,default_billing);
+                    finish();
                 } else {
                     Methods.showToast(mContext, "Error..");
                 }
@@ -221,4 +234,3 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
         }
     }
 }
-
