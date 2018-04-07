@@ -334,9 +334,10 @@ public class CartFragment extends Fragment implements ServerCallBack, OnValueCha
                     } else */
                     {
                         intent = new Intent(getActivity(), ShippingAddressActivity.class);
-                        intent.putExtra("Address", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS));
-                        intent.putExtra("AddressId", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSID));
-                        intent.putExtra("AddressName", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSNAME));
+                        String address=SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_ONE)+" "+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_TWO)+" "+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_CITY)+" "+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_REGION)+" "+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_POSTCODE);
+                        intent.putExtra("Address", address);
+                        intent.putExtra("AddressId", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
+                        intent.putExtra("AddressName", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_ONE)+" "+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_TWO));
 
                     }
                     intent.putExtra("ProductId", model.product_id);

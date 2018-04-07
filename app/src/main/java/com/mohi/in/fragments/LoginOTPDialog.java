@@ -2,10 +2,8 @@ package com.mohi.in.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -14,8 +12,6 @@ import android.widget.EditText;
 
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
-import com.mohi.in.activities.LoginActivity;
-import com.mohi.in.activities.LoginActivityNew;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.listener.OtpDialogDismissListener;
@@ -38,7 +34,7 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
     public LoginOTPDialog(@NonNull Context mContext, String country_code, String phone_no) {
         super(mContext);
         this.mContext = mContext;
-        this.listener= (OtpDialogDismissListener) mContext;
+        this.listener = (OtpDialogDismissListener) mContext;
         this.country_code = country_code;
         this.phone_no = phone_no;
     }
@@ -101,35 +97,35 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
             WaitDialog.hideDialog();
             if (result.getString("status").trim().equalsIgnoreCase("success")) {
                 JSONObject data = result.getJSONObject("data");
-            /*String strAddress = "", strAddressName = "", strAddresId = "";
-                if (!data.isNull("address")) {
-                    JSONObject addressData = data.getJSONObject("address");
-                    String str = addressData.getString("flat_no") + ", " + addressData.getString("street");
-                    if (!addressData.getString("landmark").equalsIgnoreCase("")) {
-                        str = str + ", " + addressData.getString("landmark") + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " +
-                                addressData.getString("postcode");
-                    } else {
-                        str = str + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " + addressData.getString("postcode");
-                    }
-                    strAddressName = addressData.getString("name");
-                    strAddresId = addressData.getString("address_id");
-                    strAddress = str;
-                }*/
-                String user_id = data.getString("user_id");
-                String token = data.getString("token");
-                String email = data.getString("email");
-                String mob_number = data.getString("mob_number");
-                String firstname = data.getString("firstname");
-                String lastname=data.getString("lastname");
-                String user_image = data.getString("user_image");
-                String currency = data.getString("currency");
-                String strAddresId = "";
-                String strAddressName = "";
-                String strAddress = "";
-                String cntry_code = data.getString("cntry_code");
-                //Not using Right Now
-                String address = data.getString("address");
-                SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, firstname,lastname, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
+                String address_id = "";
+                String telephone = "";
+                String street_1 = "";
+                String street_2 = "";
+                String city = "";
+                String region = "";
+                String postcode = "";
+                String country_id = "";
+                if (data.has("address")) {
+                    JSONObject addressData = data.optJSONObject("address");
+                    address_id = addressData.optString("address_id");
+                    telephone = addressData.optString("telephone");
+                    street_1 = addressData.optString("street_1");
+                    street_2 = addressData.optString("street_2");
+                    city = addressData.optString("city");
+                    region = addressData.optString("region");
+                    postcode = addressData.optString("postcode");
+                    country_id = addressData.optString("country_id");
+                }
+                String user_id = data.optString("user_id");
+                String token = data.optString("token");
+                String email = data.optString("email");
+                String mob_number = data.optString("mob_number");
+                String firstName = data.optString("firstname");
+                String lastName = data.optString("lastname");
+                String user_image = data.optString("user_image");
+                String currency = data.optString("currency");
+                String cntry_code = data.optString("cntry_code");
+                SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code, address_id, telephone, street_1, street_2, city, region, postcode, country_id);
                 dismiss();
                 listener.handleDialogClose();
             } else {

@@ -56,7 +56,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-public class LoginActivityNew extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener, ServerCallBack,OtpDialogDismissListener,AdapterView.OnItemSelectedListener  {
+public class LoginActivityNew extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener, ServerCallBack, OtpDialogDismissListener, AdapterView.OnItemSelectedListener {
 
     private static final int REQUEST_READ_CONTACTS = 0;
     private Button btn_emailSignInButton;
@@ -129,7 +129,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length()>2) {
+                if (editable.length() > 2) {
                     if (TextUtils.isDigitsOnly(editable.toString())) {
                         isNumber = true;
                         country_code_spinner.setVisibility(View.VISIBLE);
@@ -137,7 +137,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
                         isNumber = false;
                         country_code_spinner.setVisibility(View.GONE);
                     }
-                }else{
+                } else {
                     isNumber = false;
                     country_code_spinner.setVisibility(View.GONE);
                 }
@@ -241,22 +241,22 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             focusView = phone_number_et;
             cancel = true;
         }
-            if (!isNumber) {
-                if (!Methods.isValidEmail(email)) {
-                    phone_number_et.setError(getString(R.string.error_invalid_email));
-                    focusView = phone_number_et;
-                    cancel = true;
-                }
-            }
-            if (TextUtils.isEmpty(password)) {
-                mPasswordView.setError(getString(R.string.error_field_required));
-                focusView = mPasswordView;
-                cancel = true;
-            } else if (!Methods.isPasswordValid(password)) {
-                mPasswordView.setError(getString(R.string.error_invalid_password));
-                focusView = mPasswordView;
+        if (!isNumber) {
+            if (!Methods.isValidEmail(email)) {
+                phone_number_et.setError(getString(R.string.error_invalid_email));
+                focusView = phone_number_et;
                 cancel = true;
             }
+        }
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        } else if (!Methods.isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        }
 
 //        if (TextUtils.isEmpty(email)) {
 //            mEmailView.setError(getString(R.string.error_field_required));
@@ -274,11 +274,11 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             JsonObject json = new JsonObject();
             json.addProperty("email", email);
             json.addProperty("password", password);
-            if (isNumber){
-                json.addProperty("cntry_code",country_code);
+            if (isNumber) {
+                json.addProperty("cntry_code", country_code);
                 json.addProperty("mob_number", email);
 
-            }else {
+            } else {
                 json.addProperty("email", email);
             }
             ServerCalling.ServerCallingUserApiPost(mContext, "login", json, this);
@@ -398,9 +398,9 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
                         afterSuccessfullyLogin(result);
                         break;
                     case "sendOtp":
-                        Methods.showToast(mContext,result.optString("message"));
+                        Methods.showToast(mContext, result.optString("message"));
                         String phone_no = phone_number_et.getText().toString();
-                        LoginOTPDialog dialog = new LoginOTPDialog(mContext,country_code,phone_no);
+                        LoginOTPDialog dialog = new LoginOTPDialog(mContext, country_code, phone_no);
                         dialog.show();
                         break;
                 }
@@ -416,37 +416,36 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     private void afterSuccessfullyLogin(JSONObject result) {
         try {
             JSONObject data = result.getJSONObject("data");
-            /*String strAddress = "", strAddressName = "", strAddresId = "";
-                if (!data.isNull("address")) {
-                    JSONObject addressData = data.getJSONObject("address");
-                    String str = addressData.getString("flat_no") + ", " + addressData.getString("street");
-                    if (!addressData.getString("landmark").equalsIgnoreCase("")) {
-                        str = str + ", " + addressData.getString("landmark") + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " +
-                                addressData.getString("postcode");
-                    } else {
-                        str = str + ", " + addressData.getString("city") + ", " + addressData.getString("state") + ", " + addressData.getString("postcode");
-                    }
-                    strAddressName = addressData.getString("name");
-                    strAddresId = addressData.getString("address_id");
-                    strAddress = str;
-                }*/
-            String user_id = data.getString("user_id");
-            String token = data.getString("token");
-            String email = data.getString("email");
-            String mob_number = data.getString("mob_number");
-            String firstName = data.getString("firstname");
-            String lastName= data.getString("lastname");
-            String user_image = data.getString("user_image");
-            String currency = data.getString("currency");
-            String strAddresId = "";
-            String strAddressName = "";
-            String strAddress = "";
-            String cntry_code = data.getString("cntry_code");
+            String address_id = "";
+            String telephone = "";
+            String street_1 = "";
+            String street_2 = "";
+            String city = "";
+            String region = "";
+            String postcode = "";
+            String country_id = "";
+            if (data.has("address")) {
+                JSONObject addressData = data.optJSONObject("address");
+                address_id = addressData.optString("address_id");
+                telephone = addressData.optString("telephone");
+                street_1 = addressData.optString("street_1");
+                street_2 = addressData.optString("street_2");
+                city = addressData.optString("city");
+                region = addressData.optString("region");
+                postcode = addressData.optString("postcode");
+                country_id = addressData.optString("country_id");
+            }
+            String user_id = data.optString("user_id");
+            String token = data.optString("token");
+            String email = data.optString("email");
+            String mob_number = data.optString("mob_number");
+            String firstName = data.optString("firstname");
+            String lastName = data.optString("lastname");
+            String user_image = data.optString("user_image");
+            String currency = data.optString("currency");
+            String cntry_code = data.optString("cntry_code");
 
-            //Not using Right Now
-            String address = data.getString("address");
-
-            SessionStore.save(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName,lastName, user_image, strAddresId, strAddressName, strAddress, currency, cntry_code);
+            SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code, address_id, telephone, street_1, street_2, city, region, postcode, country_id);
             finish();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -460,7 +459,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        country_code=country_codes.get(position);
+        country_code = country_codes.get(position);
     }
 
     @Override

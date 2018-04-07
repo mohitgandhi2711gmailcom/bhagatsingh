@@ -337,7 +337,7 @@ public class EditProfileActivity extends AppCompatActivity /*implements View.OnC
 
                     //Country Code may recive during login
                     String countryCode="";
-                    SessionStore.save(EditProfileActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
+                    SessionStore.saveUserDetails(EditProfileActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
                             data.getString("email"), data.getString("mobile_number"), data.getString("name"), data.getString("user_image"), strAddresId, strAddressName, strAddress,
                             data.getString("currency"),countryCode);
 

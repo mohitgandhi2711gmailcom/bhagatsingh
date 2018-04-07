@@ -160,8 +160,8 @@ public class ShippingAddressActivity extends AppCompatActivity implements Server
 
 
 
-        if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID) != null
-                && !SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
+        if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) != null
+                && !SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
 
 
             attemptgetDeliveryPrice();
@@ -248,7 +248,7 @@ Log.e("xzczxcxzc","TEST USER");
                 break;
 
             case R.id.ShippingAddress_Continue:
-                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
+                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
 
                     Methods.showToast(ShippingAddressActivity.this, "Please add shipping address");
 
@@ -280,7 +280,7 @@ Log.e("xzczxcxzc","TEST USER");
             case R.id.ShippingAddress_ChangeOrAddAddress:
 
                 Log.e("sadas", "dsfsdf: " + strFrom);
-                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
+                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
                     intent = new Intent(ShippingAddressActivity.this, AddAddressActivity.class);
                     intent.putExtra("ProductId", strProductId);
                     intent.putExtra("From", "Detail");

@@ -431,7 +431,7 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("addToCart")) {
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    Log.e("AllProductListAdapter", "error Address log: " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID));
+                    Log.e("AllProductListAdapter", "error Address log: " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
                     if (buynow) {
                         buynow = false;
                         JSONObject quoteId = result.getJSONObject("data");
@@ -444,15 +444,16 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                         } else*/
 
                         {
+                            String address=SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_STREET_ONE)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_STREET_TWO)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_CITY)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_REGION)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_POSTCODE);
                             intent = new Intent(ProductDetailActivity.this, ShippingAddressActivity.class);
-                            intent.putExtra("Address", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS));
-                            intent.putExtra("AddressId", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID));
-                            intent.putExtra("AddressName", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSNAME));
+                            intent.putExtra("AddressName", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_STREET_ONE)+SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_STREET_TWO));
+                            intent.putExtra("AddressId", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
+                            intent.putExtra("Address", address);
 
 
-                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS));
-                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID));
-                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSNAME));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSNAME));
 
                         }
                         intent.putExtra("ProductId", mProductDetailModel.product_id);

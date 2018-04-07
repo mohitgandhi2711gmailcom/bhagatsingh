@@ -431,9 +431,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //Country Code may recive in future
                 String countryCode = "";
 
-                SessionStore.save(LoginActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
-                        data.getString("email"), data.getString("mobile_number"), data.getString("firstname"),data.getString("lastname"), data.getString("user_image"), strAddresId, strAddressName, strAddress
-                        , data.getString("currency"),countryCode);
+//                SessionStore.saveUserDetails(LoginActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
+//                        data.getString("email"), data.getString("mobile_number"), data.getString("firstname"),data.getString("lastname"), data.getString("user_image"), strAddresId, strAddressName, strAddress
+//                        , data.getString("currency"),countryCode);
                 SessionStore.saveCurrency(LoginActivity.this, Common.currencyPrefName, data.getString("currency"));
 
 /*
