@@ -20,9 +20,9 @@ import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.ModifyAddressModel;
 import com.mohi.in.ui.adapter.ModifyAdressRowAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.OnValueChangeListner;
-import com.mohi.in.utils.RefreshList;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.OnValueChangeListner;
+import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.UbuntuLightTextView;
@@ -210,7 +210,7 @@ public class ModifyYourAddressActivity extends AppCompatActivity implements View
 
                 if(bool_ANA) {
                     bool_ANA =false;
-                    Intent intent = new Intent(ModifyYourAddressActivity.this, AddAddressActivity.class);
+                    //Intent intent = new Intent(ModifyYourAddressActivity.this, AddAddressActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 }

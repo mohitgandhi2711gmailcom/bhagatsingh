@@ -1,6 +1,5 @@
 package com.mohi.in.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,7 +13,7 @@ import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 
 import org.json.JSONObject;

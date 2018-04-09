@@ -3,7 +3,6 @@ package com.mohi.in.activities;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -30,14 +29,13 @@ import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
-import com.mohi.in.listener.imgSelectListener;
+import com.mohi.in.utils.listeners.imgSelectListener;
 import com.mohi.in.model.CartModel;
-import com.mohi.in.model.FeaturedProductsModel;
 import com.mohi.in.model.ProductDetailModel;
 import com.mohi.in.ui.adapter.FeaturedProductsAdapter;
 import com.mohi.in.ui.adapter.ProductsLeftImgAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.utils.Urls;
@@ -51,8 +49,6 @@ import com.mohi.in.widgets.UbuntuRegularTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * Created by admin on 16/10/17.

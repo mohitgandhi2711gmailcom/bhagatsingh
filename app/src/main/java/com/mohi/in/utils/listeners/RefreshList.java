@@ -1,8 +1,4 @@
-package com.mohi.in.utils;
-
-/**
- * Created by pankaj on 10/23/17.
- */
+package com.mohi.in.utils.listeners;
 
 public interface RefreshList {
 

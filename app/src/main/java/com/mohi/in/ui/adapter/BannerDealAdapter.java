@@ -14,22 +14,20 @@ import com.bumptech.glide.Glide;
 import com.mohi.in.R;
 import com.mohi.in.activities.AllCategoryListActivity;
 import com.mohi.in.activities.AllProductsListActivity;
-import com.mohi.in.model.FeaturedCategoryModel;
-import com.mohi.in.model.FeaturedProductsModel;
 import com.mohi.in.model.ProductModel;
-import com.mohi.in.utils.CartCountCallBack;
+import com.mohi.in.utils.listeners.CartCountCallBack;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.RefreshList;
+import com.mohi.in.utils.listeners.RefreshList;
 import com.mohi.in.widgets.UbuntuRegularTextView;
 import java.util.ArrayList;
 
-public class HomeProductsAdapter extends RecyclerView.Adapter<HomeProductsAdapter.ViewHolder> {
+public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<ProductModel> mList = new ArrayList<>();
     private CartCountCallBack cartCountCallBack;
     private RefreshList refreshListSuccess;
 
-    public HomeProductsAdapter(Context context, CartCountCallBack cartCountCallBack, RefreshList refreshListSuccess) {
+    public BannerDealAdapter(Context context, RefreshList refreshListSuccess, CartCountCallBack cartCountCallBack) {
         this.mContext = context;
         this.cartCountCallBack = cartCountCallBack;
         this.refreshListSuccess = refreshListSuccess;

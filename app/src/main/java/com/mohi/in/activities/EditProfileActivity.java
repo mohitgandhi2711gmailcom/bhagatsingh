@@ -1,53 +1,6 @@
 package com.mohi.in.activities;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import com.balysv.materialripple.MaterialRippleLayout;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-import com.mikhaellopez.circularimageview.CircularImageView;
-
-import com.mohi.in.R;
-import com.mohi.in.common.Common;
-import com.mohi.in.dialog.WaitDialog;
-import com.mohi.in.utils.Image_Picker;
-import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
-import com.mohi.in.utils.ServerCalling;
-import com.mohi.in.utils.SessionStore;
-import com.mohi.in.widgets.CenturyGothicRegularEditText;
-import com.mohi.in.widgets.CenturyGothicRegularTextView;
-import com.mohi.in.widgets.UbuntuLightTextView;
-import com.mohi.in.widgets.UbuntuRegularButton;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-
-import static android.Manifest.permission.ACCESS_NETWORK_STATE;
-import static android.Manifest.permission.CAMERA;
-import static android.Manifest.permission.READ_CONTACTS;
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class EditProfileActivity extends AppCompatActivity /*implements View.OnClickListener, ServerCallBack {
     private static final int REQUEST_READ_CONTACTS = 0;

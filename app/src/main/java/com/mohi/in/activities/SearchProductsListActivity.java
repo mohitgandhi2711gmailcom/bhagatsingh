@@ -20,7 +20,7 @@ import com.mohi.in.common.Common;
 import com.mohi.in.model.SubCategoriesModel;
 import com.mohi.in.ui.adapter.AllProductListAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.UbuntuLightTextView;

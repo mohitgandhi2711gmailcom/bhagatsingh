@@ -1,6 +1,5 @@
 package com.mohi.in.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mohi.in.R;
-import com.mohi.in.activities.AllProductsListActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.common.GridSpacingItemDecoration;
 import com.mohi.in.dialog.WaitDialog;
@@ -24,7 +22,7 @@ import com.mohi.in.model.SubCategoriesModel;
 import com.mohi.in.ui.adapter.AllProductListAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.PaginationScrollListener;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 

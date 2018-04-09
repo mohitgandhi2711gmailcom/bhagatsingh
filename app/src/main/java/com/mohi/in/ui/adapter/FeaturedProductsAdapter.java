@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.transition.Transition;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,17 +18,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.JsonObject;
-import com.koushikdutta.ion.Ion;
 import com.mohi.in.R;
 import com.mohi.in.activities.ProductDetailActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.FeaturedProductsModel;
 
-import com.mohi.in.utils.CartCountCallBack;
+import com.mohi.in.utils.listeners.CartCountCallBack;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.RefreshList;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.UbuntuMediumTextView;
@@ -48,7 +46,7 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
     private Context mContext;
     private ArrayList<FeaturedProductsModel> mList = new ArrayList<>();
     private int pos=0;
-    com.mohi.in.utils.CartCountCallBack cartCountCallBack;
+    CartCountCallBack cartCountCallBack;
     RefreshList refreshListSuccess;
 
     private boolean flage=true;

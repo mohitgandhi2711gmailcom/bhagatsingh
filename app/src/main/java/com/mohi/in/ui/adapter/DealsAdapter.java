@@ -25,8 +25,8 @@ import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.fragments.CartFragment;
 import com.mohi.in.model.FeaturedProductsModel;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.OnValueChangeListner;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.OnValueChangeListner;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.ArialUnicodeMSTextView;
@@ -280,7 +280,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
                     //mList.set(pos, new FeaturedProductsModel(model.product_id, model.product_name, model.image, model.product_price, model.is_wishlist, model.rating, 1 ));
                     notifyDataSetChanged();
 
-                    HomeActivity.HomeActivity.CartCountCallBackSuccess();
+                    //HomeActivity.HomeActivity.CartCountCallBackSuccess();
 
 
                 } else {

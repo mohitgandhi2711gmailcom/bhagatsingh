@@ -28,7 +28,7 @@ import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.SelectListModel;
 import com.mohi.in.ui.adapter.SelectListAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.ArialUnicodeMSRadioButton;

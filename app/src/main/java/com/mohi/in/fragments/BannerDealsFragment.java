@@ -16,18 +16,17 @@ import android.widget.RadioGroup;
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
-import com.mohi.in.activities.HomeActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.HomePagerModel;
 import com.mohi.in.model.HomeProductModel;
 import com.mohi.in.model.ProductModel;
 import com.mohi.in.ui.adapter.HomePagerAdapter;
-import com.mohi.in.ui.adapter.HomeProductsAdapter;
+import com.mohi.in.ui.adapter.BannerDealAdapter;
 import com.mohi.in.ui.adapter.HomeSubProductAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.RefreshList;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.AutoScrollViewPager;
@@ -57,7 +56,7 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     private RadioGroup mPagerRg3;
     private HashMap<String, ArrayList<HomeProductModel>> mProductHashmap;
     private ArrayList<ProductModel> productList = new ArrayList<>();
-    private HomeProductsAdapter homeProductsAdapter;
+    private BannerDealAdapter bannerDealAdapter;
     private JSONArray jArray;
 
     @Override
@@ -97,7 +96,7 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         rv_featuredcategories3.setHasFixedSize(true);
         rv_featuredcategories4.setHasFixedSize(true);
 
-        homeProductsAdapter = new HomeProductsAdapter(mContext, HomeActivity.HomeActivity, this);
+        //bannerDealAdapter = new BannerDealAdapter(mContext,  this, this);
         LinearLayoutManager homeProductsLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         rv_featuredCategories.setLayoutManager(homeProductsLayoutManager);
         rv_featuredCategories.setNestedScrollingEnabled(false);
@@ -232,23 +231,13 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
 
     private void setPager(JSONArray dataObj) {
-
         try {
-
-
             mPagerList.clear();
-
             int size = dataObj.length();
-
             addRadioButtons(size);
-
             for (int i = 0; i < size; i++) {
-
                 mPagerList.add(new HomePagerModel("", dataObj.getString(i)));
-
             }
-
-
             HomePagerAdapter mHomePagerAdapter = new HomePagerAdapter(mContext);
             mHomePagerAdapter.setPagerList(mPagerList);
             pagerView.setAdapter(mHomePagerAdapter);
@@ -284,7 +273,6 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
                 @Override
                 public void onPageSelected(int position) {
-
                     Log.e("sdfdsfdsfdsf", "sfdsfdsfdsf Poooooo: " + position);
                     if (((RadioButton) mPagerRg.getChildAt(position)) != null) {
                         ((RadioButton) mPagerRg.getChildAt(position)).setChecked(true);
@@ -409,13 +397,13 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
             sortInAse();
             productList.add(new ProductModel("Featured Categories", "0", "category", jArray));
-            homeProductsAdapter.setList(productList);
+            bannerDealAdapter.setList(productList);
 
-            rv_featuredCategories.setAdapter(homeProductsAdapter);
-            rv_featuredCategories1.setAdapter(homeProductsAdapter);
-            rv_featuredCategories2.setAdapter(homeProductsAdapter);
-            rv_featuredcategories3.setAdapter(homeProductsAdapter);
-            rv_featuredcategories4.setAdapter(homeProductsAdapter);
+            rv_featuredCategories.setAdapter(bannerDealAdapter);
+            rv_featuredCategories1.setAdapter(bannerDealAdapter);
+            rv_featuredCategories2.setAdapter(bannerDealAdapter);
+            rv_featuredcategories3.setAdapter(bannerDealAdapter);
+            rv_featuredcategories4.setAdapter(bannerDealAdapter);
             WaitDialog.hideDialog();
 
         } catch (Exception e) {

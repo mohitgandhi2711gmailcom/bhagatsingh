@@ -29,7 +29,7 @@ public class SessionStore {
     public static String USER_DEFAULT_BILLING= "default_billing";
 
 
-    public static boolean saveUserDetails(Context context, String name, String user_id, String token,
+    public static void saveUserDetails(Context context, String name, String user_id, String token,
                                           String email, String userMobileNo, String firstName, String lastName, String profilePicture,
                                           String userCurrencyType, String country_code) {
         SharedPreferences.Editor editor = context.getSharedPreferences(name, Context.MODE_PRIVATE).edit();
@@ -42,10 +42,10 @@ public class SessionStore {
         editor.putString(USER_MOBILENO, userMobileNo);
         editor.putString(USER_CURRENCYTYPE, userCurrencyType);
         editor.putString(COUNTRY_CODE, country_code);
-        return editor.commit();
+        editor.apply();
     }
 
-    public static boolean saveUserAddress(Context context, String name, String address_id, String telephone,
+    public static void saveUserAddress(Context context, String name, String address_id, String telephone,
                                           String street_1, String street_2, String city, String region, String postcode, String country_id,
                                           Boolean default_shipping, Boolean default_billing) {
         SharedPreferences.Editor editor = context.getSharedPreferences(name, Context.MODE_PRIVATE).edit();
@@ -59,7 +59,7 @@ public class SessionStore {
         editor.putString(USER_COUNTRY_ID, country_id);
         editor.putBoolean(USER_DEFAULT_SHIPPING,default_shipping);
         editor.putBoolean(USER_DEFAULT_BILLING,default_billing);
-        return editor.commit();
+        editor.apply();
     }
 
     public static HashMap<String, String> getUserDetails(Context context, String name) {

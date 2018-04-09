@@ -1,10 +1,6 @@
-package com.mohi.in.utils;
+package com.mohi.in.utils.listeners;
 
 import org.json.JSONObject;
-
-/**
- * Created by pankaj on 10/23/17.
- */
 
 public interface ServerCallBack {
 

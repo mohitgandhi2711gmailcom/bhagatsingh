@@ -14,14 +14,13 @@ import android.widget.RatingBar;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
-import com.koushikdutta.ion.Ion;
 import com.mohi.in.R;
 import com.mohi.in.activities.ProductDetailActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.WishListModel;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.UbuntuMediumTextView;

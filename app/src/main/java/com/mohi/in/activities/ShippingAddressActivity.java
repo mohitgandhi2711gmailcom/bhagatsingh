@@ -19,9 +19,9 @@ import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.CartModel;
 import com.mohi.in.ui.adapter.ShippingRowAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.OnValueChangeListner;
-import com.mohi.in.utils.RefreshList;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.OnValueChangeListner;
+import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.ExpandableHeightdListView;
@@ -281,7 +281,7 @@ Log.e("xzczxcxzc","TEST USER");
 
                 Log.e("sadas", "dsfsdf: " + strFrom);
                 if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
-                    intent = new Intent(ShippingAddressActivity.this, AddAddressActivity.class);
+                    //intent = new Intent(ShippingAddressActivity.this, AddAddressActivity.class);
                     intent.putExtra("ProductId", strProductId);
                     intent.putExtra("From", "Detail");
                     intent.putExtra("ProductName", strProductName);

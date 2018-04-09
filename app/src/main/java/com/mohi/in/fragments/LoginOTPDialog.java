@@ -14,9 +14,9 @@ import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
-import com.mohi.in.listener.OtpDialogDismissListener;
+import com.mohi.in.utils.listeners.OtpDialogDismissListener;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import com.mohi.in.R;
-import com.mohi.in.listener.imgSelectListener;
+import com.mohi.in.utils.listeners.imgSelectListener;
 import com.mohi.in.model.ProductImgModel;
 
 import java.util.ArrayList;

@@ -264,5 +264,6 @@
     <string name="getting_started">Getting Started</string>
     <string name="or_sign_up">or sign up</string>
     <string name="enter_address">Enter Address</string>
+    <string name="add_address">Add Address</string>
 
 </resources>

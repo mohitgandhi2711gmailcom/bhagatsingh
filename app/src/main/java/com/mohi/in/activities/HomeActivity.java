@@ -12,11 +12,13 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -37,11 +39,11 @@ import com.mohi.in.fragments.OrderFragmentNew;
 import com.mohi.in.fragments.TimelinePasswordProfileAddressFragment;
 import com.mohi.in.residing_menu.ResideMenu;
 import com.mohi.in.residing_menu.ResideMenuItem;
-import com.mohi.in.utils.CartCountCallBack;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.CartCountCallBack;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.widgets.UbuntuMediumTextView;
 
 import org.json.JSONObject;
@@ -50,15 +52,8 @@ import java.util.ArrayList;
 
 public class HomeActivity extends FragmentActivity implements TabHost.OnTabChangeListener, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, ServerCallBack, CartCountCallBack {
 
-    @SuppressLint("StaticFieldLeak")
-    public static FragmentTabHost mTabHost;
-    @SuppressLint("StaticFieldLeak")
-    public static HomeActivity HomeActivity;
-    // Header
-    private ImageView mSearchImgView;
+    public FragmentTabHost mTabHost;
     private Context mContext;
-    private ImageView iv_filter;
-    private boolean searchFlag = true;
     //Residing Menu
     private ResideMenu resideMenu;
     private ResideMenuItem itemCategories;
@@ -73,19 +68,14 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_new);
         init();
-        setUpMenu();
     }
 
     private void init() {
-        HomeActivity = HomeActivity.this;
         mContext = this;
         mTabHost = findViewById(R.id.tabhost);
-        iv_filter = findViewById(R.id.Header_Filter);
-        mSearchImgView = findViewById(R.id.Header_Search);
         drawer_layout = findViewById(R.id.drawer_layout);
-
         //Set Margin acc to Soft Buttons
-        if (ViewConfiguration.get(HomeActivity.this).hasPermanentMenuKey()) {
+        if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.MATCH_PARENT
@@ -96,7 +86,6 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         setValue();
     }
 
-    // setValue
     private void setValue() {
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         mTabHost.addTab(mTabHost.newTabSpec(getResources().getString(R.string.tab_home)).setIndicator(getTabIndicator(mTabHost.getContext(), R.drawable.ic_home_inactive)), HomeFragment.class, null);
@@ -109,8 +98,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         //Set First Tab Active
         ImageView imageView = mTabHost.getTabWidget().getChildAt(0).findViewById(R.id.tab_icon);
         imageView.setImageResource(R.drawable.ic_home_active);
-        mSearchImgView.setOnClickListener(this);
-        iv_filter.setOnClickListener(this);
+        setUpMenu();
     }
 
     private View getTabIndicator(Context context, int icon) {
@@ -185,25 +173,30 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     @Override
     protected void onResume() {
         super.onResume();
-        searchFlag = true;
         attemptTOGetUserInfo();
     }
 
     // Get user information
     public void attemptTOGetUserInfo() {
         try {
-            WaitDialog.showDialog(this);
-            JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
-            ServerCalling.ServerCallingProductsApiPost(HomeActivity.this, "viewCartCount", json, this);
-            if (SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID) != null)
-                ServerCalling.ServerCallingUserApiPost(HomeActivity.this, "getProfile", json, this);
+            if (isUserLogin()) {
+                WaitDialog.showDialog(this);
+                JsonObject json = new JsonObject();
+                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                ServerCalling.ServerCallingProductsApiPost(mContext, "viewCartCount", json, this);
+                //ServerCalling.ServerCallingUserApiPost(HomeActivity.this, "getProfile", json, this);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public boolean isUserLogin() {
+        String user_id = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
+        String token = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN);
+        return !(TextUtils.isEmpty(user_id) && TextUtils.isEmpty(token) && user_id == null && token == null);
+    }
 
     @Override
     public void onTabChanged(String s) {
@@ -237,7 +230,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             case "My Account":
                 ImageView imageView4 = mTabHost.getTabWidget().getChildAt(4).findViewById(R.id.tab_icon);
                 imageView4.setImageResource(R.drawable.ic_user_active);
-                if (SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID) == null || SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID).isEmpty()) {
+                if (!isUserLogin()) {
                     showLoginPopupDailog();
                 }
                 break;
@@ -246,7 +239,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                 imageViewDefault.setImageResource(R.drawable.ic_home_active);
                 break;
         }
-        attemptTOGetUserInfo();
+//        attemptTOGetUserInfo();
     }
 
     private void showLoginPopupDailog() {
@@ -254,6 +247,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         final Dialog dialog = new Dialog(mContext);
         dialog.setCancelable(true);
         LayoutInflater inflater = LayoutInflater.from(mContext);
+        @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.login_signup_popup, null);
         dialog.setContentView(view);
         SigninSignup_popup_Login = view.findViewById(R.id.SigninSignup_popup_Login);
@@ -289,20 +283,20 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                 mTabHost.setCurrentTab(0);
                 break;
             case R.id.nav_faq:
-                intent = new Intent(HomeActivity.this, ActivityFAQ.class);
+                intent = new Intent(mContext, ActivityFAQ.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 break;
             case R.id.nav_about:
-                intent = new Intent(HomeActivity.this, ActivityAboutUs.class);
+                intent = new Intent(mContext, ActivityAboutUs.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 break;
             case R.id.nav_rate_app:
-                Toast.makeText(HomeActivity, "Please Rate the App", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Please Rate the App", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_help:
-                intent = new Intent(HomeActivity.this, ActivityHelp.class);
+                intent = new Intent(mContext, ActivityHelp.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 break;
@@ -320,25 +314,25 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             closeResideMenu();
         }
         if (view == itemHelp) {
-            intent = new Intent(HomeActivity.this, ActivityHelp.class);
+            intent = new Intent(mContext, ActivityHelp.class);
             startActivity(intent);
             overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
             closeResideMenu();
         }
         if (view == itemFaq) {
-            intent = new Intent(HomeActivity.this, ActivityFAQ.class);
+            intent = new Intent(mContext, ActivityFAQ.class);
             startActivity(intent);
             overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
             closeResideMenu();
         }
         if (view == itemAbout) {
-            intent = new Intent(HomeActivity.this, ActivityAboutUs.class);
+            intent = new Intent(mContext, ActivityAboutUs.class);
             startActivity(intent);
             overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
             closeResideMenu();
         }
         if (view == itemRateApp) {
-            Toast.makeText(HomeActivity, "Please Rate the App", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Please Rate the App", Toast.LENGTH_SHORT).show();
             closeResideMenu();
         }
 
@@ -347,28 +341,6 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 assert imm != null;
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                break;
-            case R.id.Header_Search:
-                if (searchFlag) {
-                    searchFlag = false;
-                    intent = new Intent(HomeActivity.this, SearchActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.Header_Filter:
-                if (searchFlag) {
-                    searchFlag = false;
-                    intent = new Intent(HomeActivity.this, FilterActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            case R.id.tv_nav_name:
-                if (SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID) == null ||
-                        SessionStore.getUserDetails(HomeActivity.this, Common.userPrefName).get(SessionStore.USER_ID).isEmpty()) {
-                    intent = new Intent(HomeActivity.this, LoginActivityNew.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
-                }
                 break;
         }
     }
@@ -384,7 +356,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
 
         @Override
         public void closeMenu() {
-            if (ViewConfiguration.get(HomeActivity.this).hasPermanentMenuKey()) {
+            if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 params.setMargins(0, 0, 0, getSoftButtonsBarHeight());
                 drawer_layout.setLayoutParams(params);
@@ -400,9 +372,19 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     // ServerCallBackSuccess
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
-        try {
-            if (strfFrom.trim().equalsIgnoreCase("getProfile")) {
-                if (result.getString("status").trim().equalsIgnoreCase("success")) {
+        switch (strfFrom) {
+            case "viewCartCount": {
+                if (result.optString("status").trim().equalsIgnoreCase("success")) {
+                    JSONObject jdata = result.optJSONObject("data");
+                    setCartCount(jdata.optString("total_product"));
+                } else {
+                    Methods.showToast(mContext, result.optString("msg"));
+                }
+                break;
+            }
+
+            case "getProfile": {
+                if (result.optString("status").trim().equalsIgnoreCase("success")) {
                     JSONObject data = result.optJSONObject("data");
                     String user_id = data.optString("user_id");
                     String token = data.optString("token");
@@ -415,25 +397,14 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                     String cntry_code = data.optString("cntry_code");
                     SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
                 } else {
-                    Methods.showToast(HomeActivity.this, result.getString("msg"));
+                    Methods.showToast(mContext, result.optString("msg"));
                 }
-            } else if (strfFrom.trim().equalsIgnoreCase("viewCartCount")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    JSONObject jdata = result.getJSONObject("data");
-                    setCartCount(jdata.getString("total_product"));
-
-                } else {
-                    Methods.showToast(HomeActivity.this, result.getString("msg"));
-                }
+                break;
             }
-            WaitDialog.hideDialog();
-
-        } catch (Exception e) {
-            WaitDialog.hideDialog();
         }
     }
 
-    public static void setCartCount(String value) {
+    public void setCartCount(String value) {
         if (Integer.parseInt(value) == 0) {
             ((TextView) mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count)).setText(" " + Methods.twoDigitFormat(value) + " ");
             mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count).setVisibility(View.GONE);
