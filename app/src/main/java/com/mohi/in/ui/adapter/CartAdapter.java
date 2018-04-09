@@ -12,18 +12,20 @@ import com.bumptech.glide.Glide;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.model.CartModel;
-import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.CartFragmentEventsListener;
 
 import java.util.ArrayList;
 
-public class CartAdapterNew extends RecyclerView.Adapter<CartAdapterNew.ViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     private Context mContext;
     private ArrayList<CartModel> mList = new ArrayList<>();
+    private CartFragmentEventsListener listener;
 
-    public CartAdapterNew(Context context) {
+    public CartAdapter(Context context,CartFragmentEventsListener mContext) {
         this.mContext = context;
+        listener = mContext;
     }
 
     public void updateList(ArrayList<CartModel> cartList) {
@@ -44,27 +46,35 @@ public class CartAdapterNew extends RecyclerView.Adapter<CartAdapterNew.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        CartModel model = mList.get(position);
+        final CartModel model = mList.get(position);
         Glide.with(mContext).load(model.getImage()).into(holder.product_iv);
         holder.brand_name_tv.setText(model.getProduct_name());
-        holder.product_price_tv.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE)+" "+model.getProduct_price().substring(0,(model.getProduct_price().length()-2)));
+        holder.product_price_tv.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE) + " " + model.getProduct_price().substring(0, (model.getProduct_price().length() - 2)));
         holder.counter_tv.setText(model.getQty());
         holder.cross_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Methods.showToast(mContext,"Working on Cross Button");
+                listener.cartEventListener("remove",model);
             }
         });
         holder.plus_btn_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Methods.showToast(mContext,"Working on Plus Button");
+                Integer quantity=Integer.parseInt(holder.counter_tv.getText().toString());
+                quantity++;
+                holder.counter_tv.setText(quantity.toString());
+                model.setQty(quantity.toString());
+                listener.cartEventListener("plus",model);
             }
         });
         holder.minus_btn_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Methods.showToast(mContext,"Working on Minus Button");
+                Integer quantity=Integer.parseInt(holder.counter_tv.getText().toString());
+                quantity--;
+                holder.counter_tv.setText(quantity.toString());
+                model.setQty(quantity.toString());
+                listener.cartEventListener("minus",model);
             }
         });
     }

@@ -18,12 +18,11 @@ import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.CartModel;
-import com.mohi.in.ui.adapter.CartAdapterNew;
+import com.mohi.in.ui.adapter.CartAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
-import com.mohi.in.utils.listeners.OnValueChangeListner;
-import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.CartFragmentEventsListener;
 import com.mohi.in.utils.listeners.ServerCallBack;
 
 import org.json.JSONArray;
@@ -31,14 +30,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CartFragment extends Fragment implements ServerCallBack, OnValueChangeListner, View.OnClickListener, RefreshList {
+
+//OnValueChangeListener & RefreshList  was Implemented, And Removed Temporary
+public class CartFragment extends Fragment implements ServerCallBack, View.OnClickListener, CartFragmentEventsListener {
 
     private RecyclerView cart_rv;
     private TextView cart_price;
     private ImageView back_circle_btn;
     private Button checkout_btn;
     private Context mContext;
-    private CartAdapterNew mCartAdapter;
+    private CartAdapter mCartAdapter;
     private ArrayList<CartModel> cartList;
 
     @Override
@@ -60,7 +61,7 @@ public class CartFragment extends Fragment implements ServerCallBack, OnValueCha
     }
 
     private void setValue() {
-        mCartAdapter = new CartAdapterNew(mContext);
+        mCartAdapter = new CartAdapter(mContext,this);
         LinearLayoutManager mCartLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         cart_rv.setLayoutManager(mCartLayoutManager);
         cart_rv.setAdapter(mCartAdapter);
@@ -102,6 +103,30 @@ public class CartFragment extends Fragment implements ServerCallBack, OnValueCha
                 }
                 break;
             }
+
+            case "removeItemFromCart":
+            {
+                if (result.optString("status").trim().equalsIgnoreCase("1")) {
+                    attemptGetCart();
+                }
+                else
+                {
+                    Methods.showToast(getActivity(), result.optString("msg"));
+                }
+                break;
+            }
+
+            case "updateCartQty":
+            {
+                if (result.optString("status").trim().equalsIgnoreCase("1")) {
+                    attemptGetCart();
+                }
+                else
+                {
+                    Methods.showToast(getActivity(), result.optString("msg"));
+                }
+                break;
+            }
         }
     }
 
@@ -125,7 +150,7 @@ public class CartFragment extends Fragment implements ServerCallBack, OnValueCha
             total = total + Double.parseDouble(dataJson.optString("product_price")) * Double.parseDouble(dataJson.optString("qty"));
         }
         mCartAdapter.updateList(cartList);
-        cart_price.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE)+" "+ Methods.getTwoDecimalVAlue(String.valueOf(total)));
+        cart_price.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.getTwoDecimalVAlue(String.valueOf(total)));
     }
 
     @Override
@@ -188,29 +213,60 @@ public class CartFragment extends Fragment implements ServerCallBack, OnValueCha
     }
 
     @Override
+    public void cartEventListener(String event, CartModel model) {
+        switch (event) {
+            case "plus": {
+                attemptCartQuantityUpdate(model);
+                break;
+            }
+
+            case "minus": {
+                attemptCartQuantityUpdate(model);
+                break;
+            }
+
+            case "remove": {
+                attemptRemoveItemFromCart(model);
+                break;
+            }
+        }
+    }
+
+    private void attemptRemoveItemFromCart(CartModel model) {
+        WaitDialog.showDialog(mContext);
+        JsonObject json = new JsonObject();
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("product_id", model.getProduct_id());
+        json.addProperty("quote_id", model.getQuote_id());
+        ServerCalling.ServerCallingProductsApiPost(mContext, "removeItemFromCart", json, this);
+    }
+
+    private void attemptCartQuantityUpdate(CartModel model) {
+        WaitDialog.showDialog(mContext);
+        JsonObject json = new JsonObject();
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("product_id", model.getProduct_id());
+        json.addProperty("qty", model.getQty());
+        json.addProperty("quote_id", model.getQuote_id());
+        ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, this);
+    }
+
+    /*@Override
     public void onValueChange(int listSize) {
-
-       /* double totailFair = 0;
+       *//* double totailFair = 0;
         for (int i = 0; i < listSize; i++) {
-
             totailFair = totailFair + (Double.parseDouble(cartList.get(i).product_price) * Double.parseDouble("" + cartList.get(i).qty));
-
         }
         tv_price.setText(Methods.getTwoDecimalVAlue("" + totailFair));
-
         if (listSize == 0) {
-
             ll_layout.setVisibility(View.GONE);
-
-        }*/
-
-
+        }*//*
     }
-
-
-
-    @Override
-    public void refreshListSuccess() {
-        attemptGetCart();
-    }
+*/
+//    @Override
+//    public void refreshListSuccess() {
+//        attemptGetCart();
+//    }
 }
