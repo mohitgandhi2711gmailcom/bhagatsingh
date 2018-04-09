@@ -237,7 +237,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mCategoryIv = (ImageView) itemView.findViewById(R.id.AddToCart_Row_Image);
+            /*mCategoryIv = (ImageView) itemView.findViewById(R.id.AddToCart_Row_Image);
 
             mCategoryNameTv = (UbuntuMediumTextView) itemView.findViewById(R.id.AddToCart_Row_Name);
             tv_type = (UbuntuMediumTextView) itemView.findViewById(R.id.AddToCart_Row_Type);
@@ -260,7 +260,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
 
             iv_addToCardIcon = (ImageView) itemView.findViewById(R.id.AddToCart_Row_RemoveIcon);
             iv_faveritIcon = (ImageView) itemView.findViewById(R.id.AddToCart_Row_MoveToWishlistIcon);
-            tv_addTocard = (ArialUnicodeMSTextView) itemView.findViewById(R.id.AddToCart_Row_RemoveText);
+            tv_addTocard = (ArialUnicodeMSTextView) itemView.findViewById(R.id.AddToCart_Row_RemoveText);*/
 
         }
     }

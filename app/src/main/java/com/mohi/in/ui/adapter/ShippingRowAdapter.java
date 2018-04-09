@@ -130,18 +130,18 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
 
 
         final CartModel model = mList.get(position);
-        holder.tv_productName.setText(model.product_name);
-        holder.tv_productPrice.setText(Methods.getTwoDecimalVAlue(model.product_price)+" "+ SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+//        holder.tv_productName.setText(model.product_name);
+//        holder.tv_productPrice.setText(Methods.getTwoDecimalVAlue(model.product_price)+" "+ SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
 
         holder.spn_qty.setAdapter(adapter);
 
-        holder.spn_qty.setSelection((Integer.parseInt(model.qty)-1));
+//        holder.spn_qty.setSelection((Integer.parseInt(model.qty)-1));
 
 
 
-        Glide.with(mContext)
-                .load(model.image)
-                .into(holder.iv_image);
+//        Glide.with(mContext)
+//                .load(model.image)
+//                .into(holder.iv_image);
 
         holder.spn_qty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -151,27 +151,27 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
                 itemPos = position;
                 mCallback.onValueChange(mList.size());
 
-                Log.e("dsfdsfds","11111111: "+Integer.parseInt(model.qty)+" :: "+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim()));
+//                Log.e("dsfdsfds","11111111: "+Integer.parseInt(model.qty)+" :: "+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim()));
 
-                if (Integer.parseInt(model.qty) != Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim())) {
-
-                    oldQty =Integer.parseInt(model.qty);
-                    model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim());
-                    mCallback.onValueChange(mList.size());
-
-                    model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ","").trim());
-                    WaitDialog.showDialog(mContext);
-                    JsonObject json = new JsonObject();
-                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
-                    json.addProperty("product_id", model.product_id);
-                    json.addProperty("qty", model.qty);
-                    json.addProperty("quote_id", model.quote_id);
-
-                    pos = position;
-
-                    ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, ShippingRowAdapter.this);
-                }
+//                if (Integer.parseInt(model.qty) != Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim())) {
+//
+//                    oldQty =Integer.parseInt(model.qty);
+//                    model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ", "").trim());
+//                    mCallback.onValueChange(mList.size());
+//
+//                    model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ","").trim());
+//                    WaitDialog.showDialog(mContext);
+//                    JsonObject json = new JsonObject();
+//                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+//                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+//                    json.addProperty("product_id", model.product_id);
+//                    json.addProperty("qty", model.qty);
+//                    json.addProperty("quote_id", model.quote_id);
+//
+//                    pos = position;
+//
+//                    ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, ShippingRowAdapter.this);
+//                }
             }
 
             @Override
@@ -199,7 +199,7 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
                 } else {
 
                     CartModel model = mList.get(itemPos);
-                    model.qty  =""+oldQty;
+                    //model.qty  =""+oldQty;
 
                     mRefreshList.refreshListSuccess();
                     Methods.showToast(mContext, result.getString("msg"));

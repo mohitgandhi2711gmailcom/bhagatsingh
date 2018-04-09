@@ -1,434 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/AddToCart_Row"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="2dp"
     android:layout_marginTop="2dp"
     android:background="@color/white_color"
+    android:orientation="horizontal"
+    android:paddingBottom="20dp"
+    android:paddingEnd="5dp"
+    android:paddingStart="5dp"
+    android:paddingTop="20dp">
 
-    android:orientation="vertical">
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="@dimen/addtocart_row_image_width"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="@dimen/addtocart_row_image_width"
-            android:layout_height="match_parent"
-
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
             <ProgressBar
-                android:layout_centerInParent="true"
+                android:id="@+id/product_image_pb"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:layout_centerInParent="true"
                 android:indeterminateDrawable="@drawable/com_progress_big" />
+
             <ImageView
-                android:id="@+id/AddToCart_Row_Image"
+                android:id="@+id/product_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                 />
+                android:contentDescription="@null"
+                android:scaleType="fitXY" />
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            tools:ignore="UseCompoundDrawables">
 
-            <com.mohi.in.widgets.UbuntuMediumTextView
-                android:id="@+id/AddToCart_Row_Type"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/brand_name_tv"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Dresses"
-                android:textAllCaps="true"
-                android:textColor="@color/hint_color"
-                android:textSize="@dimen/home_product_row_price_text_size"
-                android:visibility="gone"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.mohi.in.widgets.UbuntuMediumTextView
-                    android:id="@+id/AddToCart_Row_Name"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Mugdha-1112"
-                    android:textColor="@color/back_color"
-                    android:textSize="@dimen/login_emial_text_size" />
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/cross"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:orientation="horizontal"
-                    android:padding="1dp">
-
-                    <com.mohi.in.widgets.UbuntuMediumTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|bottom"
-                        android:gravity="center"
-                        android:text="RP "
-
-                        android:id="@+id/AddToCart_Row_NewPriceCurrencyType"
-                        android:textColor="@color/cb_textColor"
-                        android:textSize="@dimen/login_emial_text_size" />
-
-                    <com.mohi.in.widgets.UbuntuMediumTextView
-                        android:id="@+id/AddToCart_Row_NewPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="129.00"
-                        android:textColor="@color/cb_textColor"
-                        android:textSize="@dimen/login_emial_text_size" />
-
-
-
-                </LinearLayout>
-
-                <FrameLayout
-                    android:id="@+id/AddToCart_Row_OldPriceLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:visibility="gone">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="1dp">
-
-
-                        <com.mohi.in.widgets.UbuntuMediumTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center|bottom"
-                            android:gravity="center"
-                            android:text="RP "
-                            android:id="@+id/AddToCart_Row_OldPriceCurrencyType"
-                            android:textColor="@color/cb_textColor"
-                            android:textSize="@dimen/addtocart_row_currency_new_text_size" />
-
-                        <com.mohi.in.widgets.UbuntuMediumTextView
-                            android:id="@+id/AddToCart_Row_OldPrice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="129.00"
-                            android:textColor="@color/cb_textColor"
-                            android:textSize="@dimen/addtocart_row_currency_new_text_size" />
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="@dimen/width_size_100"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/divider_color" />
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <com.mohi.in.widgets.ArialUnicodeMSTextView
-                android:id="@+id/AddToCart_Row_DeliveryTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="Free delivery in 4 days"
-
-                android:textColor="@color/hint_color"
-                android:textSize="@dimen/home_seeall_text_size"
-                android:visibility="gone"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
-
-                <TextView
-                    android:id="@+id/tv_color_place"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Color"
-                    android:textSize="@dimen/home_seeall_text_size"/>
-                <TextView
-                    android:id="@+id/tv_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_color_place"
-                    android:text="Navy Blue"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/tv_size_place"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Size"
-                    android:layout_toRightOf="@+id/tv_color"
-                    android:layout_marginStart="25dp"
-                    android:textSize="@dimen/home_seeall_text_size"/>
-                <TextView
-                    android:id="@+id/tv_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_size_place"
-                    android:text="M"
-                    android:layout_alignStart="@+id/tv_size_place"
-                    android:textColor="@color/black"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_size_place"
-                    android:orientation="horizontal"
-                    android:layout_alignParentEnd="true">
-
-                    <ImageView
-                        android:id="@+id/plus_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/tv_size_place"
-                        android:src="@drawable/up"/>
-
-                    <TextView
-                        android:id="@+id/counter_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/plus_button"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_below="@+id/tv_size_place"
-                        android:text="0" />
-
-                    <ImageView
-                        android:id="@+id/minus_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/tv_size_place"
-                        android:src="@drawable/down"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/AddToCart_Row_qty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/qty_white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="3dp"
-            android:visibility="gone">
-
-            <com.mohi.in.widgets.ArialUnicodeMSTextView
-                android:id="@+id/AddToCart_Row_qty_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:text="Qty: 1"
                 android:textColor="@color/back_color"
-                android:textSize="@dimen/home_product_row_price_text_size"
-                android:visibility="gone" />
+                android:textSize="@dimen/login_emial_text_size"
+                android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/btn_qty_black"
-                android:visibility="gone" />
+                android:id="@+id/cross_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:contentDescription="@null"
+                android:src="@drawable/cross" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/product_price_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/cb_textColor"
+            android:textSize="15sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/qty_white"
-            android:visibility="gone">
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:baselineAligned="true">
 
-            <Spinner
-                android:id="@+id/AddToCart_Row_QtySpinner"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/height_size_38"
-                android:minWidth="@dimen/width_size_103"
+                android:orientation="vertical">
 
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/color"
+                    android:textSize="@dimen/home_seeall_text_size" />
+
+                <TextView
+                    android:id="@+id/color_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/navy_blue"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/size"
+                    android:textSize="@dimen/home_seeall_text_size" />
+
+                <TextView
+                    android:id="@+id/size_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/m"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="7dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/plus_btn_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/counter_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/zero" />
+
+                <ImageView
+                    android:id="@+id/minus_btn_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/down" />
+
+            </LinearLayout>
+
         </LinearLayout>
-
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/addtocard_divider_color"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/placeholder_grey_20"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <com.balysv.materialripple.MaterialRippleLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-
-            android:clickable="true"
-            android:gravity="center"
-            app:mrl_rippleBackground="@android:color/transparent"
-            app:mrl_rippleColor="@color/colorTransButtonPressed"
-            app:mrl_rippleDuration="200"
-            app:mrl_rippleFadeDuration="75"
-            app:mrl_rippleHover="true"
-            app:mrl_rippleOverlay="true">
-
-            <LinearLayout
-                android:id="@+id/AddToCart_Row_MoveToWishlist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/AddToCart_Row_MoveToWishlistIcon"
-
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/like_active_large" />
-
-                <com.mohi.in.widgets.ArialUnicodeMSTextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:text="Wishlist"
-
-                    android:textColor="@color/forgotpassword_text"
-                    android:textSize="@dimen/login_emial_text_size" />
-
-
-            </LinearLayout>
-        </com.balysv.materialripple.MaterialRippleLayout>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/please_select_color" />
-
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="1dp"
-
-            android:layout_weight="1"
-            android:clickable="true"
-            android:gravity="center"
-            app:mrl_rippleBackground="@android:color/transparent"
-            app:mrl_rippleColor="@color/colorTransButtonPressed"
-            app:mrl_rippleDuration="200"
-            app:mrl_rippleFadeDuration="75"
-            app:mrl_rippleHover="true"
-            app:mrl_rippleOverlay="true">
-
-            <LinearLayout
-                android:id="@+id/AddToCart_Row_Remove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/AddToCart_Row_RemoveIcon"
-
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/delete_gray" />
-
-                <com.mohi.in.widgets.ArialUnicodeMSTextView
-                    android:id="@+id/AddToCart_Row_RemoveText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:text="@string/remove"
-
-                    android:textColor="@color/forgotpassword_text"
-                    android:textSize="@dimen/login_emial_text_size" />
-
-
-            </LinearLayout>
-        </com.balysv.materialripple.MaterialRippleLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/addtocard_divider_color"
-        android:visibility="gone"/>
 </LinearLayout>

@@ -281,11 +281,11 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             for (int i = 0; i < arrSize; i++) {
 
                 CartModel model = cartList.get(i);
-                JSONObject jdata = new JSONObject();
+                /*JSONObject jdata = new JSONObject();
                 jdata.put("product_id", model.product_id);
                 jdata.put("qty", model.qty);
                 jarray.put(jdata);
-                strQuoteId = model.quote_id;
+                strQuoteId = model.quote_id;*/
 
             }
 

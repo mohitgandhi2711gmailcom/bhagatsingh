@@ -2,66 +2,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white_color"
-
+    android:orientation="vertical"
     tools:context=".fragments.CartFragment">
 
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/Cart_Listview"
+        android:id="@+id/cart_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
+        android:layout_marginBottom="@dimen/addtocart_row_currency_new_text_size"
+        android:gravity="center"
+        android:text="@string/subtotal"
+        android:textColor="@color/cb_textColor"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subtotal"
-            android:textColor="@color/cb_textColor"
-            android:layout_marginBottom="@dimen/addtocart_row_currency_new_text_size"/>
-
-        <TextView
-            android:id="@+id/Cart_Price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RP. 538.00"
-            android:textColor="@color/new_theme_color"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-    </LinearLayout>
-
+    <TextView
+        android:id="@+id/cart_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="RP 538.000"
+        android:textColor="@color/new_theme_color"
+        android:textSize="20sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/cb_grey"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginTop="35dp"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+        android:background="@color/cb_grey" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/back_circle_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
             android:src="@drawable/bt_back" />
 
         <Button
-            android:id="@+id/Cart_Checkout"
+            android:id="@+id/checkout_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -72,86 +63,5 @@
             android:textColor="@color/white_color" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Cart_CheckoutLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="20dp"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-
-                >
-
-                <!--<com.mohi.in.widgets.UbuntuMediumTextView-->
-                    <!--android:id="@+id/Cart_Price"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:gravity="center"-->
-
-                    <!--android:textColor="@color/price_color"-->
-                    <!--android:textSize="@dimen/addtocart_price_size" />-->
-
-                <com.mohi.in.widgets.UbuntuMediumTextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:gravity="center"
-                    android:text=" AED"
-                    android:id="@+id/Cart_PriceCurrencyType"
-                    android:textColor="@color/price_aed_color"
-                    android:textSize="@dimen/addtocart_timeetimation" />
-
-
-            </LinearLayout>
-
-            <com.mohi.in.widgets.UbuntuMediumTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="@string/total_price"
-                android:textColor="@color/price_aed_color"
-                android:textSize="@dimen/addtocart_totalprice_size" />
-        </LinearLayout>
-
-
-        <!--<com.mohi.in.widgets.UbuntuRegularButton-->
-            <!--android:id="@+id/Cart_Checkout"-->
-
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/button_orange"-->
-            <!--android:inputType="textCapSentences"-->
-            <!--android:paddingBottom="5dp"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:paddingRight="20dp"-->
-            <!--android:paddingTop="5dp"-->
-            <!--android:text="@string/checkout"-->
-            <!--android:textColor="@color/white_color"-->
-            <!--android:textSize="@dimen/product_detail_titel_text_size"-->
-
-            <!--/>-->
-    </LinearLayout>
-
 
 </LinearLayout>

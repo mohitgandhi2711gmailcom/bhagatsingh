@@ -458,9 +458,9 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
 
                         ShippingAddressActivity.itemList.clear();
 
-                        ShippingAddressActivity.itemList.add(new CartModel(mProductDetailModel.product_id, "1", mProductDetailModel.product_name, mProductDetailModel.product_price,
+                        /*ShippingAddressActivity.itemList.add(new CartModel(mProductDetailModel.product_id, "1", mProductDetailModel.product_name, mProductDetailModel.product_price,
                                 mProductDetailModel.image, "", "1", quoteId.getString("quote_id"),
-                                "1", mProductDetailModel.is_wishlist));
+                                "1", mProductDetailModel.is_wishlist));*/
 
 
                         startActivity(intent);

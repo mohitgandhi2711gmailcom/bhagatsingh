@@ -61,7 +61,7 @@
     <string name="categories">Categories</string>
     <string name="my_wish_list">My Wish List</string>
     <string name="Write_a_review">Write a review?</string>
-    <string name="Pre_order_this_item">Pre-order this item and get it delivered in 5-7 Days. Products are subjected to availability.</string>
+    <string name="Pre_order_this_item">Pre–order this item and get it delivered in 5–7 Days. Products are subjected to availability.</string>
     <string name="Size_Chart">Size Chart</string>
     <string name="Add_to_cart">Add to cart</string>
     <string name="Buy_Now">Buy Now</string>
@@ -265,5 +265,9 @@
     <string name="or_sign_up">or sign up</string>
     <string name="enter_address">Enter Address</string>
     <string name="add_address">Add Address</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="zero">0</string>
+    <string name="navy_blue">Navy Blue</string>
+    <string name="m">M</string>
 
 </resources>

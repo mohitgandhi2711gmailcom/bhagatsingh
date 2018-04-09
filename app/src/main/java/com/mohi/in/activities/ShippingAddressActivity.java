@@ -187,7 +187,7 @@ Log.e("xzczxcxzc","TEST USER");
 
             if(itemList.size()>0){
 
-                strQuoteId = itemList.get(0).quote_id;
+                //strQuoteId = itemList.get(0).quote_id;
 
 
             }
@@ -373,8 +373,8 @@ Log.e("xzczxcxzc","TEST USER");
         int itemCount = 0;
         for (int i = 0; i < listSize; i++) {
 
-            totailFair = totailFair + (Double.parseDouble(itemList.get(i).product_price) * Double.parseDouble("" + itemList.get(i).qty));
-            itemCount = itemCount + (Integer.parseInt("" + itemList.get(i).qty));
+            ///totailFair = totailFair + (Double.parseDouble(itemList.get(i).product_price) * Double.parseDouble("" + itemList.get(i).qty));
+            //itemCount = itemCount + (Integer.parseInt("" + itemList.get(i).qty));
 
         }
 
