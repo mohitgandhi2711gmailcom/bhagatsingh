@@ -15,9 +15,11 @@ import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
+import com.mohi.in.model.CartModel;
 import com.mohi.in.model.HomePagerModel;
 import com.mohi.in.model.HomeProductModel;
 import com.mohi.in.model.ProductModel;
@@ -191,6 +193,30 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             json.addProperty("width", getResources().getDimension(R.dimen.home_product_row_width));
             json.addProperty("height", getResources().getDimension(R.dimen.home_product_row_image_height));
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getHomeScreenDetails", json, this);
+
+
+            //Dummy API for Testing Place Order
+            /*JSONArray jarray = new JSONArray();
+
+            for (int i = 0; i < 2; i++) {
+                JSONObject jdata = new JSONObject();
+                jdata.put("product_id", "2336");
+                jdata.put("qty", "3");
+                jarray.put(jdata);
+            }
+
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("currency_id", "INR");
+            jsonObj.put("quote_id", "814");
+            jsonObj.put("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+            jsonObj.put("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            jsonObj.put("address_id", 590);
+            jsonObj.put("payment_method", "checkmo");
+            jsonObj.put("items", jarray);
+
+            JSONObject json = new JSONObject();
+            json.put("order_data", jsonObj);
+            ServerCalling.ServerCallingProductsApiPost(mContext, "placeOrder", (JsonObject) new JsonParser().parse(json.toString()), this);*/
         } catch (Exception e) {
             e.printStackTrace();
         }
