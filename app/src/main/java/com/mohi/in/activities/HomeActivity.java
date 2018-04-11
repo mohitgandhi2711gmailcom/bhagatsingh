@@ -443,4 +443,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             e.printStackTrace();
         }
     }
+
+    public void setParticulatTab(int position)
+    {
+        mTabHost.setCurrentTab(position);
+    }
 }

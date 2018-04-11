@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +8,7 @@
     tools:context=".fragments.BannerDealsFragment">
 
     <LinearLayout
+        android:id="@+id/sign_in_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_blue_up_to_down"
@@ -23,6 +23,7 @@
             android:textColor="@color/white_color" />
 
         <TextView
+            android:id="@+id/sign_in_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
@@ -40,19 +41,20 @@
             android:orientation="vertical">
 
             <FrameLayout
+                android:id="@+id/top_banner_fl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemviewPagerhomeas.android.com/apk/res-auto"
-                    android:id="@+id/viewPagerhome"
+                <com.mohi.in.widgets.AutoScrollViewPager
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/top_banner_sv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/home_viewpager_row_height"
                     android:background="#f2f2f2" />
 
                 <RadioGroup
-                    android:id="@+id/rg_pager"
+                    android:id="@+id/top_banner_rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
@@ -64,159 +66,101 @@
 
             </FrameLayout>
 
-            <com.mohi.in.widgets.MyLinearLayoutManager
-                android:id="@+id/HomeFragment_FeaturedCategories"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/offertype1_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true" />
+                android:layout_height="wrap_content" />
 
-            <com.mohi.in.widgets.MyLinearLayoutManager
-                android:id="@+id/HomeFragment_FeaturedCategoriesnew1"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/offertype2_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-            <com.mohi.in.widgets.MyLinearLayoutManager
-                android:id="@+id/HomeFragment_FeaturedCategoriesnew2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-            <com.mohi.in.widgets.MyLinearLayoutManager
-                android:id="@+id/HomeFragment_FeaturedCategoriesnew3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/viewPagerhomenew1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/home_viewpager_row_height"
-                    android:background="#f2f2f2" />
-
-                <RadioGroup
-                    android:id="@+id/rg_pagernew1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                </RadioGroup>
-
-            </FrameLayout>
-
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/viewPagerhomenew2"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/home_viewpager_row_height"
-                    android:background="#f2f2f2" />
-
-                <RadioGroup
-                    android:id="@+id/rg_pagernew2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                </RadioGroup>
-
-            </FrameLayout>
-
-            <com.mohi.in.widgets.MyLinearLayoutManager
-                android:id="@+id/HomeFragment_FeaturedCategoriesnew4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Categories" />
+                android:text="@string/most_searched" />
 
-            <LinearLayout
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/black" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/most_searched_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp">
+                android:text="@string/trending_now" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@null"
-                    android:src="@drawable/google" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/google" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/google" />
-            </LinearLayout>
-
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp">
+                android:layout_height="2dp"
+                android:background="@color/black" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/google" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/google" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/google" />
-            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/trending_now_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <FrameLayout
+                android:id="@+id/middle_banner_fl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/viewPagerhomenew3"
+                <com.mohi.in.widgets.AutoScrollViewPager
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/middle_banner_sv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/home_viewpager_row_height"
                     android:background="#f2f2f2" />
 
                 <RadioGroup
-                    android:id="@+id/rg_pagernew3"
+                    android:id="@+id/middle_banner_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </RadioGroup>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/item_viewed_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/categories" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/black" />
+
+            <FrameLayout
+                android:id="@+id/bottom_banner_fl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/bottom_banner_sv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_viewpager_row_height"
+                    android:background="#f2f2f2" />
+
+                <RadioGroup
+                    android:id="@+id/bottom_banner_rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"

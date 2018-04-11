@@ -27,10 +27,10 @@ public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.Vi
     private CartCountCallBack cartCountCallBack;
     private RefreshList refreshListSuccess;
 
-    public BannerDealAdapter(Context context, RefreshList refreshListSuccess, CartCountCallBack cartCountCallBack) {
+    public BannerDealAdapter(Context context) {
         this.mContext = context;
-        this.cartCountCallBack = cartCountCallBack;
-        this.refreshListSuccess = refreshListSuccess;
+//        this.cartCountCallBack = cartCountCallBack;
+//        this.refreshListSuccess = refreshListSuccess;
     }
 
     public void setList(ArrayList<ProductModel> list)
@@ -122,7 +122,6 @@ public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.Vi
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
 
         private LinearLayout ll_header;
         private UbuntuRegularTextView tv_headerTitle, tv_headerSeeAll;

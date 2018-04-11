@@ -269,5 +269,7 @@
     <string name="zero">0</string>
     <string name="navy_blue">Navy Blue</string>
     <string name="m">M</string>
+    <string name="most_searched">Most Searched</string>
+    <string name="trending_now">Trending Now</string>
 
 </resources>

@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="RP 538.000"
+        android:text="RP 00.00"
         android:textColor="@color/new_theme_color"
         android:textSize="20sp" />
 

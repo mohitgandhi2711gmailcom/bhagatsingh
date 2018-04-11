@@ -6,182 +6,194 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mohi.in.R;
+import com.mohi.in.activities.HomeActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
-import com.mohi.in.model.CartModel;
-import com.mohi.in.model.HomePagerModel;
-import com.mohi.in.model.HomeProductModel;
-import com.mohi.in.model.ProductModel;
-import com.mohi.in.ui.adapter.HomePagerAdapter;
+import com.mohi.in.model.HomeScreenSliderModel;
 import com.mohi.in.ui.adapter.BannerDealAdapter;
-import com.mohi.in.ui.adapter.HomeSubProductAdapter;
+import com.mohi.in.ui.adapter.BottomSliderAdapter;
+import com.mohi.in.ui.adapter.MiddleSliderAdapter;
+import com.mohi.in.ui.adapter.TopSliderAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.listeners.RefreshList;
-import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.RefreshList;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.widgets.AutoScrollViewPager;
-import com.mohi.in.widgets.MyLinearLayoutManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
 
 public class BannerDealsFragment extends Fragment implements View.OnClickListener, ServerCallBack, RefreshList {
     private Context mContext;
-    private View root;
-    private AutoScrollViewPager pagerView;
-    private AutoScrollViewPager pagerView1;
-    private AutoScrollViewPager pagerView2;
-    private AutoScrollViewPager pagerView3;
-    private MyLinearLayoutManager rv_featuredCategories, rv_featuredCategories1, rv_featuredCategories2, rv_featuredcategories3, rv_featuredcategories4;
-    private ArrayList<HomePagerModel> mPagerList = new ArrayList<>();
-    private RadioGroup mPagerRg;
-    private RadioGroup mPagerRg1;
-    private RadioGroup mPagerRg2;
-    private RadioGroup mPagerRg3;
-    private HashMap<String, ArrayList<HomeProductModel>> mProductHashmap;
-    private ArrayList<ProductModel> productList = new ArrayList<>();
-    private BannerDealAdapter bannerDealAdapter;
-    private JSONArray jArray;
+    private LinearLayout sign_in_ll;
+    private TextView sign_in_tv;
+    private AutoScrollViewPager top_banner_sv;
+    private RadioGroup top_banner_rg;
+    private RecyclerView offertype1_rv;
+    private RecyclerView offertype2_rv;
+    private RecyclerView most_searched_rv;
+    private RecyclerView trending_now_rv;
+    private AutoScrollViewPager middle_banner_sv;
+    private RadioGroup middle_banner_rg;
+    private RecyclerView item_viewed_rv;
+    private AutoScrollViewPager bottom_banner_sv;
+    private RadioGroup bottom_banner_rg;
+    ArrayList<HomeScreenSliderModel> topBannerPagerList;
+    ArrayList<HomeScreenSliderModel> middleBannerPagerList;
+    ArrayList<HomeScreenSliderModel> bottomBannerPagerList;
+    private TopSliderAdapter topSliderAdapter;
+    private MiddleSliderAdapter middleSliderAdapter;
+    private BottomSliderAdapter bottomSliderAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_banner_deal, container, false);
-        getControls();
-        return root;
+        View view = inflater.inflate(R.layout.fragment_banner_deal, container, false);
+        init(view);
+        return view;
     }
 
-    private void getControls() {
+    private void init(View root) {
         mContext = getActivity();
-        pagerView = root.findViewById(R.id.viewPagerhome);
-        pagerView1 = root.findViewById(R.id.viewPagerhomenew1);
-        pagerView2 = root.findViewById(R.id.viewPagerhomenew2);
-        pagerView3 = root.findViewById(R.id.viewPagerhomenew3);
-        mPagerRg = root.findViewById(R.id.rg_pager);
-        mPagerRg1 = root.findViewById(R.id.rg_pagernew1);
-        mPagerRg2 = root.findViewById(R.id.rg_pagernew2);
-        mPagerRg3 = root.findViewById(R.id.rg_pagernew3);
-        rv_featuredCategories = root.findViewById(R.id.HomeFragment_FeaturedCategories);
-        rv_featuredCategories1 = root.findViewById(R.id.HomeFragment_FeaturedCategoriesnew1);
-        rv_featuredCategories2 = root.findViewById(R.id.HomeFragment_FeaturedCategoriesnew2);
-        rv_featuredcategories3 = root.findViewById(R.id.HomeFragment_FeaturedCategoriesnew3);
-        rv_featuredcategories4 = root.findViewById(R.id.HomeFragment_FeaturedCategoriesnew4);
+        sign_in_ll = root.findViewById(R.id.sign_in_ll);
+        sign_in_tv = root.findViewById(R.id.sign_in_tv);
+        top_banner_sv = root.findViewById(R.id.top_banner_sv);
+        top_banner_rg = root.findViewById(R.id.top_banner_rg);
+        offertype1_rv = root.findViewById(R.id.offertype1_rv);
+        offertype2_rv = root.findViewById(R.id.offertype2_rv);
+        most_searched_rv = root.findViewById(R.id.most_searched_rv);
+        trending_now_rv = root.findViewById(R.id.trending_now_rv);
+        middle_banner_sv = root.findViewById(R.id.middle_banner_sv);
+        middle_banner_rg = root.findViewById(R.id.middle_banner_rg);
+        item_viewed_rv = root.findViewById(R.id.item_viewed_rv);
+        bottom_banner_sv = root.findViewById(R.id.bottom_banner_sv);
+        bottom_banner_rg = root.findViewById(R.id.bottom_banner_rg);
+        topBannerPagerList=new ArrayList<>();
+        middleBannerPagerList=new ArrayList<>();
+        bottomBannerPagerList=new ArrayList<>();
+        setValue();
+    }
+
+    private void setValue() {
+        sign_in_tv.setOnClickListener(this);
+        BannerDealAdapter adapter = new BannerDealAdapter(mContext);
+        offertype1_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        offertype2_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        most_searched_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        trending_now_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        item_viewed_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        offertype1_rv.setAdapter(adapter);
+        offertype2_rv.setAdapter(adapter);
+        most_searched_rv.setAdapter(adapter);
+        trending_now_rv.setAdapter(adapter);
+        item_viewed_rv.setAdapter(adapter);
+        setAllSlider();
+
+    }
+
+    private void setAllSlider() {
+        topSliderAdapter = new TopSliderAdapter(mContext);
+        topSliderAdapter.setPagerList(topBannerPagerList);
+        top_banner_sv.setAdapter(topSliderAdapter);
+        top_banner_sv.startAutoScroll();
+        top_banner_sv.setInterval(5000);
+        top_banner_sv.setCycle(true);
+        top_banner_sv.setStopScrollWhenTouch(true);
+        top_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (top_banner_rg.getChildAt(position) != null) {
+                    ((RadioButton) top_banner_rg.getChildAt(position)).setChecked(true);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        middleSliderAdapter = new MiddleSliderAdapter(mContext);
+        middleSliderAdapter.setPagerList(middleBannerPagerList);
+        middle_banner_sv.setAdapter(middleSliderAdapter);
+        middle_banner_sv.startAutoScroll();
+        middle_banner_sv.setInterval(5000);
+        middle_banner_sv.setCycle(true);
+        middle_banner_sv.setStopScrollWhenTouch(true);
+        middle_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (middle_banner_rg.getChildAt(position) != null) {
+                    ((RadioButton) middle_banner_rg.getChildAt(position)).setChecked(true);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        bottomSliderAdapter = new BottomSliderAdapter(mContext);
+        bottomSliderAdapter.setPagerList(bottomBannerPagerList);
+        bottom_banner_sv.setAdapter(bottomSliderAdapter);
+        bottom_banner_sv.startAutoScroll();
+        bottom_banner_sv.setInterval(5000);
+        bottom_banner_sv.setCycle(true);
+        bottom_banner_sv.setStopScrollWhenTouch(true);
+        bottom_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (bottom_banner_rg.getChildAt(position) != null) {
+                    ((RadioButton) bottom_banner_rg.getChildAt(position)).setChecked(true);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        attemptGetProduct();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        setValue();
+        if (isUserLogin()) {
+            sign_in_ll.setVisibility(View.GONE);
+        } else {
+            sign_in_ll.setVisibility(View.VISIBLE);
+        }
     }
 
-    private void setValue() {
-        rv_featuredCategories.setHasFixedSize(true);
-        rv_featuredCategories1.setHasFixedSize(true);
-        rv_featuredCategories2.setHasFixedSize(true);
-        rv_featuredcategories3.setHasFixedSize(true);
-        rv_featuredcategories4.setHasFixedSize(true);
-
-        //bannerDealAdapter = new BannerDealAdapter(mContext,  this, this);
-        LinearLayoutManager homeProductsLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        rv_featuredCategories.setLayoutManager(homeProductsLayoutManager);
-        rv_featuredCategories.setNestedScrollingEnabled(false);
-        rv_featuredCategories.setHasFixedSize(true);
-        rv_featuredCategories.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-            }
-        });
-
-        LinearLayoutManager homeProductsLayoutManager1 = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        rv_featuredCategories1.setLayoutManager(homeProductsLayoutManager1);
-        rv_featuredCategories1.setNestedScrollingEnabled(false);
-        rv_featuredCategories1.setHasFixedSize(true);
-        rv_featuredCategories1.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-            }
-        });
-
-        LinearLayoutManager homeProductsLayoutManager2 = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        rv_featuredCategories2.setLayoutManager(homeProductsLayoutManager2);
-        rv_featuredCategories2.setNestedScrollingEnabled(false);
-        rv_featuredCategories2.setHasFixedSize(true);
-        rv_featuredCategories2.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-            }
-        });
-
-        LinearLayoutManager homeProductsLayoutManager3 = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        rv_featuredcategories3.setLayoutManager(homeProductsLayoutManager3);
-        rv_featuredcategories3.setNestedScrollingEnabled(false);
-        rv_featuredcategories3.setHasFixedSize(true);
-        rv_featuredcategories3.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-
-            }
-        });
-
-        LinearLayoutManager homeProductsLayoutManager4 = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        rv_featuredcategories4.setLayoutManager(homeProductsLayoutManager4);
-        rv_featuredcategories4.setNestedScrollingEnabled(false);
-        rv_featuredcategories4.setHasFixedSize(true);
-        rv_featuredcategories4.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-            }
-        });
-
-        mProductHashmap = new HashMap<>();
-        attemptGetProduct();
-    }
-
-    @Override
-    public void refreshListSuccess() {
-        attemptGetProduct();
+    public boolean isUserLogin() {
+        String user_id = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
+        String token = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN);
+        return !(TextUtils.isEmpty(user_id) && TextUtils.isEmpty(token) && user_id == null && token == null);
     }
 
     private void attemptGetProduct() {
@@ -190,33 +202,8 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             JsonObject json = new JsonObject();
             json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
             json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
-            json.addProperty("width", getResources().getDimension(R.dimen.home_product_row_width));
-            json.addProperty("height", getResources().getDimension(R.dimen.home_product_row_image_height));
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getHomeScreenDetails", json, this);
 
-
-            //Dummy API for Testing Place Order
-            /*JSONArray jarray = new JSONArray();
-
-            for (int i = 0; i < 2; i++) {
-                JSONObject jdata = new JSONObject();
-                jdata.put("product_id", "2336");
-                jdata.put("qty", "3");
-                jarray.put(jdata);
-            }
-
-            JSONObject jsonObj = new JSONObject();
-            jsonObj.put("currency_id", "INR");
-            jsonObj.put("quote_id", "814");
-            jsonObj.put("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-            jsonObj.put("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
-            jsonObj.put("address_id", 590);
-            jsonObj.put("payment_method", "checkmo");
-            jsonObj.put("items", jarray);
-
-            JSONObject json = new JSONObject();
-            json.put("order_data", jsonObj);
-            ServerCalling.ServerCallingProductsApiPost(mContext, "placeOrder", (JsonObject) new JsonParser().parse(json.toString()), this);*/
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -224,39 +211,70 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
-        try {
-            if (strfFrom.trim().equalsIgnoreCase("getHomeScreenDetails")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    JSONObject dataObj = result.getJSONObject("data");
-                    //Country Code may recive in future
-                    String countryCode = "";
-                    //SessionStore.saveUserDetails(getActivity(), Common.userPrefName, SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_EMAIL), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_MOBILENO), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_FIRST_NAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_LAST_NAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.PROFILEPICTURE), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS_ID), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSNAME), SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS), result.getString("currency"), countryCode);
-                    SessionStore.saveCurrency(getActivity(), Common.currencyPrefName, result.getString("currency"));
-                    setProducts(dataObj);
-                    dataObj = result.getJSONObject("banners");
-                    JSONArray jsonArray = dataObj.getJSONArray("image");
-                    setPager(jsonArray);
-                    WaitDialog.hideDialog();
+        WaitDialog.hideDialog();
+        switch (strfFrom.trim()) {
+            case "getHomeScreenDetails": {
+                if (result.optString("status").trim().equalsIgnoreCase("success")) {
+                    setDataAfterResult(result);
                 } else {
-                    Methods.showToast(getActivity(), result.getString("msg"));
+                    Methods.showToast(getActivity(), result.optString("msg"));
                 }
-            } else if (strfFrom.trim().equalsIgnoreCase("banner")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    JSONObject jData = result.getJSONObject("data");
-                    JSONArray dataObj = jData.getJSONArray("image");
-                    setPager(dataObj);
-                } else {
-                    Methods.showToast(getActivity(), result.getString("msg"));
-                }
+                break;
             }
-
-        } catch (Exception e) {
-            WaitDialog.hideDialog();
+            case "banner": {
+                break;
+            }
         }
     }
 
+    private void setDataAfterResult(JSONObject result) {
+        JSONObject dataObject = result.optJSONObject("data");
+        JSONObject bannerObject = dataObject.optJSONObject("banners");
+        JSONArray topBannerArray = bannerObject.optJSONArray("slider");
+        topSliderAdapter.setPagerList(setSlider(topBannerArray,topBannerPagerList));
+        JSONArray middleBannerArray = bannerObject.optJSONArray("banners-middle");
+        middleSliderAdapter.setPagerList(setSlider(middleBannerArray,middleBannerPagerList));
+        JSONArray bottomBannerArray = bannerObject.optJSONArray("banner-bottom");
+        bottomSliderAdapter.setPagerList(setSlider(bottomBannerArray,bottomBannerPagerList));
+        JSONObject offerObject = bannerObject.optJSONObject("offer");
+        JSONArray type1Offer = offerObject.optJSONArray("type1");
+        JSONArray type2Offer = offerObject.optJSONArray("type2");
+        JSONArray categoryArray=bannerObject.optJSONArray("categories");
 
-    private void setPager(JSONArray dataObj) {
+    }
+
+    private ArrayList<HomeScreenSliderModel> setSlider(JSONArray sliderArray,ArrayList<HomeScreenSliderModel> list) {
+        list.clear();
+        for(int i=0;i<sliderArray.length();i++)
+        {
+            HomeScreenSliderModel obj=new HomeScreenSliderModel();
+            obj.setImageUrl(sliderArray.optString(i));
+            list.add(obj);
+        }
+        return list;
+    }
+
+    private void setMiddleSlider(JSONArray sliderArray) {
+        for(int i=0;i<sliderArray.length();i++)
+        {
+            HomeScreenSliderModel obj=new HomeScreenSliderModel();
+            obj.setImageUrl(sliderArray.optString(i));
+            topBannerPagerList.add(obj);
+        }
+        topSliderAdapter.setPagerList(topBannerPagerList);
+    }
+
+    private void setBottomSlider(JSONArray sliderArray) {
+        for(int i=0;i<sliderArray.length();i++)
+        {
+            HomeScreenSliderModel obj=new HomeScreenSliderModel();
+            obj.setImageUrl(sliderArray.optString(i));
+            topBannerPagerList.add(obj);
+        }
+        topSliderAdapter.setPagerList(topBannerPagerList);
+    }
+
+    /*private void setPager(JSONArray dataObj) {
         try {
             mPagerList.clear();
             int size = dataObj.length();
@@ -380,18 +398,18 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         }
 
         WaitDialog.hideDialog();
-    }
+    }*/
 
     @Override
     public void onPause() {
         super.onPause();
-        pagerView.stopAutoScroll();
+        /*pagerView.stopAutoScroll();
         pagerView1.stopAutoScroll();
         pagerView2.stopAutoScroll();
-        pagerView3.stopAutoScroll();
+        pagerView3.stopAutoScroll();*/
     }
 
-    private void setProducts(JSONObject dataObj) {
+    /*private void setProducts(JSONObject dataObj) {
 
         try {
 
@@ -435,21 +453,21 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /*
     * Inflated all product category and items
     * */
-    private void inflateData(int rowCount) {
+    /*private void inflateData(int rowCount) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.home_feature_products_row, null);
         Object[] keys = mProductHashmap.keySet().toArray();
         ProductInflateView productInflateView = new ProductInflateView(view, rowCount, keys[rowCount].toString());
         view.setTag(productInflateView);
 
-    }
+    }*/
 
     //inflate view
-    class ProductInflateView {
+    /*class ProductInflateView {
         private LinearLayoutManager mLayoutManager;
         private HomeSubProductAdapter mAdapter;
         private RecyclerView mProductsRv;
@@ -466,17 +484,24 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             mAdapter.setProductList(list);
             mProductsRv.setAdapter(mAdapter);
         }
-    }
+    }*/
 
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.sign_in_tv: {
+                if (!isUserLogin()) {
+                    ((HomeActivity) getActivity()).setParticulatTab(4);
+                }
+                break;
+            }
+        }
     }
 
 
     // Get user information
-    private void attemptGetFeaturedProduct() {
+    /*private void attemptGetFeaturedProduct() {
         try {
 
             JsonObject json = new JsonObject();
@@ -496,10 +521,10 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
         }
 
-    }
+    }*/
 
     // Get user information
-    private void attemptGetFeaturedCategories() {
+    /*private void attemptGetFeaturedCategories() {
         try {
 
             JsonObject json = new JsonObject();
@@ -519,9 +544,9 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
         }
 
-    }
+    }*/
 
-    private void attemptPager() {
+    /*private void attemptPager() {
 
         try {
             WaitDialog.showDialog(getActivity());
@@ -541,10 +566,10 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
             Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
         }
-    }
+    }*/
 
     //Sorting list
-    public void sortInAse() {
+    /*public void sortInAse() {
         Comparator<ProductModel> comparator = new Comparator<ProductModel>() {
 
             @Override
@@ -556,10 +581,10 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         };
         Collections.sort(productList, comparator);
 
-    }
+    }*/
 
 
-    public void addRadioButtons(int number) {
+    /*public void addRadioButtons(int number) {
 
         mPagerRg.removeAllViews();
 
@@ -600,6 +625,11 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         // mPagerRg.addView(ll);
 
 
+    }*/
+
+    @Override
+    public void refreshListSuccess() {
+        attemptGetProduct();
     }
 }
 
