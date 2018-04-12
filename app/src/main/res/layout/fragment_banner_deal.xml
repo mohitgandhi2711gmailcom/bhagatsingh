@@ -46,8 +46,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.mohi.in.widgets.AutoScrollViewPager
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/top_banner_sv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/home_viewpager_row_height"
@@ -69,12 +68,12 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/offertype1_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="274dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/offertype2_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="274dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -112,8 +111,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.mohi.in.widgets.AutoScrollViewPager
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/middle_banner_sv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/home_viewpager_row_height"

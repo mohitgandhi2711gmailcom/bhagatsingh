@@ -1,118 +1,68 @@
 package com.mohi.in.ui.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import com.bumptech.glide.Glide;
 import com.mohi.in.R;
-import com.mohi.in.activities.AllCategoryListActivity;
-import com.mohi.in.activities.AllProductsListActivity;
-import com.mohi.in.model.ProductModel;
-import com.mohi.in.utils.listeners.CartCountCallBack;
+import com.mohi.in.activities.ActivityItemDetails;
+import com.mohi.in.common.Common;
+import com.mohi.in.model.BannerModel;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.listeners.RefreshList;
-import com.mohi.in.widgets.UbuntuRegularTextView;
+import com.mohi.in.utils.SessionStore;
+import com.mohi.in.widgets.UbuntuMediumTextView;
+
 import java.util.ArrayList;
 
 public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.ViewHolder> {
     private Context mContext;
-    private ArrayList<ProductModel> mList = new ArrayList<>();
-    private CartCountCallBack cartCountCallBack;
-    private RefreshList refreshListSuccess;
+    private ArrayList<BannerModel> mList;
 
-    public BannerDealAdapter(Context context) {
+    public BannerDealAdapter(Context context, ArrayList<BannerModel> list) {
+        mList = new ArrayList<>();
         this.mContext = context;
-//        this.cartCountCallBack = cartCountCallBack;
-//        this.refreshListSuccess = refreshListSuccess;
+        this.mList = mList;
     }
 
-    public void setList(ArrayList<ProductModel> list)
-    {
+    public void updateList(ArrayList<BannerModel> list) {
         this.mList = list;
         notifyDataSetChanged();
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.home_product_row, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.subcategories_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final ProductModel model = mList.get(position);
-        HomeCategoryAdapter mCategoryAdapter = null;
-        FeaturedProductsAdapter mProductAdapter = null;
-        if (position == 0) {
-            mCategoryAdapter = new HomeCategoryAdapter(mContext);
+        final BannerModel model = mList.get(position);
+        Glide.with(mContext).load(model.getImage()).into(holder.Subcategories_Row_Image);
+        String isFavourite = model.getIs_wishlist();
+        if (isFavourite.trim().equalsIgnoreCase("0")) {
+            holder.Subcategories_Row_Favorite.setBackgroundResource(R.drawable.ic_love_like);
         } else {
-            mProductAdapter = new FeaturedProductsAdapter(mContext, cartCountCallBack, refreshListSuccess);
+            holder.Subcategories_Row_Favorite.setBackgroundResource(R.drawable.ic_love_fill);
         }
-
-
-        LinearLayoutManager mCategoryLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-
-        holder.tv_headerTitle.setText(Methods.capitalizeWord(model.category.trim()));
-
-        holder.rv_listView.setLayoutManager(mCategoryLayoutManager);
-        holder.rv_listView.setHasFixedSize(true);
-        Log.e("sdfsdfdsf", "ffffffff: Position: " + position);
-        //if (model.isProduct.equalsIgnoreCase("0")) {
-
-            mCategoryAdapter.setList(model.productList);
-            holder.rv_listView.setAdapter(mCategoryAdapter);
-
-//          }
-         /*else {
-
-            mProductAdapter.setList(model.productList);
-            holder.rv_listView.setAdapter(mProductAdapter);
-
-        }*/
-
-
-        holder.rv_listView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        holder.Subcategories_Row_Title.setText(model.getProduct_name());
+        holder.short_desc_tv.setText(model.getProduct_name());
+        holder.Subcategories_Row_Price.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.twoDigitFormat(model.getProduct_price()));
+        final String ProductId = model.getProduct_id();
+        holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Glide.with(mContext).resumeRequests();
-                } else {
-                    Glide.with(mContext).pauseRequests();
-                }
-
-                //   super.onScrollStateChanged(recyclerView, newState);
-
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ActivityItemDetails.class);
+                intent.putExtra("ProductId", ProductId);
+                mContext.startActivity(intent);
             }
         });
-
-        holder.tv_headerSeeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (model.isProduct.equalsIgnoreCase("0")) {
-                    Intent intent = new Intent(mContext, AllCategoryListActivity.class);
-                    mContext.startActivity(intent);
-                    ((Activity) mContext).overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
-
-                } else {
-                    Intent intent = new Intent(mContext, AllProductsListActivity.class);
-                    intent.putExtra("Type", model.type);
-                    mContext.startActivity(intent);
-                    ((Activity) mContext).overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
-
-
-                }
-            }
-        });
-
     }
 
     @Override
@@ -122,23 +72,21 @@ public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.Vi
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout ll_item;
+        private ImageView Subcategories_Row_Image;
+        private ImageView Subcategories_Row_Favorite;
+        private UbuntuMediumTextView Subcategories_Row_Title;
+        private UbuntuMediumTextView short_desc_tv;
+        private UbuntuMediumTextView Subcategories_Row_Price;
 
-        private LinearLayout ll_header;
-        private UbuntuRegularTextView tv_headerTitle, tv_headerSeeAll;
-        private RecyclerView rv_listView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-
-            tv_headerTitle = (UbuntuRegularTextView) itemView.findViewById(R.id.HomeProduct_Row_HeaderTitelName);
-            tv_headerSeeAll = (UbuntuRegularTextView) itemView.findViewById(R.id.HomeProduct_Row_HeaderSeeAll);
-
-            ll_header = (LinearLayout) itemView.findViewById(R.id.HomeProduct_Row_Header);
-
-            rv_listView = (RecyclerView) itemView.findViewById(R.id.HomeProduct_Row_ListView);
-
+        ViewHolder(View view) {
+            super(view);
+            ll_item = view.findViewById(R.id.ll_item);
+            Subcategories_Row_Image = view.findViewById(R.id.Subcategories_Row_Image);
+            Subcategories_Row_Favorite = view.findViewById(R.id.Subcategories_Row_Favorite);
+            Subcategories_Row_Title = view.findViewById(R.id.Subcategories_Row_Title);
+            Subcategories_Row_Price = view.findViewById(R.id.Subcategories_Row_Price);
+            short_desc_tv = view.findViewById(R.id.short_desc_tv);
         }
     }
-
-
 }

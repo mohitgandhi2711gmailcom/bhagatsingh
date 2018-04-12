@@ -20,10 +20,13 @@ import com.mohi.in.R;
 import com.mohi.in.activities.HomeActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
+import com.mohi.in.model.BannerModel;
 import com.mohi.in.model.HomeScreenSliderModel;
 import com.mohi.in.ui.adapter.BannerDealAdapter;
 import com.mohi.in.ui.adapter.BottomSliderAdapter;
 import com.mohi.in.ui.adapter.MiddleSliderAdapter;
+import com.mohi.in.ui.adapter.OfferTypeOneAdapter;
+import com.mohi.in.ui.adapter.OfferTypeTwoAdapter;
 import com.mohi.in.ui.adapter.TopSliderAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.ServerCalling;
@@ -58,6 +61,16 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     private TopSliderAdapter topSliderAdapter;
     private MiddleSliderAdapter middleSliderAdapter;
     private BottomSliderAdapter bottomSliderAdapter;
+    private OfferTypeOneAdapter offerTypeOneAdapter;
+    private OfferTypeTwoAdapter offerTypeTwoAdapter;
+    ArrayList<HomeScreenSliderModel> offerTypeOneList;
+    ArrayList<HomeScreenSliderModel> offerTypeTwoList;
+    ArrayList<BannerModel> mostSearchedList;
+    ArrayList<BannerModel> trendingNowList;
+    ArrayList<BannerModel> itemViewedList;
+    private BannerDealAdapter mostSearchedAdapter;
+    private BannerDealAdapter trendingNowAdapter;
+    private BannerDealAdapter itemViewedAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,27 +94,37 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         item_viewed_rv = root.findViewById(R.id.item_viewed_rv);
         bottom_banner_sv = root.findViewById(R.id.bottom_banner_sv);
         bottom_banner_rg = root.findViewById(R.id.bottom_banner_rg);
-        topBannerPagerList=new ArrayList<>();
-        middleBannerPagerList=new ArrayList<>();
-        bottomBannerPagerList=new ArrayList<>();
+        topBannerPagerList = new ArrayList<>();
+        middleBannerPagerList = new ArrayList<>();
+        bottomBannerPagerList = new ArrayList<>();
+        offerTypeOneList = new ArrayList<>();
+        offerTypeTwoList = new ArrayList<>();
+        mostSearchedList=new ArrayList<>();
+        trendingNowList=new ArrayList<>();
+        itemViewedList=new ArrayList<>();
         setValue();
     }
 
     private void setValue() {
         sign_in_tv.setOnClickListener(this);
-        BannerDealAdapter adapter = new BannerDealAdapter(mContext);
         offertype1_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         offertype2_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         most_searched_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         trending_now_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         item_viewed_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        offertype1_rv.setAdapter(adapter);
-        offertype2_rv.setAdapter(adapter);
-        most_searched_rv.setAdapter(adapter);
-        trending_now_rv.setAdapter(adapter);
-        item_viewed_rv.setAdapter(adapter);
-        setAllSlider();
 
+        offerTypeOneAdapter = new OfferTypeOneAdapter(mContext, offerTypeOneList);
+        offertype1_rv.setAdapter(offerTypeOneAdapter);
+        offerTypeTwoAdapter = new OfferTypeTwoAdapter(mContext, offerTypeTwoList);
+        offertype2_rv.setAdapter(offerTypeTwoAdapter);
+
+        mostSearchedAdapter = new BannerDealAdapter(mContext,mostSearchedList);
+        most_searched_rv.setAdapter(mostSearchedAdapter);
+        trendingNowAdapter = new BannerDealAdapter(mContext,trendingNowList);
+        trending_now_rv.setAdapter(trendingNowAdapter);
+        itemViewedAdapter = new BannerDealAdapter(mContext,itemViewedList);
+        item_viewed_rv.setAdapter(itemViewedAdapter);
+        setAllSlider();
     }
 
     private void setAllSlider() {
@@ -230,49 +253,81 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     private void setDataAfterResult(JSONObject result) {
         JSONObject dataObject = result.optJSONObject("data");
         JSONObject bannerObject = dataObject.optJSONObject("banners");
+
+        //Top Slider
         JSONArray topBannerArray = bannerObject.optJSONArray("slider");
-        topSliderAdapter.setPagerList(setSlider(topBannerArray,topBannerPagerList));
+        topSliderAdapter.setPagerList(setSlider(topBannerArray, topBannerPagerList));
+        addRadioButtons(top_banner_rg, topBannerArray.length());
+
+        //Middle Slider
         JSONArray middleBannerArray = bannerObject.optJSONArray("banners-middle");
-        middleSliderAdapter.setPagerList(setSlider(middleBannerArray,middleBannerPagerList));
+        middleSliderAdapter.setPagerList(setSlider(middleBannerArray, middleBannerPagerList));
+        addRadioButtons(middle_banner_rg, middleBannerArray.length());
+
+        //Bottom Slider
         JSONArray bottomBannerArray = bannerObject.optJSONArray("banner-bottom");
-        bottomSliderAdapter.setPagerList(setSlider(bottomBannerArray,bottomBannerPagerList));
+        bottomSliderAdapter.setPagerList(setSlider(bottomBannerArray, bottomBannerPagerList));
+        addRadioButtons(bottom_banner_rg, bottomBannerArray.length());
+
+        //Set Type1 & Type2 Offers
         JSONObject offerObject = bannerObject.optJSONObject("offer");
         JSONArray type1Offer = offerObject.optJSONArray("type1");
         JSONArray type2Offer = offerObject.optJSONArray("type2");
-        JSONArray categoryArray=bannerObject.optJSONArray("categories");
+        offerTypeOneAdapter.updateList(setSlider(type1Offer, offerTypeOneList));
+        offerTypeTwoAdapter.updateList(setSlider(type2Offer, offerTypeTwoList));
 
+        JSONArray categoryArray = bannerObject.optJSONArray("categories");
+
+        JSONArray mostSearchedArray=dataObject.optJSONArray("most_searched");
+        mostSearchedAdapter.updateList(setList(mostSearchedArray,mostSearchedList));
+
+        JSONArray trendingNowArray=dataObject.optJSONArray("trending_now");
+        trendingNowAdapter.updateList(setList(trendingNowArray,trendingNowList));
+
+        JSONArray itemViewedArray=dataObject.optJSONArray("recently_viewed");
+        itemViewedAdapter.updateList(setList(itemViewedArray,itemViewedList));
     }
 
-    private ArrayList<HomeScreenSliderModel> setSlider(JSONArray sliderArray,ArrayList<HomeScreenSliderModel> list) {
+    private ArrayList<HomeScreenSliderModel> setSlider(JSONArray sliderArray, ArrayList<HomeScreenSliderModel> list) {
         list.clear();
-        for(int i=0;i<sliderArray.length();i++)
-        {
-            HomeScreenSliderModel obj=new HomeScreenSliderModel();
-            obj.setImageUrl(sliderArray.optString(i));
+        for (int i = 0; i < sliderArray.length(); i++) {
+            HomeScreenSliderModel obj = new HomeScreenSliderModel();
+            obj.setImageUrl(sliderArray.opt(i).toString());
             list.add(obj);
         }
         return list;
     }
 
-    private void setMiddleSlider(JSONArray sliderArray) {
-        for(int i=0;i<sliderArray.length();i++)
-        {
-            HomeScreenSliderModel obj=new HomeScreenSliderModel();
-            obj.setImageUrl(sliderArray.optString(i));
-            topBannerPagerList.add(obj);
+    private ArrayList<BannerModel> setList(JSONArray sliderArray, ArrayList<BannerModel> list) {
+        list.clear();
+        for (int i = 0; i < sliderArray.length(); i++) {
+            BannerModel obj = new BannerModel();
+            obj.setProduct_id(((JSONObject) sliderArray.opt(i)).optString("product_id"));
+            obj.setProduct_name(((JSONObject) sliderArray.opt(i)).optString("product_name"));
+            obj.setImage(((JSONObject) sliderArray.opt(i)).optString("image"));
+            obj.setProduct_price(((JSONObject) sliderArray.opt(i)).optString("product_price"));
+            obj.setProduct_special_price(((JSONObject) sliderArray.opt(i)).optString("product_special_price"));
+            obj.setIs_wishlist(((JSONObject) sliderArray.opt(i)).optString("is_wishlist"));
+            obj.setIs_add_to_cart(((JSONObject) sliderArray.opt(i)).optString("is_add_to_cart"));
+            list.add(obj);
         }
-        topSliderAdapter.setPagerList(topBannerPagerList);
+        return list;
     }
 
-    private void setBottomSlider(JSONArray sliderArray) {
-        for(int i=0;i<sliderArray.length();i++)
-        {
-            HomeScreenSliderModel obj=new HomeScreenSliderModel();
-            obj.setImageUrl(sliderArray.optString(i));
-            topBannerPagerList.add(obj);
+    public void addRadioButtons(RadioGroup radioGroup, int number) {
+        radioGroup.removeAllViews();
+        for (int i = 0; i < number; i++) {
+            RadioButton rdbtn = new RadioButton(getActivity());
+            rdbtn.setButtonDrawable(R.drawable.radio_button_bg);
+            rdbtn.setId(2 + i);
+            rdbtn.setPadding(0, 0, 0, 0);
+            rdbtn.setScaleX(0.50f);
+            rdbtn.setScaleY(0.50f);
+            radioGroup.addView(rdbtn);
         }
-        topSliderAdapter.setPagerList(topBannerPagerList);
+        // mPagerRg.addView(ll);
     }
+
 
     /*private void setPager(JSONArray dataObj) {
         try {
