@@ -7,6 +7,8 @@
     <ImageView
         android:id="@+id/offer_type_iv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f2f2f2"
         android:contentDescription="@null" />
+
 </LinearLayout>

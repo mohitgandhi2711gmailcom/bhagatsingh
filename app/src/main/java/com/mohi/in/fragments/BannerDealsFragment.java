@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,9 @@ import com.mohi.in.activities.HomeActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.BannerModel;
+import com.mohi.in.model.CategoryModel;
 import com.mohi.in.model.HomeScreenSliderModel;
+import com.mohi.in.ui.adapter.BannerCategoryAdapter;
 import com.mohi.in.ui.adapter.BannerDealAdapter;
 import com.mohi.in.ui.adapter.BottomSliderAdapter;
 import com.mohi.in.ui.adapter.MiddleSliderAdapter;
@@ -42,35 +46,38 @@ import java.util.ArrayList;
 
 public class BannerDealsFragment extends Fragment implements View.OnClickListener, ServerCallBack, RefreshList {
     private Context mContext;
-    private LinearLayout sign_in_ll;
-    private TextView sign_in_tv;
-    private AutoScrollViewPager top_banner_sv;
-    private RadioGroup top_banner_rg;
-    private RecyclerView offertype1_rv;
-    private RecyclerView offertype2_rv;
-    private RecyclerView most_searched_rv;
-    private RecyclerView trending_now_rv;
-    private AutoScrollViewPager middle_banner_sv;
-    private RadioGroup middle_banner_rg;
-    private RecyclerView item_viewed_rv;
-    private AutoScrollViewPager bottom_banner_sv;
-    private RadioGroup bottom_banner_rg;
-    ArrayList<HomeScreenSliderModel> topBannerPagerList;
-    ArrayList<HomeScreenSliderModel> middleBannerPagerList;
-    ArrayList<HomeScreenSliderModel> bottomBannerPagerList;
+    private LinearLayout signInLinearLayout;
+    private TextView signInTextView;
+    private AutoScrollViewPager topBannerScrollView;
+    private RadioGroup topBannerRadioGroup;
+    private RecyclerView offerTypeOneRecyclerView;
+    private RecyclerView offerTypeTwoRecyclerView;
+    private RecyclerView mostSearchedRecyclerView;
+    private RecyclerView trendingNowRecyclerView;
+    private RecyclerView categoryRecyclerView;
+    private AutoScrollViewPager middleBannerScrollView;
+    private RadioGroup middleBannerRadioGroup;
+    private RecyclerView itemViewedRecyclerView;
+    private AutoScrollViewPager bottomBannerScrollView;
+    private RadioGroup bottomBannerRadioGroup;
     private TopSliderAdapter topSliderAdapter;
     private MiddleSliderAdapter middleSliderAdapter;
     private BottomSliderAdapter bottomSliderAdapter;
     private OfferTypeOneAdapter offerTypeOneAdapter;
     private OfferTypeTwoAdapter offerTypeTwoAdapter;
+    private BannerDealAdapter mostSearchedAdapter;
+    private BannerDealAdapter trendingNowAdapter;
+    private BannerDealAdapter itemViewedAdapter;
+    private BannerCategoryAdapter bannerCategoryAdapter;
+    ArrayList<HomeScreenSliderModel> topBannerPagerList;
+    ArrayList<HomeScreenSliderModel> middleBannerPagerList;
+    ArrayList<HomeScreenSliderModel> bottomBannerPagerList;
     ArrayList<HomeScreenSliderModel> offerTypeOneList;
     ArrayList<HomeScreenSliderModel> offerTypeTwoList;
     ArrayList<BannerModel> mostSearchedList;
     ArrayList<BannerModel> trendingNowList;
     ArrayList<BannerModel> itemViewedList;
-    private BannerDealAdapter mostSearchedAdapter;
-    private BannerDealAdapter trendingNowAdapter;
-    private BannerDealAdapter itemViewedAdapter;
+    ArrayList<CategoryModel> categoryList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,122 +88,145 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
     private void init(View root) {
         mContext = getActivity();
-        sign_in_ll = root.findViewById(R.id.sign_in_ll);
-        sign_in_tv = root.findViewById(R.id.sign_in_tv);
-        top_banner_sv = root.findViewById(R.id.top_banner_sv);
-        top_banner_rg = root.findViewById(R.id.top_banner_rg);
-        offertype1_rv = root.findViewById(R.id.offertype1_rv);
-        offertype2_rv = root.findViewById(R.id.offertype2_rv);
-        most_searched_rv = root.findViewById(R.id.most_searched_rv);
-        trending_now_rv = root.findViewById(R.id.trending_now_rv);
-        middle_banner_sv = root.findViewById(R.id.middle_banner_sv);
-        middle_banner_rg = root.findViewById(R.id.middle_banner_rg);
-        item_viewed_rv = root.findViewById(R.id.item_viewed_rv);
-        bottom_banner_sv = root.findViewById(R.id.bottom_banner_sv);
-        bottom_banner_rg = root.findViewById(R.id.bottom_banner_rg);
+        signInLinearLayout = root.findViewById(R.id.sign_in_ll);
+        signInTextView = root.findViewById(R.id.sign_in_tv);
+        topBannerScrollView = root.findViewById(R.id.top_banner_sv);
+        topBannerRadioGroup = root.findViewById(R.id.top_banner_rg);
+        offerTypeOneRecyclerView = root.findViewById(R.id.offertype1_rv);
+        offerTypeTwoRecyclerView = root.findViewById(R.id.offertype2_rv);
+        mostSearchedRecyclerView = root.findViewById(R.id.most_searched_rv);
+        trendingNowRecyclerView = root.findViewById(R.id.trending_now_rv);
+        categoryRecyclerView = root.findViewById(R.id.category_rv);
+        middleBannerScrollView = root.findViewById(R.id.middle_banner_sv);
+        middleBannerRadioGroup = root.findViewById(R.id.middle_banner_rg);
+        itemViewedRecyclerView = root.findViewById(R.id.item_viewed_rv);
+        bottomBannerScrollView = root.findViewById(R.id.bottom_banner_sv);
+        bottomBannerRadioGroup = root.findViewById(R.id.bottom_banner_rg);
         topBannerPagerList = new ArrayList<>();
         middleBannerPagerList = new ArrayList<>();
         bottomBannerPagerList = new ArrayList<>();
         offerTypeOneList = new ArrayList<>();
         offerTypeTwoList = new ArrayList<>();
-        mostSearchedList=new ArrayList<>();
-        trendingNowList=new ArrayList<>();
-        itemViewedList=new ArrayList<>();
+        mostSearchedList = new ArrayList<>();
+        trendingNowList = new ArrayList<>();
+        itemViewedList = new ArrayList<>();
+        categoryList = new ArrayList<>();
         setValue();
     }
 
     private void setValue() {
-        sign_in_tv.setOnClickListener(this);
-        offertype1_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        offertype2_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        most_searched_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        trending_now_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        item_viewed_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        signInTextView.setOnClickListener(this);
+        offerTypeOneRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        offerTypeTwoRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        mostSearchedRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        trendingNowRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        itemViewedRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        categoryRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
 
         offerTypeOneAdapter = new OfferTypeOneAdapter(mContext, offerTypeOneList);
-        offertype1_rv.setAdapter(offerTypeOneAdapter);
+        offerTypeOneRecyclerView.setAdapter(offerTypeOneAdapter);
         offerTypeTwoAdapter = new OfferTypeTwoAdapter(mContext, offerTypeTwoList);
-        offertype2_rv.setAdapter(offerTypeTwoAdapter);
+        offerTypeTwoRecyclerView.setAdapter(offerTypeTwoAdapter);
 
-        mostSearchedAdapter = new BannerDealAdapter(mContext,mostSearchedList);
-        most_searched_rv.setAdapter(mostSearchedAdapter);
-        trendingNowAdapter = new BannerDealAdapter(mContext,trendingNowList);
-        trending_now_rv.setAdapter(trendingNowAdapter);
-        itemViewedAdapter = new BannerDealAdapter(mContext,itemViewedList);
-        item_viewed_rv.setAdapter(itemViewedAdapter);
+        mostSearchedAdapter = new BannerDealAdapter(mContext, mostSearchedList);
+        mostSearchedRecyclerView.setAdapter(mostSearchedAdapter);
+        trendingNowAdapter = new BannerDealAdapter(mContext, trendingNowList);
+        trendingNowRecyclerView.setAdapter(trendingNowAdapter);
+        itemViewedAdapter = new BannerDealAdapter(mContext, itemViewedList);
+        itemViewedRecyclerView.setAdapter(itemViewedAdapter);
+        bannerCategoryAdapter = new BannerCategoryAdapter(mContext, categoryList);
+        categoryRecyclerView.setAdapter(bannerCategoryAdapter);
         setAllSlider();
     }
 
     private void setAllSlider() {
         topSliderAdapter = new TopSliderAdapter(mContext);
         topSliderAdapter.setPagerList(topBannerPagerList);
-        top_banner_sv.setAdapter(topSliderAdapter);
-        top_banner_sv.startAutoScroll();
-        top_banner_sv.setInterval(5000);
-        top_banner_sv.setCycle(true);
-        top_banner_sv.setStopScrollWhenTouch(true);
-        top_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        topBannerScrollView.setAdapter(topSliderAdapter);
+        topBannerScrollView.startAutoScroll();
+        topBannerScrollView.setInterval(5000);
+        topBannerScrollView.setCycle(true);
+        topBannerScrollView.setStopScrollWhenTouch(true);
+        topBannerScrollView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                /*
+                 * Check When PAge is Scrolled
+                 * */
             }
 
             @Override
             public void onPageSelected(int position) {
-                if (top_banner_rg.getChildAt(position) != null) {
-                    ((RadioButton) top_banner_rg.getChildAt(position)).setChecked(true);
+                if (topBannerRadioGroup.getChildAt(position) != null) {
+                    ((RadioButton) topBannerRadioGroup.getChildAt(position)).setChecked(true);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                /*
+                 * Check the Sate of Scrolling
+                 * */
             }
         });
 
         middleSliderAdapter = new MiddleSliderAdapter(mContext);
         middleSliderAdapter.setPagerList(middleBannerPagerList);
-        middle_banner_sv.setAdapter(middleSliderAdapter);
-        middle_banner_sv.startAutoScroll();
-        middle_banner_sv.setInterval(5000);
-        middle_banner_sv.setCycle(true);
-        middle_banner_sv.setStopScrollWhenTouch(true);
-        middle_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        middleBannerScrollView.setAdapter(middleSliderAdapter);
+        middleBannerScrollView.startAutoScroll();
+        middleBannerScrollView.setInterval(5000);
+        middleBannerScrollView.setCycle(true);
+        middleBannerScrollView.setStopScrollWhenTouch(true);
+        middleBannerScrollView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                /*
+                 * Check When PAge is Scrolled
+                 * */
             }
 
             @Override
             public void onPageSelected(int position) {
-                if (middle_banner_rg.getChildAt(position) != null) {
-                    ((RadioButton) middle_banner_rg.getChildAt(position)).setChecked(true);
+                if (middleBannerRadioGroup.getChildAt(position) != null) {
+                    ((RadioButton) middleBannerRadioGroup.getChildAt(position)).setChecked(true);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                /*
+                 * Check the Sate of Scrolling
+                 * */
             }
         });
 
         bottomSliderAdapter = new BottomSliderAdapter(mContext);
         bottomSliderAdapter.setPagerList(bottomBannerPagerList);
-        bottom_banner_sv.setAdapter(bottomSliderAdapter);
-        bottom_banner_sv.startAutoScroll();
-        bottom_banner_sv.setInterval(5000);
-        bottom_banner_sv.setCycle(true);
-        bottom_banner_sv.setStopScrollWhenTouch(true);
-        bottom_banner_sv.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        bottomBannerScrollView.setAdapter(bottomSliderAdapter);
+        bottomBannerScrollView.startAutoScroll();
+        bottomBannerScrollView.setInterval(5000);
+        bottomBannerScrollView.setCycle(true);
+        bottomBannerScrollView.setStopScrollWhenTouch(true);
+        bottomBannerScrollView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                /*
+                 * Check When PAge is Scrolled
+                 * */
             }
 
             @Override
             public void onPageSelected(int position) {
-                if (bottom_banner_rg.getChildAt(position) != null) {
-                    ((RadioButton) bottom_banner_rg.getChildAt(position)).setChecked(true);
+                if (bottomBannerRadioGroup.getChildAt(position) != null) {
+                    ((RadioButton) bottomBannerRadioGroup.getChildAt(position)).setChecked(true);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                /*
+                 * Check the Sate of Scrolling
+                 * */
             }
         });
 
@@ -207,16 +237,16 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     public void onResume() {
         super.onResume();
         if (isUserLogin()) {
-            sign_in_ll.setVisibility(View.GONE);
+            signInLinearLayout.setVisibility(View.GONE);
         } else {
-            sign_in_ll.setVisibility(View.VISIBLE);
+            signInLinearLayout.setVisibility(View.VISIBLE);
         }
     }
 
     public boolean isUserLogin() {
-        String user_id = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
+        String userId = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
         String token = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN);
-        return !(TextUtils.isEmpty(user_id) && TextUtils.isEmpty(token) && user_id == null && token == null);
+        return !(TextUtils.isEmpty(userId) && TextUtils.isEmpty(token) && userId == null && token == null);
     }
 
     private void attemptGetProduct() {
@@ -228,7 +258,7 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getHomeScreenDetails", json, this);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Error", String.valueOf(e));
         }
     }
 
@@ -236,17 +266,17 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         WaitDialog.hideDialog();
         switch (strfFrom.trim()) {
-            case "getHomeScreenDetails": {
+            case "getHomeScreenDetails":
                 if (result.optString("status").trim().equalsIgnoreCase("success")) {
                     setDataAfterResult(result);
                 } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
                 }
                 break;
-            }
-            case "banner": {
+            case "banner":
                 break;
-            }
+            default:
+                Methods.showToast(mContext, "Invalid Result");
         }
     }
 
@@ -257,17 +287,17 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         //Top Slider
         JSONArray topBannerArray = bannerObject.optJSONArray("slider");
         topSliderAdapter.setPagerList(setSlider(topBannerArray, topBannerPagerList));
-        addRadioButtons(top_banner_rg, topBannerArray.length());
+        addRadioButtons(topBannerRadioGroup, topBannerArray.length());
 
         //Middle Slider
         JSONArray middleBannerArray = bannerObject.optJSONArray("banners-middle");
         middleSliderAdapter.setPagerList(setSlider(middleBannerArray, middleBannerPagerList));
-        addRadioButtons(middle_banner_rg, middleBannerArray.length());
+        addRadioButtons(middleBannerRadioGroup, middleBannerArray.length());
 
         //Bottom Slider
         JSONArray bottomBannerArray = bannerObject.optJSONArray("banner-bottom");
         bottomSliderAdapter.setPagerList(setSlider(bottomBannerArray, bottomBannerPagerList));
-        addRadioButtons(bottom_banner_rg, bottomBannerArray.length());
+        addRadioButtons(bottomBannerRadioGroup, bottomBannerArray.length());
 
         //Set Type1 & Type2 Offers
         JSONObject offerObject = bannerObject.optJSONObject("offer");
@@ -276,16 +306,29 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         offerTypeOneAdapter.updateList(setSlider(type1Offer, offerTypeOneList));
         offerTypeTwoAdapter.updateList(setSlider(type2Offer, offerTypeTwoList));
 
-        JSONArray categoryArray = bannerObject.optJSONArray("categories");
+        JSONArray categoryArray = dataObject.optJSONArray("categories");
+        bannerCategoryAdapter.updateList(setCategoryList(categoryArray, categoryList));
 
-        JSONArray mostSearchedArray=dataObject.optJSONArray("most_searched");
-        mostSearchedAdapter.updateList(setList(mostSearchedArray,mostSearchedList));
+        JSONArray mostSearchedArray = dataObject.optJSONArray("most_searched");
+        mostSearchedAdapter.updateList(setList(mostSearchedArray, mostSearchedList));
 
-        JSONArray trendingNowArray=dataObject.optJSONArray("trending_now");
-        trendingNowAdapter.updateList(setList(trendingNowArray,trendingNowList));
+        JSONArray trendingNowArray = dataObject.optJSONArray("trending_now");
+        trendingNowAdapter.updateList(setList(trendingNowArray, trendingNowList));
 
-        JSONArray itemViewedArray=dataObject.optJSONArray("recently_viewed");
-        itemViewedAdapter.updateList(setList(itemViewedArray,itemViewedList));
+        JSONArray itemViewedArray = dataObject.optJSONArray("recently_viewed");
+        itemViewedAdapter.updateList(setList(itemViewedArray, itemViewedList));
+    }
+
+    private ArrayList<CategoryModel> setCategoryList(JSONArray categoryArray, ArrayList<CategoryModel> list) {
+        list.clear();
+        for (int i = 0; i < categoryArray.length(); i++) {
+            CategoryModel obj = new CategoryModel();
+            obj.setId(categoryArray.optJSONObject(i).optString("id"));
+            obj.setName(categoryArray.optJSONObject(i).optString("name"));
+            obj.setImage(categoryArray.optJSONObject(i).optString("image"));
+            list.add(obj);
+        }
+        return list;
     }
 
     private ArrayList<HomeScreenSliderModel> setSlider(JSONArray sliderArray, ArrayList<HomeScreenSliderModel> list) {
@@ -325,362 +368,21 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             rdbtn.setScaleY(0.50f);
             radioGroup.addView(rdbtn);
         }
-        // mPagerRg.addView(ll);
     }
-
-
-    /*private void setPager(JSONArray dataObj) {
-        try {
-            mPagerList.clear();
-            int size = dataObj.length();
-            addRadioButtons(size);
-            for (int i = 0; i < size; i++) {
-                mPagerList.add(new HomePagerModel("", dataObj.getString(i)));
-            }
-            HomePagerAdapter mHomePagerAdapter = new HomePagerAdapter(mContext);
-            mHomePagerAdapter.setPagerList(mPagerList);
-            pagerView.setAdapter(mHomePagerAdapter);
-            pagerView.startAutoScroll();
-            pagerView.setInterval(5000);
-            pagerView.setCycle(true);
-            pagerView.setStopScrollWhenTouch(true);
-
-            pagerView1.setAdapter(mHomePagerAdapter);
-            pagerView1.startAutoScroll();
-            pagerView1.setInterval(5000);
-            pagerView1.setCycle(true);
-            pagerView1.setStopScrollWhenTouch(true);
-
-            pagerView2.setAdapter(mHomePagerAdapter);
-            pagerView2.startAutoScroll();
-            pagerView2.setInterval(5000);
-            pagerView2.setCycle(true);
-            pagerView2.setStopScrollWhenTouch(true);
-
-            pagerView3.setAdapter(mHomePagerAdapter);
-            pagerView3.startAutoScroll();
-            pagerView3.setInterval(5000);
-            pagerView3.setCycle(true);
-            pagerView3.setStopScrollWhenTouch(true);
-
-
-            pagerView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-                    Log.e("sdfdsfdsfdsf", "sfdsfdsfdsf Poooooo: " + position);
-                    if (((RadioButton) mPagerRg.getChildAt(position)) != null) {
-                        ((RadioButton) mPagerRg.getChildAt(position)).setChecked(true);
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-
-            pagerView1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-
-                    Log.e("sdfdsfdsfdsf", "sfdsfdsfdsf Poooooo: " + position);
-                    if (((RadioButton) mPagerRg1.getChildAt(position)) != null) {
-                        ((RadioButton) mPagerRg1.getChildAt(position)).setChecked(true);
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-
-            pagerView2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-
-                    Log.e("sdfdsfdsfdsf", "sfdsfdsfdsf Poooooo: " + position);
-                    if (((RadioButton) mPagerRg2.getChildAt(position)) != null) {
-                        ((RadioButton) mPagerRg2.getChildAt(position)).setChecked(true);
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-
-            pagerView3.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-
-                    Log.e("sdfdsfdsfdsf", "sfdsfdsfdsf Poooooo: " + position);
-                    if (((RadioButton) mPagerRg3.getChildAt(position)) != null) {
-                        ((RadioButton) mPagerRg3.getChildAt(position)).setChecked(true);
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-
-        } catch (Exception e) {
-
-
-        }
-
-        WaitDialog.hideDialog();
-    }*/
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        /*pagerView.stopAutoScroll();
-        pagerView1.stopAutoScroll();
-        pagerView2.stopAutoScroll();
-        pagerView3.stopAutoScroll();*/
-    }
-
-    /*private void setProducts(JSONObject dataObj) {
-
-        try {
-
-            Log.v("CateAdapter", "imgUrlllll ********* dfdfdfdfdf 7777777777 ");
-
-            productList.clear();
-
-
-            Iterator<String> iter = dataObj.keys();
-
-
-            while (iter.hasNext()) {
-                String key = iter.next();
-                final String headerKey = key;
-                Log.e("fdsfdsfds", "dfdsfdsfdsf dsfdsf dsf ds: " + headerKey);
-
-
-                if (dataObj.getJSONArray(headerKey).length() > 0) {
-
-                    jArray = dataObj.getJSONArray(headerKey);
-                    JSONObject jobj = jArray.getJSONObject(0);
-                    //productList.add(new ProductModel(headerKey.trim().replaceAll("_", " "), jobj.getString("is_product"), jobj.getString("type"), dataObj.getJSONArray(headerKey)));
-
-                }
-
-
-            }
-
-
-            sortInAse();
-            productList.add(new ProductModel("Featured Categories", "0", "category", jArray));
-            bannerDealAdapter.setList(productList);
-
-            rv_featuredCategories.setAdapter(bannerDealAdapter);
-            rv_featuredCategories1.setAdapter(bannerDealAdapter);
-            rv_featuredCategories2.setAdapter(bannerDealAdapter);
-            rv_featuredcategories3.setAdapter(bannerDealAdapter);
-            rv_featuredcategories4.setAdapter(bannerDealAdapter);
-            WaitDialog.hideDialog();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    /*
-    * Inflated all product category and items
-    * */
-    /*private void inflateData(int rowCount) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.home_feature_products_row, null);
-        Object[] keys = mProductHashmap.keySet().toArray();
-        ProductInflateView productInflateView = new ProductInflateView(view, rowCount, keys[rowCount].toString());
-        view.setTag(productInflateView);
-
-    }*/
-
-    //inflate view
-    /*class ProductInflateView {
-        private LinearLayoutManager mLayoutManager;
-        private HomeSubProductAdapter mAdapter;
-        private RecyclerView mProductsRv;
-
-        ProductInflateView(View view, int rowCount, String key) {
-            mAdapter = new HomeSubProductAdapter(mContext);
-            mProductsRv = (RecyclerView) view.findViewById(R.id.rv_products);
-            if (mLayoutManager != null) {// Workaround: android.support.v7.widget.LinearLayoutManager is already attached to a RecyclerView
-                mLayoutManager = null;
-            }
-            mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-            mProductsRv.setLayoutManager(mLayoutManager);
-            ArrayList<HomeProductModel> list = mProductHashmap.get(key);
-            mAdapter.setProductList(list);
-            mProductsRv.setAdapter(mAdapter);
-        }
-    }*/
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.sign_in_tv: {
-                if (!isUserLogin()) {
-                    ((HomeActivity) getActivity()).setParticulatTab(4);
-                }
-                break;
+        int i = view.getId();
+        if (i == R.id.sign_in_tv) {
+            if (!isUserLogin()) {
+                ((HomeActivity) getActivity()).setParticulatTab(4);
             }
+
+        } else {
+            Methods.showToast(mContext, "Invalid Case");
         }
     }
-
-
-    // Get user information
-    /*private void attemptGetFeaturedProduct() {
-        try {
-
-            JsonObject json = new JsonObject();
-            json.addProperty("limit", "5");
-            json.addProperty("page", "1");
-            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
-            json.addProperty("width", getResources().getDimension(R.dimen.home_product_row_width));
-            json.addProperty("height", getResources().getDimension(R.dimen.home_product_row_image_height));
-
-            ServerCalling.ServerCallingProductsApiPost(getActivity(), "getFeaturedProduct", json, this);
-
-
-        } catch (Exception e) {
-
-
-            Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
-        }
-
-    }*/
-
-    // Get user information
-    /*private void attemptGetFeaturedCategories() {
-        try {
-
-            JsonObject json = new JsonObject();
-            json.addProperty("limit", "5");
-            json.addProperty("page", "1");
-            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
-            json.addProperty("width", getResources().getDimension(R.dimen.home_categouries_row_height));
-            json.addProperty("height", getResources().getDimension(R.dimen.home_categouries_row_height));
-
-            ServerCalling.ServerCallingProductsApiPost(getActivity(), "getCategories", json, this);
-
-
-        } catch (Exception e) {
-
-
-            Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
-        }
-
-    }*/
-
-    /*private void attemptPager() {
-
-        try {
-            WaitDialog.showDialog(getActivity());
-            JsonObject json = new JsonObject();
-//            json.addProperty("limit", "5");
-//            json.addProperty("page", "1");
-
-            json.addProperty("width", Common.getDeviceHeightWidth(getActivity()).widthPixels);
-            json.addProperty("height", getResources().getDimension(R.dimen.home_viewpager_row_height));
-
-
-            ServerCalling.ServerCallingProductsApiPost(getActivity(), "banner", json, this);
-
-
-        } catch (Exception e) {
-
-
-            Log.e("HomeFragment Exception", "Exception attemptTOGetUserInfo: " + e.getMessage());
-        }
-    }*/
-
-    //Sorting list
-    /*public void sortInAse() {
-        Comparator<ProductModel> comparator = new Comparator<ProductModel>() {
-
-            @Override
-            public int compare(ProductModel object1, ProductModel object2) {
-
-
-                return object1.isProduct.compareToIgnoreCase(object2.isProduct);
-            }
-        };
-        Collections.sort(productList, comparator);
-
-    }*/
-
-
-    /*public void addRadioButtons(int number) {
-
-        mPagerRg.removeAllViews();
-
-        for (int i = 1; i <= number; i++) {
-            RadioButton rdbtn = new RadioButton(getActivity());
-            rdbtn.setButtonDrawable(R.drawable.radio_button_bg);
-            rdbtn.setId((1 * 2) + i);
-            rdbtn.setPadding(0, 0, 0, 0);
-            rdbtn.setScaleX(0.50f);
-            rdbtn.setScaleY(0.50f);
-            mPagerRg.addView(rdbtn);
-
-            RadioButton rdbtn1 = new RadioButton(getActivity());
-            rdbtn1.setButtonDrawable(R.drawable.radio_button_bg);
-            rdbtn1.setId((1 * 2) + i);
-            rdbtn1.setPadding(0, 0, 0, 0);
-            rdbtn1.setScaleX(0.50f);
-            rdbtn1.setScaleY(0.50f);
-            mPagerRg1.addView(rdbtn1);
-
-            RadioButton rdbtn2 = new RadioButton(getActivity());
-            rdbtn2.setButtonDrawable(R.drawable.radio_button_bg);
-            rdbtn2.setId((1 * 2) + i);
-            rdbtn2.setPadding(0, 0, 0, 0);
-            rdbtn2.setScaleX(0.50f);
-            rdbtn2.setScaleY(0.50f);
-            mPagerRg2.addView(rdbtn2);
-
-            RadioButton rdbtn3 = new RadioButton(getActivity());
-            rdbtn3.setButtonDrawable(R.drawable.radio_button_bg);
-            rdbtn3.setId((1 * 2) + i);
-            rdbtn3.setPadding(0, 0, 0, 0);
-            rdbtn3.setScaleX(0.50f);
-            rdbtn3.setScaleY(0.50f);
-            mPagerRg3.addView(rdbtn3);
-
-        }
-        // mPagerRg.addView(ll);
-
-
-    }*/
 
     @Override
     public void refreshListSuccess() {

@@ -271,5 +271,6 @@
     <string name="m">M</string>
     <string name="most_searched">Most Searched</string>
     <string name="trending_now">Trending Now</string>
+    <string name="items_you_viewed">Items You Viewed</string>
 
 </resources>
