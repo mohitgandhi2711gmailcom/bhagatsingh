@@ -183,8 +183,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements View.OnCl
         try {
             WaitDialog.showDialog(this);
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(OrderHistoryActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(OrderHistoryActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(OrderHistoryActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(OrderHistoryActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
             ServerCalling.ServerCallingProductsApiPost(OrderHistoryActivity.this, "getOrderHistory", json, this);
 

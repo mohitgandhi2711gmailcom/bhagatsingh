@@ -109,8 +109,8 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
             JsonObject json = new JsonObject();
             json.addProperty("old_password", oldPassword);
             json.addProperty("new_password", newPassword);
-            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             ServerCalling.ServerCallingUserApiPost(mContext, "changePassword", json, this);
         }
     }

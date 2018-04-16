@@ -162,12 +162,12 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
 
 
         Double itemPrice = Double.parseDouble(strProductPrice) - Integer.parseInt(strDeliveryPrice);
-        tv_price.setText(Methods.getTwoDecimalVAlue("" + itemPrice) + " " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_price.setText(Methods.getTwoDecimalVAlue("" + itemPrice) + " " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
         String totlePrice = "" + (itemPrice + Integer.parseInt(strDeliveryPrice));
-        tv_totlePrice.setText(Methods.getTwoDecimalVAlue("" + totlePrice) + " " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_totlePrice.setText(Methods.getTwoDecimalVAlue("" + totlePrice) + " " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
-        tv_deliveryPrice.setText(strDeliveryPrice+" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_deliveryPrice.setText(strDeliveryPrice+" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
         tv_priceLable.setText(strQty);
 
@@ -245,7 +245,7 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
 
                 } else {
 
-                    String price = tv_totlePrice.getText().toString().trim().replaceAll(" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE), "").trim();
+                    String price = tv_totlePrice.getText().toString().trim().replaceAll(" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE), "").trim();
 
                     //attemptToPlaceOrderUsingPayU(price, strProductName);
                     attemptPlaceOrder();
@@ -290,10 +290,10 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             }
 
             JSONObject jsonObj = new JSONObject();
-            jsonObj.put("currency_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+            jsonObj.put("currency_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
             jsonObj.put("quote_id", strQuoteId);
-            jsonObj.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            jsonObj.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            jsonObj.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            jsonObj.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             jsonObj.put("address_id", strAddressId);
             jsonObj.put("payment_method", "checkmo");
             jsonObj.put("items", jarray);
@@ -318,8 +318,8 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
 
 
             JSONObject json = new JSONObject();
-            json.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             json.put("order_id", strOrderId);
             json.put("txn_id", strTxnId);
             json.put("payment_id", strPaymentId);
@@ -353,7 +353,7 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
 
                     if (rb_creditDebit.isChecked()) {
 
-                        String price = tv_totlePrice.getText().toString().trim().replaceAll(" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE), "").trim();
+                        String price = tv_totlePrice.getText().toString().trim().replaceAll(" " + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE), "").trim();
 
                         attemptToPlaceOrderUsingPayU(price, strProductName);
 
@@ -444,12 +444,12 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             JSONObject jsonObj = new JSONObject();
             jsonObj.put("txnid", "" + txId);
             jsonObj.put("amount", amount);
-            jsonObj.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            jsonObj.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            jsonObj.put("user_id", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            jsonObj.put("token", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             jsonObj.put("productinfo", strProductName);
-            jsonObj.put("firstname", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
-            jsonObj.put("email", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_EMAIL));
-            jsonObj.put("user_credentials", Common.KEY_PAYMENT_MERCHENT + ":" + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
+            jsonObj.put("firstname", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_LAST_NAME));
+            jsonObj.put("email", SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL));
+            jsonObj.put("user_credentials", Common.KEY_PAYMENT_MERCHENT + ":" + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
             jsonObj.put("udf1", "udf1");
             jsonObj.put("udf2", "udf2");
             jsonObj.put("udf3", "udf3");
@@ -462,7 +462,7 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             // ServerCalling.ServerCallingProductsApiPost(PaymentMethodsActivity.this, "getPaymentHash", (JsonObject) new JsonParser().parse(jsonObj.toString()), this);
 
 
-            userCredentials = Common.KEY_PAYMENT_MERCHENT + ":" + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_ID);
+            userCredentials = Common.KEY_PAYMENT_MERCHENT + ":" + SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
 
             //TODO Below are mandatory params for hash genetation
             mPaymentParams = new PaymentParams();
@@ -475,9 +475,9 @@ public class PaymentMethodsActivity extends AppCompatActivity implements View.On
             mPaymentParams.setKey(Common.KEY_PAYMENT_MERCHENT);
             mPaymentParams.setAmount(amount);
             mPaymentParams.setProductInfo(prductInfo);
-            mPaymentParams.setFirstName(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
-            mPaymentParams.setEmail(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_EMAIL));
-            mPaymentParams.setPhone(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO));
+            mPaymentParams.setFirstName(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_LAST_NAME));
+            mPaymentParams.setEmail(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL));
+            mPaymentParams.setPhone(SessionStore.getUserDetails(PaymentMethodsActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_MOBILENO));
 
       /*  * Transaction Id should be kept unique for each transaction.
         *

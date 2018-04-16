@@ -89,7 +89,7 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
 
 
 
-        holder.mCurrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        holder.mCurrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
 
@@ -136,8 +136,8 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
 
                         WaitDialog.showDialog(mContext);
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
 
                         pos = position;
@@ -176,8 +176,8 @@ public class FeaturedProductsAdapter extends RecyclerView.Adapter<FeaturedProduc
 
 
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
                         json.addProperty("qty", 1);
                         json.addProperty("quote_id","");

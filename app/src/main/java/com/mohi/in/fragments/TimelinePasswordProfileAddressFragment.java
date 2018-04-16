@@ -68,7 +68,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     }
 
     private void setUserData() {
-        HashMap<String, String> map = SessionStore.getUserDetails(mContext, Common.userPrefName);
+        HashMap<String, String> map = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME);
         if (map.get(SessionStore.USER_ID) == null || map.get(SessionStore.USER_ID).isEmpty()) {
             Methods.showToast(mContext, "User is not logged in");
         } else {
@@ -79,7 +79,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     }
 
     private boolean checkLogin() {
-        HashMap<String, String> map = SessionStore.getUserDetails(mContext, Common.userPrefName);
+        HashMap<String, String> map = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME);
         return !(map.get(SessionStore.USER_ID) == null || map.get(SessionStore.USER_ID).isEmpty());
     }
 

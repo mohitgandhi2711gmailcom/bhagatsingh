@@ -51,7 +51,7 @@ public class ServerCalling {
                                     Log.e("ServerCallingUserApi ", urlParameter + "   " + jsonData.getString("msg"));
                                     if (jsonData.get("error") != null) {
                                         if (jsonData.getString("error").equalsIgnoreCase("461")) {
-                                            SessionStore.clear(mContext, Common.userPrefName);
+                                            SessionStore.clear(mContext, Common.USER_PREFS_NAME);
                                         } else if (jsonData.getString("error").equalsIgnoreCase("462")) {
                                             new AlertDialog.Builder(mContext)
                                                     .setTitle((mContext.getResources()).getString(R.string.update_text))
@@ -126,9 +126,8 @@ public class ServerCalling {
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             mContext.startActivity(intent);
                                             ((Activity) mContext).finish();*/
-                                            SessionStore.clear(mContext, Common.userPrefName);
+                                            SessionStore.clear(mContext, Common.USER_PREFS_NAME);
                                         } else if (jsonData.getString("error").equalsIgnoreCase("462")) {
-
 
                                             new AlertDialog.Builder(mContext)
                                                     .setTitle((mContext.getResources()).getString(R.string.update_text))
@@ -150,7 +149,6 @@ public class ServerCalling {
 
                                 } else {
                                     callBack.ServerCallBackSuccess(json, urlParameter);
-
                                 }
 
                             }
@@ -240,7 +238,7 @@ public class ServerCalling {
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             mContext.startActivity(intent);
                                             ((Activity) mContext).finish();*/
-                                                SessionStore.clear(mContext, Common.userPrefName);
+                                                SessionStore.clear(mContext, Common.USER_PREFS_NAME);
                                             } else if (jsonData.getString("error").equalsIgnoreCase("462")) {
 
 
@@ -329,7 +327,7 @@ public class ServerCalling {
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             mContext.startActivity(intent);
                                             ((Activity) mContext).finish();*/
-                                                SessionStore.clear(mContext, Common.userPrefName);
+                                                SessionStore.clear(mContext, Common.USER_PREFS_NAME);
                                             } else if (jsonData.getString("error").equalsIgnoreCase("462")) {
 
 

@@ -207,8 +207,8 @@ public class DealsFragment extends Fragment  implements  ServerCallBack{
             JsonObject json = new JsonObject();
             json.addProperty("limit", "");
             json.addProperty("page", "");
-            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
             json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
 

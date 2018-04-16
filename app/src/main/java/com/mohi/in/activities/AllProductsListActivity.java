@@ -293,8 +293,8 @@ public class AllProductsListActivity extends AppCompatActivity implements View.O
                     }
                 }
                 JSONObject json = new JSONObject();
-                json.put("user_id", SessionStore.getUserDetails(AllProductsListActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-                json.put("token", SessionStore.getUserDetails(AllProductsListActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.put("user_id", SessionStore.getUserDetails(AllProductsListActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.put("token", SessionStore.getUserDetails(AllProductsListActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.put("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                 json.put("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                 json.put("limit", TOTAL_PAGES);
@@ -312,8 +312,8 @@ public class AllProductsListActivity extends AppCompatActivity implements View.O
                 JsonObject json = new JsonObject();
                 json.addProperty("limit", TOTAL_PAGES);
                 json.addProperty("page", currentPage);
-                json.addProperty("user_id", SessionStore.getUserDetails(AllProductsListActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-                json.addProperty("token", SessionStore.getUserDetails(AllProductsListActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.addProperty("user_id", SessionStore.getUserDetails(AllProductsListActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(AllProductsListActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                 json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                 json.addProperty("type", strType);

@@ -235,8 +235,8 @@ public class ModifyAdressRowAdapter extends RecyclerView.Adapter<ModifyAdressRow
                         WaitDialog.showDialog(mContext);
 
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("address_id", model.address_id);
 
                         pos = position;
@@ -310,13 +310,13 @@ public class ModifyAdressRowAdapter extends RecyclerView.Adapter<ModifyAdressRow
                     mList.remove(pos);
 
                     HashMap<String, String> hash = new HashMap<>();
-                    hash = SessionStore.getUserDetails(mContext, Common.userPrefName);
+                    hash = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME);
 
                     if(mList.size()==0){
                         //Country Code may recive in future
                         String countryCode="";
 
-                        //SessionStore.saveUserDetails(mContext, Common.userPrefName, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
+                        //SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
                         //, hash.get(SessionStore.USER_FIRST_NAME),hash.get(SessionStore.USER_LAST_NAME), hash.get(SessionStore.PROFILEPICTURE), "","","", hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
                     }else {
 
@@ -347,7 +347,7 @@ public class ModifyAdressRowAdapter extends RecyclerView.Adapter<ModifyAdressRow
                         }
 
 
-                        //SessionStore.saveUserDetails(mContext, Common.userPrefName, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
+                        //SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, hash.get(SessionStore.USER_ID), hash.get(SessionStore.USER_TOKEN), hash.get(SessionStore.USER_EMAIL), hash.get(SessionStore.USER_MOBILENO)
                               //  , hash.get(SessionStore.USER_FIRST_NAME),hash.get(SessionStore.USER_LAST_NAME), hash.get(SessionStore.PROFILEPICTURE), strAddresId,strAddressName,strAddress, hash.get(SessionStore.USER_CURRENCYTYPE),hash.get(SessionStore.COUNTRY_CODE));
 
                     }

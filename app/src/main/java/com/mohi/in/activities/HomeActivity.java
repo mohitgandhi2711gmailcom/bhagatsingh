@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -115,7 +114,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         resideMenu.setMenuListener(menuListener);
         resideMenu.setScaleValue(0.6f);
 
-        // create menu items;
+        /*
+        * create menu items
+        * */
         itemCategories = new ResideMenuItem(this, R.drawable.empty_shape, "CATEGORIES");
         itemHelp = new ResideMenuItem(this, R.drawable.empty_shape, "HELP");
         itemFaq = new ResideMenuItem(this, R.drawable.empty_shape, "FAQ");
@@ -173,7 +174,12 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     @Override
     protected void onResume() {
         super.onResume();
-        attemptTOGetUserInfo();
+        String count = SessionStore.getCartCount(mContext, Common.USER_PREFS_NAME);
+        if (isUserLogin() && count != null && !TextUtils.isEmpty(count)) {
+            setCartCount(count);
+        } else {
+            attemptTOGetUserInfo();
+        }
     }
 
     // Get user information
@@ -182,10 +188,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             if (isUserLogin()) {
                 WaitDialog.showDialog(this);
                 JsonObject json = new JsonObject();
-                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 ServerCalling.ServerCallingProductsApiPost(mContext, "viewCartCount", json, this);
-                //ServerCalling.ServerCallingUserApiPost(HomeActivity.this, "getProfile", json, this);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,9 +198,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     }
 
     public boolean isUserLogin() {
-        String user_id = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
-        String token = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN);
-        return !(TextUtils.isEmpty(user_id) && TextUtils.isEmpty(token) && user_id == null && token == null);
+        String userId = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
+        String token = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN);
+        return !(TextUtils.isEmpty(userId) && TextUtils.isEmpty(token) && userId == null && token == null);
     }
 
     @Override
@@ -352,6 +357,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override
         public void openMenu() {
+            /*
+            * Open Menu Listener
+            * */
         }
 
         @Override
@@ -372,44 +380,38 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     // ServerCallBackSuccess
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
-        switch (strfFrom) {
-            case "viewCartCount": {
-                if (result.optString("status").trim().equalsIgnoreCase("success")) {
-                    JSONObject jdata = result.optJSONObject("data");
-                    setCartCount(jdata.optString("total_product"));
-                } else {
-                    Methods.showToast(mContext, result.optString("msg"));
-                }
-                break;
+        if (strfFrom.equals("viewCartCount")) {
+            if (result.optString("status").trim().equalsIgnoreCase("1")) {
+                JSONObject jdata = result.optJSONObject("data");
+                setCartCount(jdata.optString("total_product"));
+            } else {
+                Methods.showToast(mContext, result.optString("msg"));
             }
-
-            case "getProfile": {
-                if (result.optString("status").trim().equalsIgnoreCase("success")) {
-                    JSONObject data = result.optJSONObject("data");
-                    String user_id = data.optString("user_id");
-                    String token = data.optString("token");
-                    String email = data.optString("email");
-                    String mob_number = data.optString("mob_number");
-                    String firstName = data.optString("firstname");
-                    String lastName = data.optString("lastname");
-                    String user_image = data.optString("user_image");
-                    String currency = data.optString("currency");
-                    String cntry_code = data.optString("cntry_code");
-                    SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
-                } else {
-                    Methods.showToast(mContext, result.optString("msg"));
-                }
-                break;
+        } else if (strfFrom.equals("getProfile")) {
+            if (result.optString("status").trim().equalsIgnoreCase("success")) {
+                JSONObject data = result.optJSONObject("data");
+                String userId = data.optString("user_id");
+                String token = data.optString("token");
+                String email = data.optString("email");
+                String mobNumber = data.optString("mob_number");
+                String firstName = data.optString("firstname");
+                String lastName = data.optString("lastname");
+                String userImage = data.optString("user_image");
+                String currency = data.optString("currency");
+                String cntryCode = data.optString("cntry_code");
+                SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, userId, token, email, mobNumber, firstName, lastName, userImage, currency, cntryCode);
+            } else {
+                Methods.showToast(mContext, result.optString("msg"));
             }
         }
     }
 
     public void setCartCount(String value) {
+        SessionStore.saveCartCount(mContext, Common.USER_PREFS_NAME, value);
+        ((TextView) mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count)).setText(" " + Methods.twoDigitFormat(value) + " ");
         if (Integer.parseInt(value) == 0) {
-            ((TextView) mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count)).setText(" " + Methods.twoDigitFormat(value) + " ");
             mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count).setVisibility(View.GONE);
         } else {
-            ((TextView) mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count)).setText(" " + Methods.twoDigitFormat(value) + " ");
             mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.txt_cart_count).setVisibility(View.VISIBLE);
         }
     }
@@ -444,8 +446,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         }
     }
 
-    public void setParticulatTab(int position)
-    {
+    public void setParticulatTab(int position) {
         mTabHost.setCurrentTab(position);
     }
 }

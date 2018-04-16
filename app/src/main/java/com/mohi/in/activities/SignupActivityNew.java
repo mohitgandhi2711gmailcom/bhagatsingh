@@ -266,7 +266,7 @@ public class SignupActivityNew extends AppCompatActivity implements View.OnClick
             String user_image = data.optString("user_image");
             String currency = data.optString("currency");
             String cntry_code = data.optString("cntry_code");
-            SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+            SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
             overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
             finish();
         } else {

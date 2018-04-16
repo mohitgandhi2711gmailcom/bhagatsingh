@@ -7,24 +7,16 @@ import android.util.Log;
 
 import com.payu.india.Payu.PayuConstants;
 
-/**
- * Created by pankaj on 9/20/17.
- */
-
 public class Common {
 
-    public static String userPrefName = "userInfo";
-    public static String userPrefAddress = "userAddress";
-    public static String currencyPrefName = "currency";
-    public static String KEY_APP_VERSION = "version";
-    public static String CART_COUNT = "00";
-    public static String CART_CURRENCY = "INR";
+    public static final String USER_PREFS_NAME = "userInfo";
+    public static final String USER_QUOTE_ID = "quote_id";
+    public static final String USER_PRODUCT_ID = "product_id";
+    public static final String API_STATUS = "status";
 
-
-   // public static String KEY_PAYMENT_MERCHENT = "w7yOV1c1";
-    public static String KEY_PAYMENT_MERCHENT = "gtKFFx";
-    public static String KEY_PAYMENT_SALT = "ShzwoBLFVb";
-    public static String KEY_PAYMENT_MID = "5970481";
+    public static final String KEY_PAYMENT_MERCHENT = "gtKFFx";
+    public static final String KEY_PAYMENT_SALT = "ShzwoBLFVb";
+    public static final String KEY_PAYMENT_MID = "5970481";
 
     public static final boolean isLive = false;
     public static int KEY_PAYMENT_TEST = PayuConstants.STAGING_ENV;

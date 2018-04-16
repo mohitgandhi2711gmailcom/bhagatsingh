@@ -118,7 +118,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private void setValue() {
 
 
-        if (SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID) == null) {
+        if (SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID) == null) {
 
             //sv_myAccountView.setVisibility(View.GONE);
             v_loginSignup.setVisibility(View.VISIBLE);
@@ -136,9 +136,9 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
 
 
         Glide.with(getActivity())
-                .load(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.PROFILEPICTURE))
+                .load(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.PROFILEPICTURE))
                 .into(iv_usetImage);
-        tv_userName.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_LAST_NAME));
+        tv_userName.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_LAST_NAME));
 
 
         ll_MYA.setOnClickListener(this);
@@ -205,7 +205,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    SessionStore.clear(getActivity(), Common.userPrefName);
+                                    SessionStore.clear(getActivity(), Common.USER_PREFS_NAME);
 
                                     Intent intent = new Intent(getActivity(), LoginActivityNew.class);
                                     startActivity(intent);

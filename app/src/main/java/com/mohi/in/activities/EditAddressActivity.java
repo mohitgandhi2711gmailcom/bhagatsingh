@@ -230,8 +230,8 @@ public class EditAddressActivity extends AppCompatActivity implements View.OnCli
 try {
 
     JsonObject json = new JsonObject();
-    json.addProperty("user_id", SessionStore.getUserDetails(EditAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-    json.addProperty("token", SessionStore.getUserDetails(EditAddressActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+    json.addProperty("user_id", SessionStore.getUserDetails(EditAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+    json.addProperty("token", SessionStore.getUserDetails(EditAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
     json.addProperty("address_id", strAddressId);
 
 
@@ -341,8 +341,8 @@ try {
 
                 WaitDialog.showDialog(this);
                 JsonObject json = new JsonObject();
-                json.addProperty("user_id", SessionStore.getUserDetails(EditAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-                json.addProperty("token", SessionStore.getUserDetails(EditAddressActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.addProperty("user_id", SessionStore.getUserDetails(EditAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(EditAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.addProperty("name", name);
                 json.addProperty("country", contry);
                 json.addProperty("city", city);

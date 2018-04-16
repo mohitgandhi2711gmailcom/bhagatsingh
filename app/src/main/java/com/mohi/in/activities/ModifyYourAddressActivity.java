@@ -274,8 +274,8 @@ public class ModifyYourAddressActivity extends AppCompatActivity implements View
         try {
             WaitDialog.showDialog(this);
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(ModifyYourAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token",  SessionStore.getUserDetails(ModifyYourAddressActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(ModifyYourAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token",  SessionStore.getUserDetails(ModifyYourAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
             ServerCalling.ServerCallingUserApiPost(ModifyYourAddressActivity.this, "getShippingAddress", json, this);
 

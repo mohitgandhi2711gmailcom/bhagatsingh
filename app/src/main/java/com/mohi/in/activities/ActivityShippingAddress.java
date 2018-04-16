@@ -253,8 +253,8 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
             try {
                 WaitDialog.showDialog(this);
                 JsonObject json = new JsonObject();
-                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.addProperty("firstname", firstName);
                 json.addProperty("lastname", lastName);
                 json.addProperty("telephone", phoneNmuber);
@@ -328,7 +328,7 @@ public class ActivityShippingAddress extends AppCompatActivity implements View.O
             String country_id = data.optString("country_id");
             boolean default_shipping = data.optBoolean("default_shipping");
             boolean default_billing = data.optBoolean("default_billing");
-            SessionStore.saveUserAddress(mContext, Common.userPrefName, address_id, telephone, street_1, street_2, city, region, postcode, country_id, default_shipping, default_billing);
+            SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME, address_id, telephone, street_1, street_2, city, region, postcode, country_id, default_shipping, default_billing);
             finish();
         }
     }

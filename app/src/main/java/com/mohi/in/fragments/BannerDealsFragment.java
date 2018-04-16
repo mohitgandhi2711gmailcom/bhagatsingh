@@ -244,8 +244,8 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     }
 
     public boolean isUserLogin() {
-        String userId = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID);
-        String token = SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN);
+        String userId = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
+        String token = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN);
         return !(TextUtils.isEmpty(userId) && TextUtils.isEmpty(token) && userId == null && token == null);
     }
 
@@ -253,8 +253,8 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         try {
             WaitDialog.showDialog(getActivity());
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getHomeScreenDetails", json, this);
 
         } catch (Exception e) {

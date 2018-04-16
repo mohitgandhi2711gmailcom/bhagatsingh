@@ -39,10 +39,11 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     private boolean isLoading = false;
     private boolean isLastPage = false;
     // limiting to 5 for this tutorial, since total pages in actual API is very large. Feel free to modify.
-    private int TOTAL_PAGES = 10;
+    private static final int TOTAL_PAGES = 10;
     private int currentPage = PAGE_START;
     private String strTypeValue;
-    private String cat_id;
+    private String catId;
+    private static final String CATEGORY_ID="cat_id";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         if(getArguments()!=null)
         {
             strTypeValue = getArguments().getString("name");
-            cat_id = getArguments().getString("cat_id");
+            catId = getArguments().getString(CATEGORY_ID);
         }
         return v;
     }
@@ -71,7 +72,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         mCategoryList = new ArrayList<>();
         mCategoryRv.setItemAnimator(new DefaultItemAnimator());
         mCategoryRv.setAdapter(mCategoryAdapter);
-        attemptGetFeaturedCategories();
+        attemptGetCategories();
         mCategoryRv.addOnScrollListener(new PaginationScrollListener(mLayoutManager) {
             @Override
             protected void loadMoreItems() {
@@ -81,7 +82,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        attemptGetFeaturedCategories();
+                        attemptGetCategories();
                     }
                 }, 1000);
             }
@@ -103,8 +104,8 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         });
     }
 
-    private void attemptGetFeaturedCategories() {
-        if(strTypeValue!=null&& !TextUtils.isEmpty(strTypeValue)&&cat_id!=null&&!TextUtils.isEmpty(cat_id))
+    private void attemptGetCategories() {
+        if(strTypeValue!=null&& !TextUtils.isEmpty(strTypeValue)&&catId!=null&&!TextUtils.isEmpty(catId))
         {
             try {
                 if (currentPage == 1) {
@@ -112,9 +113,9 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 }
                 if (strTypeValue.trim().equalsIgnoreCase("Filter")) {
                     JSONArray jj = new JSONArray();
-                    assert cat_id != null;
-                    if (!cat_id.trim().equalsIgnoreCase("")) {
-                        String catValue[] = cat_id.trim().split(",");
+                    assert catId != null;
+                    if (!catId.trim().equalsIgnoreCase("")) {
+                        String catValue[] = catId.trim().split(",");
                         int size = catValue.length;
                         if (size > 0) {
                             for (String aCatValue : catValue) {
@@ -123,13 +124,13 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                         }
                     }
                     JSONObject json = new JSONObject();
-                    json.put("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-                    json.put("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
+                    json.put("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json.put("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json.put("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                     json.put("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                     json.put("limit", TOTAL_PAGES);
                     json.put("page", currentPage);
-                    json.put("cat_id", jj);
+                    json.put(CATEGORY_ID, jj);
                     json.put("from_price", "");
                     json.put("to_price", "");
                     json.put("availabilty", "");
@@ -142,18 +143,18 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     JsonObject json = new JsonObject();
                     json.addProperty("limit", TOTAL_PAGES);
                     json.addProperty("page", currentPage);
-                    json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-                    json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
+                    json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                     json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                     json.addProperty("type", strTypeValue);
-                    json.addProperty("cat_id", cat_id);
+                    json.addProperty(CATEGORY_ID, catId);
                     json.addProperty("search", "");
                     json.addProperty("sort", "");
                     ServerCalling.ServerCallingProductsApiPost(getActivity(), "getProduct", json, this);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e("Error",e.toString());
             }
         }
         else
@@ -187,7 +188,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Error",e.toString());
         }
     }
 

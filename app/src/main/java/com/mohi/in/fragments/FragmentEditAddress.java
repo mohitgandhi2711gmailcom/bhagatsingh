@@ -65,8 +65,8 @@ public class FragmentEditAddress extends Fragment implements View.OnClickListene
         try {
             WaitDialog.showDialog(mContext);
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             ServerCalling.ServerCallingUserApiPost(mContext, "addresslist", json, this);
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,9 +151,9 @@ public class FragmentEditAddress extends Fragment implements View.OnClickListene
         try {
             WaitDialog.showDialog(mContext);
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
             json.addProperty("address_id", addressId);
-            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             ServerCalling.ServerCallingUserApiPost(mContext, "deleteaddress", json, this);
         } catch (Exception e) {
             e.printStackTrace();

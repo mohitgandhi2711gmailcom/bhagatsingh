@@ -137,7 +137,7 @@ public class ShippingAddressActivity extends AppCompatActivity implements Server
 
         tv_headerTilel.setText("Deliver");
 
-        tv_currencyType.setText(" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_currencyType.setText(" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
         tv_shippingAddress.setText(strAddresName + "\n" + strAddress);
 
@@ -160,8 +160,8 @@ public class ShippingAddressActivity extends AppCompatActivity implements Server
 
 
 
-        if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) != null
-                && !SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
+        if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID) != null
+                && !SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
 
 
             attemptgetDeliveryPrice();
@@ -170,7 +170,7 @@ public class ShippingAddressActivity extends AppCompatActivity implements Server
         }else {
 
             strDeliveryPrice = "0";
-            tv_deliveryPrice.setText(strDeliveryPrice+" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+            tv_deliveryPrice.setText(strDeliveryPrice+" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 Log.e("xzczxcxzc","TEST USER");
             mShippingAdapter.setList(itemList);
@@ -196,8 +196,8 @@ Log.e("xzczxcxzc","TEST USER");
             json.addProperty("address_id", strAddressId);
 
 
-            json.addProperty("user_id", SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
 //           {"user_id":"209" ,"token" : "dddd", "pincode" : "452001", "quote_id" : "3"}
 
@@ -248,7 +248,7 @@ Log.e("xzczxcxzc","TEST USER");
                 break;
 
             case R.id.ShippingAddress_Continue:
-                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
+                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
 
                     Methods.showToast(ShippingAddressActivity.this, "Please add shipping address");
 
@@ -280,7 +280,7 @@ Log.e("xzczxcxzc","TEST USER");
             case R.id.ShippingAddress_ChangeOrAddAddress:
 
                 Log.e("sadas", "dsfsdf: " + strFrom);
-                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
+                if (SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID) == null || SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID).equalsIgnoreCase("")) {
                     //intent = new Intent(ShippingAddressActivity.this, AddAddressActivity.class);
                     intent.putExtra("ProductId", strProductId);
                     intent.putExtra("From", "Detail");
@@ -314,7 +314,7 @@ Log.e("xzczxcxzc","TEST USER");
 
                     JSONObject dataObj = result.getJSONObject("data");
                     strDeliveryPrice = dataObj.getString("amount");
-                    tv_deliveryPrice.setText(strDeliveryPrice+" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+                    tv_deliveryPrice.setText(strDeliveryPrice+" "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
                     mShippingAdapter.setList(itemList);
@@ -378,11 +378,11 @@ Log.e("xzczxcxzc","TEST USER");
 
         }
 
-        tv_itemPrice.setText(Methods.getTwoDecimalVAlue("" + totailFair) + " "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_itemPrice.setText(Methods.getTwoDecimalVAlue("" + totailFair) + " "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
         double finalcalculatedValue = (totailFair + Float.parseFloat(strDeliveryPrice));
         tv_finalTotalPrice.setText(Methods.getTwoDecimalVAlue("" + finalcalculatedValue));
-        tv_totalPrice.setText(Methods.getTwoDecimalVAlue("" + finalcalculatedValue) + " "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_totalPrice.setText(Methods.getTwoDecimalVAlue("" + finalcalculatedValue) + " "+SessionStore.getUserDetails(ShippingAddressActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
         tv_itemPriceLable.setText("Price (" + itemCount + " item)");
 
 

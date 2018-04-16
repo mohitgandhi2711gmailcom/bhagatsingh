@@ -8,25 +8,27 @@ import java.util.HashMap;
 public class SessionStore {
 
     // User Info
-    public static String USER_ID = "user_id";
-    public static String USER_TOKEN = "token";
-    public static String USER_EMAIL = "email";
-    public static String USER_FIRST_NAME = "userFirstName";
-    public static String USER_LAST_NAME = "userLastName";
-    public static String PROFILEPICTURE = "profilePicture";
-    public static String USER_MOBILENO = "userMobileNo";
-    public static String USER_CURRENCYTYPE = "userCurrencyType";
-    public static String COUNTRY_CODE = "country_code";
-    public static String USER_ADDRESS_ID = "address_id";
-    public static String USER_TELEPHONE_NO = "telephone";
-    public static String USER_STREET_ONE = "street_1";
-    public static String USER_STREET_TWO = "street_2";
-    public static String USER_CITY = "city";
-    public static String USER_REGION = "region";
-    public static String USER_POSTCODE = "postcode";
-    public static String USER_COUNTRY_ID = "country_id";
-    public static String USER_DEFAULT_SHIPPING = "default_shipping";
-    public static String USER_DEFAULT_BILLING= "default_billing";
+    public static final String USER_ID = "user_id";
+    public static final String USER_TOKEN = "token";
+    public static final String USER_EMAIL = "email";
+    public static final String USER_FIRST_NAME = "userFirstName";
+    public static final String USER_LAST_NAME = "userLastName";
+    public static final String PROFILEPICTURE = "profilePicture";
+    public static final String USER_MOBILENO = "userMobileNo";
+    public static final String USER_CURRENCYTYPE = "userCurrencyType";
+    public static final String COUNTRY_CODE = "country_code";
+    public static final String USER_ADDRESS_ID = "address_id";
+    public static final String USER_TELEPHONE_NO = "telephone";
+    public static final String USER_STREET_ONE = "street_1";
+    public static final String USER_STREET_TWO = "street_2";
+    public static final String USER_CITY = "city";
+    public static final String USER_REGION = "region";
+    public static final String USER_POSTCODE = "postcode";
+    public static final String USER_COUNTRY_ID = "country_id";
+    public static final String USER_DEFAULT_SHIPPING = "default_shipping";
+    public static final String USER_DEFAULT_BILLING= "default_billing";
+    public static final String USER_CART_COUNT= "total_product";
+
 
 
     public static void saveUserDetails(Context context, String name, String user_id, String token,
@@ -85,10 +87,15 @@ public class SessionStore {
         return user;
     }
 
-    public static void saveCurrency(Context context, String name, String userCurrencyType) {
+    public static void saveCartCount(Context context, String name, String count) {
         SharedPreferences.Editor editor = context.getSharedPreferences(name, Context.MODE_PRIVATE).edit();
-        editor.putString(USER_CURRENCYTYPE, userCurrencyType);
+        editor.putString(USER_CART_COUNT, count);
         editor.apply();
+    }
+
+    public static String getCartCount(Context context, String name) {
+        SharedPreferences pref = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+        return pref.getString(USER_CART_COUNT, "");
     }
 
     public static void clear(Context context, String name) {

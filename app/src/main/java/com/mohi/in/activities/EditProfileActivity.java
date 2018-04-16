@@ -98,21 +98,21 @@ public class EditProfileActivity extends AppCompatActivity /*implements View.OnC
         try {
 
             Glide.with(EditProfileActivity.this)
-                    .load(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.PROFILEPICTURE))
+                    .load(SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.PROFILEPICTURE))
                     .into(iv_image);
 
-            String username=SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_LAST_NAME);
+            String username=SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_FIRST_NAME)+SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_LAST_NAME);
             et_userName.setText(username);
             et_userName.setSelection(username.length());
 
-            et_phoneNo.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO));
-            et_phoneNo.setSelection(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_MOBILENO).length());
+            et_phoneNo.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_MOBILENO));
+            et_phoneNo.setSelection(SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_MOBILENO).length());
 
-            tv_email.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_EMAIL));
+            tv_email.setText(SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL));
 
 
             Ion.with(EditProfileActivity.this)
-                    .load(SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.PROFILEPICTURE))
+                    .load(SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.PROFILEPICTURE))
                     .asBitmap()
                     .setCallback(new FutureCallback<Bitmap>() {
                         @Override
@@ -238,8 +238,8 @@ public class EditProfileActivity extends AppCompatActivity /*implements View.OnC
                 }*//*
 
 
-                ServerCalling.ServerCallingUserApiImagePost(EditProfileActivity.this, "updateProfile", this, SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_ID)
-                        , SessionStore.getUserDetails(EditProfileActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN), userName, mobileNo, file);
+                ServerCalling.ServerCallingUserApiImagePost(EditProfileActivity.this, "updateProfile", this, SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID)
+                        , SessionStore.getUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), userName, mobileNo, file);
 
 
             }
@@ -290,7 +290,7 @@ public class EditProfileActivity extends AppCompatActivity /*implements View.OnC
 
                     //Country Code may recive during login
                     String countryCode="";
-                    SessionStore.saveUserDetails(EditProfileActivity.this, Common.userPrefName, data.getString("user_id"), data.getString("token"),
+                    SessionStore.saveUserDetails(EditProfileActivity.this, Common.USER_PREFS_NAME, data.getString("user_id"), data.getString("token"),
                             data.getString("email"), data.getString("mobile_number"), data.getString("name"), data.getString("user_image"), strAddresId, strAddressName, strAddress,
                             data.getString("currency"),countryCode);
 

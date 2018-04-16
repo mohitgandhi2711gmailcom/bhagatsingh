@@ -112,8 +112,8 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
 
     private void setValue() {
 
-        tv_maxPriceCurrencyType.setText(" " + SessionStore.getUserDetails(FilterActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
-        tv_minPriceCurrencyType.setText(" " + SessionStore.getUserDetails(FilterActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_maxPriceCurrencyType.setText(" " + SessionStore.getUserDetails(FilterActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
+        tv_minPriceCurrencyType.setText(" " + SessionStore.getUserDetails(FilterActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
         adapter = new SelectListAdapter(FilterActivity.this);

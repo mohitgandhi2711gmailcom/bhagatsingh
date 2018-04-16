@@ -49,6 +49,11 @@ public class FavoriteFragment extends Fragment implements ServerCallBack {
         mCategoryAdapter = new WishListAdapter(mContext);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         mCategoryRv.setLayoutManager(mLayoutManager);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         attemptTOGetWishList();
     }
 

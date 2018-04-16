@@ -61,7 +61,7 @@ public class WishListActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_list);
 
-        hashMap = SessionStore.getUserDetails(WishListActivity.this, Common.userPrefName);
+        hashMap = SessionStore.getUserDetails(WishListActivity.this, Common.USER_PREFS_NAME);
 
         getControls();
        attemptTOGetWishList();

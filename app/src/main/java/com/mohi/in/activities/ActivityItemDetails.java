@@ -107,8 +107,8 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private void attemptGetProductDetail() {
         JsonObject json = new JsonObject();
         json.addProperty("product_id", ProductId);
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         ServerCalling.ServerCallingProductsApiPost(mContext, "getProductDetail", json, this);
     }
 
@@ -275,8 +275,8 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
 
     private void attemptAddToWishlist() {
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         json.addProperty("product_id", ProductId);
         WaitDialog.showDialog(this);
         if (isWishlist.equalsIgnoreCase("0")) {
@@ -297,8 +297,8 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
 
     private void attemptAddToCart() {
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         json.addProperty("product_id", ProductId);
         json.addProperty("qty", 1);
         json.addProperty("quote_id", "");

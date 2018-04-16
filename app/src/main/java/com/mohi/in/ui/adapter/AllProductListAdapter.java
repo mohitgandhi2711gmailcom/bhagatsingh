@@ -76,7 +76,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 if (model.product_price != null) {
                     holder.mPrice.setText(Methods.getTwoDecimalVAlue(model.product_price));
                 }
-                holder.mCurrencyType.setText(" " + SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+                holder.mCurrencyType.setText(" " + SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
                 Glide.with(mContext).load(model.image).into(holder.mImage);
                 holder.mItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -107,8 +107,8 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         try {
                             WaitDialog.showDialog(mContext);
                             JsonObject json = new JsonObject();
-                            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                             json.addProperty("product_id", model.product_id);
                             pos = position;
                             if (model.is_wishlist == 0) {
@@ -127,8 +127,8 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     public void onClick(View view) {
                         try {
                             JsonObject json = new JsonObject();
-                            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                             json.addProperty("product_id", model.product_id);
                             json.addProperty("qty", 1);
                             json.addProperty("quote_id", "");

@@ -30,7 +30,6 @@ import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.utils.listeners.imgSelectListener;
-import com.mohi.in.model.CartModel;
 import com.mohi.in.model.ProductDetailModel;
 import com.mohi.in.ui.adapter.FeaturedProductsAdapter;
 import com.mohi.in.ui.adapter.ProductsLeftImgAdapter;
@@ -217,7 +216,7 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
         tv_DrliveryPinChange.setOnClickListener(this);
 
 
-        tv_currencyType.setText(" " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        tv_currencyType.setText(" " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
 
@@ -357,8 +356,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
 
         JsonObject json = new JsonObject();
         json.addProperty("product_id", strProductId);
-        json.addProperty("user_id", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
 //        json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
 //        json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
@@ -427,12 +426,12 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("addToCart")) {
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    Log.e("AllProductListAdapter", "error Address log: " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
+                    Log.e("AllProductListAdapter", "error Address log: " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID));
                     if (buynow) {
                         buynow = false;
                         JSONObject quoteId = result.getJSONObject("data");
 
-                      /*  if (SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
+                      /*  if (SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
 
                             intent = new Intent(ProductDetailActivity.this, AddAddressActivity.class);
 
@@ -440,16 +439,16 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                         } else*/
 
                         {
-                            String address=SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_STREET_ONE)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_STREET_TWO)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_CITY)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_REGION)+" "+SessionStore.getUserDetails(this, Common.userPrefName).get(SessionStore.USER_POSTCODE);
+                            String address=SessionStore.getUserDetails(this, Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_ONE)+" "+SessionStore.getUserDetails(this, Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_TWO)+" "+SessionStore.getUserDetails(this, Common.USER_PREFS_NAME).get(SessionStore.USER_CITY)+" "+SessionStore.getUserDetails(this, Common.USER_PREFS_NAME).get(SessionStore.USER_REGION)+" "+SessionStore.getUserDetails(this, Common.USER_PREFS_NAME).get(SessionStore.USER_POSTCODE);
                             intent = new Intent(ProductDetailActivity.this, ShippingAddressActivity.class);
-                            intent.putExtra("AddressName", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_STREET_ONE)+SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_STREET_TWO));
-                            intent.putExtra("AddressId", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
+                            intent.putExtra("AddressName", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_ONE)+SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_TWO));
+                            intent.putExtra("AddressId", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID));
                             intent.putExtra("Address", address);
 
 
-//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESS));
-//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSID));
-//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ADDRESSNAME));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSID));
+//                            Log.e("AllProductListAdapter", "Address " + SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSNAME));
 
                         }
                         intent.putExtra("ProductId", mProductDetailModel.product_id);
@@ -549,8 +548,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
             case R.id.ProductDetail_favourite:
 
                 JsonObject json = new JsonObject();
-                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.addProperty("product_id", mProductDetailModel.product_id);
 
                 WaitDialog.showDialog(this);
@@ -576,8 +575,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
 
                     WaitDialog.showDialog(this);
                     JsonObject json1 = new JsonObject();
-                    json1.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                    json1.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                    json1.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json1.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json1.addProperty("product_id", mProductDetailModel.product_id);
                     json1.addProperty("qty", 1);
                     json1.addProperty("quote_id", "");
@@ -600,8 +599,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                 try {
 
 
-                    if (SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID)==null ||
-                            SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID).isEmpty() ){
+                    if (SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID)==null ||
+                            SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID).isEmpty() ){
                         intent = new Intent(ProductDetailActivity.this, LoginActivityNew.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
@@ -610,8 +609,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
                         buynow = true;
                         WaitDialog.showDialog(this);
                         JsonObject json1 = new JsonObject();
-                        json1.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json1.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json1.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json1.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json1.addProperty("product_id", mProductDetailModel.product_id);
                         json1.addProperty("qty", 1);
                         json1.addProperty("quote_id", "");
@@ -764,8 +763,8 @@ public class ProductDetailActivity extends AppCompatActivity implements imgSelec
 
             JsonObject json = new JsonObject();
             json.addProperty("pincode", pinCode);
-            json.addProperty("user_id", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(ProductDetailActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(ProductDetailActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
 //            { "pincode":"452003", "user_id" : "", "token" : ""}
 

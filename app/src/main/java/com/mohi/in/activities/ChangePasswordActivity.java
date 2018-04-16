@@ -195,8 +195,8 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
             json.addProperty("old_password", oldPassord);
             json.addProperty("new_password", newPassword);
 
-            json.addProperty("user_id", SessionStore.getUserDetails(ChangePasswordActivity.this, Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(ChangePasswordActivity.this, Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_id", SessionStore.getUserDetails(ChangePasswordActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(ChangePasswordActivity.this, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 
 
             ServerCalling.ServerCallingUserApiPost(ChangePasswordActivity.this, "changePassword", json, this);

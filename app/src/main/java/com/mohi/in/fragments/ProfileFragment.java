@@ -83,10 +83,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
     }
 
     private void setUserInfo() {
-        firstname_et.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_FIRST_NAME));
-        lastname_et.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_LAST_NAME));
-        phone_number_et.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_MOBILENO));
-        mail_et.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_EMAIL));
+        firstname_et.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_FIRST_NAME));
+        lastname_et.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_LAST_NAME));
+        phone_number_et.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_MOBILENO));
+        mail_et.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL));
     }
 
     @Override
@@ -145,7 +145,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
 
                     file = new File(mUri.getPath());
                 }
-                ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_EMAIL),country_code,mobileNo, SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN), file);
+                ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL),country_code,mobileNo, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), file);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,7 +177,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
                         String country_id = addressData.optString("country_id");
                         Boolean default_shipping=addressData.optBoolean("default_billing");
                         Boolean default_billing=addressData.optBoolean("default_billing");
-                        SessionStore.saveUserAddress(mContext, Common.userPrefName,address_id, telephone, street_1, street_2, city, region, postcode, country_id,default_shipping,default_billing);
+                        SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME,address_id, telephone, street_1, street_2, city, region, postcode, country_id,default_shipping,default_billing);
                     }
                     String user_id = data.optString("user_id");
                     String token = data.optString("token");
@@ -189,7 +189,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
                     String currency = data.optString("currency");
                     String cntry_code = data.optString("cntry_code");
 
-                    SessionStore.saveUserDetails(mContext, Common.userPrefName, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+                    SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
                     setUserInfo();
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));

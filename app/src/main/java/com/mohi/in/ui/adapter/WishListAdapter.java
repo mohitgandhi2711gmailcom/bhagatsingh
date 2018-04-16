@@ -73,7 +73,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
         holder.rb_rating.setRating((float) model.rating);
         holder.tv_type.setText(model.category);
         holder.tv_price.setText(Methods.getTwoDecimalVAlue(model.price));
-        holder.tv_priceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        holder.tv_priceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
 
@@ -92,8 +92,8 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
 
                         WaitDialog.showDialog(mContext);
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
 
                         pos = position;
@@ -125,8 +125,8 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
 
 
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
                         json.addProperty("qty", 1);
                         json.addProperty("quote_id","");

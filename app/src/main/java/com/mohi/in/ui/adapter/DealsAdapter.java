@@ -18,7 +18,6 @@ import android.widget.Spinner;
 import com.bumptech.glide.Glide;
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
-import com.mohi.in.activities.HomeActivity;
 import com.mohi.in.activities.ProductDetailActivity;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
@@ -92,8 +91,8 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
         holder.tv_newprice.setText(Methods.getTwoDecimalVAlue(model.new_price));
         holder.tv_oldprice.setText(Methods.getTwoDecimalVAlue(model.product_price));
 
-        holder.tv_newpriceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
-        holder.tv_oldpriceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+        holder.tv_newpriceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
+        holder.tv_oldpriceCyrrencyType.setText(" "+SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
 
 
@@ -132,8 +131,8 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
 
                         WaitDialog.showDialog(mContext);
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
 
                         pos = position;
@@ -170,8 +169,8 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.ViewHolder> 
 
 
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("product_id", model.product_id);
                         json.addProperty("qty", 1);
                         json.addProperty("quote_id", "");

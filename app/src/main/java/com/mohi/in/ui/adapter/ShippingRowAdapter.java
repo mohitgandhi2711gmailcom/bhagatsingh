@@ -131,7 +131,7 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
 
         final CartModel model = mList.get(position);
 //        holder.tv_productName.setText(model.product_name);
-//        holder.tv_productPrice.setText(Methods.getTwoDecimalVAlue(model.product_price)+" "+ SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE));
+//        holder.tv_productPrice.setText(Methods.getTwoDecimalVAlue(model.product_price)+" "+ SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
 
         holder.spn_qty.setAdapter(adapter);
 
@@ -162,8 +162,8 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
 //                    model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ","").trim());
 //                    WaitDialog.showDialog(mContext);
 //                    JsonObject json = new JsonObject();
-//                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-//                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+//                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+//                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
 //                    json.addProperty("product_id", model.product_id);
 //                    json.addProperty("qty", model.qty);
 //                    json.addProperty("quote_id", model.quote_id);
@@ -376,8 +376,8 @@ if (Integer.parseInt(model.qty) != Integer.parseInt(item.get(i).trim().replaceAl
     model.qty = ""+Integer.parseInt(item.get(i).trim().replaceAll("Qty: ","").trim());
                     WaitDialog.showDialog(mContext);
                     JsonObject json = new JsonObject();
-                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json.addProperty("product_id", model.product_id);
                     json.addProperty("qty", model.qty);
                     json.addProperty("quote_id", model.quote_id);

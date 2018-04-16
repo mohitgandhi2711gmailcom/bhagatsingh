@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,16 +29,16 @@ import com.mohi.in.utils.listeners.ServerCallBack;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.invoke.MethodHandle;
 import java.util.ArrayList;
-
 
 //OnValueChangeListener & RefreshList  was Implemented, And Removed Temporary
 public class CartFragment extends Fragment implements ServerCallBack, View.OnClickListener, CartFragmentEventsListener {
 
-    private RecyclerView cart_rv;
-    private TextView cart_price;
-    private ImageView back_circle_btn;
-    private Button checkout_btn;
+    private RecyclerView cartRecyclerView;
+    private TextView cartPrice;
+    private ImageView backCircleButton;
+    private Button checkOutButton;
     private Context mContext;
     private CartAdapter mCartAdapter;
     private ArrayList<CartModel> cartList;
@@ -49,25 +50,23 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         return view;
     }
 
-
     private void init(View view) {
         mContext = getActivity();
         cartList = new ArrayList<>();
-        cart_rv = view.findViewById(R.id.cart_rv);
-        cart_price = view.findViewById(R.id.cart_price);
-        back_circle_btn = view.findViewById(R.id.back_circle_btn);
-        checkout_btn = view.findViewById(R.id.checkout_btn);
+        cartRecyclerView = view.findViewById(R.id.cart_rv);
+        cartPrice = view.findViewById(R.id.cart_price);
+        backCircleButton = view.findViewById(R.id.back_circle_btn);
+        checkOutButton = view.findViewById(R.id.checkout_btn);
         setValue();
     }
 
     private void setValue() {
-        mCartAdapter = new CartAdapter(mContext,this);
+        mCartAdapter = new CartAdapter(mContext, this);
         LinearLayoutManager mCartLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        cart_rv.setLayoutManager(mCartLayoutManager);
-        cart_rv.setAdapter(mCartAdapter);
-        back_circle_btn.setOnClickListener(this);
-        checkout_btn.setOnClickListener(this);
-
+        cartRecyclerView.setLayoutManager(mCartLayoutManager);
+        cartRecyclerView.setAdapter(mCartAdapter);
+        backCircleButton.setOnClickListener(this);
+        checkOutButton.setOnClickListener(this);
     }
 
     @Override
@@ -80,13 +79,13 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         try {
             WaitDialog.showDialog(getActivity());
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_TOKEN));
+            json.addProperty(SessionStore.USER_ID, SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty(SessionStore.USER_TOKEN, SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
             json.addProperty("width", getResources().getDimension(R.dimen.addtocart_row_image_width));
             json.addProperty("height", getResources().getDimension(R.dimen.addtocart_row_image_height));
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getCart", json, this);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Exception", e.toString());
         }
     }
 
@@ -94,39 +93,33 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         WaitDialog.hideDialog();
         switch (strfFrom.trim()) {
-            case "getCart": {
-                if (result.optString("status").trim().equalsIgnoreCase("1")) {
+            case "getCart":
+                if (result.optString(Common.API_STATUS).trim().equalsIgnoreCase("1")) {
                     JSONArray dataArray = result.optJSONArray("data");
                     setCartItem(dataArray);
                 } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
                 }
                 break;
-            }
 
             case "removeItemFromCart":
-            {
                 if (result.optString("status").trim().equalsIgnoreCase("1")) {
                     attemptGetCart();
-                }
-                else
-                {
+                } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
                 }
                 break;
-            }
 
             case "updateCartQty":
-            {
                 if (result.optString("status").trim().equalsIgnoreCase("1")) {
                     attemptGetCart();
-                }
-                else
-                {
+                } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
                 }
                 break;
-            }
+
+            default:
+                Methods.showToast(mContext, "Unknown Error");
         }
     }
 
@@ -136,29 +129,29 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         for (int i = 0; i < dataArray.length(); i++) {
             JSONObject dataJson = dataArray.optJSONObject(i);
             CartModel obj = new CartModel();
-            obj.setProduct_id(dataJson.optString("product_id"));
+            obj.setProduct_id(dataJson.optString(Common.USER_PRODUCT_ID));
             obj.setProduct_id(dataJson.optString("item_id"));
             obj.setProduct_name(dataJson.optString("product_name"));
             obj.setProduct_price(dataJson.optString("product_price"));
             obj.setImage(dataJson.optString("image"));
             obj.setCategory(dataJson.optString("category"));
             obj.setQty(dataJson.optString("qty"));
-            obj.setQuote_id(dataJson.optString("quote_id"));
+            obj.setQuote_id(dataJson.optString(Common.USER_QUOTE_ID));
             obj.setStock(dataJson.optString("stock"));
             obj.setIs_wishlist(dataJson.optString("is_wishlist"));
             cartList.add(obj);
             total = total + Double.parseDouble(dataJson.optString("product_price")) * Double.parseDouble(dataJson.optString("qty"));
         }
         mCartAdapter.updateList(cartList);
-        cart_price.setText(SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.getTwoDecimalVAlue(String.valueOf(total)));
+        cartPrice.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.getTwoDecimalVAlue(String.valueOf(total)));
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = null;
+
         switch (view.getId()) {
             case R.id.checkout_btn:
-
+                //Intent intent = null;
                 /*String strQt = "";
 
                 if (cartList.size() > 0) {
@@ -167,8 +160,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
                 }
 
 
-                if (SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID) == null ||
-                        SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ID).isEmpty()) {
+                if (SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID) == null ||
+                        SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID).isEmpty()) {
                     intent = new Intent(getActivity(), LoginActivityNew.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
@@ -178,7 +171,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
                     CartModel model = cartList.get(0);
 
 
-                   *//* if (SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
+                   *//* if (SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSID) == null || SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESSID).equalsIgnoreCase("")) {
 
                         intent = new Intent(getActivity(), AddAddressActivity.class);
 
@@ -186,10 +179,10 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
                     } else *//*
                     {
                         intent = new Intent(getActivity(), ShippingAddressActivity.class);
-                        String address = SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_ONE) + " " + SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_TWO) + " " + SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_CITY) + " " + SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_REGION) + " " + SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_POSTCODE);
+                        String address = SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_ONE) + " " + SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_TWO) + " " + SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CITY) + " " + SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_REGION) + " " + SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_POSTCODE);
                         intent.putExtra("Address", address);
-                        intent.putExtra("AddressId", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_ADDRESS_ID));
-                        intent.putExtra("AddressName", SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_ONE) + " " + SessionStore.getUserDetails(getActivity(), Common.userPrefName).get(SessionStore.USER_STREET_TWO));
+                        intent.putExtra("AddressId", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ADDRESS_ID));
+                        intent.putExtra("AddressName", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_ONE) + " " + SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_STREET_TWO));
 
                     }
                     intent.putExtra("ProductId", model.product_id);
@@ -201,42 +194,39 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
 
                     startActivity(intent);*/
 
-//                }
-//
-//                break;
-
             case R.id.back_circle_btn:
                 break;
 
+            default:
+                Methods.showToast(mContext, "Unknown Error");
         }
-
     }
 
     @Override
     public void cartEventListener(String event, CartModel model) {
         switch (event) {
-            case "plus": {
+            case "plus":
                 attemptCartQuantityUpdate(model);
                 break;
-            }
 
-            case "minus": {
+            case "minus":
                 attemptCartQuantityUpdate(model);
                 break;
-            }
 
-            case "remove": {
+            case "remove":
                 attemptRemoveItemFromCart(model);
                 break;
-            }
+
+            default:
+                Methods.showToast(mContext,"Error..");
         }
     }
 
     private void attemptRemoveItemFromCart(CartModel model) {
         WaitDialog.showDialog(mContext);
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         json.addProperty("product_id", model.getProduct_id());
         json.addProperty("quote_id", model.getQuote_id());
         ServerCalling.ServerCallingProductsApiPost(mContext, "removeItemFromCart", json, this);
@@ -245,8 +235,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private void attemptCartQuantityUpdate(CartModel model) {
         WaitDialog.showDialog(mContext);
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         json.addProperty("product_id", model.getProduct_id());
         json.addProperty("qty", model.getQty());
         json.addProperty("quote_id", model.getQuote_id());
@@ -265,8 +255,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         }*//*
     }
 */
-//    @Override
-//    public void refreshListSuccess() {
-//        attemptGetCart();
-//    }
+    /*@Override
+    public void refreshListSuccess() {
+        attemptGetCart();
+    }*/
 }

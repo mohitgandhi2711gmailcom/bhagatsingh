@@ -120,8 +120,8 @@ public class OrderHistoryListAdapter extends RecyclerView.Adapter<OrderHistoryLi
 
                         WaitDialog.showDialog(mContext);
                         JsonObject json = new JsonObject();
-                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_ID));
-                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_TOKEN));
+                        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                         json.addProperty("order_id", orderHistoryItem.order_id);
 
 

@@ -53,7 +53,7 @@ public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.Vi
         }
         holder.Subcategories_Row_Title.setText(model.getProduct_name());
         holder.short_desc_tv.setText(model.getProduct_name());
-        holder.Subcategories_Row_Price.setText(SessionStore.getUserDetails(mContext, Common.userPrefName).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.twoDigitFormat(model.getProduct_price()));
+        holder.Subcategories_Row_Price.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.twoDigitFormat(model.getProduct_price()));
         final String ProductId = model.getProduct_id();
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override
