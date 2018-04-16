@@ -1,6 +1,7 @@
 package com.mohi.in.activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,11 +10,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
@@ -49,9 +52,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends FragmentActivity implements TabHost.OnTabChangeListener, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, ServerCallBack, CartCountCallBack {
+public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChangeListener, NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, ServerCallBack, CartCountCallBack {
 
-    public FragmentTabHost mTabHost;
+    private FragmentTabHost mTabHost;
     private Context mContext;
     //Residing Menu
     private ResideMenu resideMenu;
@@ -60,7 +63,9 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     private ResideMenuItem itemFaq;
     private ResideMenuItem itemAbout;
     private ResideMenuItem itemRateApp;
-    LinearLayout drawer_layout;
+    private LinearLayout drawerLayout;
+    private ImageView headerSearch;
+    private static final Integer REQUEST_CODE=7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +77,8 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     private void init() {
         mContext = this;
         mTabHost = findViewById(R.id.tabhost);
-        drawer_layout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        headerSearch = findViewById(R.id.Header_Search);
         //Set Margin acc to Soft Buttons
         if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
@@ -80,7 +86,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                     WindowManager.LayoutParams.MATCH_PARENT
             );
             params.setMargins(0, 0, 0, getSoftButtonsBarHeight());
-            drawer_layout.setLayoutParams(params);
+            drawerLayout.setLayoutParams(params);
         }
         setValue();
     }
@@ -93,6 +99,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         mTabHost.addTab(mTabHost.newTabSpec(getResources().getString(R.string.tab_transaction)).setIndicator(getTabIndicator(mTabHost.getContext(), R.drawable.ic_transaction_inactive)), OrderFragmentNew.class, null);
         mTabHost.addTab(mTabHost.newTabSpec(getResources().getString(R.string.tab_my_Account)).setIndicator(getTabIndicator(mTabHost.getContext(), R.drawable.ic_user_inactive)), TimelinePasswordProfileAddressFragment.class, null);
         mTabHost.setOnTabChangedListener(this);
+        headerSearch.setOnClickListener(this);
 
         //Set First Tab Active
         ImageView imageView = mTabHost.getTabWidget().getChildAt(0).findViewById(R.id.tab_icon);
@@ -193,7 +200,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                 ServerCalling.ServerCallingProductsApiPost(mContext, "viewCartCount", json, this);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Error", e.toString());
         }
     }
 
@@ -248,29 +255,30 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
     }
 
     private void showLoginPopupDailog() {
-        UbuntuMediumTextView SigninSignup_popup_Login, SigninSignup_popup_Signup;
+        UbuntuMediumTextView popUpLogin;
+        UbuntuMediumTextView popUpSignup;
         final Dialog dialog = new Dialog(mContext);
         dialog.setCancelable(true);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         @SuppressLint("InflateParams")
         View view = inflater.inflate(R.layout.login_signup_popup, null);
         dialog.setContentView(view);
-        SigninSignup_popup_Login = view.findViewById(R.id.SigninSignup_popup_Login);
-        SigninSignup_popup_Signup = view.findViewById(R.id.SigninSignup_popup_Signup);
-        SigninSignup_popup_Login.setOnClickListener(new View.OnClickListener() {
+        popUpLogin = view.findViewById(R.id.SigninSignup_popup_Login);
+        popUpSignup = view.findViewById(R.id.SigninSignup_popup_Signup);
+        popUpLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent_login = new Intent(mContext, LoginActivityNew.class);
-                startActivity(intent_login);
+                Intent logInIntent = new Intent(mContext, LoginActivityNew.class);
+                startActivity(logInIntent);
             }
         });
-        SigninSignup_popup_Signup.setOnClickListener(new View.OnClickListener() {
+        popUpSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent = new Intent(mContext, SignupActivityNew.class);
-                startActivity(intent);
+                Intent signUpIntent = new Intent(mContext, SignupActivityNew.class);
+                startActivity(signUpIntent);
             }
         });
         dialog.show();
@@ -305,6 +313,8 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
                 startActivity(intent);
                 overridePendingTransition(R.anim.move_in_left, R.anim.move_out_left);
                 break;
+            default:
+                Methods.showToast(mContext, "Unknown case");
         }
         return true;
     }
@@ -341,12 +351,27 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             closeResideMenu();
         }
 
-        switch (view.getId()) {
+        switch (view.getId())
+        {
             case R.id.Header_Menu:
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 assert imm != null;
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 break;
+            case R.id.Header_Search:
+                intent = new Intent(HomeActivity.this, SearchActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
+                break;
+                default:
+                    Methods.showToast(mContext,"Error");
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Methods.showToast(mContext,"Search Successfull");
         }
     }
 
@@ -367,7 +392,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
             if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 params.setMargins(0, 0, 0, getSoftButtonsBarHeight());
-                drawer_layout.setLayoutParams(params);
+                drawerLayout.setLayoutParams(params);
             }
         }
     };
@@ -441,8 +466,7 @@ public class HomeActivity extends FragmentActivity implements TabHost.OnTabChang
         try {
             Methods.trimCache(this);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Log.e("Error", e.toString());
         }
     }
 

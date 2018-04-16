@@ -22,9 +22,9 @@ import com.mohi.in.model.SubCategoriesModel;
 import com.mohi.in.ui.adapter.AllProductListAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.PaginationScrollListener;
-import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.ServerCallBack;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,15 +43,14 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     private int currentPage = PAGE_START;
     private String strTypeValue;
     private String catId;
-    private static final String CATEGORY_ID="cat_id";
+    private static final String CATEGORY_ID = "cat_id";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_product_list, container, false);
         mCategoryRv = v.findViewById(R.id.category_rv);
         new AllProductListAdapter(getContext());
-        if(getArguments()!=null)
-        {
+        if (getArguments() != null) {
             strTypeValue = getArguments().getString("name");
             catId = getArguments().getString(CATEGORY_ID);
         }
@@ -105,8 +104,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     }
 
     private void attemptGetCategories() {
-        if(strTypeValue!=null&& !TextUtils.isEmpty(strTypeValue)&&catId!=null&&!TextUtils.isEmpty(catId))
-        {
+        if (strTypeValue != null && !TextUtils.isEmpty(strTypeValue) && catId != null && !TextUtils.isEmpty(catId)) {
             try {
                 if (currentPage == 1) {
                     WaitDialog.showDialog(getActivity());
@@ -154,12 +152,10 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     ServerCalling.ServerCallingProductsApiPost(getActivity(), "getProduct", json, this);
                 }
             } catch (Exception e) {
-                Log.e("Error",e.toString());
+                Log.e("Error", e.toString());
             }
-        }
-        else
-        {
-            Methods.showToast(getActivity(),"No data");
+        } else {
+            Methods.showToast(getActivity(), "No data");
         }
     }
 
@@ -170,9 +166,9 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
                     JSONArray dataArray = result.getJSONArray("data");
                     if (currentPage == 1) {
-                        setFeaturedCategories(dataArray,false);
+                        setFeaturedCategories(dataArray, false);
                     } else {
-                        setFeaturedCategories(dataArray,true);
+                        setFeaturedCategories(dataArray, true);
                     }
                 } else {
                     Methods.showToast(getContext(), result.getString("msg"));
@@ -181,18 +177,18 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
             } else if (strfFrom.trim().equalsIgnoreCase("filterProduct")) {
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
                     JSONArray dataArray = result.getJSONArray("data");
-                    setFeaturedCategories(dataArray,false);
+                    setFeaturedCategories(dataArray, false);
                 } else {
                     Methods.showToast(getContext(), result.getString("msg"));
                     Log.e("AllProductsListActivity", "ServerCallBackSuccess attemptTOGetUserInfo log: " + result.getString("msg"));
                 }
             }
         } catch (Exception e) {
-            Log.e("Error",e.toString());
+            Log.e("Error", e.toString());
         }
     }
 
-    private void setFeaturedCategories(JSONArray dataArray,boolean check) {
+    private void setFeaturedCategories(JSONArray dataArray, boolean check) {
         try {
             mCategoryList.clear();
             int dataArraylength = dataArray.length();
@@ -200,15 +196,14 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 JSONObject dataJson = dataArray.getJSONObject(i);
                 mCategoryList.add(new SubCategoriesModel(dataJson.getString("product_id"), dataJson.getString("product_name"), dataJson.getString("image"), dataJson.getString("product_price"), dataJson.getInt("is_wishlist"), dataJson.getDouble("rating"), dataJson.getInt("is_add_to_cart")));
             }
-            if(check)
-            {
-                isLoading=false;
+            if (check) {
+                isLoading = false;
             }
             mCategoryAdapter.addAll(mCategoryList);
             if (mCategoryList.size() >= TOTAL_PAGES) mCategoryAdapter.addLoadingFooter();
             else isLastPage = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Error", e.toString());
         }
         WaitDialog.hideDialog();
     }

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,9 +25,9 @@ import com.mohi.in.model.RelatedProductModel;
 import com.mohi.in.ui.adapter.ItemDetailsAdapter;
 import com.mohi.in.ui.adapter.ItemDetailsSimilarItemAdapter;
 import com.mohi.in.utils.Methods;
-import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.ServerCallBack;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,24 +36,29 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ActivityItemDetails extends AppCompatActivity implements ServerCallBack, View.OnClickListener {
-    String ProductId;
+    private String productId;
     private Context mContext;
     private ItemDetailsAdapter imagesAdapter;
-    private TextView item_title;
-    private TextView old_price_tv;
-    private TextView sku_number_tv;
-    private TextView new_price_tv;
-    private TextView model_no_tv;
+    private TextView itemTitleTextView;
+    private TextView oldPriceTextView;
+    private TextView skuNumberTextView;
+    private TextView newPriceTextView;
+    private TextView modelNumberTextView;
     private TextView description;
-    private TextView more_extra_info_tv;
-    private TextView delivery_status_tv;
-    private EditText pincode_et;
-    private ImageView favorite_iv;
+    private TextView moreExtraInfoTextView;
+    private TextView deliveryStatusTextView;
+    private EditText pinCodeEditText;
+    private ImageView favoriteImageView;
     private ItemDetailsSimilarItemAdapter viewMoreAdapter;
-    private ScrollView parent_sv;
-    private EditText select_country_et;
-    private LinearLayout parent_ll;
-    private String isWishlist;
+    private ScrollView parentScrollView;
+    private EditText selectCountryEditText;
+    private LinearLayout parentLinearLayout;
+    private String isWishList;
+    private static final String PRODUCT_ID = "product_id";
+    private static final String USER_ID = "user_id";
+    private static final String TOKEN = "token";
+    private static final String STATUS = "status";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,51 +70,51 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private void init() {
         mContext = this;
         WaitDialog.showDialog(this);
-        item_title = findViewById(R.id.item_title);
-        old_price_tv = findViewById(R.id.old_price_tv);
-        sku_number_tv = findViewById(R.id.sku_number_tv);
-        new_price_tv = findViewById(R.id.new_price_tv);
-        model_no_tv = findViewById(R.id.model_no_tv);
+        itemTitleTextView = findViewById(R.id.item_title);
+        oldPriceTextView = findViewById(R.id.old_price_tv);
+        skuNumberTextView = findViewById(R.id.sku_number_tv);
+        newPriceTextView = findViewById(R.id.new_price_tv);
+        modelNumberTextView = findViewById(R.id.model_no_tv);
         description = findViewById(R.id.description);
-        TextView more_info_tv = findViewById(R.id.more_info_tv);
-        more_extra_info_tv = findViewById(R.id.more_extra_info_tv);
-        delivery_status_tv = findViewById(R.id.delivery_status_tv);
-        pincode_et = findViewById(R.id.pincode_et);
-        favorite_iv = findViewById(R.id.favorite_iv);
-        parent_sv = findViewById(R.id.parent_sv);
-        select_country_et = findViewById(R.id.select_country_et);
-        RecyclerView images_rv = findViewById(R.id.related_images_rv);
-        Button cart_btn = findViewById(R.id.cart_btn);
-        parent_ll = findViewById(R.id.parent_ll);
-        cart_btn.setOnClickListener(this);
-        pincode_et.setOnClickListener(this);
-        pincode_et.clearFocus();
-        select_country_et.setOnClickListener(this);
-        favorite_iv.setOnClickListener(this);
-        select_country_et.clearFocus();
-        RecyclerView view_similar_rv = findViewById(R.id.view_similar_rv);
-        more_info_tv.setOnClickListener(this);
+        TextView moreInfoTextView = findViewById(R.id.more_info_tv);
+        moreExtraInfoTextView = findViewById(R.id.more_extra_info_tv);
+        deliveryStatusTextView = findViewById(R.id.delivery_status_tv);
+        pinCodeEditText = findViewById(R.id.pincode_et);
+        favoriteImageView = findViewById(R.id.favorite_iv);
+        parentScrollView = findViewById(R.id.parent_sv);
+        selectCountryEditText = findViewById(R.id.select_country_et);
+        RecyclerView imagesRecyclerView = findViewById(R.id.images_rv);
+        Button cartButton = findViewById(R.id.cart_btn);
+        parentLinearLayout = findViewById(R.id.parent_ll);
+        cartButton.setOnClickListener(this);
+        pinCodeEditText.setOnClickListener(this);
+        pinCodeEditText.clearFocus();
+        selectCountryEditText.setOnClickListener(this);
+        favoriteImageView.setOnClickListener(this);
+        selectCountryEditText.clearFocus();
+        RecyclerView viewSimilarRecyclerView = findViewById(R.id.view_similar_rv);
+        moreInfoTextView.setOnClickListener(this);
         if (getIntent() != null) {
-            ProductId = getIntent().getStringExtra("ProductId");
-            isWishlist = getIntent().getStringExtra("isWishlist");
+            productId = getIntent().getStringExtra("productId");
+            isWishList = getIntent().getStringExtra("isWishList");
         }
 
         imagesAdapter = new ItemDetailsAdapter(mContext);
-        images_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        images_rv.setAdapter(imagesAdapter);
+        imagesRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        imagesRecyclerView.setAdapter(imagesAdapter);
 
         viewMoreAdapter = new ItemDetailsSimilarItemAdapter(mContext);
-        view_similar_rv.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        view_similar_rv.setAdapter(viewMoreAdapter);
+        viewSimilarRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+        viewSimilarRecyclerView.setAdapter(viewMoreAdapter);
 
         attemptGetProductDetail();
     }
 
     private void attemptGetProductDetail() {
         JsonObject json = new JsonObject();
-        json.addProperty("product_id", ProductId);
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        json.addProperty(PRODUCT_ID, productId);
+        json.addProperty(USER_ID, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+        json.addProperty(TOKEN, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         ServerCalling.ServerCallingProductsApiPost(mContext, "getProductDetail", json, this);
     }
 
@@ -117,65 +123,68 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         try {
             WaitDialog.hideDialog();
             if (strfFrom.trim().equalsIgnoreCase("getProductDetail")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
+                if (result.getString(STATUS).trim().equalsIgnoreCase("success")) {
                     JSONObject dataObj = result.getJSONObject("data");
                     setData(dataObj);
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("addToCart")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
+                if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
                     Methods.showToast(mContext, result.getString("msg"));
                     /*WishListModel model = mList.get(pos);
                     mList.set(pos, new WishListModel(model.product_id, model.product_name, model.image, model.qty, model.category, 1, model.rating, model.price));
                     notifyDataSetChanged();*/
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("addToWishlist")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
-                    isWishlist = "1";
-                    favorite_iv.setImageResource(R.drawable.ic_love_fill);
+                if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
+                    isWishList = "1";
+                    favoriteImageView.setImageResource(R.drawable.ic_love_fill);
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("removeItemWishlist")) {
-                if (result.getString("status").trim().equalsIgnoreCase("1")) {
+                if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
                     Methods.showToast(mContext, result.getString("msg"));
-                    isWishlist = "0";
-                    favorite_iv.setImageResource(R.drawable.ic_love_like);
+                    isWishList = "0";
+                    favoriteImageView.setImageResource(R.drawable.ic_love_like);
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("Error", e.toString());
         }
     }
 
     private void setData(JSONObject dataObj) {
-        String product_id = dataObj.optString("product_id");
-        String product_name = dataObj.optString("product_name");
-        String image_url = dataObj.optString("image");
-        String product_description = dataObj.optString("description").trim();
-        String product_price = dataObj.optString("product_price");
-        String is_wishlist = dataObj.optString("is_wishlist");
-        String rating = dataObj.optString("rating");
-        String is_add_to_cart = dataObj.optString("is_add_to_cart");
-        String pincode = dataObj.optString("pincode");
-        String pincode_address = dataObj.optString("pincode_address");
+        String productId = dataObj.optString("product_id");
+        String productName = dataObj.optString("product_name");
+        String productPrice = dataObj.optString("price");
+        String productSpecialPrice = dataObj.optString("special_price");
+        String productDescription = dataObj.optString("description");
+        String stock = dataObj.optString("stock");
+        String isWishlist = dataObj.optString("is_wishlist");
+        String isAddToCart = dataObj.optString("is_add_to_cart");
+        String brand = dataObj.optString("brand");
+        JSONObject deliveryObject = dataObj.optJSONObject("delivery");
+        String pincode = deliveryObject.optString("pincode");
+        String country = deliveryObject.optString("country");
+        String info = deliveryObject.optString("info");
 
-        if (is_wishlist.trim().equalsIgnoreCase("0")) {
-            favorite_iv.setImageResource(R.drawable.ic_love_like);
+        if (isWishlist.trim().equalsIgnoreCase("0")) {
+            favoriteImageView.setImageResource(R.drawable.ic_love_like);
         } else {
-            favorite_iv.setImageResource(R.drawable.ic_love_fill);
+            favoriteImageView.setImageResource(R.drawable.ic_love_fill);
         }
-        item_title.setText(product_name);
-        old_price_tv.setVisibility(View.INVISIBLE);
-        sku_number_tv.setText(product_id);
-        new_price_tv.setText(Methods.getTwoDecimalVAlue(product_price));
-        model_no_tv.setText(product_id);
-        description.setText(product_description);
-        pincode_et.setText(pincode);
-        delivery_status_tv.setText(pincode_address);
+        itemTitleTextView.setText(productName);
+        oldPriceTextView.setVisibility(View.INVISIBLE);
+        skuNumberTextView.setText(productId);
+        newPriceTextView.setText(Methods.getTwoDecimalVAlue(productPrice));
+        modelNumberTextView.setText(productId);
+        description.setText(productDescription);
+        pinCodeEditText.setText(pincode);
+        //deliveryStatusTextView.setText(pincode_address);
 
         JSONArray mediaJsonArray = dataObj.optJSONArray("media");
         ArrayList<MediaModel> mediaList = convertMediaJsonToList(mediaJsonArray);
@@ -185,7 +194,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         ArrayList<RelatedProductModel> relatedProductModelArrayList = convertRealtedProductJsonToList(relatedProductJsonArray);
         viewMoreAdapter.addData(relatedProductModelArrayList);
 
-        parent_ll.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+        parentLinearLayout.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
     }
 
     private ArrayList<RelatedProductModel> convertRealtedProductJsonToList(JSONArray jArray) {
@@ -256,16 +265,16 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.more_info_tv:
-                focusOnView(more_extra_info_tv);
+                focusOnView(moreExtraInfoTextView);
                 break;
             case R.id.cart_btn:
                 attemptAddToCart();
                 break;
             case R.id.select_country_et:
-                select_country_et.requestFocus();
+                selectCountryEditText.requestFocus();
                 break;
             case R.id.pincode_et:
-                select_country_et.requestFocus();
+                selectCountryEditText.requestFocus();
                 break;
             case R.id.favorite_iv:
                 attemptAddToWishlist();
@@ -277,9 +286,9 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("product_id", ProductId);
+        json.addProperty("product_id", productId);
         WaitDialog.showDialog(this);
-        if (isWishlist.equalsIgnoreCase("0")) {
+        if (isWishList.equalsIgnoreCase("0")) {
             ServerCalling.ServerCallingProductsApiPost(mContext, "addToWishlist", json, ActivityItemDetails.this);
         } else {
             ServerCalling.ServerCallingProductsApiPost(mContext, "removeItemWishlist", json, ActivityItemDetails.this);
@@ -287,10 +296,10 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     }
 
     private void focusOnView(final View view) {
-        parent_sv.post(new Runnable() {
+        parentScrollView.post(new Runnable() {
             @Override
             public void run() {
-                parent_sv.scrollTo(0, view.getTop());
+                parentScrollView.scrollTo(0, view.getTop());
             }
         });
     }
@@ -299,7 +308,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("product_id", ProductId);
+        json.addProperty("product_id", productId);
         json.addProperty("qty", 1);
         json.addProperty("quote_id", "");
         WaitDialog.showDialog(mContext);
