@@ -1,8 +1,6 @@
 package com.mohi.in.activities;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,7 +27,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.balysv.materialripple.MaterialRippleLayout;
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
@@ -46,7 +43,6 @@ import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.utils.listeners.CartCountCallBack;
 import com.mohi.in.utils.listeners.ServerCallBack;
-import com.mohi.in.widgets.UbuntuMediumTextView;
 
 import org.json.JSONObject;
 
@@ -242,47 +238,12 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
             case "My Account":
                 ImageView imageView4 = mTabHost.getTabWidget().getChildAt(4).findViewById(R.id.tab_icon);
                 imageView4.setImageResource(R.drawable.ic_user_active);
-                if (!isUserLogin()) {
-                    showLoginPopupDailog();
-                }
                 break;
             default:
                 ImageView imageViewDefault = mTabHost.getTabWidget().getChildAt(0).findViewById(R.id.tab_icon);
                 imageViewDefault.setImageResource(R.drawable.ic_home_active);
                 break;
         }
-//        attemptTOGetUserInfo();
-    }
-
-    private void showLoginPopupDailog() {
-        UbuntuMediumTextView popUpLogin;
-        UbuntuMediumTextView popUpSignup;
-        final Dialog dialog = new Dialog(mContext);
-        dialog.setCancelable(true);
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        @SuppressLint("InflateParams")
-        View view = inflater.inflate(R.layout.login_signup_popup, null);
-        dialog.setContentView(view);
-        popUpLogin = view.findViewById(R.id.SigninSignup_popup_Login);
-        popUpSignup = view.findViewById(R.id.SigninSignup_popup_Signup);
-        popUpLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                Intent logInIntent = new Intent(mContext, LoginActivityNew.class);
-                startActivity(logInIntent);
-            }
-        });
-        popUpSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                Intent signUpIntent = new Intent(mContext, SignupActivityNew.class);
-                startActivity(signUpIntent);
-            }
-        });
-        dialog.show();
-        dialog.setCancelable(false);
     }
 
     // onNavigationItemSelected
@@ -360,18 +321,10 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
                 break;
             case R.id.Header_Search:
                 intent = new Intent(HomeActivity.this, SearchActivity.class);
-                startActivityForResult(intent,REQUEST_CODE);
+                startActivity(intent);
                 break;
                 default:
                     Methods.showToast(mContext,"Error");
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Methods.showToast(mContext,"Search Successfull");
         }
     }
 

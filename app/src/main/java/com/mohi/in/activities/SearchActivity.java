@@ -20,7 +20,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private UbuntuLightEditText searchEditText;
     private ImageView backBtnImageView;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class SearchActivity extends AppCompatActivity {
         setValue();
     }
 
-
     private void setValue(){
         searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -47,8 +45,6 @@ public class SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
         backBtnImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,9 +58,13 @@ public class SearchActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(searchValue)) {
             Methods.showToast(SearchActivity.this, "Please enter value");
         } else {
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra("search", searchValue);
-            setResult(Activity.RESULT_OK,returnIntent);
+            /*Intent searchIntent = new Intent("com.android.settings.TTS_SETTINGS");
+            searchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(searchIntent);*/
+
+            Intent searchIntent=new Intent(this,AllProductsListActivity.class);
+            searchIntent.putExtra("action",searchValue);
+            startActivity(searchIntent);
             finish();
         }
     }

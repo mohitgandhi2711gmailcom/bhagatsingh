@@ -1,5 +1,6 @@
 package com.mohi.in.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -44,12 +45,14 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     private String strTypeValue;
     private String catId;
     private static final String CATEGORY_ID = "cat_id";
+    private Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mContext=getActivity();
         View v = inflater.inflate(R.layout.fragment_product_list, container, false);
         mCategoryRv = v.findViewById(R.id.category_rv);
-        new AllProductListAdapter(getContext());
+        new AllProductListAdapter(mContext);
         if (getArguments() != null) {
             strTypeValue = getArguments().getString("name");
             catId = getArguments().getString(CATEGORY_ID);
@@ -64,8 +67,8 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     }
 
     private void setValue() {
-        mCategoryAdapter = new AllProductListAdapter(getContext());
-        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        mCategoryAdapter = new AllProductListAdapter(mContext);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(mContext, 2);
         mCategoryRv.setLayoutManager(mLayoutManager);
         mCategoryRv.addItemDecoration(new GridSpacingItemDecoration(2, 30, false));
         mCategoryList = new ArrayList<>();
@@ -107,7 +110,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         if (strTypeValue != null && !TextUtils.isEmpty(strTypeValue) && catId != null && !TextUtils.isEmpty(catId)) {
             try {
                 if (currentPage == 1) {
-                    WaitDialog.showDialog(getActivity());
+                    WaitDialog.showDialog(mContext);
                 }
                 if (strTypeValue.trim().equalsIgnoreCase("Filter")) {
                     JSONArray jj = new JSONArray();
@@ -122,8 +125,9 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                         }
                     }
                     JSONObject json = new JSONObject();
-                    json.put("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-                    json.put("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+                    json.put("user_id", SessionStore.getUserDetails(mContext
+                            , Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json.put("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json.put("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                     json.put("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                     json.put("limit", TOTAL_PAGES);
@@ -135,27 +139,27 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     json.put("brand", "");
                     json.put("color", "");
                     json.put("sort", "");
-                    ServerCalling.ServerCallingProductsApiPost(getActivity(), "filterProduct", (JsonObject) new JsonParser().parse(json.toString()), this);
+                    ServerCalling.ServerCallingProductsApiPost(mContext, "filterProduct", (JsonObject) new JsonParser().parse(json.toString()), this);
 
                 } else {
                     JsonObject json = new JsonObject();
                     json.addProperty("limit", TOTAL_PAGES);
                     json.addProperty("page", currentPage);
-                    json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-                    json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+                    json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                    json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                     json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
                     json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                     json.addProperty("type", strTypeValue);
                     json.addProperty(CATEGORY_ID, catId);
                     json.addProperty("search", "");
                     json.addProperty("sort", "");
-                    ServerCalling.ServerCallingProductsApiPost(getActivity(), "getProduct", json, this);
+                    ServerCalling.ServerCallingProductsApiPost(mContext, "getProduct", json, this);
                 }
             } catch (Exception e) {
                 Log.e("Error", e.toString());
             }
         } else {
-            Methods.showToast(getActivity(), "No data");
+            Methods.showToast(mContext, "No data");
         }
     }
 
@@ -171,7 +175,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                         setFeaturedCategories(dataArray, true);
                     }
                 } else {
-                    Methods.showToast(getContext(), result.getString("msg"));
+                    Methods.showToast(mContext, result.getString("msg"));
                     Log.e("AllProductsListActivity", "ServerCallBackSuccess attemptTOGetUserInfo log: " + result.getString("msg"));
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("filterProduct")) {
@@ -179,7 +183,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     JSONArray dataArray = result.getJSONArray("data");
                     setFeaturedCategories(dataArray, false);
                 } else {
-                    Methods.showToast(getContext(), result.getString("msg"));
+                    Methods.showToast(mContext, result.getString("msg"));
                     Log.e("AllProductsListActivity", "ServerCallBackSuccess attemptTOGetUserInfo log: " + result.getString("msg"));
                 }
             }
