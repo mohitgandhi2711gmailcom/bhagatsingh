@@ -20,11 +20,11 @@ import com.mohi.in.widgets.UbuntuMediumTextView;
 
 import java.util.ArrayList;
 
-public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.ViewHolder> {
+public class ItemViewedAdapter extends RecyclerView.Adapter<ItemViewedAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<BannerModel> mList;
 
-    public BannerDealAdapter(Context context, ArrayList<BannerModel> list) {
+    public ItemViewedAdapter(Context context, ArrayList<BannerModel> list) {
         mList = new ArrayList<>();
         this.mContext = context;
         this.mList = mList;
@@ -37,7 +37,7 @@ public class BannerDealAdapter extends RecyclerView.Adapter<BannerDealAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.subcategories_row, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_viewed_item, parent, false);
         return new ViewHolder(view);
     }
 

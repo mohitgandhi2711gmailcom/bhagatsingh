@@ -1,9 +1,9 @@
 package com.mohi.in.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,11 +29,10 @@ import com.mohi.in.utils.listeners.ServerCallBack;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.invoke.MethodHandle;
 import java.util.ArrayList;
 
 //OnValueChangeListener & RefreshList  was Implemented, And Removed Temporary
-public class CartFragment extends Fragment implements ServerCallBack, View.OnClickListener, CartFragmentEventsListener {
+public class CartFragment extends Fragment implements ServerCallBack, View.OnClickListener, CartFragmentEventsListener, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView cartRecyclerView;
     private TextView cartPrice;
@@ -42,6 +41,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private Context mContext;
     private CartAdapter mCartAdapter;
     private ArrayList<CartModel> cartList;
+    private SwipeRefreshLayout swipe_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         cartPrice = view.findViewById(R.id.cart_price);
         backCircleButton = view.findViewById(R.id.back_circle_btn);
         checkOutButton = view.findViewById(R.id.checkout_btn);
+        swipe_layout=view.findViewById(R.id.swipe_layout);
         setValue();
     }
 
@@ -67,6 +68,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         cartRecyclerView.setAdapter(mCartAdapter);
         backCircleButton.setOnClickListener(this);
         checkOutButton.setOnClickListener(this);
+        swipe_layout.setOnRefreshListener(this);
     }
 
     @Override
@@ -218,7 +220,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
                 break;
 
             default:
-                Methods.showToast(mContext,"Error..");
+                Methods.showToast(mContext, "Error..");
         }
     }
 
@@ -241,6 +243,12 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         json.addProperty("qty", model.getQty());
         json.addProperty("quote_id", model.getQuote_id());
         ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, this);
+    }
+
+    @Override
+    public void onRefresh() {
+        swipe_layout.setRefreshing(false);
+        attemptGetCart();
     }
 
     /*@Override

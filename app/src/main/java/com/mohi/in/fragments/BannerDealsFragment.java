@@ -1,9 +1,12 @@
 package com.mohi.in.fragments;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.gson.JsonObject;
@@ -26,12 +30,14 @@ import com.mohi.in.model.BannerModel;
 import com.mohi.in.model.CategoryModel;
 import com.mohi.in.model.HomeScreenSliderModel;
 import com.mohi.in.ui.adapter.BannerCategoryAdapter;
-import com.mohi.in.ui.adapter.BannerDealAdapter;
 import com.mohi.in.ui.adapter.BottomSliderAdapter;
+import com.mohi.in.ui.adapter.ItemViewedAdapter;
 import com.mohi.in.ui.adapter.MiddleSliderAdapter;
+import com.mohi.in.ui.adapter.MostSearchedAdapter;
 import com.mohi.in.ui.adapter.OfferTypeOneAdapter;
 import com.mohi.in.ui.adapter.OfferTypeTwoAdapter;
 import com.mohi.in.ui.adapter.TopSliderAdapter;
+import com.mohi.in.ui.adapter.TrendingNowAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
@@ -44,12 +50,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class BannerDealsFragment extends Fragment implements View.OnClickListener, ServerCallBack, RefreshList {
+public class BannerDealsFragment extends Fragment implements View.OnClickListener, ServerCallBack, RefreshList, SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
     private LinearLayout signInLinearLayout;
     private TextView signInTextView;
     private AutoScrollViewPager topBannerScrollView;
     private RadioGroup topBannerRadioGroup;
+    private SwipeRefreshLayout swipe_refresh_layout;
+    //private ScrollView parent_scroll_view;
     private RecyclerView offerTypeOneRecyclerView;
     private RecyclerView offerTypeTwoRecyclerView;
     private RecyclerView mostSearchedRecyclerView;
@@ -65,9 +73,9 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     private BottomSliderAdapter bottomSliderAdapter;
     private OfferTypeOneAdapter offerTypeOneAdapter;
     private OfferTypeTwoAdapter offerTypeTwoAdapter;
-    private BannerDealAdapter mostSearchedAdapter;
-    private BannerDealAdapter trendingNowAdapter;
-    private BannerDealAdapter itemViewedAdapter;
+    private MostSearchedAdapter mostSearchedAdapter;
+    private TrendingNowAdapter trendingNowAdapter;
+    private ItemViewedAdapter itemViewedAdapter;
     private BannerCategoryAdapter bannerCategoryAdapter;
     ArrayList<HomeScreenSliderModel> topBannerPagerList;
     ArrayList<HomeScreenSliderModel> middleBannerPagerList;
@@ -88,6 +96,8 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
     private void init(View root) {
         mContext = getActivity();
+        //parent_scroll_view = root.findViewById(R.id.parent_scroll_view);
+        swipe_refresh_layout = root.findViewById(R.id.swipe_refresh_layout);
         signInLinearLayout = root.findViewById(R.id.sign_in_ll);
         signInTextView = root.findViewById(R.id.sign_in_tv);
         topBannerScrollView = root.findViewById(R.id.top_banner_sv);
@@ -114,8 +124,10 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         setValue();
     }
 
+
     private void setValue() {
         signInTextView.setOnClickListener(this);
+        swipe_refresh_layout.setOnRefreshListener(this);
         offerTypeOneRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         offerTypeTwoRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         mostSearchedRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
@@ -128,11 +140,11 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         offerTypeTwoAdapter = new OfferTypeTwoAdapter(mContext, offerTypeTwoList);
         offerTypeTwoRecyclerView.setAdapter(offerTypeTwoAdapter);
 
-        mostSearchedAdapter = new BannerDealAdapter(mContext, mostSearchedList);
+        mostSearchedAdapter = new MostSearchedAdapter(mContext, mostSearchedList);
         mostSearchedRecyclerView.setAdapter(mostSearchedAdapter);
-        trendingNowAdapter = new BannerDealAdapter(mContext, trendingNowList);
+        trendingNowAdapter = new TrendingNowAdapter(mContext, trendingNowList);
         trendingNowRecyclerView.setAdapter(trendingNowAdapter);
-        itemViewedAdapter = new BannerDealAdapter(mContext, itemViewedList);
+        itemViewedAdapter = new ItemViewedAdapter(mContext, itemViewedList);
         itemViewedRecyclerView.setAdapter(itemViewedAdapter);
         bannerCategoryAdapter = new BannerCategoryAdapter(mContext, categoryList);
         categoryRecyclerView.setAdapter(bannerCategoryAdapter);
@@ -230,7 +242,7 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        attemptGetProduct();
+        attemptGetHomeScreenData();
     }
 
     @Override
@@ -249,7 +261,7 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         return !(TextUtils.isEmpty(userId) && TextUtils.isEmpty(token) && userId == null && token == null);
     }
 
-    private void attemptGetProduct() {
+    private void attemptGetHomeScreenData() {
         try {
             WaitDialog.showDialog(getActivity());
             JsonObject json = new JsonObject();
@@ -386,7 +398,13 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void refreshListSuccess() {
-        attemptGetProduct();
+        attemptGetHomeScreenData();
+    }
+
+    @Override
+    public void onRefresh() {
+        swipe_refresh_layout.setRefreshing(false);
+        attemptGetHomeScreenData();
     }
 }
 

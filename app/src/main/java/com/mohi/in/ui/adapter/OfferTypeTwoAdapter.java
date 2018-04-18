@@ -29,7 +29,7 @@ public class OfferTypeTwoAdapter extends RecyclerView.Adapter<OfferTypeTwoAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.offer_type_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.offer_type_two_item, parent, false);
         return new ViewHolder(view);
     }
 
