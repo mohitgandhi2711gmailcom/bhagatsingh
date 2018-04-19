@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,25 +31,35 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.google.gson.JsonObject;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mohi.in.R;
 import com.mohi.in.activities.LoginActivityNew;
 import com.mohi.in.activities.SignupActivityNew;
 import com.mohi.in.common.Common;
+import com.mohi.in.dialog.WaitDialog;
+import com.mohi.in.ui.adapter.AllProductListAdapter;
 import com.mohi.in.ui.adapter.TimelineProfileAddressPasswordAdapter;
 import com.mohi.in.utils.Methods;
+import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
+import com.mohi.in.utils.listeners.ServerCallBack;
 import com.mohi.in.widgets.UbuntuMediumTextView;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-public class TimelinePasswordProfileAddressFragment extends Fragment implements View.OnClickListener {
+public class TimelinePasswordProfileAddressFragment extends Fragment implements View.OnClickListener,ServerCallBack {
 
     private TimelineProfileAddressPasswordAdapter adapter;
     private ViewPager viewPager;
@@ -420,6 +431,12 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
                         Uri resultUri = result.getUri();
                         final String path = getRealPathFromURI(resultUri);
                         Glide.with(mContext).load(path).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(false).dontAnimate().into(editProfile_image);
+                        Glide.with(mContext).load(resultUri).asBitmap().into(new SimpleTarget<Bitmap>(200, 200) {
+                                    @Override
+                                    public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
+                                        attemptUploadImage(bitmap);
+                                    }
+                                });
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Exception error = result.getError();
                     }
@@ -428,6 +445,24 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
                 }
 
             }
+        }
+    }
+
+    private void attemptUploadImage(Bitmap  bitmap) {
+        try {
+            WaitDialog.showDialog(mContext);
+            JsonObject json = new JsonObject();
+//            Bitmap bmp = ((BitmapDrawable) editProfile_image.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            String image = stream.toByteArray().toString();
+
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+            json.addProperty("user_profile", image);
+            ServerCalling.ServerCallingUserApiPost(mContext, "profileimage", json, this);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -441,5 +476,11 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         }
         Intent intent = activityBuilder.getIntent(mContext);
         startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
+    }
+
+    @Override
+    public void ServerCallBackSuccess(JSONObject jobj, String strfFrom) {
+        WaitDialog.hideDialog();
+        Methods.showToast(mContext,jobj.toString());
     }
 }
