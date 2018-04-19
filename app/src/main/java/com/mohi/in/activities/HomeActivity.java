@@ -426,4 +426,10 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
     public void setParticulatTab(int position) {
         mTabHost.setCurrentTab(position);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Methods.showToast(mContext,"Vajj");
+    }
 }

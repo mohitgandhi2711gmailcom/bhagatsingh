@@ -56,7 +56,7 @@
 
                     <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/top_banner_sv"
-                        android:layout_width="615px"
+                        android:layout_width="match_parent"
                         android:layout_height="500px"
                         android:background="@drawable/gradient_blue_up_to_down" />
 
@@ -138,7 +138,7 @@
 
                     <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/middle_banner_sv"
-                        android:layout_width="575px"
+                        android:layout_width="match_parent"
                         android:layout_height="263px"
                         android:background="@drawable/gradient_blue_up_to_down" />
 
@@ -204,7 +204,7 @@
 
                     <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/bottom_banner_sv"
-                        android:layout_width="575px"
+                        android:layout_width="match_parent"
                         android:layout_height="263px"
                         android:background="@drawable/gradient_blue_up_to_down" />
 
