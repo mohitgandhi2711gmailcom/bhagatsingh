@@ -3,7 +3,6 @@ package com.mohi.in.fragments;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,24 +21,23 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.google.gson.JsonObject;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mohi.in.R;
 import com.mohi.in.activities.LoginActivityNew;
 import com.mohi.in.activities.SignupActivityNew;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
-import com.mohi.in.ui.adapter.AllProductListAdapter;
 import com.mohi.in.ui.adapter.TimelineProfileAddressPasswordAdapter;
 import com.mohi.in.utils.Methods;
 import com.mohi.in.utils.ServerCalling;
@@ -52,31 +49,29 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-public class TimelinePasswordProfileAddressFragment extends Fragment implements View.OnClickListener,ServerCallBack {
+public class TimelinePasswordProfileAddressFragment extends Fragment implements View.OnClickListener, ServerCallBack {
 
     private TimelineProfileAddressPasswordAdapter adapter;
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private CircularImageView editProfile_image;
-    private TextView user_name;
+    private CircularImageView editProfileImageView;
+    private TextView userNameTextView;
     private Context mContext;
-    private View MyAccount_LoginSingup;
-    private UbuntuMediumTextView SigninSignup_popup_Login;
-    private UbuntuMediumTextView SigninSignup_popup_Signup;
-    private Uri mUri = null;
-    public static final int CAMERA_REQUEST = 101;
-    public static final int GALLERY_REQUEST = 130;
-    public static String[] PERMISSIONS = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-    public static File IMAGE_PATH = null;
-    private Uri uri;
+    private View loginSignUpView;
+    private UbuntuMediumTextView loginTextView;
+    private UbuntuMediumTextView signupTextView;
+    private static final int CAMERA_REQUEST = 101;
+    private static final int GALLERY_REQUEST = 130;
+    private String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+    private File imagePath = null;
     public static final int PERMISSION_ALL = 134;
+    private ProgressBar profile_image_pb;
 
     @Nullable
     @Override
@@ -88,14 +83,15 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
 
     private void init(View view) {
         mContext = getActivity();
-        editProfile_image = view.findViewById(R.id.EditProfile_Image);
-        user_name = view.findViewById(R.id.user_name);
+        editProfileImageView = view.findViewById(R.id.EditProfile_Image);
+        userNameTextView = view.findViewById(R.id.user_name);
         viewPager = view.findViewById(R.id.pager_timleline);
         adapter = new TimelineProfileAddressPasswordAdapter(getChildFragmentManager());
         tabLayout = view.findViewById(R.id.tabs);
-        MyAccount_LoginSingup = view.findViewById(R.id.MyAccount_LoginSingup);
-        SigninSignup_popup_Login = view.findViewById(R.id.SigninSignup_popup_Login);
-        SigninSignup_popup_Signup = view.findViewById(R.id.SigninSignup_popup_Signup);
+        loginSignUpView = view.findViewById(R.id.MyAccount_LoginSingup);
+        loginTextView = view.findViewById(R.id.SigninSignup_popup_Login);
+        signupTextView = view.findViewById(R.id.SigninSignup_popup_Signup);
+        profile_image_pb=view.findViewById(R.id.profile_image_pb);
         setValue();
     }
 
@@ -106,60 +102,10 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         adapter.addFragment(new ChangePasswordFragment(), "CHANGE PASSWORD");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        editProfile_image.setOnClickListener(this);
-        SigninSignup_popup_Login.setOnClickListener(this);
-        SigninSignup_popup_Signup.setOnClickListener(this);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (!isUserLogin()) {
-            MyAccount_LoginSingup.setVisibility(View.VISIBLE);
-            //showLoginPopupDailog();
-        } else {
-            MyAccount_LoginSingup.setVisibility(View.GONE);
-        }
+        editProfileImageView.setOnClickListener(this);
+        loginTextView.setOnClickListener(this);
+        signupTextView.setOnClickListener(this);
         setUserData();
-    }
-
-
-    /*
-     * Methos to show Login Signup Popup
-     * */
-    private void showLoginPopupDailog() {
-        UbuntuMediumTextView popUpLogin;
-        UbuntuMediumTextView popUpSignup;
-        final Dialog dialog = new Dialog(mContext);
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.login_signup_popup, null);
-        dialog.setContentView(view);
-        popUpLogin = view.findViewById(R.id.SigninSignup_popup_Login);
-        popUpSignup = view.findViewById(R.id.SigninSignup_popup_Signup);
-        popUpLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                Intent logInIntent = new Intent(mContext, LoginActivityNew.class);
-                startActivity(logInIntent);
-            }
-        });
-        popUpSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                Intent signUpIntent = new Intent(mContext, SignupActivityNew.class);
-                startActivity(signUpIntent);
-            }
-        });
-        dialog.show();
-        dialog.setCancelable(true);
-    }
-
-    public boolean isUserLogin() {
-        String userId = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
-        String token = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN);
-        return !(TextUtils.isEmpty(userId) && TextUtils.isEmpty(token) && userId == null && token == null);
     }
 
     private void setUserData() {
@@ -168,8 +114,29 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
             Methods.showToast(mContext, "User is not logged in");
         } else {
             String username = map.get(SessionStore.USER_FIRST_NAME) + " " + map.get(SessionStore.USER_LAST_NAME);
-            user_name.setText(username);
-            //Glide.with(mContext).load(map.get(SessionStore.PROFILEPICTURE)).into(editProfile_image);
+            userNameTextView.setText(username);
+            Glide.with(mContext).load(map.get(SessionStore.PROFILEPICTURE)).listener(new RequestListener<String, GlideDrawable>() {
+                @Override
+                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    profile_image_pb.setVisibility(View.GONE);
+                    return false;
+                }
+            }).into(editProfileImageView);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!checkLogin()) {
+            loginSignUpView.setVisibility(View.VISIBLE);
+        } else {
+            loginSignUpView.setVisibility(View.GONE);
         }
     }
 
@@ -183,7 +150,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         switch (v.getId()) {
             case R.id.EditProfile_Image:
                 if (checkLogin()) {
-                    if (hasPermissions(mContext, PERMISSIONS)) {
+                    if (hasPermissions(mContext, permissions)) {
                         imageOptions();
                     } else {
                         startDialog();
@@ -192,13 +159,13 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
                 break;
 
             case R.id.SigninSignup_popup_Login:
-                MyAccount_LoginSingup.setVisibility(View.GONE);
+                loginSignUpView.setVisibility(View.GONE);
                 Intent logInIntent = new Intent(mContext, LoginActivityNew.class);
                 startActivity(logInIntent);
                 break;
 
             case R.id.SigninSignup_popup_Signup:
-                MyAccount_LoginSingup.setVisibility(View.GONE);
+                loginSignUpView.setVisibility(View.GONE);
                 Intent signUpIntent = new Intent(mContext, SignupActivityNew.class);
                 startActivity(signUpIntent);
                 break;
@@ -239,8 +206,8 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     }
 
     private void checkPermission() {
-        if (!hasPermissions(mContext, PERMISSIONS)) {
-            ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, PERMISSION_ALL);
+        if (!hasPermissions(mContext, permissions)) {
+            ActivityCompat.requestPermissions((Activity) mContext, permissions, PERMISSION_ALL);
         }
 
     }
@@ -252,13 +219,13 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         File dir = new File(file_path);
         if (!dir.exists())
             dir.mkdirs();
-        IMAGE_PATH = new File(dir, mContext.getResources().getString(R.string.app_name) + System.currentTimeMillis() + ".png");
+        imagePath = new File(dir, mContext.getResources().getString(R.string.app_name) + System.currentTimeMillis() + ".png");
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            picIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(mContext, "com.mohi.fileprovider", IMAGE_PATH));
+            picIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(mContext, "com.mohi.fileprovider", imagePath));
         } else {
-            picIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(IMAGE_PATH));
+            picIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagePath));
         }
 
         startActivityForResult(picIntent, CAMERA_REQUEST);
@@ -399,7 +366,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         if (requestCode == CAMERA_REQUEST) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
-                    cropImage(Uri.fromFile(IMAGE_PATH), 0);
+                    cropImage(Uri.fromFile(imagePath), 0);
 
                     break;
                 case Activity.RESULT_CANCELED:
@@ -430,13 +397,8 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
                     if (resultCode == Activity.RESULT_OK) {
                         Uri resultUri = result.getUri();
                         final String path = getRealPathFromURI(resultUri);
-                        Glide.with(mContext).load(path).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(false).dontAnimate().into(editProfile_image);
-                        Glide.with(mContext).load(resultUri).asBitmap().into(new SimpleTarget<Bitmap>(200, 200) {
-                                    @Override
-                                    public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
-                                        attemptUploadImage(bitmap);
-                                    }
-                                });
+                        Glide.with(mContext).load(path).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(false).dontAnimate().into(editProfileImageView);
+                        attemptUploadImage(resultUri);
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Exception error = result.getError();
                     }
@@ -448,19 +410,13 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
         }
     }
 
-    private void attemptUploadImage(Bitmap  bitmap) {
+    private void attemptUploadImage(Uri resultUri) {
         try {
             WaitDialog.showDialog(mContext);
-            JsonObject json = new JsonObject();
-//            Bitmap bmp = ((BitmapDrawable) editProfile_image.getDrawable()).getBitmap();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            String image = stream.toByteArray().toString();
-
-            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-            json.addProperty("user_profile", image);
-            ServerCalling.ServerCallingUserApiPost(mContext, "profileimage", json, this);
+            File file = new File(resultUri.getPath());
+            String name = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
+            String token = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN);
+            ServerCalling.ServerCallingUserApiImagePost(mContext, "profileimage", this, name, token, file);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -481,6 +437,26 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     @Override
     public void ServerCallBackSuccess(JSONObject jobj, String strfFrom) {
         WaitDialog.hideDialog();
-        Methods.showToast(mContext,jobj.toString());
+        if (strfFrom.trim().equalsIgnoreCase("profileimage"))
+            if (jobj.optString("status").trim().equalsIgnoreCase("success")) {
+                JSONObject data = jobj.optJSONObject("data");
+                String image = data.optString("image");
+                Glide.with(mContext).load(image).listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        profile_image_pb.setVisibility(View.GONE);
+                        return false;
+                    }
+                }).into(editProfileImageView);
+                HashMap<String, String> map = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME);
+                SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, map.get(SessionStore.USER_ID), map.get(SessionStore.USER_TOKEN), map.get(SessionStore.USER_EMAIL), map.get(SessionStore.USER_MOBILENO), map.get(SessionStore.USER_FIRST_NAME), map.get(SessionStore.USER_LAST_NAME), image, map.get(SessionStore.USER_CURRENCYTYPE), map.get(SessionStore.COUNTRY_CODE));
+            } else {
+                Methods.showToast(mContext, "Error");
+            }
     }
 }

@@ -183,23 +183,13 @@ public class ServerCalling {
                 });
     }
 
-    public static void ServerCallingUserApiImagePost(final Context mContext, final String urlParameter, final ServerCallBack callBack,
-                                                     String firstname,String lastname,String emailid, String countrycode,String mobileNo,String userId, String userToken, File file) {
-
-        // WaitDialog.showDialog(mContext);
-        Log.e("Url", "Url: " + Urls.USERBASEURL + urlParameter);
-
+    public static void ServerCallingUserApiImagePost(final Context mContext, final String urlParameter, final ServerCallBack callBack, String userId, String userToken, File file) {
         if (file == null) {
             Ion.with(mContext)
                     .load(Urls.USERBASEURL + urlParameter)
                     .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                     .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
                     .setTimeout(60 * 60 * 1000)
-                    .setMultipartParameter("firstname", firstname)
-                    .setMultipartParameter("lastname", lastname)
-                    .setMultipartParameter("email", emailid)
-                    .setMultipartParameter("cntry_code", countrycode)
-                    .setMultipartParameter("mob_number", mobileNo)
                     .setMultipartParameter("user_id", userId)
                     .setMultipartParameter("token", userToken)
                     .asJsonObject()
@@ -207,41 +197,24 @@ public class ServerCalling {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
                             // do stuff with the result or error
-
-                            // WaitDialog.hideDialog();
                             try {
                                 if (e != null) {
                                     WaitDialog.hideDialog();
                                     Log.e("ServerCallingUserApi", "ServerCalling error log: " + urlParameter + "   " + e.getMessage() + " :: " + result);
                                     Methods.showToast(mContext, "Error");
                                 } else {
-
-
                                     Log.e("ServerCallingUserApi", "ServerCalling log: " + urlParameter + "   " + result);
                                     JSONObject json = new JSONObject(result.toString());
-
                                     JSONObject jsonData = new JSONObject(json.toString());
-
                                     Log.e("ServerCallingUserApi", urlParameter + "   " + jsonData);
-
                                     if (jsonData.getString("status").equalsIgnoreCase("0")) {
                                         WaitDialog.hideDialog();
                                         Methods.showToast(mContext, jsonData.getString("msg"));
-
                                         Log.e("ServerCallingUserApi ", urlParameter + "   " + jsonData.getString("msg"));
-
                                         if (jsonData.get("error") != null) {
-
                                             if (jsonData.getString("error").equalsIgnoreCase("461")) {
-                                            /*Intent intent = new Intent(mContext, LoginActivity.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            mContext.startActivity(intent);
-                                            ((Activity) mContext).finish();*/
                                                 SessionStore.clear(mContext, Common.USER_PREFS_NAME);
                                             } else if (jsonData.getString("error").equalsIgnoreCase("462")) {
-
-
                                                 new AlertDialog.Builder(mContext)
                                                         .setTitle((mContext.getResources()).getString(R.string.update_text))
                                                         .setMessage((mContext.getResources()).getString(R.string.update_app_message))
@@ -249,7 +222,6 @@ public class ServerCalling {
                                                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                                             @Override
                                                             public void onClick(DialogInterface dialogInterface, int i) {
-
                                                                 String url = "https://play.google.com/store/apps/details?id=com.mohi.in&hl=en";
                                                                 Intent intent = new Intent(Intent.ACTION_VIEW);
                                                                 intent.setData(Uri.parse(url));
@@ -283,11 +255,6 @@ public class ServerCalling {
                     .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                     .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
                     .setTimeout(60 * 60 * 1000)
-                    .setMultipartParameter("firstname", firstname)
-                    .setMultipartParameter("lastname", lastname)
-                    .setMultipartParameter("email", emailid)
-                    .setMultipartParameter("cntry_code", countrycode)
-                    .setMultipartParameter("mob_number", mobileNo)
                     .setMultipartParameter("user_id", userId)
                     .setMultipartParameter("token", userToken)
                     .setMultipartFile("user_profile", file)

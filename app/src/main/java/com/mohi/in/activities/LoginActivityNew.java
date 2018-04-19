@@ -89,7 +89,6 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         country_code_spinner = findViewById(R.id.country_code_spinner);
         btn_signUpButton = findViewById(R.id.register_here_tv);
         mPasswordView = findViewById(R.id.pass_et);
-//        mEmailView = findViewById(R.id.username_mail_id_et);
         back_iv = findViewById(R.id.back_iv);
         tv_forgotPassword = findViewById(R.id.forgot_tv);
         mPasswordView.setOnTouchListener(new View.OnTouchListener() {
@@ -174,6 +173,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         country_codes.add("+965");
         country_codes.add("+44");
         country_codes.add("+1");
+
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_textview, country_codes);
         country_code_spinner.setAdapter(dataAdapter);
         country_code_spinner.setOnItemSelectedListener(this);
