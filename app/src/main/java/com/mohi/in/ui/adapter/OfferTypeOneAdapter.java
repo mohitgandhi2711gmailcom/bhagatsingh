@@ -2,10 +2,12 @@ package com.mohi.in.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.mohi.in.R;
@@ -17,9 +19,9 @@ public class OfferTypeOneAdapter extends RecyclerView.Adapter<OfferTypeOneAdapte
     private Context mContext;
     private ArrayList<HomeScreenSliderModel> mList = new ArrayList<>();
 
-    public OfferTypeOneAdapter(Context context,ArrayList<HomeScreenSliderModel> mList) {
+    public OfferTypeOneAdapter(Context context, ArrayList<HomeScreenSliderModel> mList) {
         this.mContext = context;
-        this.mList=mList;
+        this.mList = mList;
     }
 
     public void updateList(ArrayList<HomeScreenSliderModel> list) {
@@ -36,7 +38,11 @@ public class OfferTypeOneAdapter extends RecyclerView.Adapter<OfferTypeOneAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         HomeScreenSliderModel model = mList.get(position);
-        Glide.with(mContext).load(model.getImageUrl()).into(holder.offer_type_iv);
+        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+        int width=((totalWidth*405)/650);
+        int height=(75*width)/405;
+        holder.offerTypeImageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        Glide.with(mContext).load(model.getImageUrl()).into(holder.offerTypeImageView);
     }
 
     @Override
@@ -46,11 +52,11 @@ public class OfferTypeOneAdapter extends RecyclerView.Adapter<OfferTypeOneAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView offer_type_iv;
+        private ImageView offerTypeImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            offer_type_iv = itemView.findViewById(R.id.offer_type_iv);
+            offerTypeImageView = itemView.findViewById(R.id.offer_type_iv);
         }
     }
 }

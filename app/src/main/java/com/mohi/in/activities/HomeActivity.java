@@ -61,7 +61,6 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
     private ResideMenuItem itemRateApp;
     private LinearLayout drawerLayout;
     private ImageView headerSearch;
-    private static final Integer REQUEST_CODE=7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,8 +117,8 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
         resideMenu.setScaleValue(0.6f);
 
         /*
-        * create menu items
-        * */
+         * create menu items
+         * */
         itemCategories = new ResideMenuItem(this, R.drawable.empty_shape, "CATEGORIES");
         itemHelp = new ResideMenuItem(this, R.drawable.empty_shape, "HELP");
         itemFaq = new ResideMenuItem(this, R.drawable.empty_shape, "FAQ");
@@ -312,8 +311,7 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
             closeResideMenu();
         }
 
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.Header_Menu:
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 assert imm != null;
@@ -323,8 +321,8 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
                 intent = new Intent(HomeActivity.this, SearchActivity.class);
                 startActivity(intent);
                 break;
-                default:
-                    Methods.showToast(mContext,"Error");
+            default:
+                Methods.showToast(mContext, "Error");
         }
     }
 
@@ -336,8 +334,8 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
         @Override
         public void openMenu() {
             /*
-            * Open Menu Listener
-            * */
+             * Open Menu Listener
+             * */
         }
 
         @Override
@@ -430,6 +428,6 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Methods.showToast(mContext,"Vajj");
+        Methods.showToast(mContext, "Vajj");
     }
 }

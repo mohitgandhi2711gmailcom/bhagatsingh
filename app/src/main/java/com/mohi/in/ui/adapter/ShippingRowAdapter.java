@@ -286,7 +286,7 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
 
 
 }
-/*extends RecyclerView.Adapter<ShippingRowAdapter.ViewHolder> implements ServerCallBack {
+/*extends RecyclerView.Adapter<ShippingRowAdapter.MyViewHolder> implements ServerCallBack {
 
 
     private Context mContext;
@@ -328,14 +328,14 @@ public class ShippingRowAdapter extends BaseAdapter implements  ServerCallBack{
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.shipping_row , parent ,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        MyViewHolder viewHolder = new MyViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
 
 
@@ -404,7 +404,7 @@ if (Integer.parseInt(model.qty) != Integer.parseInt(item.get(i).trim().replaceAl
 
 
 
-    class ViewHolder extends RecyclerView.ViewHolder
+    class MyViewHolder extends RecyclerView.MyViewHolder
     {
 
 
@@ -415,7 +415,7 @@ if (Integer.parseInt(model.qty) != Integer.parseInt(item.get(i).trim().replaceAl
         private Spinner spn_qty;
 
 
-        public ViewHolder(View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_productPrice = (UbuntuMediumTextView) itemView.findViewById(R.id.ShippingRow_ProductPrice);

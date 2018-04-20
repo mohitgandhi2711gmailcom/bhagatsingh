@@ -54,7 +54,6 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity();
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
-
         init(view);
         return view;
     }
@@ -79,7 +78,6 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         mCategoryList = new ArrayList<>();
         mCategoryRv.setItemAnimator(new DefaultItemAnimator());
         mCategoryRv.setAdapter(mCategoryAdapter);
-        attemptGetCategories();
         mCategoryRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -147,6 +145,12 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 Methods.showToast(mContext, "Sort Button Clicked");
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        attemptGetCategories();
     }
 
     private void attemptGetCategories() {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.mohi.in.R;
@@ -19,43 +20,50 @@ import com.mohi.in.utils.SessionStore;
 import com.mohi.in.widgets.UbuntuMediumTextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ItemViewedAdapter extends RecyclerView.Adapter<ItemViewedAdapter.ViewHolder> {
+public class ItemViewedAdapter extends RecyclerView.Adapter<ItemViewedAdapter.MyViewHolder> {
     private Context mContext;
-    private ArrayList<BannerModel> mList;
+    private List<BannerModel> mList;
 
-    public ItemViewedAdapter(Context context, ArrayList<BannerModel> list) {
+    public ItemViewedAdapter(Context context, List<BannerModel> list) {
         mList = new ArrayList<>();
         this.mContext = context;
-        this.mList = mList;
+        this.mList = list;
     }
 
-    public void updateList(ArrayList<BannerModel> list) {
+    public void updateList(List<BannerModel> list) {
         this.mList = list;
         notifyDataSetChanged();
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_viewed_item, parent, false);
-        return new ViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         final BannerModel model = mList.get(position);
-        Glide.with(mContext).load(model.getImage()).into(holder.Subcategories_Row_Image);
+        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+        int width=((totalWidth*240)/720);
+        int height=(316*width)/240;
+        holder.subcategoriesRowImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+
+        Glide.with(mContext).load(model.getImage()).into(holder.subcategoriesRowImage);
         String isFavourite = model.getIs_wishlist();
         if (isFavourite.trim().equalsIgnoreCase("0")) {
-            holder.Subcategories_Row_Favorite.setBackgroundResource(R.drawable.ic_love_like);
+            holder.subcategoriesRowFavorite.setBackgroundResource(R.drawable.ic_love_like);
         } else {
-            holder.Subcategories_Row_Favorite.setBackgroundResource(R.drawable.ic_love_fill);
+            holder.subcategoriesRowFavorite.setBackgroundResource(R.drawable.ic_love_fill);
         }
-        holder.Subcategories_Row_Title.setText(model.getProduct_name());
-        holder.short_desc_tv.setText(model.getProduct_name());
-        holder.Subcategories_Row_Price.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.twoDigitFormat(model.getProduct_price()));
+        holder.subcategoriesRowTitle.setText(model.getProduct_name());
+        holder.shortDescriptionTextView.setText(model.getProduct_name());
+        String price=SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.twoDigitFormat(model.getProduct_price());
+        holder.subcategoriesRowPrice.setText(price);
         final String ProductId = model.getProduct_id();
-        holder.ll_item.setOnClickListener(new View.OnClickListener() {
+        holder.itemLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ActivityItemDetails.class);
@@ -71,22 +79,22 @@ public class ItemViewedAdapter extends RecyclerView.Adapter<ItemViewedAdapter.Vi
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout ll_item;
-        private ImageView Subcategories_Row_Image;
-        private ImageView Subcategories_Row_Favorite;
-        private UbuntuMediumTextView Subcategories_Row_Title;
-        private UbuntuMediumTextView short_desc_tv;
-        private UbuntuMediumTextView Subcategories_Row_Price;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout itemLinearLayout;
+        private ImageView subcategoriesRowImage;
+        private ImageView subcategoriesRowFavorite;
+        private UbuntuMediumTextView subcategoriesRowTitle;
+        private UbuntuMediumTextView shortDescriptionTextView;
+        private UbuntuMediumTextView subcategoriesRowPrice;
 
-        ViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
-            ll_item = view.findViewById(R.id.ll_item);
-            Subcategories_Row_Image = view.findViewById(R.id.Subcategories_Row_Image);
-            Subcategories_Row_Favorite = view.findViewById(R.id.Subcategories_Row_Favorite);
-            Subcategories_Row_Title = view.findViewById(R.id.Subcategories_Row_Title);
-            Subcategories_Row_Price = view.findViewById(R.id.Subcategories_Row_Price);
-            short_desc_tv = view.findViewById(R.id.short_desc_tv);
+            itemLinearLayout = view.findViewById(R.id.ll_item);
+            subcategoriesRowImage = view.findViewById(R.id.Subcategories_Row_Image);
+            subcategoriesRowFavorite = view.findViewById(R.id.Subcategories_Row_Favorite);
+            subcategoriesRowTitle = view.findViewById(R.id.Subcategories_Row_Title);
+            subcategoriesRowPrice = view.findViewById(R.id.Subcategories_Row_Price);
+            shortDescriptionTextView = view.findViewById(R.id.short_desc_tv);
         }
     }
 }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -42,6 +43,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final FeaturedCategoryModel model = mList.get(position);
+        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+        int height=totalWidth/3;
+        holder.mCategoryIv.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
         holder.mCategoryNameTv.setText(model.name);
         Glide.with(mContext).load(model.image).into(holder.mCategoryIv);
         holder.mCatecories.setOnClickListener(new View.OnClickListener() {

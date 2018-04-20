@@ -11,13 +11,17 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -96,7 +100,6 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
     private void init(View root) {
         mContext = getActivity();
-        //parent_scroll_view = root.findViewById(R.id.parent_scroll_view);
         swipe_refresh_layout = root.findViewById(R.id.swipe_refresh_layout);
         signInLinearLayout = root.findViewById(R.id.sign_in_ll);
         signInTextView = root.findViewById(R.id.sign_in_tv);
@@ -126,8 +129,20 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
 
 
     private void setValue() {
-        signInTextView.setOnClickListener(this);
-        swipe_refresh_layout.setOnRefreshListener(this);
+
+        /*
+        * Setting Height of Banner Dynamically
+        * */
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int topBannerWidth= displaymetrics.widthPixels;
+        int topBannerHeight=((500*topBannerWidth)/615);
+        topBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, topBannerHeight));
+        int middleBannerHeight=((263*topBannerWidth)/575);
+        middleBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, middleBannerHeight));
+        int bottomBannerHeight=((263*topBannerWidth)/575);
+        bottomBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, bottomBannerHeight));
+
         offerTypeOneRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         offerTypeTwoRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         mostSearchedRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
@@ -148,6 +163,10 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         itemViewedRecyclerView.setAdapter(itemViewedAdapter);
         bannerCategoryAdapter = new BannerCategoryAdapter(mContext, categoryList);
         categoryRecyclerView.setAdapter(bannerCategoryAdapter);
+
+        signInTextView.setOnClickListener(this);
+        swipe_refresh_layout.setOnRefreshListener(this);
+
         setAllSlider();
     }
 
@@ -405,6 +424,14 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     public void onRefresh() {
         swipe_refresh_layout.setRefreshing(false);
         attemptGetHomeScreenData();
+    }
+
+    private float dpToPx(float dp) {
+        return dp * getResources().getDisplayMetrics().density;
+    }
+
+    private float pxToDp(float px) {
+        return px / getResources().getDisplayMetrics().density;
     }
 }
 

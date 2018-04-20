@@ -30,15 +30,15 @@ import java.util.List;
 public class HomeFragment extends Fragment implements ServerCallBack {
 
     private ViewPagerAdapter adapter;
-    private ProductListFragment sareeFragment;
+    /*private ProductListFragment sareeFragment;
     private ProductListFragment bridalWearFragment;
     private ProductListFragment lehngaFragment;
     private ProductListFragment salwarFragment;
-    private ProductListFragment kurtaFragment;
-    private static final String CATEGORY_ID ="cat_id";
-    private static final String NAME ="name";
-    private static final String IMAGE ="image";
-
+    private ProductListFragment kurtaFragment;*/
+    private static final String CATEGORY_ID = "cat_id";
+    private static final String NAME = "name";
+    private static final String IMAGE = "image";
+    private Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,23 +48,24 @@ public class HomeFragment extends Fragment implements ServerCallBack {
     }
 
     private void init(View v) {
-        WaitDialog.showDialog(getActivity());
+        mContext = getActivity();
         ViewPager viewPager = v.findViewById(R.id.viewpager);
         TabLayout tabLayout = v.findViewById(R.id.tabs);
         adapter = new ViewPagerAdapter(getFragmentManager());
         tabLayout.setupWithViewPager(viewPager);
 
-        sareeFragment = new ProductListFragment();
-        bridalWearFragment = new ProductListFragment();
-        lehngaFragment = new ProductListFragment();
-        salwarFragment = new ProductListFragment();
-        kurtaFragment = new ProductListFragment();
+//        sareeFragment = new ProductListFragment();
+//        bridalWearFragment = new ProductListFragment();
+//        lehngaFragment = new ProductListFragment();
+//        salwarFragment = new ProductListFragment();
+//        kurtaFragment = new ProductListFragment();
+//        adapter.addFrag(new BannerDealsFragment(), "Home");
+//        adapter.addFrag(sareeFragment, "SAREE");
+//        adapter.addFrag(bridalWearFragment, "BRIDAL WEAR");
+//        adapter.addFrag(lehngaFragment, "LEHANGA");
+//        adapter.addFrag(salwarFragment, "SALWAR");
+//        adapter.addFrag(kurtaFragment, "KURTA");
         adapter.addFrag(new BannerDealsFragment(), "Home");
-        adapter.addFrag(sareeFragment, "SAREE");
-        adapter.addFrag(bridalWearFragment, "BRIDAL WEAR");
-        adapter.addFrag(lehngaFragment, "LEHANGA");
-        adapter.addFrag(salwarFragment, "SALWAR");
-        adapter.addFrag(kurtaFragment, "KURTA");
         viewPager.setAdapter(adapter);
         attemptGetFeaturedCategories();
     }
@@ -72,15 +73,15 @@ public class HomeFragment extends Fragment implements ServerCallBack {
     // Get user information
     private void attemptGetFeaturedCategories() {
         try {
-            WaitDialog.showDialog(getActivity());
+            WaitDialog.showDialog(mContext);
             JsonObject json = new JsonObject();
             json.addProperty("limit", "");
             json.addProperty("page", "");
-            json.addProperty("width", Common.getDeviceHeightWidth(getActivity()).widthPixels);
+            json.addProperty("width", Common.getDeviceHeightWidth(mContext).widthPixels);
             json.addProperty("height", getResources().getDimension(R.dimen.home_allcategories_row_height));
-            ServerCalling.ServerCallingProductsApiPost(getActivity(), "getCategories", json, this);
+            ServerCalling.ServerCallingProductsApiPost(mContext, "getCategories", json, this);
         } catch (Exception e) {
-            Log.e("Error",e.toString());
+            Log.e("Error", e.toString());
         }
     }
 
@@ -93,60 +94,32 @@ public class HomeFragment extends Fragment implements ServerCallBack {
                     setFeaturedCategories(dataArray);
                     WaitDialog.hideDialog();
                 } else {
-                    Methods.showToast(getActivity(), jobj.getString("msg"));
+                    Methods.showToast(mContext, jobj.getString("msg"));
                 }
             }
         } catch (Exception e) {
-            Log.e("Error",e.toString());
+            Log.e("Error", e.toString());
         }
     }
 
     private void setFeaturedCategories(JSONArray dataArray) throws JSONException {
 
-        Bundle bundle1 = new Bundle();
-        String catId1 = dataArray.getJSONObject(0).getString(CATEGORY_ID);
-        String name1 = dataArray.getJSONObject(0).getString(NAME);
-        String image1 = dataArray.getJSONObject(0).getString(IMAGE);
-        bundle1.putString(CATEGORY_ID, catId1);
-        bundle1.putString(NAME, name1);
-        bundle1.putString(IMAGE, image1);
-        sareeFragment.setArguments(bundle1);
-
-        Bundle bundle2 = new Bundle();
-        String catId2 = dataArray.getJSONObject(1).getString(CATEGORY_ID);
-        String name2 = dataArray.getJSONObject(1).getString(NAME);
-        String image2 = dataArray.getJSONObject(1).getString(IMAGE);
-        bundle2.putString(CATEGORY_ID, catId2);
-        bundle2.putString(NAME, name2);
-        bundle2.putString(IMAGE, image2);
-        bridalWearFragment.setArguments(bundle2);
-
-        Bundle bundle3 = new Bundle();
-        String catId3 = dataArray.getJSONObject(2).getString(CATEGORY_ID);
-        String name3 = dataArray.getJSONObject(2).getString(NAME);
-        String image3 = dataArray.getJSONObject(2).getString(IMAGE);
-        bundle3.putString(CATEGORY_ID, catId3);
-        bundle3.putString(NAME, name3);
-        bundle3.putString(IMAGE, image3);
-        lehngaFragment.setArguments(bundle3);
-
-        Bundle bundle4 = new Bundle();
-        String catId4 = dataArray.getJSONObject(3).getString(CATEGORY_ID);
-        String name4 = dataArray.getJSONObject(3).getString(NAME);
-        String image4 = dataArray.getJSONObject(3).getString(IMAGE);
-        bundle4.putString(CATEGORY_ID, catId4);
-        bundle4.putString(NAME, name4);
-        bundle4.putString(IMAGE, image4);
-        salwarFragment.setArguments(bundle4);
-
-        Bundle bundle5 = new Bundle();
-        String catId5 = dataArray.getJSONObject(4).getString(CATEGORY_ID);
-        String name5 = dataArray.getJSONObject(4).getString(NAME);
-        String image5 = dataArray.getJSONObject(4).getString(IMAGE);
-        bundle5.putString(CATEGORY_ID, catId5);
-        bundle5.putString(NAME, name5);
-        bundle5.putString(IMAGE, image5);
-        kurtaFragment.setArguments(bundle5);
+        ArrayList<String> stringName = new ArrayList<>();
+        for (int i = 0; i < dataArray.length(); i++) {
+            Bundle bundle = new Bundle();
+            String catId = dataArray.optJSONObject(i).getString(CATEGORY_ID);
+            String name = dataArray.optJSONObject(i).getString(NAME);
+            String image = dataArray.optJSONObject(i).getString(IMAGE);
+            if (!stringName.contains(name.toLowerCase())) {
+                bundle.putString(CATEGORY_ID, catId);
+                bundle.putString(NAME, name);
+                bundle.putString(IMAGE, image);
+                ProductListFragment dataFragment = new ProductListFragment();
+                adapter.addFrag(dataFragment, name);
+                dataFragment.setArguments(bundle);
+            }
+            stringName.add(name.toLowerCase());
+        }
         adapter.notifyDataSetChanged();
     }
 
