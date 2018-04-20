@@ -3,6 +3,7 @@ package com.mohi.in.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -46,23 +47,27 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     private String catId;
     private static final String CATEGORY_ID = "cat_id";
     private Context mContext;
+    private FloatingActionButton filter_btn;
+    private FloatingActionButton sort_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mContext=getActivity();
-        View v = inflater.inflate(R.layout.fragment_product_list, container, false);
-        mCategoryRv = v.findViewById(R.id.category_rv);
-        new AllProductListAdapter(mContext);
+        mContext = getActivity();
+        View view = inflater.inflate(R.layout.fragment_product_list, container, false);
+
+        init(view);
+        return view;
+    }
+
+    private void init(View view) {
+        mCategoryRv = view.findViewById(R.id.category_rv);
+        mCategoryAdapter = new AllProductListAdapter(mContext);
+        filter_btn = view.findViewById(R.id.filter_btn);
+        sort_btn = view.findViewById(R.id.sort_btn);
         if (getArguments() != null) {
             strTypeValue = getArguments().getString("name");
             catId = getArguments().getString(CATEGORY_ID);
         }
-        return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         setValue();
     }
 
@@ -75,6 +80,30 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         mCategoryRv.setItemAnimator(new DefaultItemAnimator());
         mCategoryRv.setAdapter(mCategoryAdapter);
         attemptGetCategories();
+        mCategoryRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    filter_btn.show();
+                    sort_btn.show();
+                }
+                else
+                {
+                    filter_btn.hide();
+                    sort_btn.hide();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy != 0) {
+                    filter_btn.hide();
+                    sort_btn.hide();
+                }
+            }
+        });
+
         mCategoryRv.addOnScrollListener(new PaginationScrollListener(mLayoutManager) {
             @Override
             protected void loadMoreItems() {
@@ -102,6 +131,20 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
             @Override
             public boolean isLoading() {
                 return isLoading;
+            }
+        });
+
+        filter_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Methods.showToast(mContext, "Filter Button Clicked");
+            }
+        });
+
+        sort_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Methods.showToast(mContext, "Sort Button Clicked");
             }
         });
     }
