@@ -30,15 +30,11 @@ import java.util.List;
 public class HomeFragment extends Fragment implements ServerCallBack {
 
     private ViewPagerAdapter adapter;
-    /*private ProductListFragment sareeFragment;
-    private ProductListFragment bridalWearFragment;
-    private ProductListFragment lehngaFragment;
-    private ProductListFragment salwarFragment;
-    private ProductListFragment kurtaFragment;*/
     private static final String CATEGORY_ID = "cat_id";
     private static final String NAME = "name";
     private static final String IMAGE = "image";
     private Context mContext;
+    private ViewPager viewPager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,23 +45,10 @@ public class HomeFragment extends Fragment implements ServerCallBack {
 
     private void init(View v) {
         mContext = getActivity();
-        ViewPager viewPager = v.findViewById(R.id.viewpager);
+        viewPager = v.findViewById(R.id.viewpager);
         TabLayout tabLayout = v.findViewById(R.id.tabs);
         adapter = new ViewPagerAdapter(getFragmentManager());
         tabLayout.setupWithViewPager(viewPager);
-
-//        sareeFragment = new ProductListFragment();
-//        bridalWearFragment = new ProductListFragment();
-//        lehngaFragment = new ProductListFragment();
-//        salwarFragment = new ProductListFragment();
-//        kurtaFragment = new ProductListFragment();
-//        adapter.addFrag(new BannerDealsFragment(), "Home");
-//        adapter.addFrag(sareeFragment, "SAREE");
-//        adapter.addFrag(bridalWearFragment, "BRIDAL WEAR");
-//        adapter.addFrag(lehngaFragment, "LEHANGA");
-//        adapter.addFrag(salwarFragment, "SALWAR");
-//        adapter.addFrag(kurtaFragment, "KURTA");
-        adapter.addFrag(new BannerDealsFragment(), "Home");
         viewPager.setAdapter(adapter);
         attemptGetFeaturedCategories();
     }
@@ -103,7 +86,7 @@ public class HomeFragment extends Fragment implements ServerCallBack {
     }
 
     private void setFeaturedCategories(JSONArray dataArray) throws JSONException {
-
+        adapter.addFrag(new BannerDealsFragment(), "Home");
         ArrayList<String> stringName = new ArrayList<>();
         for (int i = 0; i < dataArray.length(); i++) {
             Bundle bundle = new Bundle();

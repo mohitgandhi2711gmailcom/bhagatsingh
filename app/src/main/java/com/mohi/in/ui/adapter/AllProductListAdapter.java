@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.bumptech.glide.Glide;
@@ -72,11 +73,17 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         switch (getItemViewType(position)) {
             case ITEM:
                 ViewHolder holder = (ViewHolder) holder1;
+
+                int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+                int width=((totalWidth*280)/600);
+                int height=(374*width)/280;
+                holder.mImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
                 holder.mName.setText(model.product_name);
                 if (model.product_price != null) {
                     holder.mPrice.setText(Methods.getTwoDecimalVAlue(model.product_price));
                 }
-                holder.mCurrencyType.setText(" " + SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE));
+                String currency=" " + SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE);
+                holder.mCurrencyType.setText(currency);
                 Glide.with(mContext).load(model.image).into(holder.mImage);
                 holder.mItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override

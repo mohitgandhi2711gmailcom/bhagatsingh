@@ -383,7 +383,6 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
     private void removePreviousError() {
         phone_number_et.setError(null);
-//        mEmailView.setError(null);
         mPasswordView.setError(null);
     }
 
@@ -440,6 +439,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         String cntry_code = data.optString("cntry_code");
         SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
         finish();
+        startActivity(new Intent(this,HomeActivity.class));
     }
 
     @Override
