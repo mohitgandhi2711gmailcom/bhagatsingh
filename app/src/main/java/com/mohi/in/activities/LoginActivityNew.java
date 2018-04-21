@@ -19,6 +19,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -58,18 +59,19 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 public class LoginActivityNew extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener, ServerCallBack, OtpDialogDismissListener, AdapterView.OnItemSelectedListener {
 
     private static final int REQUEST_READ_CONTACTS = 0;
-    private Button btn_emailSignInButton;
-    private TextView btn_signUpButton, tv_forgotPassword;
+    private Button emailSignInButton;
+    private TextView signUpTextView;
+    private TextView forgotPasswordTextView;
     Intent intent;
     private Context mContext;
-    private EditText mPasswordView;  /*mEmailView*/
-    private ImageView back_iv;
-    private Button otp_btn;
-    private Spinner country_code_spinner;
-    private EditText phone_number_et;
-    private String country_code;
+    private EditText mPasswordView;
+    private ImageView backImageView;
+    private Button otpButton;
+    private Spinner countryCodeSpinner;
+    private EditText phoneNumberEditText;
+    private String countryCode;
     private boolean isPasswordCoded = true;
-    private ArrayList<String> country_codes;
+    private ArrayList<String> countryCodes;
     private boolean isNumber = false;
 
     @Override
@@ -83,14 +85,14 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     }
 
     private void init() {
-        otp_btn = findViewById(R.id.otp_btn);
-        phone_number_et = findViewById(R.id.phone_number_et);
-        btn_emailSignInButton = findViewById(R.id.login_btn);
-        country_code_spinner = findViewById(R.id.country_code_spinner);
-        btn_signUpButton = findViewById(R.id.register_here_tv);
+        otpButton = findViewById(R.id.otp_btn);
+        phoneNumberEditText = findViewById(R.id.phone_number_et);
+        emailSignInButton = findViewById(R.id.login_btn);
+        countryCodeSpinner = findViewById(R.id.country_code_spinner);
+        signUpTextView = findViewById(R.id.register_here_tv);
         mPasswordView = findViewById(R.id.pass_et);
-        back_iv = findViewById(R.id.back_iv);
-        tv_forgotPassword = findViewById(R.id.forgot_tv);
+        backImageView = findViewById(R.id.back_iv);
+        forgotPasswordTextView = findViewById(R.id.forgot_tv);
         mPasswordView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -114,15 +116,19 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         });
         setValue();
 
-        phone_number_et.addTextChangedListener(new TextWatcher() {
+        phoneNumberEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                /*
+                 * Before Text Change Listener
+                 * */
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                /*
+                 * OnText Chnage Listener
+                 * */
             }
 
             @Override
@@ -130,14 +136,14 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
                 if (editable.length() > 2) {
                     if (TextUtils.isDigitsOnly(editable.toString())) {
                         isNumber = true;
-                        country_code_spinner.setVisibility(View.VISIBLE);
+                        countryCodeSpinner.setVisibility(View.VISIBLE);
                     } else {
                         isNumber = false;
-                        country_code_spinner.setVisibility(View.GONE);
+                        countryCodeSpinner.setVisibility(View.GONE);
                     }
                 } else {
                     isNumber = false;
-                    country_code_spinner.setVisibility(View.GONE);
+                    countryCodeSpinner.setVisibility(View.GONE);
                 }
             }
         });
@@ -145,11 +151,11 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
     private void setValue() {
         populateAutoComplete();
-        back_iv.setOnClickListener(this);
-        btn_emailSignInButton.setOnClickListener(this);
-        btn_signUpButton.setOnClickListener(this);
-        tv_forgotPassword.setOnClickListener(this);
-        otp_btn.setOnClickListener(this);
+        backImageView.setOnClickListener(this);
+        emailSignInButton.setOnClickListener(this);
+        signUpTextView.setOnClickListener(this);
+        forgotPasswordTextView.setOnClickListener(this);
+        otpButton.setOnClickListener(this);
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -163,20 +169,20 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         });
 
         //Spinner Items
-        country_codes = new ArrayList<>();
-        country_codes.add("+91");
-        country_codes.add("+971");
-        country_codes.add("+966");
-        country_codes.add("+974");
-        country_codes.add("+968");
-        country_codes.add("+973");
-        country_codes.add("+965");
-        country_codes.add("+44");
-        country_codes.add("+1");
+        countryCodes = new ArrayList<>();
+        countryCodes.add("+91");
+        countryCodes.add("+971");
+        countryCodes.add("+966");
+        countryCodes.add("+974");
+        countryCodes.add("+968");
+        countryCodes.add("+973");
+        countryCodes.add("+965");
+        countryCodes.add("+44");
+        countryCodes.add("+1");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_textview, country_codes);
-        country_code_spinner.setAdapter(dataAdapter);
-        country_code_spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_textview, countryCodes);
+        countryCodeSpinner.setAdapter(dataAdapter);
+        countryCodeSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -185,8 +191,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         try {
             Methods.trimCache(this);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Log.e("Error", e.toString());
         }
     }
 
@@ -205,7 +210,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(phone_number_et, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(phoneNumberEditText, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -230,22 +235,20 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
     private void attemptLogin() {
         removePreviousError();
-        String email = phone_number_et.getText().toString();
+        String email = phoneNumberEditText.getText().toString();
         String password = mPasswordView.getText().toString();
         boolean cancel = false;
         View focusView = null;
 
         if (TextUtils.isEmpty(email)) {
-            phone_number_et.setError(getString(R.string.error_field_required));
-            focusView = phone_number_et;
+            phoneNumberEditText.setError(getString(R.string.error_field_required));
+            focusView = phoneNumberEditText;
             cancel = true;
         }
-        if (!isNumber) {
-            if (!Methods.isValidEmail(email)) {
-                phone_number_et.setError(getString(R.string.error_invalid_email));
-                focusView = phone_number_et;
-                cancel = true;
-            }
+        if (!isNumber && !Methods.isValidEmail(email)) {
+            phoneNumberEditText.setError(getString(R.string.error_invalid_email));
+            focusView = phoneNumberEditText;
+            cancel = true;
         }
         if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_field_required));
@@ -256,16 +259,6 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             focusView = mPasswordView;
             cancel = true;
         }
-
-//        if (TextUtils.isEmpty(email)) {
-//            mEmailView.setError(getString(R.string.error_field_required));
-//            focusView = mEmailView;
-//            cancel = true;
-//        } else if (!Methods.isValidEmail(email)) {
-//            mEmailView.setError(getString(R.string.error_invalid_email));
-//            focusView = mEmailView;
-//            cancel = true;
-//        }
         if (cancel) {
             focusView.requestFocus();
         } else {
@@ -274,7 +267,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
             json.addProperty("email", email);
             json.addProperty("password", password);
             if (isNumber) {
-                json.addProperty("cntry_code", country_code);
+                json.addProperty("cntry_code", countryCode);
                 json.addProperty("mob_number", email);
 
             } else {
@@ -317,8 +310,6 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        //  mEmailView.setAdapter(adapter);
     }
 
     @Override
@@ -327,8 +318,6 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         switch (view.getId()) {
 
             case R.id.forgot_tv:
-                // attemptLogin();
-
                 intent = new Intent(mContext, ForGotPasswordActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_out_up, R.anim.slide_out_down);
@@ -360,14 +349,14 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
     private void attemptOTPLogin() {
         removePreviousError();
-        String phone_no = phone_number_et.getText().toString();
+        String phoneNumber = phoneNumberEditText.getText().toString();
         boolean cancel = false;
         View focusView = null;
 
 
-        if (TextUtils.isEmpty(phone_no)) {
-            phone_number_et.setError(getString(R.string.error_field_required));
-            focusView = phone_number_et;
+        if (TextUtils.isEmpty(phoneNumber)) {
+            phoneNumberEditText.setError(getString(R.string.error_field_required));
+            focusView = phoneNumberEditText;
             cancel = true;
         }
         if (cancel) {
@@ -375,14 +364,14 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         } else {
             WaitDialog.showDialog(this);
             JsonObject json = new JsonObject();
-            json.addProperty("cntry_code", country_code);
-            json.addProperty("mob_number", phone_no);
+            json.addProperty("cntry_code", countryCode);
+            json.addProperty("mob_number", phoneNumber);
             ServerCalling.ServerCallingUserApiPost(mContext, "sendOtp", json, this);
         }
     }
 
     private void removePreviousError() {
-        phone_number_et.setError(null);
+        phoneNumberEditText.setError(null);
         mPasswordView.setError(null);
     }
 
@@ -397,9 +386,10 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
                         break;
                     case "sendOtp":
                         Methods.showToast(mContext, result.optString("message"));
-                        String phone_no = phone_number_et.getText().toString();
-                        LoginOTPDialog dialog = new LoginOTPDialog(mContext, country_code, phone_no);
+                        String phoneNumber = phoneNumberEditText.getText().toString();
+                        LoginOTPDialog dialog = new LoginOTPDialog(mContext, countryCode, phoneNumber);
                         dialog.show();
+                        dialog.setCancelable(false);
                         break;
                 }
             } else {
@@ -407,7 +397,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
                 Methods.showToast(mContext, result.optString("msg"));
             }
         } catch (Exception ee) {
-            ee.printStackTrace();
+            Log.e("Error", ee.toString());
         }
     }
 
@@ -416,40 +406,51 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
 
         if (data.has("address")) {
             JSONObject addressData = data.optJSONObject("address");
-            String address_id = addressData.optString("address_id");
+            String addressId = addressData.optString("address_id");
             String telephone = addressData.optString("telephone");
-            String street_1 = addressData.optString("street_1");
-            String street_2 = addressData.optString("street_2");
+            String street1 = addressData.optString("street_1");
+            String street2 = addressData.optString("street_2");
             String city = addressData.optString("city");
             String region = addressData.optString("region");
             String postcode = addressData.optString("postcode");
-            String country_id = addressData.optString("country_id");
-            Boolean default_shipping = addressData.optBoolean("default_billing");
-            Boolean default_billing = addressData.optBoolean("default_billing");
-            SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME, address_id, telephone, street_1, street_2, city, region, postcode, country_id, default_shipping, default_billing);
+            String countryId = addressData.optString("country_id");
+            Boolean defaultBilling = addressData.optBoolean("default_billing");
+            Boolean defaultShipping = addressData.optBoolean("default_shipping");
+            SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME, addressId, telephone, street1, street2, city, region, postcode, countryId, defaultShipping, defaultBilling);
         }
-        String user_id = data.optString("user_id");
+        String userId = data.optString("user_id");
         String token = data.optString("token");
         String email = data.optString("email");
-        String mob_number = data.optString("mob_number");
+        String mobNumber = data.optString("mob_number");
         String firstName = data.optString("firstname");
         String lastName = data.optString("lastname");
-        String user_image = data.optString("user_image");
+        String userImage = data.optString("user_image");
         String currency = data.optString("currency");
-        String cntry_code = data.optString("cntry_code");
-        SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+        String cntryCode = data.optString("cntry_code");
+        SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, userId, token, email, mobNumber, firstName, lastName, userImage, currency, cntryCode);
         finish();
-        startActivity(new Intent(this,HomeActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override
-    public void handleDialogClose() {
-        finish();
+    public void handleDialogClose(String value) {
+        switch (value) {
+            case "resendOtp":
+                attemptOTPLogin();
+                break;
+            case "success":
+                finish();
+                startActivity(new Intent(this, HomeActivity.class));
+                break;
+            default:
+                Methods.showToast(mContext, "Error..");
+        }
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        country_code = country_codes.get(position);
+        countryCode = countryCodes.get(position);
     }
 
     @Override

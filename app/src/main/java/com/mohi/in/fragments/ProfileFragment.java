@@ -145,7 +145,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
 
                     file = new File(mUri.getPath());
                 }
-                //ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL),country_code,mobileNo, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), file);
+                //ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL),countryCode,mobileNo, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), file);
             }
         } catch (Exception e) {
             e.printStackTrace();

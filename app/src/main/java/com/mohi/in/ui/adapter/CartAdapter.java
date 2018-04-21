@@ -62,7 +62,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             public void onClick(View v) {
                 Integer quantity=Integer.parseInt(holder.counter_tv.getText().toString());
                 quantity++;
-                holder.counter_tv.setText(quantity.toString());
+                //holder.counter_tv.setText(quantity.toString());
                 model.setQty(quantity.toString());
                 listener.cartEventListener("plus",model);
             }
@@ -72,7 +72,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             public void onClick(View v) {
                 Integer quantity=Integer.parseInt(holder.counter_tv.getText().toString());
                 quantity--;
-                holder.counter_tv.setText(quantity.toString());
+                //holder.counter_tv.setText(quantity.toString());
                 model.setQty(quantity.toString());
                 listener.cartEventListener("minus",model);
             }

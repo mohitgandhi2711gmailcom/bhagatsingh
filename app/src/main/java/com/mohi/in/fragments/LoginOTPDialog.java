@@ -3,12 +3,15 @@ package com.mohi.in.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
@@ -25,18 +28,30 @@ import org.json.JSONObject;
 public class LoginOTPDialog extends Dialog implements android.view.View.OnClickListener, ServerCallBack {
 
     private Context mContext;
-    private EditText otp_et;
-    private Button login_otp_btn;
-    String country_code;
-    String phone_no;
-    OtpDialogDismissListener listener;
+    private EditText otpEditText;
+    private Button loginOtpButton;
+    private TextView resendTextView;
+    private ImageView crossImageView;
+    private String countryCode;
+    private String phoneNumber;
+    private OtpDialogDismissListener listener;
 
-    public LoginOTPDialog(@NonNull Context mContext, String country_code, String phone_no) {
+    public LoginOTPDialog(@NonNull Context mContext, String countryCode, String phoneNumber) {
         super(mContext);
         this.mContext = mContext;
         this.listener = (OtpDialogDismissListener) mContext;
-        this.country_code = country_code;
-        this.phone_no = phone_no;
+        this.countryCode = countryCode;
+        this.phoneNumber = phoneNumber;
+    }
+
+    private void startTimer() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resendTextView.setVisibility(View.VISIBLE);
+            }
+        }, 30000);
     }
 
     @Override
@@ -48,13 +63,19 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
     }
 
     private void init() {
-        otp_et = findViewById(R.id.otp_et);
-        login_otp_btn = findViewById(R.id.login_otp_btn);
+        otpEditText = findViewById(R.id.otp_et);
+        loginOtpButton = findViewById(R.id.login_otp_btn);
+        resendTextView = findViewById(R.id.resend_tv);
+        crossImageView = findViewById(R.id.cross_iv);
+        startTimer();
         setValue();
     }
 
     private void setValue() {
-        login_otp_btn.setOnClickListener(this);
+        resendTextView.setVisibility(View.GONE);
+        resendTextView.setOnClickListener(this);
+        loginOtpButton.setOnClickListener(this);
+        crossImageView.setOnClickListener(this);
     }
 
     @Override
@@ -63,19 +84,28 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
             case R.id.login_otp_btn:
                 attemptLoginWithOPT();
                 break;
+            case R.id.resend_tv:
+                listener.handleDialogClose("resendOtp");
+                dismiss();
+                break;
+            case R.id.cross_iv:
+                dismiss();
+                break;
+            default:
+                Methods.showToast(mContext, "Error");
         }
 
     }
 
     private void attemptLoginWithOPT() {
-        otp_et.setError(null);
-        String otp = otp_et.getText().toString();
+        otpEditText.setError(null);
+        String otp = otpEditText.getText().toString();
         boolean cancel = false;
         View focusView = null;
 
         if (TextUtils.isEmpty(otp)) {
-            otp_et.setError(mContext.getString(R.string.error_field_required));
-            focusView = otp_et;
+            otpEditText.setError(mContext.getString(R.string.error_field_required));
+            focusView = otpEditText;
             cancel = true;
         }
 
@@ -84,8 +114,8 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
         } else {
             WaitDialog.showDialog(mContext);
             JsonObject json = new JsonObject();
-            json.addProperty("cntry_code", country_code);
-            json.addProperty("mob_number", phone_no);
+            json.addProperty("cntry_code", countryCode);
+            json.addProperty("mob_number", phoneNumber);
             json.addProperty("otp", otp);
             ServerCalling.ServerCallingUserApiPost(mContext, "login", json, this);
         }
@@ -99,30 +129,30 @@ public class LoginOTPDialog extends Dialog implements android.view.View.OnClickL
                 JSONObject data = result.getJSONObject("data");
                 if (data.has("address")) {
                     JSONObject addressData = data.optJSONObject("address");
-                    String address_id = addressData.optString("address_id");
+                    String addressId = addressData.optString("address_id");
                     String telephone = addressData.optString("telephone");
-                    String street_1 = addressData.optString("street_1");
-                    String street_2 = addressData.optString("street_2");
+                    String street1 = addressData.optString("street_1");
+                    String street2 = addressData.optString("street_2");
                     String city = addressData.optString("city");
                     String region = addressData.optString("region");
                     String postcode = addressData.optString("postcode");
-                    String country_id = addressData.optString("country_id");
-                    Boolean default_shipping=addressData.optBoolean("default_billing");
-                    Boolean default_billing=addressData.optBoolean("default_billing");
-                    SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME, address_id, telephone, street_1, street_2, city, region, postcode, country_id,default_shipping,default_billing);
+                    String countryId = addressData.optString("country_id");
+                    Boolean defaultBilling = addressData.optBoolean("default_billing");
+                    Boolean defaultShipping = addressData.optBoolean("default_shipping");
+                    SessionStore.saveUserAddress(mContext, Common.USER_PREFS_NAME, addressId, telephone, street1, street2, city, region, postcode, countryId, defaultShipping, defaultBilling);
                 }
-                String user_id = data.optString("user_id");
+                String userId = data.optString("user_id");
                 String token = data.optString("token");
                 String email = data.optString("email");
-                String mob_number = data.optString("mob_number");
+                String mobNumber = data.optString("mob_number");
                 String firstName = data.optString("firstname");
                 String lastName = data.optString("lastname");
-                String user_image = data.optString("user_image");
+                String userImage = data.optString("user_image");
                 String currency = data.optString("currency");
-                String cntry_code = data.optString("cntry_code");
-                SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, user_id, token, email, mob_number, firstName, lastName, user_image, currency, cntry_code);
+                String cntryCode = data.optString("cntry_code");
+                SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, userId, token, email, mobNumber, firstName, lastName, userImage, currency, cntryCode);
                 dismiss();
-                listener.handleDialogClose();
+                listener.handleDialogClose("success");
             } else {
                 Methods.showToast(mContext, result.optString("msg"));
             }

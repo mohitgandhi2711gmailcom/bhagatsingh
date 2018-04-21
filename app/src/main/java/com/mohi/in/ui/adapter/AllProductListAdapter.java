@@ -34,7 +34,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static final int ITEM = 0;
     private static final int LOADING = 1;
-    private ArrayList<SubCategoriesModel> mList = new ArrayList<>();
+    private List<SubCategoriesModel> mList = new ArrayList<>();
     private boolean isLoadingAdded = false;
     private Context mContext;
     private int pos = 0;
@@ -44,7 +44,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.mContext = context;
     }
 
-    public void setList(ArrayList<SubCategoriesModel> list) {
+    public void setList(List<SubCategoriesModel> list) {
         this.mList.addAll(list);
         flage = true;
         notifyDataSetChanged();
