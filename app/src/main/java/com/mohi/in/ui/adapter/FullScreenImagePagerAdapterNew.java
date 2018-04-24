@@ -33,7 +33,7 @@ public class FullScreenImagePagerAdapterNew extends PagerAdapter {
     public Object instantiateItem(ViewGroup collection, final int position) {
         MediaModel modelObject = imageList.get(position);
         TouchImageView img = new TouchImageView(collection.getContext());
-        Glide.with(context).load(modelObject.getBase_url()).into(img);
+        Glide.with(context).load(modelObject.getImageUrl()).into(img);
         collection.addView(img, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         return img;
     }

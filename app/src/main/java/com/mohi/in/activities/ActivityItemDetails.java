@@ -47,6 +47,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private TextView description;
     private TextView moreExtraInfoTextView;
     private TextView deliveryStatusTextView;
+
     private EditText pinCodeEditText;
     private ImageView favoriteImageView;
     private ItemDetailsSimilarItemAdapter viewMoreAdapter;
@@ -58,6 +59,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private static final String USER_ID = "user_id";
     private static final String TOKEN = "token";
     private static final String STATUS = "status";
+    private String isAddToCart;
 
 
     @Override
@@ -95,7 +97,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         RecyclerView viewSimilarRecyclerView = findViewById(R.id.view_similar_rv);
         moreInfoTextView.setOnClickListener(this);
         if (getIntent() != null) {
-            productId = getIntent().getStringExtra("productId");
+            productId = getIntent().getStringExtra("ProductId");
             isWishList = getIntent().getStringExtra("isWishList");
         }
 
@@ -112,9 +114,11 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
 
     private void attemptGetProductDetail() {
         JsonObject json = new JsonObject();
-        json.addProperty(PRODUCT_ID, productId);
         json.addProperty(USER_ID, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-        json.addProperty(TOKEN, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        json.addProperty(PRODUCT_ID, productId);
+        json.addProperty("postcode", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_POSTCODE));
+        json.addProperty("country", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.COUNTRY_CODE));
+        //json.addProperty(TOKEN, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         ServerCalling.ServerCallingProductsApiPost(mContext, "getProductDetail", json, this);
     }
 
@@ -158,7 +162,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     }
 
     private void setData(JSONObject dataObj) {
-        String productId = dataObj.optString("product_id");
+        productId = dataObj.optString("product_id");
         String productName = dataObj.optString("product_name");
         String productPrice = dataObj.optString("price");
         String productSpecialPrice = dataObj.optString("special_price");
@@ -177,23 +181,24 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         } else {
             favoriteImageView.setImageResource(R.drawable.ic_love_fill);
         }
-        itemTitleTextView.setText(productName);
-        oldPriceTextView.setVisibility(View.INVISIBLE);
-        skuNumberTextView.setText(productId);
-        newPriceTextView.setText(Methods.getTwoDecimalVAlue(productPrice));
+
+        itemTitleTextView.setText(brand);
+        oldPriceTextView.setText(Methods.getTwoDecimalVAlue(productPrice));
+        skuNumberTextView.setText(productName);
+        newPriceTextView.setText(Methods.getTwoDecimalVAlue(productSpecialPrice));
         modelNumberTextView.setText(productId);
         description.setText(productDescription);
         pinCodeEditText.setText(pincode);
-        //deliveryStatusTextView.setText(pincode_address);
+        selectCountryEditText.setText(country);
+        deliveryStatusTextView.setText(info.trim());
 
-        JSONArray mediaJsonArray = dataObj.optJSONArray("media");
+        JSONArray mediaJsonArray = dataObj.optJSONArray("images");
         ArrayList<MediaModel> mediaList = convertMediaJsonToList(mediaJsonArray);
         imagesAdapter.addData(mediaList);
 
-        JSONArray relatedProductJsonArray = dataObj.optJSONArray("related_products");
+        JSONArray relatedProductJsonArray = dataObj.optJSONArray("related");
         ArrayList<RelatedProductModel> relatedProductModelArrayList = convertRealtedProductJsonToList(relatedProductJsonArray);
         viewMoreAdapter.addData(relatedProductModelArrayList);
-
         parentLinearLayout.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
     }
 
@@ -204,32 +209,20 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
                 try {
                     RelatedProductModel model = new RelatedProductModel();
                     JSONObject obj = jArray.getJSONObject(i);
-                    String product_id = obj.optString("product_id");
-                    String product_name = obj.optString("product_name");
+                    productId = obj.optString("product_id");
+                    String productName = obj.optString("product_name");
                     String image = obj.optString("image");
-                    String product_price = obj.optString("product_price");
-                    String new_price = obj.optString("new_price");
-                    String date_from = obj.optString("date_from");
-                    String date_to = obj.optString("date_to");
-                    String is_wishlist = obj.optString("is_wishlist");
-                    String rating = obj.optString("rating");
-                    String is_add_to_cart = obj.optString("is_add_to_cart");
-                    String stock = obj.optString("stock");
-                    String is_product = obj.optString("is_product");
-                    String type = obj.optString("type");
-                    model.setProduct_id(product_id);
-                    model.setProduct_name(product_name);
+                    String productPrice = obj.optString("product_price");
+                    String specialPrice = obj.optString("product_special_price");
+                    String isWishlist = obj.optString("is_wishlist");
+                    isAddToCart = obj.optString("is_add_to_cart");
+                    model.setProduct_id(productId);
+                    model.setProduct_name(productName);
                     model.setImage_url(image);
-                    model.setProduct_price(product_price);
-                    model.setNew_price(new_price);
-                    model.setDate_from(date_from);
-                    model.setDate_to(date_to);
-                    model.setIs_wishlist(is_wishlist);
-                    model.setRating(rating);
-                    model.setIs_add_to_cart(is_add_to_cart);
-                    model.setStock(stock);
-                    model.setIs_product(is_product);
-                    model.setType(type);
+                    model.setProduct_price(productPrice);
+                    model.setSpecialPrice(specialPrice);
+                    model.setIs_wishlist(isWishlist);
+                    model.setIs_add_to_cart(isAddToCart);
                     list.add(model);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -243,19 +236,9 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         ArrayList<MediaModel> list = new ArrayList<>();
         if (jArray != null) {
             for (int i = 0; i < jArray.length(); i++) {
-                try {
-                    MediaModel model = new MediaModel();
-                    JSONObject obj = jArray.getJSONObject(i);
-                    String media_id = obj.optString("media_id");
-                    String thumbnail_url = obj.optString("thumbnail");
-                    String base_url = obj.optString("base");
-                    model.setMedia_id(media_id);
-                    model.setThumbnail_url(thumbnail_url);
-                    model.setBase_url(base_url);
-                    list.add(model);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                MediaModel model = new MediaModel();
+                model.setImageUrl(jArray.optString(i));
+                list.add(model);
             }
         }
         return list;
@@ -279,6 +262,8 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
             case R.id.favorite_iv:
                 attemptAddToWishlist();
                 break;
+            default:
+                Methods.showToast(mContext, "Error..");
         }
     }
 
@@ -308,11 +293,13 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("product_id", productId);
-        json.addProperty("qty", 1);
-        json.addProperty("quote_id", "");
+        json.addProperty("sku", productId);
+        if (isAddToCart.equalsIgnoreCase("0")) {
+            json.addProperty("qty", 1);
+        } else {
+            json.addProperty("qty", Integer.parseInt(isAddToCart) + 1);
+        }
         WaitDialog.showDialog(mContext);
         ServerCalling.ServerCallingProductsApiPost(mContext, "addToCart", json, ActivityItemDetails.this);
     }
-
 }

@@ -50,7 +50,7 @@ public class ItemDetailsAdapter extends RecyclerView.Adapter<ItemDetailsAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final MediaModel model = list.get(position);
-        Glide.with(context).load(model.getThumbnail_url()).into(holder.image_iv);
+        Glide.with(context).load(model.getImageUrl()).into(holder.image_iv);
         holder.image_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

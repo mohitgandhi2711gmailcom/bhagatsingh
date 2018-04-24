@@ -48,8 +48,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final CartModel model = mList.get(position);
         Glide.with(mContext).load(model.getImage()).into(holder.product_iv);
-        holder.brand_name_tv.setText(model.getProduct_name());
-        holder.product_price_tv.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + model.getProduct_price().substring(0, (model.getProduct_price().length() - 2)));
+        holder.brand_name_tv.setText(model.getProductName());
+        holder.product_price_tv.setText(SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + model.getProductPrice().substring(0, (model.getProductPrice().length() - 2)));
         holder.counter_tv.setText(model.getQty());
         holder.cross_iv.setOnClickListener(new View.OnClickListener() {
             @Override
