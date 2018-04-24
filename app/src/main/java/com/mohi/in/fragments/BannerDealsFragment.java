@@ -131,16 +131,16 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
     private void setValue() {
 
         /*
-        * Setting Height of Banner Dynamically
-        * */
+         * Setting Height of Banner Dynamically
+         * */
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int topBannerWidth= displaymetrics.widthPixels;
-        int topBannerHeight=((500*topBannerWidth)/615);
+        int topBannerWidth = displaymetrics.widthPixels;
+        int topBannerHeight = ((500 * topBannerWidth) / 615);
         topBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, topBannerHeight));
-        int middleBannerHeight=((263*topBannerWidth)/575);
+        int middleBannerHeight = ((263 * topBannerWidth) / 575);
         middleBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, middleBannerHeight));
-        int bottomBannerHeight=((263*topBannerWidth)/575);
+        int bottomBannerHeight = ((263 * topBannerWidth) / 575);
         bottomBannerScrollView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, bottomBannerHeight));
 
         offerTypeOneRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
@@ -434,4 +434,3 @@ public class BannerDealsFragment extends Fragment implements View.OnClickListene
         return px / getResources().getDisplayMetrics().density;
     }
 }
-
