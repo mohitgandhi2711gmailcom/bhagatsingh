@@ -82,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Item"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -90,8 +89,7 @@
             <TextView
                 android:id="@+id/old_price_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RP 169" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -113,7 +111,6 @@
                 android:id="@+id/new_price_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RP 169"
                 android:textColor="@color/skip_text_slider"
                 android:textSize="20sp" />
 

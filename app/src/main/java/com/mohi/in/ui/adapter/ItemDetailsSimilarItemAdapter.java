@@ -69,7 +69,7 @@ public class ItemDetailsSimilarItemAdapter extends RecyclerView.Adapter<ItemDeta
             holder.Subcategories_Row_Favorite.setBackgroundResource(R.drawable.ic_love_fill);
         }
         holder.Subcategories_Row_Title.setText(model.getProduct_name());
-        holder.short_desc_tv.setText(model.getType());
+//        holder.short_desc_tv.setText(model.getType());
         String price=model.getProduct_price();
         //price=price.substring(0,(price.length()-2));
         holder.Subcategories_Row_Price.setText(price);

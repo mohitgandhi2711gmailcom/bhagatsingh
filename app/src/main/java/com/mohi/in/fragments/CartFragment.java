@@ -42,6 +42,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private CartAdapter mCartAdapter;
     private ArrayList<CartModel> cartList;
     private SwipeRefreshLayout swipe_layout;
+    private String cartId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,8 +84,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
             JsonObject json = new JsonObject();
             json.addProperty(SessionStore.USER_ID, SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
             json.addProperty(SessionStore.USER_TOKEN, SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-            json.addProperty("width", getResources().getDimension(R.dimen.addtocart_row_image_width));
-            json.addProperty("height", getResources().getDimension(R.dimen.addtocart_row_image_height));
+            /*json.addProperty("width", getResources().getDimension(R.dimen.addtocart_row_image_width));
+            json.addProperty("height", getResources().getDimension(R.dimen.addtocart_row_image_height));*/
             ServerCalling.ServerCallingProductsApiPost(getActivity(), "getCart", json, this);
         } catch (Exception e) {
             Log.e("Exception", e.toString());
@@ -96,16 +97,19 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         WaitDialog.hideDialog();
         switch (strfFrom.trim()) {
             case "getCart":
-                if (result.optString(Common.API_STATUS).trim().equalsIgnoreCase("1")) {
-                    JSONArray dataArray = result.optJSONArray("data");
-                    setCartItem(dataArray);
+                if (result.optString(Common.API_STATUS).trim().equalsIgnoreCase("success")) {
+                    JSONObject dataObject= result.optJSONObject("data");
+                    cartId = dataObject.optString("id");
+                    String subTotal = dataObject.optString("subtotal");
+                    cartPrice.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + subTotal);
+                    setCartItem(dataObject.optJSONArray("items"));
                 } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
                 }
                 break;
 
             case "removeItemFromCart":
-                if (result.optString("status").trim().equalsIgnoreCase("1")) {
+                if (result.optString("status").trim().equalsIgnoreCase("success")) {
                     attemptGetCart();
                 } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
@@ -127,25 +131,18 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
 
     private void setCartItem(JSONArray dataArray) {
         cartList.clear();
-        double total = 0;
         for (int i = 0; i < dataArray.length(); i++) {
             JSONObject dataJson = dataArray.optJSONObject(i);
             CartModel obj = new CartModel();
-            obj.setProduct_id(dataJson.optString(Common.USER_PRODUCT_ID));
-            obj.setProduct_id(dataJson.optString("item_id"));
-            obj.setProduct_name(dataJson.optString("product_name"));
-            obj.setProduct_price(dataJson.optString("product_price"));
-            obj.setImage(dataJson.optString("image"));
-            obj.setCategory(dataJson.optString("category"));
+            obj.setItemId(dataJson.optString("item_id"));
+            obj.setProductId(dataJson.optString(Common.USER_PRODUCT_ID));
+            obj.setProductName(dataJson.optString("name"));
+            obj.setProductPrice(dataJson.optString("price"));
             obj.setQty(dataJson.optString("qty"));
-            obj.setQuote_id(dataJson.optString(Common.USER_QUOTE_ID));
-            obj.setStock(dataJson.optString("stock"));
-            obj.setIs_wishlist(dataJson.optString("is_wishlist"));
+            obj.setImage(dataJson.optString("image"));
             cartList.add(obj);
-            total = total + Double.parseDouble(dataJson.optString("product_price")) * Double.parseDouble(dataJson.optString("qty"));
         }
         mCartAdapter.updateList(cartList);
-        cartPrice.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.getTwoDecimalVAlue(String.valueOf(total)));
     }
 
     @Override
@@ -229,8 +226,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("product_id", model.getProduct_id());
-        json.addProperty("quote_id", model.getQuote_id());
+        json.addProperty("item_id", model.getItemId());
+        json.addProperty("cart_id", cartId);
         ServerCalling.ServerCallingProductsApiPost(mContext, "removeItemFromCart", json, this);
     }
 
@@ -239,9 +236,10 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("product_id", model.getProduct_id());
+        json.addProperty("cart_id", cartId);
+        json.addProperty("item_id", model.getItemId());
         json.addProperty("qty", model.getQty());
-        json.addProperty("quote_id", model.getQuote_id());
+        json.addProperty("Product_id", model.getProductId());
         ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, this);
     }
 
