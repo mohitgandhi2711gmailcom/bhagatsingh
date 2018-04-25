@@ -17,8 +17,9 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/home_allproduct_row_image_height">
+            android:layout_height="374px">
 
+            <!--android:layout_height="@dimen/home_allproduct_row_image_height"-->
             <ProgressBar
                 android:layout_width="35dp"
                 android:layout_height="35dp"

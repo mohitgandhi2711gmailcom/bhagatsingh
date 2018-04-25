@@ -1,12 +1,20 @@
 package com.mohi.in.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.style.ClickableSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +28,7 @@ import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
+import com.mohi.in.model.AvailableOptions;
 import com.mohi.in.model.MediaModel;
 import com.mohi.in.model.RelatedProductModel;
 import com.mohi.in.ui.adapter.ItemDetailsAdapter;
@@ -43,7 +52,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private TextView oldPriceTextView;
     private TextView skuNumberTextView;
     private TextView newPriceTextView;
-    private TextView modelNumberTextView;
+    private TextView descriptionTitle;
     private TextView description;
     private TextView moreExtraInfoTextView;
     private TextView deliveryStatusTextView;
@@ -54,12 +63,15 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     private ScrollView parentScrollView;
     private EditText selectCountryEditText;
     private LinearLayout parentLinearLayout;
+    private LinearLayout llPrice;
     private String isWishList;
     private static final String PRODUCT_ID = "product_id";
     private static final String USER_ID = "user_id";
     private static final String TOKEN = "token";
     private static final String STATUS = "status";
     private String isAddToCart;
+    private ArrayList<TextView> sizeList;
+    SpannableString link_less, link_more;
 
 
     @Override
@@ -76,7 +88,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         oldPriceTextView = findViewById(R.id.old_price_tv);
         skuNumberTextView = findViewById(R.id.sku_number_tv);
         newPriceTextView = findViewById(R.id.new_price_tv);
-        modelNumberTextView = findViewById(R.id.model_no_tv);
+        descriptionTitle = findViewById(R.id.description_title);
         description = findViewById(R.id.description);
         TextView moreInfoTextView = findViewById(R.id.more_info_tv);
         moreExtraInfoTextView = findViewById(R.id.more_extra_info_tv);
@@ -88,6 +100,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         RecyclerView imagesRecyclerView = findViewById(R.id.images_rv);
         Button cartButton = findViewById(R.id.cart_btn);
         parentLinearLayout = findViewById(R.id.parent_ll);
+        llPrice = findViewById(R.id.ll_price);
         cartButton.setOnClickListener(this);
         pinCodeEditText.setOnClickListener(this);
         pinCodeEditText.clearFocus();
@@ -110,13 +123,22 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         viewSimilarRecyclerView.setAdapter(viewMoreAdapter);
 
         attemptGetProductDetail();
+        Log.d("BeforeAPISize", llPrice.getHeight()+"");
+
+    }
+
+    private SpannableString makeLinkSpan(CharSequence text, View.OnClickListener listener) {
+        SpannableString link = new SpannableString(text);
+        link.setSpan(new ClickableString(listener), 0, text.length(),
+                SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
+        return link;
     }
 
     private void attemptGetProductDetail() {
         JsonObject json = new JsonObject();
         json.addProperty(USER_ID, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty(PRODUCT_ID, productId);
-        json.addProperty("postcode", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_POSTCODE));
+        json.addProperty("pincode", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_POSTCODE));
         json.addProperty("country", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.COUNTRY_CODE));
         //json.addProperty(TOKEN, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
         ServerCalling.ServerCallingProductsApiPost(mContext, "getProductDetail", json, this);
@@ -125,6 +147,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         try {
+            Log.d("BeforeAPISize", llPrice.getHeight()+"");
             WaitDialog.hideDialog();
             if (strfFrom.trim().equalsIgnoreCase("getProductDetail")) {
                 if (result.getString(STATUS).trim().equalsIgnoreCase("success")) {
@@ -134,12 +157,12 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
                     Methods.showToast(mContext, result.getString("msg"));
                 }
             } else if (strfFrom.trim().equalsIgnoreCase("addToCart")) {
-                if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
+//                if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
                     Methods.showToast(mContext, result.getString("msg"));
                     /*WishListModel model = mList.get(pos);
                     mList.set(pos, new WishListModel(model.product_id, model.product_name, model.image, model.qty, model.category, 1, model.rating, model.price));
                     notifyDataSetChanged();*/
-                }
+//                }
             } else if (strfFrom.trim().equalsIgnoreCase("addToWishlist")) {
                 if (result.getString(STATUS).trim().equalsIgnoreCase("1")) {
                     isWishList = "1";
@@ -156,19 +179,23 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
                     Methods.showToast(mContext, result.getString("msg"));
                 }
             }
+            Log.d("BeforeAPISize", llPrice.getHeight()+"");
         } catch (Exception e) {
             Log.e("Error", e.toString());
         }
     }
 
     private void setData(JSONObject dataObj) {
+
         productId = dataObj.optString("product_id");
         String productName = dataObj.optString("product_name");
         String productPrice = dataObj.optString("price");
         String productSpecialPrice = dataObj.optString("special_price");
-        String productDescription = dataObj.optString("description");
+        String sku = dataObj.optString("sku");
+        final String productDescription = dataObj.optString("description");
         String stock = dataObj.optString("stock");
         String isWishlist = dataObj.optString("is_wishlist");
+        isWishList = isWishlist;
         String isAddToCart = dataObj.optString("is_add_to_cart");
         String brand = dataObj.optString("brand");
         JSONObject deliveryObject = dataObj.optJSONObject("delivery");
@@ -176,30 +203,70 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         String country = deliveryObject.optString("country");
         String info = deliveryObject.optString("info");
 
+
         if (isWishlist.trim().equalsIgnoreCase("0")) {
             favoriteImageView.setImageResource(R.drawable.ic_love_like);
         } else {
             favoriteImageView.setImageResource(R.drawable.ic_love_fill);
         }
 
-        itemTitleTextView.setText(brand);
+        itemTitleTextView.setText(productName);
         oldPriceTextView.setText(Methods.getTwoDecimalVAlue(productPrice));
-        skuNumberTextView.setText(productName);
+        skuNumberTextView.setText(sku);
         newPriceTextView.setText(Methods.getTwoDecimalVAlue(productSpecialPrice));
-        modelNumberTextView.setText(productId);
+//        descriptionTitle.setText(productId);
+        link_more = makeLinkSpan("More...", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetMoreClickableText(productDescription, link_less, description);
+                // respond to click
+            }
+        });
+        link_less = makeLinkSpan("Less...", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetMoreClickableText(productDescription.substring(0, 195), link_more, description);
+                // respond to click
+            }
+        });
         description.setText(productDescription);
+        if (productDescription.length() > 200) {
+            SetMoreClickableText(productDescription.substring(0, 195), link_more, description);
+        } else {
+            description.setText(productDescription);
+        }
         pinCodeEditText.setText(pincode);
         selectCountryEditText.setText(country);
         deliveryStatusTextView.setText(info.trim());
 
         JSONArray mediaJsonArray = dataObj.optJSONArray("images");
         ArrayList<MediaModel> mediaList = convertMediaJsonToList(mediaJsonArray);
-        imagesAdapter.addData(mediaList);
+        imagesAdapter.addData(mediaList, llPrice.getHeight()+getSoftButtonsBarHeight());
 
         JSONArray relatedProductJsonArray = dataObj.optJSONArray("related");
         ArrayList<RelatedProductModel> relatedProductModelArrayList = convertRealtedProductJsonToList(relatedProductJsonArray);
         viewMoreAdapter.addData(relatedProductModelArrayList);
         parentLinearLayout.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+        if (dataObj.has("options")){
+            JSONArray options = dataObj.optJSONArray("options");
+            ArrayList<AvailableOptions> options1 = getOptions(options);
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private int getSoftButtonsBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
     }
 
     private ArrayList<RelatedProductModel> convertRealtedProductJsonToList(JSONArray jArray) {
@@ -232,6 +299,42 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         return list;
     }
 
+    private ArrayList<AvailableOptions> getOptions(JSONArray jsonArray){
+        ArrayList<AvailableOptions> list = new ArrayList<>();
+        if (jsonArray!=null){
+            TextView tvSize = findViewById(R.id.tv_size);
+            tvSize.setVisibility(View.VISIBLE);
+            LinearLayout sizeChart = findViewById(R.id.size_chart);
+            sizeList = new ArrayList<>();
+            for (int i = 0; i< jsonArray.length(); i++){
+                try {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    AvailableOptions model = new AvailableOptions();
+                    model.setAttributeCode(object.optString("attribute_code"));
+                    model.setOptionId(object.optInt("options_id"));
+                    model.setOptionLabel(object.optString("option_label"));
+                    model.setOptionValue(object.optString("option_value"));
+                    TextView tv = new TextView(this);
+                    tv.setId(model.getOptionId());
+                    tv.setBackground(getResources().getDrawable(R.drawable.circle_shape));
+                    tv.setText(model.getOptionLabel());
+                    tv.setGravity(Gravity.CENTER);
+                    tv.setTag(model);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(10,0,10,0);
+                    params.gravity = Gravity.CENTER;
+                    tv.setLayoutParams(params);
+                    sizeChart.addView(tv);
+                    sizeList.add(tv);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return list;
+    }
+
     private ArrayList<MediaModel> convertMediaJsonToList(JSONArray jArray) {
         ArrayList<MediaModel> list = new ArrayList<>();
         if (jArray != null) {
@@ -242,6 +345,22 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
             }
         }
         return list;
+    }
+
+    public void SetMoreClickableText(String strContent, SpannableString linkedString, TextView tv) {
+        tv.setText(strContent);
+        tv.append("  ");
+        tv.append(linkedString);
+        makeLinksFocusable(tv);
+    }
+
+    private void makeLinksFocusable(TextView tv) {
+        MovementMethod m = tv.getMovementMethod();
+        if ((m == null) || !(m instanceof LinkMovementMethod)) {
+            if (tv.getLinksClickable()) {
+                tv.setMovementMethod(LinkMovementMethod.getInstance());
+            }
+        }
     }
 
     @Override
@@ -293,7 +412,7 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         JsonObject json = new JsonObject();
         json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
         json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-        json.addProperty("sku", productId);
+        json.addProperty("sku", skuNumberTextView.getText().toString().trim());
         if (isAddToCart.equalsIgnoreCase("0")) {
             json.addProperty("qty", 1);
         } else {
@@ -301,5 +420,28 @@ public class ActivityItemDetails extends AppCompatActivity implements ServerCall
         }
         WaitDialog.showDialog(mContext);
         ServerCalling.ServerCallingProductsApiPost(mContext, "addToCart", json, ActivityItemDetails.this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("BeforeAPISize Resume", llPrice.getHeight()+"");
+    }
+
+    /*
+     * ClickableString class
+     */
+
+    private static class ClickableString extends ClickableSpan {
+        private View.OnClickListener mListener;
+
+        public ClickableString(View.OnClickListener listener) {
+            mListener = listener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v);
+        }
     }
 }

@@ -1,602 +1,602 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-41:12
-MERGED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:17:1-31:12
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.3.1.aar\4bd0d9e3a3f609fc187ce54ce0a5afd9\AndroidManifest.xml:2:1-12:12
-MERGED from [com.crystal:crystalrangeseekbar:1.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\crystalrangeseekbar-1.1.3.aar\72fa6cdd517722af077767eed75b5f8f\AndroidManifest.xml:2:1-17:12
-MERGED from [com.payu.india:payu-sdk:4.4.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-sdk-4.4.2.aar\0758fce12c07e9fce836ac01087585b6\AndroidManifest.xml:2:1-14:12
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:2:1-25:12
-MERGED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:2:1-24:12
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7acec83126dc88c3ed2dded995524905\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:17:1-31:12
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\material-ripple-1.0.2.aar\9b8884ef4d8a3311ee6b0d5f53ea8672\AndroidManifest.xml:2:1-14:12
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:2:1-16:12
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:17:1-28:12
-MERGED from [com.mikhaellopez:circularimageview:3.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\circularimageview-3.0.2.aar\ef4634f47aff47620809e4cf61320de8\AndroidManifest.xml:2:1-15:12
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:17:1-31:12
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:2:1-16:12
-MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-41:12
+MERGED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:17:1-31:12
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.3.1.aar/fcd63cb359515a82b126f72217e47002/AndroidManifest.xml:2:1-12:12
+MERGED from [com.crystal:crystalrangeseekbar:1.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/crystalrangeseekbar-1.1.3.aar/279125f083206621f6d6c60da3edee27/AndroidManifest.xml:2:1-17:12
+MERGED from [com.payu.india:payu-sdk:4.4.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-sdk-4.4.2.aar/f3ef4e7f75cba6b28b776d1d27eb412d/AndroidManifest.xml:2:1-14:12
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:2:1-25:12
+MERGED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f24d9f322bb598a8d5f2ca85eb2738f7/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:17:1-31:12
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/5fdd393a395eac5fd01af2b4df456da7/AndroidManifest.xml:2:1-14:12
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:17:1-28:12
+MERGED from [com.mikhaellopez:circularimageview:3.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/circularimageview-3.0.2.aar/faa489c23cef7831577d816eecaa28ae/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:17:1-31:12
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:2:1-16:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
 	package
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:4:5-26
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:4:5-26
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:1-156:12
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:1-156:12
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:7:22-68
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:7:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:8:5-71
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:8:5-71
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:8:22-68
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:8:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:9:5-72
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:9:5-72
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:9:22-69
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:9:22-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:10:5-67
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-67
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:11:5-67
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:10:5-67
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:10:22-64
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:10:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:11:5-79
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:11:22-76
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:11:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:12:5-81
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:12:5-81
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:12:22-78
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:12:22-78
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:13:5-81
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:13:22-78
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:13:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:14:5-80
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:14:5-80
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:14:22-77
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:14:22-77
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:15:5-79
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-79
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-79
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:11:5-79
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:11:5-79
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:15:5-79
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-79
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-79
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:11:5-79
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:15:22-76
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:15:22-76
 uses-permission#android.permission.CAMERA
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:16:5-65
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:16:5-65
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:16:22-62
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:16:22-62
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:17:5-75
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:17:5-75
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:17:22-72
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:17:22-72
 uses-feature#android.hardware.camera
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:19:5-60
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:19:5-60
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:19:19-57
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:19:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:20:5-70
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:20:5-70
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:20:19-67
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:20:19-67
 uses-feature#android.hardware.camera.front
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:21:5-23:36
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:21:5-23:36
 	android:required
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:23:9-33
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:23:9-33
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:22:9-53
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:22:9-53
 application
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:25:5-154:19
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:18:5-39:19
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:18:5-39:19
-MERGED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:25:5-29:19
-MERGED from [com.crystal:crystalrangeseekbar:1.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\crystalrangeseekbar-1.1.3.aar\72fa6cdd517722af077767eed75b5f8f\AndroidManifest.xml:11:5-15:19
-MERGED from [com.crystal:crystalrangeseekbar:1.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\crystalrangeseekbar-1.1.3.aar\72fa6cdd517722af077767eed75b5f8f\AndroidManifest.xml:11:5-15:19
-MERGED from [com.payu.india:payu-sdk:4.4.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-sdk-4.4.2.aar\0758fce12c07e9fce836ac01087585b6\AndroidManifest.xml:11:5-12:19
-MERGED from [com.payu.india:payu-sdk:4.4.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-sdk-4.4.2.aar\0758fce12c07e9fce836ac01087585b6\AndroidManifest.xml:11:5-12:19
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:16:5-23:19
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:16:5-23:19
-MERGED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:11:5-22:19
-MERGED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:11:5-22:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7acec83126dc88c3ed2dded995524905\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7acec83126dc88c3ed2dded995524905\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:25:5-29:19
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\material-ripple-1.0.2.aar\9b8884ef4d8a3311ee6b0d5f53ea8672\AndroidManifest.xml:12:5-20
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\material-ripple-1.0.2.aar\9b8884ef4d8a3311ee6b0d5f53ea8672\AndroidManifest.xml:12:5-20
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:13:5-14:19
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:22:5-26:19
-MERGED from [com.mikhaellopez:circularimageview:3.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\circularimageview-3.0.2.aar\ef4634f47aff47620809e4cf61320de8\AndroidManifest.xml:11:5-13:38
-MERGED from [com.mikhaellopez:circularimageview:3.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\circularimageview-3.0.2.aar\ef4634f47aff47620809e4cf61320de8\AndroidManifest.xml:11:5-13:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:25:5-29:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:13:5-14:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:24:5-28:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:24:5-28:19
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:25:5-154:19
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:5-39:19
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:5-39:19
+MERGED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:25:5-29:19
+MERGED from [com.crystal:crystalrangeseekbar:1.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/crystalrangeseekbar-1.1.3.aar/279125f083206621f6d6c60da3edee27/AndroidManifest.xml:11:5-15:19
+MERGED from [com.crystal:crystalrangeseekbar:1.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/crystalrangeseekbar-1.1.3.aar/279125f083206621f6d6c60da3edee27/AndroidManifest.xml:11:5-15:19
+MERGED from [com.payu.india:payu-sdk:4.4.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-sdk-4.4.2.aar/f3ef4e7f75cba6b28b776d1d27eb412d/AndroidManifest.xml:11:5-12:19
+MERGED from [com.payu.india:payu-sdk:4.4.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-sdk-4.4.2.aar/f3ef4e7f75cba6b28b776d1d27eb412d/AndroidManifest.xml:11:5-12:19
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:16:5-23:19
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:16:5-23:19
+MERGED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:11:5-22:19
+MERGED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:11:5-22:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f24d9f322bb598a8d5f2ca85eb2738f7/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f24d9f322bb598a8d5f2ca85eb2738f7/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:25:5-29:19
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/5fdd393a395eac5fd01af2b4df456da7/AndroidManifest.xml:12:5-20
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/5fdd393a395eac5fd01af2b4df456da7/AndroidManifest.xml:12:5-20
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:13:5-14:19
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:22:5-26:19
+MERGED from [com.mikhaellopez:circularimageview:3.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/circularimageview-3.0.2.aar/faa489c23cef7831577d816eecaa28ae/AndroidManifest.xml:11:5-13:38
+MERGED from [com.mikhaellopez:circularimageview:3.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/circularimageview-3.0.2.aar/faa489c23cef7831577d816eecaa28ae/AndroidManifest.xml:11:5-13:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:25:5-29:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:13:5-14:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:30:9-35
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:30:9-35
 	android:label
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:29:9-41
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:29:9-41
 	android:icon
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:28:9-41
-		REJECTED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:20:9-43
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:28:9-41
+		REJECTED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:9-43
 	android:allowBackup
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:27:9-35
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:27:9-35
 	android:theme
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:31:9-47
-		REJECTED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:22:9-40
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:31:9-47
+		REJECTED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:22:9-40
 	tools:replace
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:32:9-51
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:32:9-51
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:26:9-46
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:26:9-46
 activity#com.mohi.in.activities.SplashScreen
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:33:9-40:20
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:33:9-40:20
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:35:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:35:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:34:13-52
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:34:13-52
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:36:13-39:29
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:36:13-39:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:37:17-69
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:37:17-69
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:37:25-66
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:37:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:38:17-77
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:38:17-77
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:38:27-74
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:38:27-74
 activity#com.mohi.in.activities.AllCategoryListActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:41:9-43:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:41:9-43:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:43:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:43:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:42:13-63
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:42:13-63
 activity#com.mohi.in.activities.AllProductsListActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:44:9-46:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:44:9-46:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:46:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:46:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:45:13-63
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:45:13-63
 activity#com.mohi.in.activities.SearchProductsListActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:47:9-49:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:47:9-49:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:49:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:49:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:48:13-66
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:48:13-66
 activity#com.mohi.in.activities.ForGotPasswordActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:50:9-52:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:50:9-52:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:52:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:52:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:51:13-62
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:51:13-62
 activity#com.mohi.in.activities.YourOrdersActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:53:9-55:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:53:9-55:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:55:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:55:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:54:13-58
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:54:13-58
 activity#com.mohi.in.activities.OrderHistoryActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:56:9-58:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:56:9-58:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:58:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:58:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:57:13-60
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:57:13-60
 activity#com.mohi.in.activities.WishListActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:59:9-61:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:59:9-61:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:61:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:61:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:60:13-56
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:60:13-56
 activity#com.mohi.in.activities.ProductDetailActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:62:9-65:54
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:62:9-65:54
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:64:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:64:13-49
 	android:theme
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:65:13-51
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:65:13-51
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:63:13-61
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:63:13-61
 activity#com.mohi.in.activities.PaymentMethodsActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:66:9-69:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:66:9-69:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:68:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:68:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:69:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:69:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:67:13-62
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:67:13-62
 activity#com.mohi.in.activities.FilterActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:70:9-73:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:70:9-73:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:73:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:73:13-49
 	android:launchMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:72:13-44
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:72:13-44
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:71:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:71:13-54
 activity#com.mohi.in.activities.WriteReviewActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:74:9-77:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:74:9-77:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:76:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:76:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:77:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:77:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:75:13-59
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:75:13-59
 activity#com.mohi.in.activities.SearchActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:78:9-81:64
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:78:9-81:64
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:80:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:80:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:81:13-61
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:81:13-61
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:79:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:79:13-54
 activity#com.mohi.in.activities.ModifyYourAddressActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:82:9-85:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:82:9-85:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:84:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:84:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:85:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:85:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:83:13-65
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:83:13-65
 activity#com.mohi.in.activities.AddAddressActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:86:9-89:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:86:9-89:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:88:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:88:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:89:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:89:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:87:13-58
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:87:13-58
 activity#com.mohi.in.activities.EditAddressActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:90:9-93:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:90:9-93:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:92:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:92:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:93:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:93:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:91:13-59
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:91:13-59
 activity#com.mohi.in.activities.ShippingAddressActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:94:9-97:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:94:9-97:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:96:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:96:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:97:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:97:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:95:13-63
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:95:13-63
 activity#com.mohi.in.activities.PaymentActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:98:9-101:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:98:9-101:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:100:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:100:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:101:13-54
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:101:13-54
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:99:13-55
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:99:13-55
 activity#com.mohi.in.activities.ChangePasswordActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:102:9-104:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:102:9-104:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:104:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:104:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:103:13-62
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:103:13-62
 activity#com.mohi.in.activities.EditProfileActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:105:9-107:52
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:105:9-107:52
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:107:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:107:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:106:13-59
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:106:13-59
 activity#com.theartofdev.edmodo.cropper.CropImageActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:108:9-111:59
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:108:9-111:59
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:110:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:110:13-49
 	android:theme
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:111:13-56
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:111:13-56
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:109:13-76
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:109:13-76
 provider#android.support.v4.content.FileProvider
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:113:9-121:20
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:113:9-121:20
 	android:grantUriPermissions
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:117:13-47
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:117:13-47
 	android:authorities
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:115:13-56
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:115:13-56
 	android:exported
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:116:13-37
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:116:13-37
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:114:13-67
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:114:13-67
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:118:13-120:54
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:118:13-120:54
 	android:resource
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:120:17-51
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:120:17-51
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:119:17-67
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:119:17-67
 activity#com.mohi.in.activities.WebViewActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:123:9-125:15
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:123:9-125:15
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:124:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:124:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:123:19-61
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:123:19-61
 activity#com.mohi.in.activities.FullImageScreen_Activity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:126:9-128:15
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:126:9-128:15
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:127:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:127:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:126:19-70
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:126:19-70
 activity#com.mohi.in.activities.SliderHomeActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:130:9-131:51
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:130:9-131:51
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:131:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:131:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:130:19-64
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:130:19-64
 activity#com.mohi.in.activities.LoginActivityNew
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:133:9-134:51
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:133:9-134:51
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:134:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:134:13-49
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:133:19-62
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:133:19-62
 activity#com.mohi.in.activities.SignupActivityNew
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:135:9-66
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:135:9-66
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:135:19-63
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:135:19-63
 activity#com.mohi.in.activities.DummyActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:136:9-62
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:136:9-62
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:136:19-59
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:136:19-59
 activity#com.mohi.in.activities.ActivityChat
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:137:9-139:57
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:137:9-139:57
 	android:screenOrientation
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:138:13-49
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:138:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:139:13-55
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:139:13-55
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:137:19-58
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:137:19-58
 activity#com.mohi.in.activities.ActivityFAQ
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:140:9-60
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:140:9-60
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:140:19-57
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:140:19-57
 activity#com.mohi.in.activities.ActivityOrderFinished
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:141:9-70
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:141:9-70
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:141:19-67
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:141:19-67
 activity#com.mohi.in.activities.ActivityCheckoutPayment
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:142:9-72
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:142:9-72
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:142:19-69
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:142:19-69
 activity#com.mohi.in.activities.ActivityAboutUs
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:144:9-64
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:144:9-64
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:144:19-61
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:144:19-61
 activity#com.mohi.in.activities.ActivityHelp
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:145:9-61
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:145:9-61
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:145:19-58
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:145:19-58
 activity#com.mohi.in.activities.ActivityDetailOrder
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:146:9-68
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:146:9-68
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:146:19-65
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:146:19-65
 activity#com.mohi.in.activities.ActivityPaymentNew
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:147:9-67
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:147:9-67
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:147:19-64
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:147:19-64
 activity#com.mohi.in.activities.ActivityItemDetails
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:148:9-68
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:148:9-68
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:148:19-65
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:148:19-65
 activity#com.mohi.in.activities.ActivityShippingAddress
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:149:9-72
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:149:9-72
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:149:19-69
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:149:19-69
 activity#com.mohi.in.activities.HomeActivity
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:150:9-61
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:150:9-61
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:150:19-58
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:150:19-58
 activity#com.mohi.in.activities.ActivityFullScreenImage
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:151:9-72
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:151:9-72
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:151:19-69
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:151:19-69
 service#com.mohi.in.utils.MyLocationService
-ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:153:9-60
+ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:153:9-60
 	android:name
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml:153:18-57
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml:153:18-57
 uses-sdk
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:21:5-23:62
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.3.1.aar\4bd0d9e3a3f609fc187ce54ce0a5afd9\AndroidManifest.xml:8:5-10:41
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.3.1.aar\4bd0d9e3a3f609fc187ce54ce0a5afd9\AndroidManifest.xml:8:5-10:41
-MERGED from [com.crystal:crystalrangeseekbar:1.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\crystalrangeseekbar-1.1.3.aar\72fa6cdd517722af077767eed75b5f8f\AndroidManifest.xml:7:5-9:41
-MERGED from [com.crystal:crystalrangeseekbar:1.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\crystalrangeseekbar-1.1.3.aar\72fa6cdd517722af077767eed75b5f8f\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.india:payu-sdk:4.4.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-sdk-4.4.2.aar\0758fce12c07e9fce836ac01087585b6\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.india:payu-sdk:4.4.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-sdk-4.4.2.aar\0758fce12c07e9fce836ac01087585b6\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:7:5-9:41
-MERGED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7acec83126dc88c3ed2dded995524905\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7acec83126dc88c3ed2dded995524905\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:21:5-23:54
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\material-ripple-1.0.2.aar\9b8884ef4d8a3311ee6b0d5f53ea8672\AndroidManifest.xml:8:5-10:41
-MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\material-ripple-1.0.2.aar\9b8884ef4d8a3311ee6b0d5f53ea8672\AndroidManifest.xml:8:5-10:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\797d0850aa2941083c5ef77c3859aacf\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:20:5-44
-MERGED from [com.mikhaellopez:circularimageview:3.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\circularimageview-3.0.2.aar\ef4634f47aff47620809e4cf61320de8\AndroidManifest.xml:7:5-9:41
-MERGED from [com.mikhaellopez:circularimageview:3.0.2] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\circularimageview-3.0.2.aar\ef4634f47aff47620809e4cf61320de8\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:21:5-23:58
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\97f4c2d3a9a09f37ffc76e22b8140a8e\AndroidManifest.xml:7:5-9:41
-MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:21:5-23:62
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.3.1.aar/fcd63cb359515a82b126f72217e47002/AndroidManifest.xml:8:5-10:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.3.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.3.1.aar/fcd63cb359515a82b126f72217e47002/AndroidManifest.xml:8:5-10:41
+MERGED from [com.crystal:crystalrangeseekbar:1.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/crystalrangeseekbar-1.1.3.aar/279125f083206621f6d6c60da3edee27/AndroidManifest.xml:7:5-9:41
+MERGED from [com.crystal:crystalrangeseekbar:1.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/crystalrangeseekbar-1.1.3.aar/279125f083206621f6d6c60da3edee27/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.india:payu-sdk:4.4.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-sdk-4.4.2.aar/f3ef4e7f75cba6b28b776d1d27eb412d/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.india:payu-sdk:4.4.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-sdk-4.4.2.aar/f3ef4e7f75cba6b28b776d1d27eb412d/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:7:5-9:41
+MERGED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f24d9f322bb598a8d5f2ca85eb2738f7/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/f24d9f322bb598a8d5f2ca85eb2738f7/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:21:5-23:54
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/5fdd393a395eac5fd01af2b4df456da7/AndroidManifest.xml:8:5-10:41
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/5fdd393a395eac5fd01af2b4df456da7/AndroidManifest.xml:8:5-10:41
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.ion:ion:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/33c4da74da6d2b7544ee4aa33d600fed/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:20:5-44
+MERGED from [com.mikhaellopez:circularimageview:3.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/circularimageview-3.0.2.aar/faa489c23cef7831577d816eecaa28ae/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikhaellopez:circularimageview:3.0.2] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/circularimageview-3.0.2.aar/faa489c23cef7831577d816eecaa28ae/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:21:5-23:58
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/2daf7c07d85a730d68e9f0d3cbd61875/AndroidManifest.xml:7:5-9:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Gandhi\Desktop\Mohi Android Latest\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		ADDED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:5-76
+ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-76
 	android:name
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:22-73
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:22-73
 uses-permission#android.permission.RECEIVE_SMS
-ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:14:5-16:47
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:12:5-14:47
-MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:12:5-14:47
+ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:5-16:47
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:12:5-14:47
+MERGED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:12:5-14:47
 	android:protectionLevel
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:16:9-44
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:9-44
 	android:name
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:15:9-54
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:9-54
 activity#com.payu.payuui.Activity.PayUBaseActivity
-ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:23:9-28:20
+ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:23:9-28:20
 	android:screenOrientation
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:26:13-49
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:26:13-49
 	android:label
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:25:13-45
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:13-45
 	android:windowSoftInputMode
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:27:13-52
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:27:13-52
 	android:name
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:24:13-69
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:13-69
 activity#com.payu.payuui.Activity.PaymentsActivity
-ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:29:9-33:20
+ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:29:9-33:20
 	android:screenOrientation
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:32:13-49
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:32:13-49
 	android:label
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:31:13-60
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:31:13-60
 	android:name
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:30:13-69
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:30:13-69
 activity#com.payu.payuui.Activity.OldPaymentActivity
-ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:34:9-38:20
+ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:34:9-38:20
 	android:screenOrientation
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:37:13-49
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:37:13-49
 	android:label
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:36:13-60
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:36:13-60
 	android:name
-		ADDED from [:sdkui] C:\Users\Gandhi\Desktop\Mohi Android Latest\sdkui\build\intermediates\manifests\full\debug\AndroidManifest.xml:35:13-71
+		ADDED from [:sdkui] /Users/vinaygarg/AndroidStudioProjects/bhagatsingh/sdkui/build/intermediates/manifests/full/debug/AndroidManifest.xml:35:13-71
 meta-data#android.support.VERSION
-ADDED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\c63fd321e78be310f7e218f132a6199d\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\4707009ec198a04dcbe752b26183da5e\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\5adbcc51f50ccd5108ca9cbdeef1c8c3\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\99c3c1d662250ffdbe5cb06e4ad92923\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7e0e614c34ac1c52267b4473fc1aa188\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:cardview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\cardview-v7-26.1.0.aar\c1c7e76cb9a42178e58f0aa07d5eaa44\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\0b188d43ef8896469586aa76528ee3f2\AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\0b13b699533310b258f12825b9270802\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\2528f33d9faab50fc039465f0db16c78\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\12fbf9dd771566adf735b560ae1b5a7b\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\509776cb1d71afa1bd876ecac73984a7\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\71cb1d7a189503c73ba44914c672bedf\AndroidManifest.xml:26:9-28:38
+ADDED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/49be90aa189868ad5110f36dfef6de90/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/2f0e74d93d0ed97db3c2a66ae3bd56a6/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/d5b99ec91bb968cf75d4130d03961cfb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/ec6a8f70fdf5b80774162cd191c6a2bb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/4bc250cef4fa011c787b78d44b992100/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/cfdbff72332183af3f39d3a0d08d7682/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/f0a191d5ae56f5ac36923acc59e0d419/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/85ef2ae1cfd2f95eba827e594d51d689/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e4f4cb36a733399f281d4cd64acd4821/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/6e322035d1f4f2a4c56482f4efca0572/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/5af4388c643e11c0f72dfc562d1a4510/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/abc3aafe3b82152b1f638e7e75f91ced/AndroidManifest.xml:26:9-28:38
 	android:value
-		ADDED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:28:13-35
+		ADDED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:28:13-35
 	android:name
-		ADDED from [com.android.support:design:26.1.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\6f97a364d33924f4e793afb874f66527\AndroidManifest.xml:27:13-51
+		ADDED from [com.android.support:design:26.1.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/05d9c91935672251fa24609f36f410a2/AndroidManifest.xml:27:13-51
 activity#com.payu.custombrowser.CBActivity
-ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:17:9-20:63
+ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:17:9-20:63
 	android:screenOrientation
-		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:19:13-49
+		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:19:13-49
 	android:windowSoftInputMode
-		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:20:13-60
+		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:20:13-60
 	android:name
-		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:18:13-61
+		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:18:13-61
 service#com.payu.custombrowser.services.SnoozeService
-ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:22:9-81
+ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:22:9-81
 	android:name
-		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\payu-custom-browser-6.1.3.aar\c5dbb97f24f3633169edaac940d35d56\AndroidManifest.xml:22:18-78
+		ADDED from [com.payu.custombrowser:payu-custom-browser:6.1.3] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/payu-custom-browser-6.1.3.aar/f78018fe9b5bc09e9c118d04b826f5d1/AndroidManifest.xml:22:18-78
 activity#com.payu.magicretry.MainActivity
-ADDED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:12:9-21:20
+ADDED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:12:9-21:20
 	android:name
-		ADDED from [com.payu.magicretry:magicretry:1.0.5] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\magicretry-1.0.5.aar\63bd582122a7d75a4ba3e0805e73916c\AndroidManifest.xml:12:19-66
+		ADDED from [com.payu.magicretry:magicretry:1.0.5] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/magicretry-1.0.5.aar/5f9eaf482104f809b081859664c4bfcb/AndroidManifest.xml:12:19-66
 meta-data#android.arch.lifecycle.VERSION
-ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:25:9-27:47
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:25:9-27:47
 	android:value
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:27:13-44
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:27:13-44
 	android:name
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Gandhi\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\776cc63fdf40adc976abfdd6ac37c4ae\AndroidManifest.xml:26:13-58
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/vinaygarg/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/288792eee5f891770f4a21918615b5c0/AndroidManifest.xml:26:13-58

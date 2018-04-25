@@ -15,7 +15,8 @@
     <dimen name="login_title_text_size">28px</dimen>
     <dimen name="login_loginbutton_text_size">28px</dimen>
 
-
+    <dimen name="home_item_width">280px</dimen>
+    <dimen name="home_item_height">374px</dimen>
 
     <dimen name="signup_buttton_martop">53px</dimen>
     <dimen name="signup_tac_martop">67px</dimen>

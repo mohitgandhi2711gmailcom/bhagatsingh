@@ -67,13 +67,13 @@ public class SessionStore {
     public static HashMap<String, String> getUserDetails(Context context, String name) {
         SharedPreferences pref = context.getSharedPreferences(name, Context.MODE_PRIVATE);
         HashMap<String, String> user = new HashMap<>();
-        user.put(USER_ID, pref.getString(USER_ID, null));
-        user.put(USER_TOKEN, pref.getString(USER_TOKEN, null));
-        user.put(USER_EMAIL, pref.getString(USER_EMAIL, null));
-        user.put(USER_FIRST_NAME, pref.getString(USER_FIRST_NAME, null));
-        user.put(USER_LAST_NAME, pref.getString(USER_LAST_NAME, null));
-        user.put(PROFILEPICTURE, pref.getString(PROFILEPICTURE, null));
-        user.put(USER_MOBILENO, pref.getString(USER_MOBILENO, null));
+        user.put(USER_ID, pref.getString(USER_ID, ""));
+        user.put(USER_TOKEN, pref.getString(USER_TOKEN, ""));
+        user.put(USER_EMAIL, pref.getString(USER_EMAIL, ""));
+        user.put(USER_FIRST_NAME, pref.getString(USER_FIRST_NAME, ""));
+        user.put(USER_LAST_NAME, pref.getString(USER_LAST_NAME, ""));
+        user.put(PROFILEPICTURE, pref.getString(PROFILEPICTURE, ""));
+        user.put(USER_MOBILENO, pref.getString(USER_MOBILENO, ""));
         user.put(USER_CURRENCYTYPE, pref.getString(USER_CURRENCYTYPE, ""));
         user.put(COUNTRY_CODE, pref.getString(COUNTRY_CODE, ""));
         user.put(USER_ADDRESS_ID, pref.getString(USER_ADDRESS_ID, ""));

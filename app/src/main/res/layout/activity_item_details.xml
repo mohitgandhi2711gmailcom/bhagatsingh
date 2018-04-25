@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,12 +14,20 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
-
+<LinearLayout
+    android:id="@+id/ll_top_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/images_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+<LinearLayout
+    android:id="@+id/ll_price"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,12 +93,14 @@
                 android:gravity="start"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Title"/>
 
             <TextView
                 android:id="@+id/old_price_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="price"/>
 
         </LinearLayout>
 
@@ -104,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="SKU Number"
+                tools:text="SKU Number"
                 android:textSize="18sp" />
 
             <TextView
@@ -112,10 +123,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/skip_text_slider"
+                tools:text="new price"
                 android:textSize="20sp" />
 
         </LinearLayout>
-
+</LinearLayout>
+</LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -124,11 +137,11 @@
             android:background="@drawable/divider_line" />
 
         <TextView
-            android:id="@+id/model_no_tv"
+            android:id="@+id/description_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:text="Model No"
+            android:text="Description"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -138,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:text="Item Description"
+            tools:text="Item Description"
             android:textSize="18sp" />
 
         <TextView
@@ -146,7 +159,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="more info" />
+            android:text="more info"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
@@ -276,81 +290,49 @@
             android:layout_marginTop="10dp"
             android:text="@string/authenticity" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Color"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:id="@+id/tv_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Size"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/size_chart"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/circle_shape" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginEnd="10dp"-->
+                    <!--android:background="@drawable/circle_shape"-->
+                    <!--android:text="M"-->
+                    <!--android:textColor="@color/white_color"-->
+                    <!--android:gravity="center"/>-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/circle_shape" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginEnd="10dp"-->
+                    <!--android:src="@drawable/circle_shape" />-->
 
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginEnd="10dp"-->
+                    <!--android:src="@drawable/circle_shape" />-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/circle_shape" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/circle_shape" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/circle_shape" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/circle_shape" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/circle_shape" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

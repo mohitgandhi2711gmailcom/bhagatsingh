@@ -54,11 +54,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                    <com.mohi.in.widgets.AutoScrollViewPager
                         android:id="@+id/top_banner_sv"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_blue_up_to_down" />
+                        android:layout_height="wrap_content" />
 
                     <RadioGroup
                         android:id="@+id/top_banner_rg"
@@ -92,7 +91,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/most_searched" />
+                    android:text="@string/most_searched"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -113,6 +114,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
                     android:text="@string/trending_now" />
 
                 <View
@@ -136,11 +139,10 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <com.mohi.in.widgets.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                    <com.mohi.in.widgets.AutoScrollViewPager
                         android:id="@+id/middle_banner_sv"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_blue_up_to_down" />
+                        android:layout_height="wrap_content" />
 
                     <RadioGroup
                         android:id="@+id/middle_banner_rg"
@@ -160,6 +162,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
                     android:text="@string/items_you_viewed" />
 
                 <View
@@ -181,6 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
                     android:text="@string/categories" />
 
                 <View

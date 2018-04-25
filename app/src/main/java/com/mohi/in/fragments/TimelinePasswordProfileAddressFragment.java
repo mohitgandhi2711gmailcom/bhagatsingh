@@ -362,7 +362,6 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode,resultCode,data);
-        Methods.showToast(mContext, "Gya");
         if (requestCode == CAMERA_REQUEST) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
@@ -437,7 +436,7 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
     @Override
     public void ServerCallBackSuccess(JSONObject jobj, String strfFrom) {
         WaitDialog.hideDialog();
-        if (strfFrom.trim().equalsIgnoreCase("profileimage"))
+        if (strfFrom.trim().equalsIgnoreCase("profileimage")) {
             if (jobj.optString("status").trim().equalsIgnoreCase("success")) {
                 JSONObject data = jobj.optJSONObject("data");
                 String image = data.optString("image");
@@ -458,5 +457,6 @@ public class TimelinePasswordProfileAddressFragment extends Fragment implements 
             } else {
                 Methods.showToast(mContext, "Error");
             }
+        }
     }
 }

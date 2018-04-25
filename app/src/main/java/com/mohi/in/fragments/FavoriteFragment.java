@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
+import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.WishListModel;
 import com.mohi.in.ui.adapter.WishListAdapter;
@@ -61,8 +62,10 @@ public class FavoriteFragment extends Fragment implements ServerCallBack {
         try {
             WaitDialog.showDialog(mContext);
             JsonObject json = new JsonObject();
-            json.addProperty("user_id", hashMap.get(SessionStore.USER_ID));
-            json.addProperty("token", hashMap.get(SessionStore.USER_TOKEN));
+            String userId = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID);
+            String token = SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN);
+            json.addProperty("user_id", userId);
+            json.addProperty("token", token);
             json.addProperty("width", getResources().getDimension(R.dimen.wishlist_row_image_width));
             json.addProperty("height", getResources().getDimension(R.dimen.wishlist_row_image_width));
             ServerCalling.ServerCallingProductsApiPost(mContext, "wishlist", json, this);
@@ -74,11 +77,12 @@ public class FavoriteFragment extends Fragment implements ServerCallBack {
     @Override
     public void ServerCallBackSuccess(JSONObject result, String strfFrom) {
         try {
+            WaitDialog.hideDialog();
             if (strfFrom.trim().equalsIgnoreCase("wishlist")) {
                 if (result.getString("status").trim().equalsIgnoreCase("1")) {
                     JSONArray dataArray = result.getJSONArray("data");
                     setFeaturedCategories(dataArray);
-                    WaitDialog.hideDialog();
+
                 } else {
                     Methods.showToast(mContext, result.getString("msg"));
                 }

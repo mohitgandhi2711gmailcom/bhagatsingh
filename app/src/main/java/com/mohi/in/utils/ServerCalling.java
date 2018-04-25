@@ -29,7 +29,7 @@ public class ServerCalling {
                 .load(Urls.USERBASEURL + urlParameter)
                 .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                 .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
-                .setTimeout(60 * 60 * 1000)
+                .setTimeout(20 * 1000)
                 .setJsonObjectBody(jsonObj)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -90,7 +90,7 @@ public class ServerCalling {
                 .load(Urls.PRODUCTBASEURL + urlParameter)
                 .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                 .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
-                .setTimeout(60 * 60 * 1000)
+                .setTimeout(20 * 1000)
                 .setJsonObjectBody(jsonObj)
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
@@ -169,7 +169,7 @@ public class ServerCalling {
                 .load("https://apnasweets.com/app_api/collections.php")
                 .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                 .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
-                .setTimeout(60 * 60 * 1000)
+                .setTimeout(20 * 1000)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
@@ -254,7 +254,7 @@ public class ServerCalling {
                     .load(Urls.USERBASEURL + urlParameter)
                     .setHeader(Urls.HEADERSRT, Methods.getVersionCode(mContext))
                     .setHeader(Urls.DEVICEID, Methods.getDeviceId(mContext))
-                    .setTimeout(60 * 60 * 1000)
+                    .setTimeout(20 * 1000)
                     .setMultipartParameter("user_id", userId)
                     .setMultipartParameter("token", userToken)
                     .setMultipartFile("user_profile", file)
@@ -286,7 +286,7 @@ public class ServerCalling {
 
                                         Log.e("ServerCallingUserApi ", urlParameter + "   " + jsonData.getString("msg"));
 
-                                        if (jsonData.get("error") != null) {
+                                        if (jsonData.has("error") && jsonData.get("error") != null) {
 
                                             if (jsonData.getString("error").equalsIgnoreCase("461")) {
                                             /*Intent intent = new Intent(mContext, LoginActivity.class);
@@ -314,6 +314,8 @@ public class ServerCalling {
                                                         }).show();
 
                                             }
+                                        }else{
+                                            Methods.showToast(mContext, jsonData.getString("msg"));
                                         }
 
                                     } else {

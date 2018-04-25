@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.gson.JsonObject;
 import com.mohi.in.R;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
@@ -139,13 +140,25 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, S
                 assert focusView != null;
                 focusView.requestFocus();
             } else {
-                WaitDialog.showDialog(mContext);
+//                WaitDialog.showDialog(mContext);
                 File file = null;
                 if (mUri != null) {
 
                     file = new File(mUri.getPath());
                 }
-                //ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL),countryCode,mobileNo, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), file);
+                WaitDialog.showDialog(getActivity());
+                JsonObject json = new JsonObject();
+                json.addProperty("user_id", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+                json.addProperty("token", SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+                json.addProperty("firstname",firstname);
+                json.addProperty("lastname",lastname);
+                json.addProperty("email",SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL));
+                json.addProperty("cntry_code",country_code);
+                json.addProperty("mob_number",mobileNo);
+
+                ServerCalling.ServerCallingUserApiPost(mContext, "updateProfile", json, this);
+
+//                ServerCalling.ServerCallingUserApiImagePost(mContext, "updateProfile", this, firstname,lastname,SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_EMAIL),country_code,mobileNo, SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID),SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN), file);
             }
         } catch (Exception e) {
             e.printStackTrace();
