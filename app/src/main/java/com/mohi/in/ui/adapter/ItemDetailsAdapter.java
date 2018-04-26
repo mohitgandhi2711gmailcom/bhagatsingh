@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.mohi.in.R;
@@ -21,6 +22,7 @@ public class ItemDetailsAdapter extends RecyclerView.Adapter<ItemDetailsAdapter.
 
     private ArrayList<MediaModel> list;
     private Context context;
+    int itemHeight = 0;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView image_iv;
@@ -36,7 +38,8 @@ public class ItemDetailsAdapter extends RecyclerView.Adapter<ItemDetailsAdapter.
         list = new ArrayList<>();
     }
 
-    public void addData(ArrayList<MediaModel> list) {
+    public void addData(ArrayList<MediaModel> list, int itemHeight) {
+        this.itemHeight = itemHeight;
         this.list.addAll(list);
         notifyDataSetChanged();
     }
@@ -50,7 +53,15 @@ public class ItemDetailsAdapter extends RecyclerView.Adapter<ItemDetailsAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final MediaModel model = list.get(position);
+        int totalHeight=context.getResources().getDisplayMetrics().heightPixels;
+//                int width=((totalWidth*280)/600);
+
+        int height = totalHeight - itemHeight;
+        int width = (280*height)/374;
+//        int height=(374*width)/280;
+        holder.image_iv.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
         Glide.with(context).load(model.getImageUrl()).into(holder.image_iv);
+
         holder.image_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

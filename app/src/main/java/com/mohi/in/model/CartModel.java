@@ -8,6 +8,7 @@ public class CartModel {
     private String productPrice;
     private String qty;
     private String image;
+    private String sku;
 
     public String getProductId() {
         return productId;
@@ -55,5 +56,13 @@ public class CartModel {
 
     public void setQty(String qty) {
         this.qty = qty;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 }

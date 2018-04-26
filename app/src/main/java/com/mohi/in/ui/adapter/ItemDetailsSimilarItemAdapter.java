@@ -54,7 +54,7 @@ public class ItemDetailsSimilarItemAdapter extends RecyclerView.Adapter<ItemDeta
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.subcategories_row, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_viewed_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

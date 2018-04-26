@@ -75,7 +75,8 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 ViewHolder holder = (ViewHolder) holder1;
 
                 int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
-                int width=((totalWidth*280)/600);
+//                int width=((totalWidth*280)/600);
+                int width = totalWidth/2;
                 int height=(374*width)/280;
                 holder.mImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
                 holder.mName.setText(model.product_name);

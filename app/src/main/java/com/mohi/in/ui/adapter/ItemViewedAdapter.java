@@ -46,10 +46,10 @@ public class ItemViewedAdapter extends RecyclerView.Adapter<ItemViewedAdapter.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final BannerModel model = mList.get(position);
-        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
-        int width=((totalWidth*240)/720);
-        int height=(316*width)/240;
-        holder.subcategoriesRowImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+//        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+//        int width=((totalWidth*240)/720);
+//        int height=(316*width)/240;
+//        holder.subcategoriesRowImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
 
         Glide.with(mContext).load(model.getImage()).into(holder.subcategoriesRowImage);
         String isFavourite = model.getIs_wishlist();

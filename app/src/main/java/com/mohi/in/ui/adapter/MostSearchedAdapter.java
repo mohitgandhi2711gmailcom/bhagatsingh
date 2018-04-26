@@ -47,10 +47,10 @@ public class MostSearchedAdapter extends RecyclerView.Adapter<MostSearchedAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final BannerModel model = mList.get(position);
 
-        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
-        int width=((totalWidth*280)/600);
-        int height=(374*width)/280;
-        holder.subcategoriesRowImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+//        int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+//        int width=((totalWidth*280)/720);
+//        int height=(374*width)/280;
+//        holder.subcategoriesRowImage.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
 
         Glide.with(mContext).load(model.getImage()).into(holder.subcategoriesRowImage);
         String isFavourite = model.getIs_wishlist();

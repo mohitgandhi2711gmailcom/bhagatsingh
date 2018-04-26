@@ -140,6 +140,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
             obj.setProductPrice(dataJson.optString("price"));
             obj.setQty(dataJson.optString("qty"));
             obj.setImage(dataJson.optString("image"));
+            obj.setSku(dataJson.optString("sku"));
             cartList.add(obj);
         }
         mCartAdapter.updateList(cartList);
@@ -224,8 +225,12 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private void attemptRemoveItemFromCart(CartModel model) {
         WaitDialog.showDialog(mContext);
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        if (SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID).equals("") || SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID) == null){
+//            json.addProperty("sku", model.getSku());
+        }else {
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        }
         json.addProperty("item_id", model.getItemId());
         json.addProperty("cart_id", cartId);
         ServerCalling.ServerCallingProductsApiPost(mContext, "removeItemFromCart", json, this);
@@ -234,12 +239,16 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private void attemptCartQuantityUpdate(CartModel model) {
         WaitDialog.showDialog(mContext);
         JsonObject json = new JsonObject();
-        json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
-        json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        if (SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID).equals("") || SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID) == null){
+            json.addProperty("sku", model.getSku());
+        }else {
+            json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
+            json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
+        }
         json.addProperty("cart_id", cartId);
         json.addProperty("item_id", model.getItemId());
         json.addProperty("qty", model.getQty());
-        json.addProperty("Product_id", model.getProductId());
+        json.addProperty("product_id", model.getProductId());
         ServerCalling.ServerCallingProductsApiPost(mContext, "updateCartQty", json, this);
     }
 

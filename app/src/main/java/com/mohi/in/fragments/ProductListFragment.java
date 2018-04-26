@@ -74,7 +74,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         mCategoryAdapter = new AllProductListAdapter(mContext);
         GridLayoutManager mLayoutManager = new GridLayoutManager(mContext, 2);
         mCategoryRv.setLayoutManager(mLayoutManager);
-        mCategoryRv.addItemDecoration(new GridSpacingItemDecoration(2, 30, false));
+        mCategoryRv.addItemDecoration(new GridSpacingItemDecoration(2, 00, false));
         mCategoryList = new ArrayList<>();
         mCategoryRv.setItemAnimator(new DefaultItemAnimator());
         mCategoryRv.setAdapter(mCategoryAdapter);
@@ -175,8 +175,8 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     json.put("user_id", SessionStore.getUserDetails(mContext
                             , Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
                     json.put("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-                    json.put("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
-                    json.put("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
+//                    json.put("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
+//                    json.put("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
                     json.put("limit", TOTAL_PAGES);
                     json.put("page", currentPage);
                     json.put(CATEGORY_ID, jj);
@@ -194,8 +194,10 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                     json.addProperty("page", currentPage);
                     json.addProperty("user_id", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID));
                     json.addProperty("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
-                    json.addProperty("width", getResources().getDimension(R.dimen.home_allproduct_row_width));
-                    json.addProperty("height", getResources().getDimension(R.dimen.home_allproduct_row_image_height));
+                    int totalWidth=mContext.getResources().getDisplayMetrics().widthPixels;
+                    Log.d("Total Width", totalWidth+"");
+                    json.addProperty("width", totalWidth/2);
+                    json.addProperty("height", (374*totalWidth)/560);
                     json.addProperty("type", strTypeValue);
                     json.addProperty(CATEGORY_ID, catId);
                     json.addProperty("search", "");

@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
+        android:orientation="vertical"
         android:layout_margin="20dp">
 
         <android.support.design.widget.FloatingActionButton
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:src="@drawable/filter_gray"
-            app:backgroundTint="@color/white_color" />
+            app:backgroundTint="@color/white_color"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/sort_btn"
@@ -36,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:src="@drawable/filter_gray"
-            app:backgroundTint="@color/white_color" />
+            app:backgroundTint="@color/white_color"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

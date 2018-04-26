@@ -75,14 +75,14 @@ public class HomeActivity extends AppCompatActivity implements TabHost.OnTabChan
         drawerLayout = findViewById(R.id.drawer_layout);
         headerSearch = findViewById(R.id.Header_Search);
         //Set Margin acc to Soft Buttons
-        if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
+//        if (ViewConfiguration.get(mContext).hasPermanentMenuKey()) {
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.MATCH_PARENT
             );
             params.setMargins(0, 0, 0, getSoftButtonsBarHeight());
             drawerLayout.setLayoutParams(params);
-        }
+//        }
         setValue();
     }
 

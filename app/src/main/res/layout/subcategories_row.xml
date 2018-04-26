@@ -17,7 +17,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/home_allproduct_row_image_height">
+            android:layout_height="wrap_content">
 
             <ProgressBar
                 android:layout_width="35dp"
@@ -29,7 +29,6 @@
                 android:id="@+id/Subcategories_Row_Image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:background="@drawable/featuredproducts_row_top_bg"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter" />
