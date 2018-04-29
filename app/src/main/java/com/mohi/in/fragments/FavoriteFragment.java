@@ -30,9 +30,9 @@ import java.util.HashMap;
 public class FavoriteFragment extends Fragment implements ServerCallBack {
     private Context mContext;
     HashMap<String, String> hashMap;
-    private RecyclerView mCategoryRv;
+    private RecyclerView mFavouriteRv;
     private ArrayList<WishListModel> mCategoryList;
-    private WishListAdapter mCategoryAdapter;
+    private WishListAdapter mFavouriteAdapter;
 
     @Nullable
     @Override
@@ -46,10 +46,10 @@ public class FavoriteFragment extends Fragment implements ServerCallBack {
         mContext = getActivity();
         hashMap = new HashMap<>();
         mCategoryList = new ArrayList<>();
-        mCategoryRv = view.findViewById(R.id.category_rv);
-        mCategoryAdapter = new WishListAdapter(mContext);
+        mFavouriteRv = view.findViewById(R.id.favourite_rv);
+        mFavouriteAdapter = new WishListAdapter(mContext);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        mCategoryRv.setLayoutManager(mLayoutManager);
+        mFavouriteRv.setLayoutManager(mLayoutManager);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class FavoriteFragment extends Fragment implements ServerCallBack {
                 JSONObject dataJson = dataArray.getJSONObject(i);
                 mCategoryList.add(new WishListModel(dataJson.getString("product_id"), dataJson.getString("product_name"), dataJson.getString("image"), dataJson.getString("qty"), dataJson.getString("category"), dataJson.getInt("is_add_to_cart"), dataJson.getDouble("rating"), "129.000"));
             }
-            mCategoryAdapter.setList(mCategoryList);
-            mCategoryRv.setAdapter(mCategoryAdapter);
+            mFavouriteAdapter.setList(mCategoryList);
+            mFavouriteRv.setAdapter(mFavouriteAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }

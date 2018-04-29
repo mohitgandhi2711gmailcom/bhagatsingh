@@ -66,14 +66,14 @@
 
             </FrameLayout>
 
-            <com.mohi.in.widgets.UbuntuRegularTextView
-                android:id="@+id/tab_name"
-                style="@style/TextAppearance.AppCompat.Notification.Time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textColor="@color/tab_inactive_color"
-                android:visibility="gone" />
+            <!--<com.mohi.in.widgets.UbuntuRegularTextView-->
+                <!--android:id="@+id/tab_name"-->
+                <!--style="@style/TextAppearance.AppCompat.Notification.Time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical|center_horizontal"-->
+                <!--android:textColor="@color/tab_inactive_color"-->
+                <!--android:visibility="gone" />-->
 
         </LinearLayout>
 

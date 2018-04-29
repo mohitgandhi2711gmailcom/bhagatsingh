@@ -103,6 +103,7 @@ public class HomeFragment extends Fragment implements ServerCallBack {
             }
             stringName.add(name.toLowerCase());
         }
+//        viewPager.setOffscreenPageLimit(adapter.mFragmentList.size());
         adapter.notifyDataSetChanged();
     }
 

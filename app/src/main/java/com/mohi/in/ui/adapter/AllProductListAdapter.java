@@ -38,7 +38,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private boolean isLoadingAdded = false;
     private Context mContext;
     private int pos = 0;
-    private boolean flage = true;
+//    private boolean flage = true;
 
     public AllProductListAdapter(Context context) {
         this.mContext = context;
@@ -46,7 +46,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public void setList(List<SubCategoriesModel> list) {
         this.mList.addAll(list);
-        flage = true;
+//        flage = true;
         notifyDataSetChanged();
     }
 
@@ -89,19 +89,19 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 holder.mItemLl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (flage) {
+//                        if (flage) {
                             onCallActivity(model);
-                            flage = false;
+//                            flage = false;
                         }
-                    }
+//                    }
                 });
                 holder.mImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (flage) {
+//                        if (flage) {
                             onCallActivity(model);
-                            flage = false;
-                        }
+//                            flage = false;
+//                        }
                     }
                 });
                 if (model.is_wishlist == 0) {
@@ -175,7 +175,7 @@ public class AllProductListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public void addAll(List<SubCategoriesModel> mcList) {
-        flage = true;
+//        flage = true;
         for (SubCategoriesModel mc : mcList) {
             mList.add(mc);
             notifyItemInserted(mList.size() - 1);

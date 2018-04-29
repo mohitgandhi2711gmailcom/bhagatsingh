@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ import com.mohi.in.utils.PaginationScrollListener;
 import com.mohi.in.utils.ServerCalling;
 import com.mohi.in.utils.SessionStore;
 import com.mohi.in.utils.listeners.ServerCallBack;
+import com.mohi.in.widgets.ItemOffsetDecorator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +39,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ProductListFragment extends Fragment implements ServerCallBack {
+public class ProductListFragment extends Fragment implements ServerCallBack, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView mCategoryRv;
     private AllProductListAdapter mCategoryAdapter;
     private ArrayList<SubCategoriesModel> mCategoryList;
@@ -53,6 +56,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     private FloatingActionButton filterFloatingButton;
     private FloatingActionButton sortFloatingButton;
     private static final int REQUEST_CODE = 7;
+    private SwipeRefreshLayout swipe_refresh_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +66,14 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        attemptGetData();
+    }
+
     private void init(View view) {
+        swipe_refresh_layout = view.findViewById(R.id.swipe_refresh_layout);
         mCategoryRv = view.findViewById(R.id.category_rv);
         mCategoryAdapter = new AllProductListAdapter(mContext);
         filterFloatingButton = view.findViewById(R.id.filter_btn);
@@ -75,9 +86,11 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     }
 
     private void setValue() {
+        swipe_refresh_layout.setOnRefreshListener(this);
         mCategoryAdapter = new AllProductListAdapter(mContext);
         GridLayoutManager mLayoutManager = new GridLayoutManager(mContext, 2);
         mCategoryRv.setLayoutManager(mLayoutManager);
+//        mCategoryRv.addItemDecoration(new ItemOffsetDecorator(1));
         mCategoryRv.addItemDecoration(new GridSpacingItemDecoration(2, 00, false));
         mCategoryList = new ArrayList<>();
         mCategoryRv.setItemAnimator(new DefaultItemAnimator());
@@ -153,6 +166,13 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
     @Override
     public void onResume() {
         super.onResume();
+
+    }
+
+
+    @Override
+    public void onRefresh() {
+        swipe_refresh_layout.setRefreshing(false);
         attemptGetData();
     }
 
@@ -236,7 +256,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE && resultCode!= getActivity().RESULT_CANCELED) {
             String minPrice = data.getStringExtra("MinPrice");
             String maxPrice = data.getStringExtra("MaxPrice");
             String colors = data.getStringExtra("Colors");
@@ -261,7 +281,7 @@ public class ProductListFragment extends Fragment implements ServerCallBack {
                 json.put("token", SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_TOKEN));
                 json.put("limit", TOTAL_PAGES);
                 json.put("page", currentPage);
-                json.put(CATEGORY_ID, jj);
+                json.put(CATEGORY_ID, catId);
                 json.put("from_price", minPrice);
                 json.put("to_price", maxPrice);
                 json.put("availabilty", availability);

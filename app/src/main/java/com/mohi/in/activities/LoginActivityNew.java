@@ -2,6 +2,7 @@ package com.mohi.in.activities;
 
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -73,6 +74,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
     private boolean isPasswordCoded = true;
     private ArrayList<String> countryCodes;
     private boolean isNumber = false;
+    ComponentName componentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,7 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login_new);
         mContext = LoginActivityNew.this;
+        ComponentName componentName = getCallingActivity();
         intent = getIntent();
         init();
     }
@@ -428,8 +431,13 @@ public class LoginActivityNew extends AppCompatActivity implements LoaderCallbac
         String currency = data.optString("currency");
         String cntryCode = data.optString("cntry_code");
         SessionStore.saveUserDetails(mContext, Common.USER_PREFS_NAME, userId, token, email, mobNumber, firstName, lastName, userImage, currency, cntryCode);
+
+        if (componentName == null) {
+            startActivity(new Intent(this, HomeActivity.class));
+        }else {
+            setResult(RESULT_OK);
+        }
         finish();
-        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override

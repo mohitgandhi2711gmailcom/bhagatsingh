@@ -1,6 +1,7 @@
 package com.mohi.in.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.mohi.in.R;
+import com.mohi.in.activities.LoginActivityNew;
 import com.mohi.in.common.Common;
 import com.mohi.in.dialog.WaitDialog;
 import com.mohi.in.model.CartModel;
@@ -43,6 +46,8 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
     private ArrayList<CartModel> cartList;
     private SwipeRefreshLayout swipe_layout;
     private String cartId;
+    private LinearLayout totalParent;
+    private int REQUEST_CODE = 10;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +64,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
         backCircleButton = view.findViewById(R.id.back_circle_btn);
         checkOutButton = view.findViewById(R.id.checkout_btn);
         swipe_layout=view.findViewById(R.id.swipe_layout);
+        totalParent = view.findViewById(R.id.total_parent);
         setValue();
     }
 
@@ -101,7 +107,7 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
                     JSONObject dataObject= result.optJSONObject("data");
                     cartId = dataObject.optString("id");
                     String subTotal = dataObject.optString("subtotal");
-                    cartPrice.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + subTotal);
+                    cartPrice.setText(SessionStore.getUserDetails(getActivity(), Common.USER_PREFS_NAME).get(SessionStore.USER_CURRENCYTYPE) + " " + Methods.getTwoDecimalVAlue("" + subTotal));
                     setCartItem(dataObject.optJSONArray("items"));
                 } else {
                     Methods.showToast(getActivity(), result.optString("msg"));
@@ -143,6 +149,11 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
             obj.setSku(dataJson.optString("sku"));
             cartList.add(obj);
         }
+        if (cartList.size()>0){
+            totalParent.setVisibility(View.VISIBLE);
+        }else{
+            totalParent.setVisibility(View.GONE);
+        }
         mCartAdapter.updateList(cartList);
     }
 
@@ -151,6 +162,10 @@ public class CartFragment extends Fragment implements ServerCallBack, View.OnCli
 
         switch (view.getId()) {
             case R.id.checkout_btn:
+                if (SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID).equals( "") || SessionStore.getUserDetails(mContext, Common.USER_PREFS_NAME).get(SessionStore.USER_ID) == null){
+                    Intent intent = new Intent(getContext(), LoginActivityNew.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
                 //Intent intent = null;
                 /*String strQt = "";
 
