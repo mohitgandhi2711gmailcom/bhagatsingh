@@ -105,6 +105,7 @@ public class HomeFragment extends Fragment implements ServerCallBack {
         }
 //        viewPager.setOffscreenPageLimit(adapter.mFragmentList.size());
         adapter.notifyDataSetChanged();
+        viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
